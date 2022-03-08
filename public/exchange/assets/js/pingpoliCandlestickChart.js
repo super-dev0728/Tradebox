@@ -38,16 +38,16 @@ function pingpoliCandlestickChart(canvasElementID) {
         e.preventDefault();
     });
 
-    this.canvas.style.backgroundColor = "#252525";
+    this.canvas.style.backgroundColor = "#202124";
     this.context.font = '12px sans-serif';
     this.gridColor = "#444444";
     this.gridTextColor = "#aaaaaa";
     this.mouseHoverBackgroundColor = "#eeeeee";
     this.mouseHoverTextColor = "#000000";
-    this.greenColor = "#00cc00";
-    this.redColor = "#cc0000";
-    this.greenHoverColor = "#00ff00";
-    this.redHoverColor = "#ff0000";
+    this.greenColor = "#0ecb81";
+    this.redColor = "#f6465d";
+    this.greenHoverColor = "#0ecb81";
+    this.redHoverColor = "#f6465d";
 
     this.context.lineWidth = 1;
     this.candleWidth = 5;
@@ -247,6 +247,7 @@ pingpoliCandlestickChart.prototype.drawGrid = function () {
 
     // try to find a nice number to round to
     var niceNumber = Math.pow(10, Math.ceil(Math.log10(yGridSize)));
+
     if (yGridSize < 0.25 * niceNumber) niceNumber = 0.25 * niceNumber;
     else if (yGridSize < 0.5 * niceNumber) niceNumber = 0.5 * niceNumber;
 
@@ -288,7 +289,7 @@ pingpoliCandlestickChart.prototype.drawGrid = function () {
             if (day < 10) day = "0" + day;
             var month = date.getMonth() + 1;
             if (month < 10) month = "0" + month;
-            dateStr = day + "." + month;
+            dateStr = month + "/" + day;
         } else {
             var minutes = date.getMinutes();
             if (minutes < 10) minutes = "0" + minutes;

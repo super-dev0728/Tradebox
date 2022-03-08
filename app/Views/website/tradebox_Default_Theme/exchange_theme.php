@@ -330,7 +330,8 @@
                               </li>
                             </ul>
                     <!-- Chart -->
-                    <div id="chart_div"></div>
+                    <!-- <div id="chart_div"></div> -->
+                    <canvas width="1390" height="520" id="chart_div"></canvas>
                     <div id="tv_chart_container"></div>
                 </div>
                 <!-- /.Chart Content -->
@@ -766,11 +767,14 @@
     <script src="<?php echo BASEPATH.'exchange/assets/plugins/datatables/dataTables.responsive.min.js' ?>"></script>
     <script src="<?php echo BASEPATH.'exchange/assets/plugins/datatables/responsive.bootstrap5.min.js' ?>"></script>
     <script src="<?php echo BASEPATH.'exchange/assets/plugins/apexcharts/apexcharts.min.js' ?>"></script>
-    <script src="<?php echo BASEPATH.'exchange/assets/plugins/apexcharts/apexcharts.active.js?v=1' ?>"></script>
     <script src="<?php echo BASEPATH.'exchange/assets/plugins/bootstrap-slider/dist/bootstrap-slider.min.js' ?>"></script>
     <script src="<?php echo BASEPATH.'assets/js/toastr.js?v=1' ?>"></script>
+    <script src="<?php echo BASEPATH.'exchange/assets/js/pingpoliWebSocket.js' ?>"></script>
+    <script src="<?php echo BASEPATH.'exchange/assets/js/pingpoliCandlestickChart.js' ?>"></script>
+    <script src="<?php echo BASEPATH.'exchange/assets/js/CandlestickStream.js' ?>"></script>
     <script src="<?php echo BASEPATH.'exchange/assets/js/custom.js?v=1.0' ?>"></script>
     <script src="<?php echo BASEPATH.'exchange/assets/js/exchange.js?v=1.10' ?>"></script>
+    <script src="<?php echo BASEPATH.'exchange/assets/plugins/apexcharts/apexcharts.active.js?v=1' ?>"></script>
    
     </body>
     

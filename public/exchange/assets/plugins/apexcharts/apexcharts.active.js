@@ -13,33 +13,22 @@ var getUrlParameter = function getUrlParameter(sParam) {
     }
 };
 
-var market = getUrlParameter('market');
+var market = getUrlParameter('market').replace('_', '');
 
-if ($('#chart_div').length) {
-    $.getJSON(BDTASK.getSiteAction('tradecharthistory?market=' + market), function (response) {
-        var options = {
-            series: [{
-                data: data
-            }],
-            chart: {
-                type: 'candlestick',
-                height: 500
-            },
-            title: {
-                text: 'Stock Chart last 7 days',
-                align: 'Center'
-            },
-            xaxis: {
-                type: 'datetime'
-            },
-            yaxis: {
-                tooltip: {
-                    enabled: true
-                }
+function plot() {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", "https://api.binance.com/api/v3/klines?symbol=" + market + "&interval=1d&limit=200");
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var json = JSON.parse(xmlhttp.responseText);
+            candlestickChart = new pingpoliCandlestickChart("chart_div");
+            for (var i = 0; i < json.length; ++i) {
+                candlestickChart.addCandlestick(new pingpoliCandlestick(json[i][0], json[i][1], json[i][4], json[i][2], json[i][3]));
             }
-        };
-
-        var chart = new ApexCharts(document.querySelector("#chart_div"), options);
-        chart.render();
-    });
+            candlestickChart.draw();
+        }
+    }
+    xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xmlhttp.send();
 }
+plot();
