@@ -1,0 +1,2 @@
+INSERT INTO `payment_gateway` (`id`, `identity`, `agent`, `public_key`, `private_key`, `shop_id`, `secret_key`, `data`, `status`) VALUES
+(9, 'token', 'Token', '51fec43efdeb1323d1a0854ffa807b64abf8', 'messege... ', 'show', '', '', 1);

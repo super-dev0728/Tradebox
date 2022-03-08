@@ -1,0 +1,2 @@
+INSERT INTO `payment_gateway` (`id`, `identity`, `agent`, `public_key`, `private_key`, `shop_id`, `secret_key`, `data`, `status`) VALUES
+(2, 'payeer', 'Payeer', '485146745', 'VsdHofTsuI6XOdjL', '', '', '', 1);

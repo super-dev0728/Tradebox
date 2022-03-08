@@ -1,0 +1,41 @@
+/*
+ Customer script start
+*/
+
+/* Code here.. */
+
+/*
+ Customer script end
+*/
+
+/*-----------------------------------------*/
+
+/*
+ Backend script start
+*/
+
+.dt-button-background {
+    z-index: 0 !important;
+}
+
+.dt-button.buttons-html5 {
+    cursor: pointer !important;
+}
+
+#ajaxtable_filter {
+    display: inline-block;
+    float: right;
+}
+
+#ajaxtable_length {
+    width: 50%;
+    display: inline-block;
+}
+
+div.dt-buttons {
+    float: inherit;
+}
+
+/*
+ Backend script end
+*/

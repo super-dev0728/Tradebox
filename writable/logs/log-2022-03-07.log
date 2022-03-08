@@ -1,0 +1,13 @@
+CRITICAL - 2022-03-07 09:58:56 --> Trying to get property 'method_id' of non-object
+#0 D:\work projects\Tradebox\app\Modules\Website\Controllers\HomeController.php(666): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Trying to get p...', 'D:\\work project...', 666, Array)
+#1 D:\work projects\Tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->payment_process()
+#2 D:\work projects\Tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#3 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-03-07 11:05:02 --> Call to undefined method CodeIgniter\Database\MySQLi\Connection::last_query()
+#0 D:\work projects\Tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->tradecharthistory()
+#1 D:\work projects\Tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#2 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#4 {main}

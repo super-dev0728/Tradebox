@@ -1,0 +1,65 @@
+.trade-market-table>tbody>tr{
+	cursor: pointer;
+}
+.button_margin_top{
+    float: left;  margin-top:5px;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+
+    color: #fff;
+    background-color: #121D27;
+}
+
+.nav-pills .nav-link{
+    border-radius:0rem;
+}
+
+.width100percent{
+
+	width: 100% !important;
+}
+#chartTab.nav-pills{
+        border-bottom: 1px solid #2f3032;
+}
+#chartTab .nav-item {
+    margin-right: 10px;
+}
+#chartTab .nav-item:last-child{
+    margin-right: 0;
+}
+#chartTab .nav-link {
+    color: #8e8e8e;
+    padding: 0;
+    font-size: 12px;
+    font-weight: 500;
+}
+#chartTab.nav-pills .nav-link.active,
+#chartTab.nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: transparent;
+}
+.p-3 li ul{
+    color: #e8eaed;
+    background-color: #2e2f32;
+    margin-right: 200px !important;
+}
+.font-size-12{
+
+    font-size: 12px;
+}
+
+/* .apexcharts-tooltip {
+    left: unset !important;
+    right: 10px;
+    top: 40px !important;
+    padding: 10px;
+}
+
+.apexcharts-tooltip-candlestick.high {
+    color: rgba(0, 183, 70) !important;
+}
+
+.apexcharts-tooltip-candlestick.down {
+    color: rgb(239, 64, 60) !important;
+} */

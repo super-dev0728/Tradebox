@@ -1,0 +1,3 @@
+INSERT INTO `payment_gateway` (`id`, `identity`, `agent`, `public_key`, `private_key`, `shop_id`, `secret_key`, `status`) VALUES (NULL, 'paytm', 'Paytm', 'fgkmv_RHsi6R@QXm', 'Kkatvd34334425459416', 'WEBSTAGING', 'TEST', '1');
+INSERT INTO `language` (`id`, `phrase`, `english`, `french`) VALUES (NULL, 'merchant_key', 'Merchant Key', NULL);
+INSERT INTO `language` (`id`, `phrase`, `english`, `french`) VALUES (NULL, 'merchant_mid', 'Merchant MID', NULL);

@@ -1,0 +1,14 @@
+About Task 1) Charts
+In TradeBox charts have numerous problrms. I consulted this with AmChart and they reply to me, that is bad implementation by programmers (bdTask Bangladesh).
+
+Problems:
+1) when new trading pair is added, it show in chart window and doing this:
+first hundreds trades are not visible, after that every one new trade (transaction) push the date of chart one day forward, so after more trades is executed, they show actual date 2023 etc.
+
+2) candlesticks are too much flat, not contrast. Dark red candlestick in black field - bad visibility
+
+3) We do not want TradingView because they want too much money for every new token.
+
+Crypto exchange without proper hcharts have no sense, so it is our more important task.
+
+Another tasks I describe later today. 
