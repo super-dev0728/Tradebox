@@ -1,6 +1,18 @@
 obj = JSON.parse(BDTASK.phrase());
 theme = JSON.parse(BDTASK.theme());
 
+$(function () {
+    // Time interval control dropdown display and hide
+    $('.chart-content .control .dropdown').on('mouseover', function () {
+        $(this).css('color', '#00b746');
+        $('.chart-content .control .range-dropdown').show();
+    });
+
+    $('.chart-content .control .range-dropdown').on('mouseleave', function () {
+        $('.chart-content .control .dropdown').css('color', '#8e8e8e');
+        $('.chart-content .control .range-dropdown').hide();
+    });
+});
 $(function ($) {
 
     "use strict";

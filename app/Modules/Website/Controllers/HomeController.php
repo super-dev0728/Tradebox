@@ -2617,11 +2617,13 @@ class HomeController extends BaseController
 
         $string  = [];
 
-        $market_symbol = $this->request->getGet('market', FILTER_SANITIZE_STRING);
+        $market_symbol = $this->request->getGet('symbol', FILTER_SANITIZE_STRING);
+        $interval = $this->request->getGet('interval', FILTER_SANITIZE_STRING) * 60;
+        $limit = $this->request->getGet('limit');
 
         // $coinhistory   = $this->db->table('dbt_coinhistory')->select('date')->selectSum('open')->selectSum('price_high_24h')->selectSum(' price_low_24h')->selectSum('close')->where('market_symbol', $market_symbol)->groupBy('DATE(date)')->groupBy('HOUR(date)')->groupBy('MINUTE(date)')->limit(1000,0)->orderBy('date', 'asc')->get()->getResult(); 
 
-        $coinhistory   = $this->db->table('dbt_coinhistory_detail')->selectMin('price', 'low')->selectMax('price', "high")->selectMin('date', 'open_date')->selectMax('date', 'close_date')->select('substring_index(group_concat(cast(price as DOUBLE) order by date), trim(","), 1 ) as "open"')->select('substring_index(group_concat(cast(price as DOUBLE) order by date desc), trim(","), 1 ) as "close"')->where('market_symbol', $market_symbol)->groupBy('g_minute')->orderBy('id', 'desc')->limit(100, 0)->get()->getResult();
+        $coinhistory   = $this->db->table('dbt_coinhistory_detail')->selectMin('price', 'low')->selectMax('price', "high")->selectMin('date', 'open_date')->selectMax('date', 'close_date')->select('substring_index(group_concat(cast(price as DOUBLE) order by date), trim(","), 1 ) as "open"')->select('substring_index(group_concat(cast(price as DOUBLE) order by date desc), trim(","), 1 ) as "close"')->select('FLOOR(UNIX_TIMESTAMP(date)/' . $interval . ') as "timekey"')->where('market_symbol', $market_symbol)->groupBy('timekey')->orderBy('id', 'desc')->limit($limit, 0)->get()->getResult();
 
         foreach ($coinhistory as $key => $value) {
             $timestamp = strtotime($value->open_date);
@@ -3944,19 +3946,16 @@ class HomeController extends BaseController
     |----------------------------
     */
     public function generate_random_trade() {
-        $now = date('Y-m-d H:i:s');
+        $now = "2021-01-01 00:00:00";
         $timestamp = strtotime($now);
-        $price = 6666;
+        $price = 0.06666;
         // $price = 1.42180919;
 
-        for($i = 1; $i < 200; $i++) {
+        for($i = 1; $i < 10000; $i++) {
             $rand_date = rand(10, 50);
             $timestamp = $timestamp + $rand_date;
 
-            $date = date('Y-m-d H:i:s', $timestamp);  
-            $g_minute = date('YmdHi', $timestamp);
-            $g_hour = date('YmdH', $timestamp);
-            $g_day = date("Ymd", $timestamp);
+            $date = date('Y-m-d H:i:s', $timestamp);
 
             $coin_symbol = 'ETH';
             $market_symbol = 'ETH_BTC';
@@ -3964,7 +3963,7 @@ class HomeController extends BaseController
             // $price = $price - rand()/getrandmax()*0.05-0.01;
             // $rand_price = rand()/getrandmax()*0.05-0.01;
 
-            $last_price = rand(6000, 8000);
+            $last_price = rand(4000, 8000) / 100000;
 
             $total = 25025.08000000;
 
@@ -3973,10 +3972,7 @@ class HomeController extends BaseController
                 'market_symbol' => $market_symbol,
                 'price' => $last_price,
                 'total_coin_supply' => $total,
-                'date' => $date,
-                'g_minute' => $g_minute,
-                'g_hour' => $g_hour,
-                'g_day' => $g_day
+                'date' => $date
             );
 
             $this->common_model->save('dbt_coinhistory_detail', $data);

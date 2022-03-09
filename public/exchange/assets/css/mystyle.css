@@ -49,17 +49,86 @@
     font-size: 12px;
 }
 
-/* .apexcharts-tooltip {
-    left: unset !important;
-    right: 10px;
-    top: 40px !important;
+.chart-content .control {
+    height: 30px;
+    color: #8e8e8e;
+    padding-top: 5px;
+    padding-left: 15px;
+    font-size: 11px;
+    z-index: 1000;
+    border-bottom: 1px solid #edf0f3;
+    border-color: #2f3032;
+}
+
+.chart-content .control .range {
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.chart-content .control .range.active {
+    color: #00b746;
+}
+
+.chart-content .control .dropdown {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.chart-content .control .range:hover {
+    color: #00b746;
+}
+
+.chart-content .control .range.dropdown {
+    padding-bottom: 30px;
+    padding-right: 20px;
+}
+
+.account-box {
+    margin-top: 10px;
+}
+
+.chart-content .range-dropdown {
+    display: none;
+    position: absolute;
+    left: 232px;
+    top: 163px;
+    width: 245px;
+    height: 120px;
+    background-color: rgb(37, 41, 48);
+    border-radius: 5px;
+    color: #fff;
     padding: 10px;
 }
 
-.apexcharts-tooltip-candlestick.high {
-    color: rgba(0, 183, 70) !important;
+.chart-content .range-dropdown .sub-range {
+    width: 50px;
+    height: 20px;
+    background-color: #494a4e;
+    float: left;
+    margin-left: 5px;
+    margin-top: 5px;
+    padding: 2px;
+    text-align: center;
+    font-size: 11px;
+    border-radius: 3px;
+    cursor: pointer;
 }
 
-.apexcharts-tooltip-candlestick.down {
-    color: rgb(239, 64, 60) !important;
-} */
+.chart-content .range-dropdown .sub-range:hover {
+    background-color: #8e8e8e;
+}
+
+.chart-content .range-dropdown .title {
+    font-size: 12px !important;
+    color: #8e8e8e;
+    padding-left: 5px !important;
+    margin-bottom: 5px;
+}
+
+.chart-content .range-dropdown .sub-range.active {
+    background-color: rgb(0, 183, 70, 0.5);
+}
+
+.blockUI.blockMsg.blockPage {
+    left: 20% !important;
+}

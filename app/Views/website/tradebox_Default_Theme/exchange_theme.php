@@ -1,25 +1,32 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <!-- Required meta tags -->
-        <title><?php echo esc($settings->title) ?></title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="shortcut icon" href="<?php echo $settings->favicon?IMAGEPATH.$settings->favicon:''; ?>">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-        <!-- Bootstrap CSS -->
-        <link href="<?php echo BASEPATH.'exchange/assets/plugins/bootstrap/css/bootstrap.min.css' ?>" rel="stylesheet">
-        <link href="<?php echo BASEPATH.'exchange/assets/plugins/fontawesome/css/all.min.css' ?>" rel="stylesheet">
-        <link href="<?php echo BASEPATH.'exchange/assets/plugins/feather-icons/feather.css' ?>" rel="stylesheet">
-        <link href="<?php echo BASEPATH.'exchange/assets/plugins/datatables/dataTables.bootstrap5.min.css' ?>" rel="stylesheet">
-        <link href="<?php echo BASEPATH.'exchange/assets/plugins/datatables/responsive.bootstrap5.min.css' ?>" rel="stylesheet">
-        <link href="<?php echo BASEPATH.'exchange/assets/plugins/bootstrap-slider/dist/css/bootstrap-slider.min.css' ?>" rel="stylesheet">
-        <link href="<?php echo BASEPATH.'assets/css/toastr.css?v=1' ?>" rel="stylesheet">
-        <link href="<?php echo BASEPATH.'exchange/assets/css/custom.css?v=1' ?>" rel="stylesheet">
-        <link href="<?php echo BASEPATH.'exchange/assets/css/mystyle.css?v=1' ?>" rel="stylesheet">
-        <script type='text/javascript' src="<?php echo site_url('Adapter/javascript?market='.$adapter_symbol) ?>"></script>
-    </head>
-   <body class="dark-theme">
+
+<head>
+    <!-- Required meta tags -->
+    <title><?php echo esc($settings->title) ?></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="<?php echo $settings->favicon?IMAGEPATH.$settings->favicon:''; ?>">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="<?php echo BASEPATH.'exchange/assets/plugins/bootstrap/css/bootstrap.min.css' ?>" rel="stylesheet">
+    <link href="<?php echo BASEPATH.'exchange/assets/plugins/fontawesome/css/all.min.css' ?>" rel="stylesheet">
+    <link href="<?php echo BASEPATH.'exchange/assets/plugins/feather-icons/feather.css' ?>" rel="stylesheet">
+    <link href="<?php echo BASEPATH.'exchange/assets/plugins/datatables/dataTables.bootstrap5.min.css' ?>"
+        rel="stylesheet">
+    <link href="<?php echo BASEPATH.'exchange/assets/plugins/datatables/responsive.bootstrap5.min.css' ?>"
+        rel="stylesheet">
+    <link href="<?php echo BASEPATH.'exchange/assets/plugins/bootstrap-slider/dist/css/bootstrap-slider.min.css' ?>"
+        rel="stylesheet">
+    <link href="<?php echo BASEPATH.'assets/css/toastr.css?v=1' ?>" rel="stylesheet">
+    <link href="<?php echo BASEPATH.'exchange/assets/css/custom.css?v=1' ?>" rel="stylesheet">
+    <link href="<?php echo BASEPATH.'exchange/assets/css/mystyle.css?v=1' ?>" rel="stylesheet">
+    <script type='text/javascript' src="<?php echo site_url('Adapter/javascript?market='.$adapter_symbol) ?>"></script>
+</head>
+
+<body class="dark-theme">
     <!-- Preloader -->
     <div class="loader-wrapper">
         <img src="<?php echo BASEPATH.'exchange/assets/img/hero-glow.svg' ?>" alt="">
@@ -55,8 +62,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" aria-current="page" href="#"><?php echo display('home'); ?></a>
                             </li>
-                             <li class="nav-item">
-                                <a class="nav-link active" href="<?php echo base_url("exchange?market=".@$query_pair->symbol) ?>"><?php echo display('exchange') ?></a>
+                            <li class="nav-item">
+                                <a class="nav-link active"
+                                    href="<?php echo base_url("exchange?market=".@$query_pair->symbol) ?>"><?php echo display('exchange') ?></a>
                             </li>
                             <?php
                                   helper('filesystem');
@@ -82,30 +90,32 @@
 
                                   if ($parent['status'] == 0) {
                                   ?>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                            <?php echo trim($parent['parent']); ?>
-                                        </a>
-                                        
-                                    </li>
-                                <?php } else if ($parent['status'] == 1) { ?>
+                                    <?php echo trim($parent['parent']); ?>
+                                </a>
 
-                                     <li class="nav-item dropdown">
-                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            </li>
+                            <?php } else if ($parent['status'] == 1) { ?>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                            <?php echo trim($parent['parent']); ?>
-                                            <i class="feather-chevron-down caret"></i>
-                                        </a>
-                                        <ul class="dropdown-menu slideIn" aria-labelledby="navbarDropdown">
-                                            <?php
+                                    <?php echo trim($parent['parent']); ?>
+                                    <i class="feather-chevron-down caret"></i>
+                                </a>
+                                <ul class="dropdown-menu slideIn" aria-labelledby="navbarDropdown">
+                                    <?php
                                                 foreach ($parent['submenu'] as $key => $child) {
                                                 ?>
-                                            <li><a class="dropdown-item" href="<?php echo base_url($child['link']) ?>"><?php echo $child['name'] ?></a></li>
-                                            <?php } ?>
-                                        </ul>
+                                    <li><a class="dropdown-item"
+                                            href="<?php echo base_url($child['link']) ?>"><?php echo $child['name'] ?></a>
                                     </li>
-                            <?php }} ?> 
+                                    <?php } ?>
+                                </ul>
+                            </li>
+                            <?php }} ?>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -113,11 +123,19 @@
                                     <i class="feather-chevron-down caret"></i>
                                 </a>
                                 <ul class="dropdown-menu slideIn" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="<?php echo base_url('balances') ?>"><i class="feather-credit-card"></i> <?php echo display('balance');?></a></li>
-                                    <li><a class="dropdown-item" href="<?php echo base_url('deposit') ?>"><i class="feather-droplet"></i> <?php echo display('deposit') ?></a></li>
-                                    <li><a class="dropdown-item" href="<?php echo base_url('withdraw') ?>"><i class="feather-dollar-sign"></i> <?php echo display('withdraw') ?></a></li>
-                                    <li><a class="dropdown-item" href="<?php echo base_url('transfer') ?>"><i class="feather-book"></i> <?php echo display('transfer') ?></a></li>
-                                    <li><a class="dropdown-item" href="<?php echo base_url('transactions') ?>"><i class="feather-droplet"></i> <?php echo display('transection') ?></a></li>
+                                    <li><a class="dropdown-item" href="<?php echo base_url('balances') ?>"><i
+                                                class="feather-credit-card"></i> <?php echo display('balance');?></a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="<?php echo base_url('deposit') ?>"><i
+                                                class="feather-droplet"></i> <?php echo display('deposit') ?></a></li>
+                                    <li><a class="dropdown-item" href="<?php echo base_url('withdraw') ?>"><i
+                                                class="feather-dollar-sign"></i> <?php echo display('withdraw') ?></a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="<?php echo base_url('transfer') ?>"><i
+                                                class="feather-book"></i> <?php echo display('transfer') ?></a></li>
+                                    <li><a class="dropdown-item" href="<?php echo base_url('transactions') ?>"><i
+                                                class="feather-droplet"></i> <?php echo display('transection') ?></a>
+                                    </li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
@@ -127,24 +145,36 @@
                                     <i class="feather-chevron-down caret"></i>
                                 </a>
                                 <ul class="dropdown-menu slideIn" aria-labelledby="navbarDropdown2">
-                                    <li><a class="dropdown-item" href="<?php echo base_url('open-order') ?>"><?php echo display('open_order') ?></a></li>
-                                    <li><a class="dropdown-item" href="<?php echo base_url('complete-order') ?>"><?php echo display('complete_order') ?></a></li>
-                                    <li><a class="dropdown-item" href="<?php echo base_url('trade-history') ?>"><?php echo display('trade_history') ?></a></li>
+                                    <li><a class="dropdown-item"
+                                            href="<?php echo base_url('open-order') ?>"><?php echo display('open_order') ?></a>
+                                    </li>
+                                    <li><a class="dropdown-item"
+                                            href="<?php echo base_url('complete-order') ?>"><?php echo display('complete_order') ?></a>
+                                    </li>
+                                    <li><a class="dropdown-item"
+                                            href="<?php echo base_url('trade-history') ?>"><?php echo display('trade_history') ?></a>
+                                    </li>
                                 </ul>
                             </li>
                             <?php  if($session->get('user_id') != NULL){ ?>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        <?php echo display('account'); ?>
-                                        <i class="feather-chevron-down caret"></i>
-                                    </a>
-                                    <ul class="dropdown-menu slideIn" aria-labelledby="navbarDropdown3">
-                                        <li><a class="dropdown-item" href="<?php echo base_url('bank-setting'); ?>"><?php echo display('bank_setting') ?></a></li>
-                                        <li><a class="dropdown-item" href="<?php echo base_url('payout-setting'); ?>"><?php echo display('payout_setup') ?></a></li>
-                                        <li><a class="dropdown-item" href="<?php echo base_url('profile'); ?>"><?php echo display('profile') ?></a></li>
-                                    </ul>
-                                </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <?php echo display('account'); ?>
+                                    <i class="feather-chevron-down caret"></i>
+                                </a>
+                                <ul class="dropdown-menu slideIn" aria-labelledby="navbarDropdown3">
+                                    <li><a class="dropdown-item"
+                                            href="<?php echo base_url('bank-setting'); ?>"><?php echo display('bank_setting') ?></a>
+                                    </li>
+                                    <li><a class="dropdown-item"
+                                            href="<?php echo base_url('payout-setting'); ?>"><?php echo display('payout_setup') ?></a>
+                                    </li>
+                                    <li><a class="dropdown-item"
+                                            href="<?php echo base_url('profile'); ?>"><?php echo display('profile') ?></a>
+                                    </li>
+                                </ul>
+                            </li>
                             <?php } ?>
                         </ul>
                         <ul class="navbar-nav">
@@ -152,47 +182,54 @@
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center" href="javascript:void(0)"
                                     data-bs-toggle="modal" data-bs-target="#languaheModal">
-                                    <div><?php echo isset($lang) && $lang =="english"?'English':$web_language->name; ?></div>
+                                    <div><?php echo isset($lang) && $lang =="english"?'English':$web_language->name; ?>
+                                    </div>
                                 </a>
                             </li>
                             <!-- Login Option For Large Device (Breakpoints: ≥992px) -->
                             <li class="nav-item d-none d-lg-block">
                                 <?php  if($session->get('user_id') == NULL){ ?>
-                                    <a class="nav-link" href="<?php echo base_url('login'); ?>"><i class="feather-log-in me-1"></i><?php echo display('login'); ?></a>
+                                <a class="nav-link" href="<?php echo base_url('login'); ?>"><i
+                                        class="feather-log-in me-1"></i><?php echo display('login'); ?></a>
                                 <?php } else { ?>
-                                    <a class="nav-link" href="<?php echo base_url('customer/auth/logout') ?>"><i class="feather-log-out me-1"></i><?php echo display('logout'); ?></a>
+                                <a class="nav-link" href="<?php echo base_url('customer/auth/logout') ?>"><i
+                                        class="feather-log-out me-1"></i><?php echo display('logout'); ?></a>
                                 <?php } ?>
                             </li>
                         </ul>
                         <!-- Login & Register Button For Mobile (Breakpoints: <991px) -->
                         <div class="mt-3 d-lg-none">
                             <?php  if($session->get('user_id') == NULL){ ?>
-                                <a href="<?php echo base_url('login'); ?>"  class="btn btn-login w-100 mb-2"><?php echo display('login'); ?></a>
-                                <a href="<?php echo base_url('register'); ?>" class="btn btn-register w-100"><?php echo display('register'); ?></a>
+                            <a href="<?php echo base_url('login'); ?>"
+                                class="btn btn-login w-100 mb-2"><?php echo display('login'); ?></a>
+                            <a href="<?php echo base_url('register'); ?>"
+                                class="btn btn-register w-100"><?php echo display('register'); ?></a>
                             <?php } else { ?>
-                                <a href="<?php echo base_url('customer/auth/logout') ?>"  class="btn btn-login w-100 mb-2"><?php echo display('logout'); ?></a>
+                            <a href="<?php echo base_url('customer/auth/logout') ?>"
+                                class="btn btn-login w-100 mb-2"><?php echo display('logout'); ?></a>
                             <?php }?>
                         </div>
                         <!-- /.Login & Register Button For Mobile (Breakpoints: <991px) -->
                     </div>
-                    
-                        <div class="d-flex align-items-center">
-                            <?php  if($session->get('user_id') == NULL){ ?>
-                                <a class="nav-link btn btn-register ms-2" href="<?php echo base_url('register'); ?>"><?php echo display('register'); ?></a>
-                            <?php } ?>
-                            <div class="toolbar-link ms-2 d-none d-sm-block">
-                                <label class="switch ml-auto">
-                                    <input type="checkbox" id="switcher"><span></span>
-                                </label>
-                            </div>
-                            <!-- Navbar Toggler Button For Mobile (Breakpoints: <991px) -->
-                            <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
+
+                    <div class="d-flex align-items-center">
+                        <?php  if($session->get('user_id') == NULL){ ?>
+                        <a class="nav-link btn btn-register ms-2"
+                            href="<?php echo base_url('register'); ?>"><?php echo display('register'); ?></a>
+                        <?php } ?>
+                        <div class="toolbar-link ms-2 d-none d-sm-block">
+                            <label class="switch ml-auto">
+                                <input type="checkbox" id="switcher"><span></span>
+                            </label>
                         </div>
-                   
+                        <!-- Navbar Toggler Button For Mobile (Breakpoints: <991px) -->
+                        <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+
                 </div>
             </nav>
             <!-- /. Navbar -->
@@ -207,14 +244,17 @@
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     <span>
                                         <span class="coin d-block"><?php echo $market_symbol; ?></span>
-                                        <span class="coin-name_full text-truncate d-block"><?php echo $market_history->full_name; ?></span>
+                                        <span
+                                            class="coin-name_full text-truncate d-block"><?php echo $market_history->full_name; ?></span>
                                     </span>
                                     <i class="feather-chevron-down caret"></i>
                                 </span>
                                 <div class="dropdown-menu market-symbol" aria-labelledby="dropdownMenuButton1">
                                     <div class="form-group has-search mb-1">
                                         <span class="feather-search form-control-feedback"></span>
-                                        <input id="myInput" type="text" class="form-control" placeholder="<?php echo display('search_pair'); ?>" onkeyup="marketSearch()">
+                                        <input id="myInput" type="text" class="form-control"
+                                            placeholder="<?php echo display('search_pair'); ?>"
+                                            onkeyup="marketSearch()">
                                     </div>
                                     <div class="p-3">
                                         <ul class="nav nav-tabs mb-3" id="myTab1" role="tablist">
@@ -225,15 +265,20 @@
                                                 if($i <= 3){
                                             ?>
                                             <li class="nav-item" role="presentation">
-                                               
-                                                <button class="nav-link <?php if($coin_symbol[1] == $value->symbol) echo "active" ?>" id="tab-one_<?php echo esc($value->symbol) ?>" data-bs-toggle="tab"
-                                                    data-bs-target="#tabOne_<?php echo esc($value->symbol) ?>" type="button" role="tab"
-                                                    aria-controls="tabOne_<?php echo esc($value->symbol) ?>" aria-selected="true"><?php echo esc(strtoupper($value->symbol)) ?></button>
+
+                                                <button
+                                                    class="nav-link <?php if($coin_symbol[1] == $value->symbol) echo "active" ?>"
+                                                    id="tab-one_<?php echo esc($value->symbol) ?>" data-bs-toggle="tab"
+                                                    data-bs-target="#tabOne_<?php echo esc($value->symbol) ?>"
+                                                    type="button" role="tab"
+                                                    aria-controls="tabOne_<?php echo esc($value->symbol) ?>"
+                                                    aria-selected="true"><?php echo esc(strtoupper($value->symbol)) ?></button>
                                             </li>
                                             <?php $i++; }} ?>
                                             <li class="nav-item dropdown">
                                                 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
-                                                    role="button" aria-expanded="false"><?php echo display('more'); ?></a>
+                                                    role="button"
+                                                    aria-expanded="false"><?php echo display('more'); ?></a>
                                                 <ul id="morehide" class="dropdown-menu">
                                                     <?php 
                                                         $i = 1;
@@ -241,54 +286,66 @@
                                                             $coin_symbol = explode('_', $market_symbol);
                                                         if($i++ > 3){
                                                      ?>
-                                                        <li class="nav-item" role="presentation">
-                                                            <a class="dropdown-item nav-link <?php if($coin_symbol[1] == $value->symbol) echo "active" ?>" id="tab-one_<?php echo esc($value->symbol) ?>" data-bs-toggle="tab"
-                                                    data-bs-target="#tabOne_<?php echo esc($value->symbol) ?>" type="button" role="tab"
-                                                    aria-controls="tabOne_<?php echo esc($value->symbol) ?>" aria-selected="true" href="#"><?php echo esc(strtoupper($value->symbol)) ?></a>
-                                                        </li>
+                                                    <li class="nav-item" role="presentation">
+                                                        <a class="dropdown-item nav-link <?php if($coin_symbol[1] == $value->symbol) echo "active" ?>"
+                                                            id="tab-one_<?php echo esc($value->symbol) ?>"
+                                                            data-bs-toggle="tab"
+                                                            data-bs-target="#tabOne_<?php echo esc($value->symbol) ?>"
+                                                            type="button" role="tab"
+                                                            aria-controls="tabOne_<?php echo esc($value->symbol) ?>"
+                                                            aria-selected="true"
+                                                            href="#"><?php echo esc(strtoupper($value->symbol)) ?></a>
+                                                    </li>
                                                     <?php }} ?>
                                                 </ul>
                                             </li>
                                         </ul>
-                                            <div class="tab-content" id="myTabContent1">
+                                        <div class="tab-content" id="myTabContent1">
                                             <?php foreach ($coin_markets as $key => $value) { ?>
-                                                <div class="tab-pane fade show <?php if($coin_symbol[1] == strtoupper($value->symbol)) echo "active"; ?>" id="tabOne_<?php echo esc($value->symbol) ?>" role="tabpanel"
-                                                    aria-labelledby="tab-one_<?php echo esc($value->symbol) ?>">
-                                                    <table id="myTable<?php echo $value->id; ?>" class="table table-borderless trade-market-table display mb-0 width100percent">
-                                                        <thead>
-                                                            <tr>
-                                                                <th><?php echo display('pair'); ?></th>
-                                                                <th class="text-end"><?php echo display('price'); ?></th>
-                                                                <th class="text-end"><?php echo display('change'); ?></th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <?php 
+                                            <div class="tab-pane fade show <?php if($coin_symbol[1] == strtoupper($value->symbol)) echo "active"; ?>"
+                                                id="tabOne_<?php echo esc($value->symbol) ?>" role="tabpanel"
+                                                aria-labelledby="tab-one_<?php echo esc($value->symbol) ?>">
+                                                <table id="myTable<?php echo $value->id; ?>"
+                                                    class="table table-borderless trade-market-table display mb-0 width100percent">
+                                                    <thead>
+                                                        <tr>
+                                                            <th><?php echo display('pair'); ?></th>
+                                                            <th class="text-end"><?php echo display('price'); ?></th>
+                                                            <th class="text-end"><?php echo display('change'); ?></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php 
                                                                 foreach ($coin_pairs as $keyp => $valuep) { 
                                                                     if($valuep->market_symbol == $value->symbol){ 
                                                             ?>
-                                                            <tr data-href="#" onclick="window.location='<?php echo base_url("exchange?market=$valuep->symbol") ?>';">
-                                                                <td>
-                                                                    <div class="item-symbol d-flex align-items-center">
-                                                                        <div class="favorite primary me-1">
-                                                                            <i class="fas fa-star"></i>
-                                                                        </div>
-                                                                        <div class="item-symbol-text"><?php echo esc($valuep->currency_symbol)."/".esc($valuep->market_symbol) ?></div>
+                                                        <tr data-href="#"
+                                                            onclick="window.location='<?php echo base_url("exchange?market=$valuep->symbol") ?>';">
+                                                            <td>
+                                                                <div class="item-symbol d-flex align-items-center">
+                                                                    <div class="favorite primary me-1">
+                                                                        <i class="fas fa-star"></i>
                                                                     </div>
-                                                                </td>
-                                                                <td class="text-end" id="price_<?php echo esc($valuep->symbol) ?>">
-                                                                    <?php echo esc($valuep->initial_price)==''?'0.00':esc($valuep->initial_price) ?>
-                                                                </td>
-                                                                <td class="text-end"><span class="item-color-sell" id="price_change_<?php echo esc($valuep->symbol) ?>">
-                                                                        0.00%</span>
-                                                                </td>
-                                                            </tr>
-                                                            <?php } } ?>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            <?php } ?>
+                                                                    <div class="item-symbol-text">
+                                                                        <?php echo esc($valuep->currency_symbol)."/".esc($valuep->market_symbol) ?>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-end"
+                                                                id="price_<?php echo esc($valuep->symbol) ?>">
+                                                                <?php echo esc($valuep->initial_price)==''?'0.00':esc($valuep->initial_price) ?>
+                                                            </td>
+                                                            <td class="text-end"><span class="item-color-sell"
+                                                                    id="price_change_<?php echo esc($valuep->symbol) ?>">
+                                                                    0.00%</span>
+                                                            </td>
+                                                        </tr>
+                                                        <?php } } ?>
+                                                    </tbody>
+                                                </table>
                                             </div>
+                                            <?php } ?>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -322,16 +379,39 @@
                         </div>
                     </header>
                     <ul id="chartTab" class="justify-content-end nav nav-pills p-2 m-0">
-                              <li class="nav-item">
-                                <a class="nav-link active" href="#" id="original">Original Chart</a>
-                              </li>
-                              <li class="nav-item">
-                                <a class="nav-link" href="#" id="tradingview">TradingView Chart</a>
-                              </li>
-                            </ul>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" id="original">Original Chart</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="tradingview">TradingView Chart</a>
+                        </li>
+                    </ul>
+                    <div class="control">
+                        <span>Time Range: </span>
+                        <span class="range" data-range="15" id="quarter">15m</span>
+                        <span class="range" data-range="60" id="hour">1H</span>
+                        <span class="range" data-range="240" id="4hr">4H</span>
+                        <span class="range" data-range="1440" id="day">1D</span>
+                        <span class="range" data-range="10080" id="week">1W</span>
+                        <span class="dropdown">1m <i class="fa fa-sort-down"></i></span>
+                        <div class="range-dropdown">
+                            <div class="title">Select Intervals</div>
+                            <div class="sub-range" data-range="1">1m</div>
+                            <div class="sub-range" data-range="3">3m</div>
+                            <div class="sub-range" data-range="5">5m</div>
+                            <div class="sub-range" data-range="15">15m</div>
+                            <div class="sub-range" data-range="30">30m</div>
+                            <div class="sub-range" data-range="60">1H</div>
+                            <div class="sub-range" data-range="120">2H</div>
+                            <div class="sub-range" data-range="240">4H</div>
+                            <div class="sub-range" data-range="720">12H</div>
+                            <div class="sub-range" data-range="1440">1D</div>
+                            <div class="sub-range" data-range="10080">1W</div>
+                            <div class="sub-range" data-range="43200">1M</div>
+                        </div>
+                    </div>
                     <!-- Chart -->
-                    <!-- <div id="chart_div"></div> -->
-                    <canvas width="1390" height="520" id="chart_div"></canvas>
+                    <canvas width="1390" height="500" id="chart_div"></canvas>
                     <div id="tv_chart_container"></div>
                 </div>
                 <!-- /.Chart Content -->
@@ -364,9 +444,12 @@
                                         class="orderbook-list_table orderbook-list_ask table table-borderless table-hover position-relative overflow-hidden mb-0">
                                         <thead>
                                             <tr>
-                                                <th class="coin"><?php echo display('price') ?> <?php echo esc($coin_symbol[0]) ?></th>
-                                                <th class="price"><?php echo esc($coin_symbol[0]) ?> <?php echo display('amount') ?></th>
-                                                <th class="change"><?php echo display('total') ?>: (<?php echo esc($coin_symbol[1]) ?>)</th>
+                                                <th class="coin"><?php echo display('price') ?>
+                                                    <?php echo esc($coin_symbol[0]) ?></th>
+                                                <th class="price"><?php echo esc($coin_symbol[0]) ?>
+                                                    <?php echo display('amount') ?></th>
+                                                <th class="change"><?php echo display('total') ?>:
+                                                    (<?php echo esc($coin_symbol[1]) ?>)</th>
                                             </tr>
                                         </thead>
                                         <tbody class="table-body" id="selltrades">
@@ -378,7 +461,7 @@
                                 <!-- Orderbook Ticker -->
                                 <div class="orderbook-ticker d-flex price_updown">
                                     <!-- price updown show here -->
-                                     <span class="contract-price status-primary">0.00
+                                    <span class="contract-price status-primary">0.00
                                         <!-- contract price status class name.status-sell.status-buy .status-primary -->
                                         <i class="feather-corner-right-down arrow-icon ms-1"></i>
                                         <i class="feather-corner-right-up arrow-icon ms-1"></i>
@@ -387,7 +470,8 @@
                                 <!-- /.Orderbook Ticker -->
                                 <!-- Orderbook list -->
                                 <div class="orderbook-list position-relative">
-                                    <table class="orderbook-list_table orderbook-list_bid table table-borderless table-hover position-relative overflow-hidden mb-0">
+                                    <table
+                                        class="orderbook-list_table orderbook-list_bid table table-borderless table-hover position-relative overflow-hidden mb-0">
                                         <tbody class="table-body" id="buytrades">
                                             <!-- biding buy order show here -->
                                         </tbody>
@@ -401,7 +485,7 @@
                                 <div class="widget-header_title d-none d-sm-block d-md-none d-xl-block">
                                     <?php echo display('trade_history');?>
                                 </div>
-                                <div class="trades-table-wrap position-absolute" >
+                                <div class="trades-table-wrap position-absolute">
                                     <table
                                         class="orderbook-list_table orderbook-list_ask table table-fixed table-borderless table-hover mb-0 h-100 d-flex flex-column">
                                         <thead>
@@ -434,11 +518,13 @@
                         <ul class="nav nav-tabs order-form-tabs mb-2" id="myTab3" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="buy-tab" data-bs-toggle="tab" data-bs-target="#buy"
-                                    type="button" role="tab" aria-controls="buy" aria-selected="true"><?php echo display('buy') ?></button>
+                                    type="button" role="tab" aria-controls="buy"
+                                    aria-selected="true"><?php echo display('buy') ?></button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="sell-tab" data-bs-toggle="tab" data-bs-target="#sell"
-                                    type="button" role="tab" aria-controls="sell" aria-selected="false"><?php echo display('sell') ?></button>
+                                    type="button" role="tab" aria-controls="sell"
+                                    aria-selected="false"><?php echo display('sell') ?></button>
                             </li>
                         </ul>
                         <!-- /.Place Order Form Tabs Nav -->
@@ -447,113 +533,147 @@
                             <div class="tab-pane show active" id="buy" role="tabpanel" aria-labelledby="buy-tab">
                                 <div class="buy-sell-order">
                                     <div class="my-3">
-                                        <span class="text-uppercase"><?php echo esc($coin_symbol[1]) ?>&nbsp;<?php echo display('balance') ?>:</span>&nbsp;
-                                        <span id="balance_buy"><?php echo esc(@$balance_to->balance)?@(float)esc($balance_to->balance):'0.00' ?></span>
+                                        <span
+                                            class="text-uppercase"><?php echo esc($coin_symbol[1]) ?>&nbsp;<?php echo display('balance') ?>:</span>&nbsp;
+                                        <span
+                                            id="balance_buy"><?php echo esc(@$balance_to->balance)?@(float)esc($balance_to->balance):'0.00' ?></span>
                                     </div>
                                     <?php echo form_open('buy','id="buyform" class="buy-form" name="buyform"'); ?>
                                     <?php echo form_hidden('market', esc(@$market_details->symbol)); ?>
-                                        <div class="tab-content" id="myTabContent4">
-                                            <div class="tab-pane fade show active" id="limit" role="tabpanel"
-                                                aria-labelledby="limit-tab">
-                                                <!-- Input Group Form -->
-                                                <div class="input-group-form">
-                                                    <span class="input-group-form__text"><?php echo display('price') ?></span>
-                                                    <input id="buypricing" name="buypricing" step="any" min="0" type="number" class="form-control" placeholder="0.00">
-                                                    <span class="input-group-form__text--currency"><?php echo esc($coin_symbol[1]) ?></span>
-                                                </div>
-                                                <!-- Input Group Form -->
-                                                <div class="input-group-form">
-                                                    <span class="input-group-form__text"><?php echo display('amount') ?></span>
-                                                    <input id="buyamount" name="buyamount" step="any" min="0" type="number" class="form-control" placeholder="0.00">
-                                                    <span class="input-group-form__text--currency"><?php echo esc($coin_symbol[0]) ?></span>
-                                                </div>
-                                                <!-- Slider Ticks -->
-                                                <div class="my-3 text-center">
-                                                    <input id="ex13" type="text" data-slider-ticks="[0, 25, 50, 75, 100]"
-                                                        data-slider-ticks-snap-bounds="1"
-                                                        data-slider-ticks-labels='["0%", "25%", "50%", "75%", "100%"]' />
-                                                </div>
-
-                                                <div class="form-group row no-gutters mb-2">
-                                                    <div class="buyloginMessage"></div>
-                                                    <div class="col-sm-7 font-size-12"><?php echo display('estimated_open_price') ?>:</div>
-                                                    <div class="col-sm-5 text-right font-size-12" id="buywithout_fees">0.00</div>
-                                                    <input type="hidden" name="buywithout_feesval" id="buywithout_feesval" />
-                                                    <div class="col-sm-7 font-size-12"><?php echo display('open_fees') ?>:</div>
-                                                    <div class="col-sm-5 text-right font-size-12" id="buyfees">0.00 <?php echo esc($coin_symbol[1]) ?> (<?php echo esc(@$fee_usd->fees) ?>%)</div>
-                                                    <input type="hidden" name="buyfeesval" id="buyfeesval" value="" />
-                                                    <div class="col-sm-7 font-size-12"><?php echo display('total') ?>:</div>
-                                                    <div class="total col-sm-5 text-right font-size-12" id="buytotal">0.00</div>
-                                                    <input readonly="readonly" type="hidden" class="form-control" name="buytotalval" id="buytotalval">
-                                                </div>
-
-                                                <!-- Input Group Form -->
-                                                <?php if($session->get('user_id')){ ?>
-                                                   <button id="buyButton" type="submit" class="btn btn-success w-100">Buy <?php echo esc($coin_symbol[0]) ?></button>
-                                                <?php } ?>
+                                    <div class="tab-content" id="myTabContent4">
+                                        <div class="tab-pane fade show active" id="limit" role="tabpanel"
+                                            aria-labelledby="limit-tab">
+                                            <!-- Input Group Form -->
+                                            <div class="input-group-form">
+                                                <span
+                                                    class="input-group-form__text"><?php echo display('price') ?></span>
+                                                <input id="buypricing" name="buypricing" step="any" min="0"
+                                                    type="number" class="form-control" placeholder="0.00">
+                                                <span
+                                                    class="input-group-form__text--currency"><?php echo esc($coin_symbol[1]) ?></span>
                                             </div>
-                                            <div class="tab-pane fade" id="market" role="tabpanel"
-                                                aria-labelledby="market-tab">...</div>
-                                            <div class="tab-pane fade" id="stop-limit" role="tabpanel"
-                                                aria-labelledby="stop-limit-tab">...</div>
+                                            <!-- Input Group Form -->
+                                            <div class="input-group-form">
+                                                <span
+                                                    class="input-group-form__text"><?php echo display('amount') ?></span>
+                                                <input id="buyamount" name="buyamount" step="any" min="0" type="number"
+                                                    class="form-control" placeholder="0.00">
+                                                <span
+                                                    class="input-group-form__text--currency"><?php echo esc($coin_symbol[0]) ?></span>
+                                            </div>
+                                            <!-- Slider Ticks -->
+                                            <div class="my-3 text-center">
+                                                <input id="ex13" type="text" data-slider-ticks="[0, 25, 50, 75, 100]"
+                                                    data-slider-ticks-snap-bounds="1"
+                                                    data-slider-ticks-labels='["0%", "25%", "50%", "75%", "100%"]' />
+                                            </div>
+
+                                            <div class="form-group row no-gutters mb-2">
+                                                <div class="buyloginMessage"></div>
+                                                <div class="col-sm-7 font-size-12">
+                                                    <?php echo display('estimated_open_price') ?>:</div>
+                                                <div class="col-sm-5 text-right font-size-12" id="buywithout_fees">0.00
+                                                </div>
+                                                <input type="hidden" name="buywithout_feesval"
+                                                    id="buywithout_feesval" />
+                                                <div class="col-sm-7 font-size-12"><?php echo display('open_fees') ?>:
+                                                </div>
+                                                <div class="col-sm-5 text-right font-size-12" id="buyfees">0.00
+                                                    <?php echo esc($coin_symbol[1]) ?>
+                                                    (<?php echo esc(@$fee_usd->fees) ?>%)</div>
+                                                <input type="hidden" name="buyfeesval" id="buyfeesval" value="" />
+                                                <div class="col-sm-7 font-size-12"><?php echo display('total') ?>:</div>
+                                                <div class="total col-sm-5 text-right font-size-12" id="buytotal">0.00
+                                                </div>
+                                                <input readonly="readonly" type="hidden" class="form-control"
+                                                    name="buytotalval" id="buytotalval">
+                                            </div>
+
+                                            <!-- Input Group Form -->
+                                            <?php if($session->get('user_id')){ ?>
+                                            <button id="buyButton" type="submit" class="btn btn-success w-100">Buy
+                                                <?php echo esc($coin_symbol[0]) ?></button>
+                                            <?php } ?>
                                         </div>
+                                        <div class="tab-pane fade" id="market" role="tabpanel"
+                                            aria-labelledby="market-tab">...</div>
+                                        <div class="tab-pane fade" id="stop-limit" role="tabpanel"
+                                            aria-labelledby="stop-limit-tab">...</div>
+                                    </div>
                                     <?php echo form_close() ?>
                                 </div>
                             </div>
                             <div class="tab-pane" id="sell" role="tabpanel" aria-labelledby="sell-tab">
                                 <?php echo form_open('sell','id="sellform" class="buy-form" name="sellform"'); ?>
-                                <?php echo form_hidden('market', esc(@$market_details->symbol)) ?> 
-                                    <div class="buy-sell-order">
-                                        <div class="tab-content" id="myTabContent5">
-                                            <div class="tab-pane fade show active" id="home" role="tabpanel"
-                                                aria-labelledby="home-tab">
-                                                <div class="my-3">
-                                                    <?php echo esc($coin_symbol[0]) ?> <?php echo display('balance') ?>: <span id="balance_sell"><?php echo esc(@$balance_from->balance)?@(float)esc($balance_from->balance):'0.00' ?></span>
-                                                </div>
-                                                <!-- Input Group Form -->
-                                                <div class="input-group-form">
-                                                    <span class="input-group-form__text"><?php echo display('price') ?></span>
-                                                    <input id="sellpricing" name="sellpricing" step="any" min="0" type="number" class="form-control" placeholder="0.00">
-                                                    <span class="input-group-form__text--currency"><?php echo $coin_symbol[1] ?></span>
-                                                </div>
-                                                <!-- Input Group Form -->
-                                                <div class="input-group-form">
-                                                    <span class="input-group-form__text"><?php echo display('amount') ?></span>
-                                                    <input id="sellamount" name="sellamount" step="any" min="0" type="number" class="form-control" placeholder="0.00">
-                                                    <span class="input-group-form__text--currency"><?php echo esc($coin_symbol[0]) ?></span>
-                                                </div>
-
-                                                <div class="my-3 text-center">
-                                                    <input id="ex14" type="text" data-slider-ticks="[0, 25, 50, 75, 100]"
-                                                        data-slider-ticks-snap-bounds="1"
-                                                        data-slider-ticks-labels='["0%", "25%", "50%", "75%", "100%"]' />
-                                                </div>
-
-                                                <div class="form-group row no-gutters mb-2">
-
-                                                    <div class="sellloginMessage"></div>
-                                                    <div class="col-sm-7 font-size-12 mt-2"><?php echo display('estimated_open_price') ?>:</div>
-                                                    <div class="col-sm-5 text-right font-size-12 mt-2" id="sellwithout_fees">0.00</div>
-                                                    <input type="hidden" name="sellwithout_feesval" id="sellwithout_feesval" />
-                                                    <div class="col-sm-7 font-size-12"><?php echo display('open_fees') ?>:</div>
-                                                    <div class="col-sm-5 text-right font-size-12" id="sellfees">0.00 <?php echo esc($coin_symbol[0]) ?> (<?php echo esc(@$fee_coin->fees) ?>%)</div>
-                                                    <input type="hidden" name="sellfeesval" id="sellfeesval" value="" />
-
-                                                    <div class="col-sm-7 font-size-12"><?php echo display('total') ?>:</div>
-                                                    <div class="total col-sm-5 text-right font-size-12" id="selltotal">0.00</div>
-                                                    <input type="hidden" name="selltotalval" id="selltotalval" value="" />
-                                                </div>
-
-                                                <?php  if($session->get('user_id')){ ?>
-                                                    <button id="sellButton" type="submit" class="btn btn-danger w-100"><?php echo display('sell');?> <?php echo esc($coin_symbol[0]) ?></button>
-                                                <?php } ?>
+                                <?php echo form_hidden('market', esc(@$market_details->symbol)) ?>
+                                <div class="buy-sell-order">
+                                    <div class="tab-content" id="myTabContent5">
+                                        <div class="tab-pane fade show active" id="home" role="tabpanel"
+                                            aria-labelledby="home-tab">
+                                            <div class="my-3">
+                                                <?php echo esc($coin_symbol[0]) ?> <?php echo display('balance') ?>:
+                                                <span
+                                                    id="balance_sell"><?php echo esc(@$balance_from->balance)?@(float)esc($balance_from->balance):'0.00' ?></span>
                                             </div>
-                                            <div class="tab-pane fade" id="profile" role="tabpanel"
-                                                aria-labelledby="profile-tab">...</div>
-                                            <div class="tab-pane fade" id="contact" role="tabpanel"
-                                                aria-labelledby="contact-tab">...</div>
+                                            <!-- Input Group Form -->
+                                            <div class="input-group-form">
+                                                <span
+                                                    class="input-group-form__text"><?php echo display('price') ?></span>
+                                                <input id="sellpricing" name="sellpricing" step="any" min="0"
+                                                    type="number" class="form-control" placeholder="0.00">
+                                                <span
+                                                    class="input-group-form__text--currency"><?php echo $coin_symbol[1] ?></span>
+                                            </div>
+                                            <!-- Input Group Form -->
+                                            <div class="input-group-form">
+                                                <span
+                                                    class="input-group-form__text"><?php echo display('amount') ?></span>
+                                                <input id="sellamount" name="sellamount" step="any" min="0"
+                                                    type="number" class="form-control" placeholder="0.00">
+                                                <span
+                                                    class="input-group-form__text--currency"><?php echo esc($coin_symbol[0]) ?></span>
+                                            </div>
+
+                                            <div class="my-3 text-center">
+                                                <input id="ex14" type="text" data-slider-ticks="[0, 25, 50, 75, 100]"
+                                                    data-slider-ticks-snap-bounds="1"
+                                                    data-slider-ticks-labels='["0%", "25%", "50%", "75%", "100%"]' />
+                                            </div>
+
+                                            <div class="form-group row no-gutters mb-2">
+
+                                                <div class="sellloginMessage"></div>
+                                                <div class="col-sm-7 font-size-12 mt-2">
+                                                    <?php echo display('estimated_open_price') ?>:</div>
+                                                <div class="col-sm-5 text-right font-size-12 mt-2"
+                                                    id="sellwithout_fees">0.00</div>
+                                                <input type="hidden" name="sellwithout_feesval"
+                                                    id="sellwithout_feesval" />
+                                                <div class="col-sm-7 font-size-12"><?php echo display('open_fees') ?>:
+                                                </div>
+                                                <div class="col-sm-5 text-right font-size-12" id="sellfees">0.00
+                                                    <?php echo esc($coin_symbol[0]) ?>
+                                                    (<?php echo esc(@$fee_coin->fees) ?>%)</div>
+                                                <input type="hidden" name="sellfeesval" id="sellfeesval" value="" />
+
+                                                <div class="col-sm-7 font-size-12"><?php echo display('total') ?>:</div>
+                                                <div class="total col-sm-5 text-right font-size-12" id="selltotal">0.00
+                                                </div>
+                                                <input type="hidden" name="selltotalval" id="selltotalval" value="" />
+                                            </div>
+
+                                            <?php  if($session->get('user_id')){ ?>
+                                            <button id="sellButton" type="submit"
+                                                class="btn btn-danger w-100"><?php echo display('sell');?>
+                                                <?php echo esc($coin_symbol[0]) ?></button>
+                                            <?php } ?>
                                         </div>
+                                        <div class="tab-pane fade" id="profile" role="tabpanel"
+                                            aria-labelledby="profile-tab">...</div>
+                                        <div class="tab-pane fade" id="contact" role="tabpanel"
+                                            aria-labelledby="contact-tab">...</div>
                                     </div>
+                                </div>
                                 <?php echo form_close() ?>
                             </div>
                         </div>
@@ -561,18 +681,18 @@
                         <!-- Register Or Login Link -->
 
                         <?php  if($session->get('user_id') == NULL){ ?>
-                            <div class="register-link d-flex align-items-center justify-content-center mt-3">
-                                <a href="<?php echo base_url('login'); ?>"><?php echo display('login'); ?></a>
-                                <div class="or mx-2">or</div>
-                                <a href="<?php echo base_url('register'); ?>"><?php echo display('register'); ?></a>
-                            </div>
+                        <div class="register-link d-flex align-items-center justify-content-center mt-3">
+                            <a href="<?php echo base_url('login'); ?>"><?php echo display('login'); ?></a>
+                            <div class="or mx-2">or</div>
+                            <a href="<?php echo base_url('register'); ?>"><?php echo display('register'); ?></a>
+                        </div>
                         <?php } ?>
                         <!-- /.Register Or Login Link -->
                     </div>
                 </div>
                 <!-- /.Place Container -->
                 <!-- Account Box -->
-               <div class="account-box">
+                <div class="account-box">
                     <div class="account-box_content">
                         <ul class="nav nav-tabs account-box-tabs mb-2" id="myTab6" role="tablist">
                             <li class="nav-item" role="presentation">
@@ -594,15 +714,17 @@
                         <div class="tab-content" id="myTabContent6">
                             <div class="tab-pane fade show active" id="openOrders" role="tabpanel"
                                 aria-labelledby="open-orders-tab">
-                               <table class="account-box_table table table-borderless dt-responsive nowrap">
+                                <table class="account-box_table table table-borderless dt-responsive nowrap">
                                     <thead>
                                         <tr>
                                             <th><?php echo display('trade') ?></th>
                                             <th><?php echo display('rate') ?></th>
                                             <th title="<?php echo display('required_qty') ?>">Req.Qty</th>
                                             <th title="<?php echo display('available_qty') ?>">Av.qty</th>
-                                            <th class="text-right" title="<?php echo display('required_amount') ?>">Req.Amt</th>
-                                            <th class="text-right" title="<?php echo display('available_amount') ?>">Av.Amt</th>
+                                            <th class="text-right" title="<?php echo display('required_amount') ?>">
+                                                Req.Amt</th>
+                                            <th class="text-right" title="<?php echo display('available_amount') ?>">
+                                                Av.Amt</th>
                                             <th><?php echo display('market') ?></th>
                                             <th><?php echo display('open') ?></th>
                                             <th width="30"><?php echo display('status') ?></th>
@@ -611,20 +733,27 @@
                                     </thead>
                                     <tbody>
                                         <?php foreach ($open_trade as $key => $value) { ?>
-                                            <tr>
-                                                <td><?php echo esc($value->bid_type); ?></td>
-                                                <td><?php echo esc($value->bid_price); ?></td>
-                                                <td><?php echo esc($value->bid_qty); ?></td>
-                                                <td><?php echo esc($value->bid_qty_available); ?></td>
-                                                <td><?php echo esc($value->total_amount); ?></td>
-                                                <td><?php echo esc($value->amount_available); ?></td>
-                                                <td><?php echo esc($value->market_symbol); ?></td>
-                                                <td><?php echo esc($value->open_order); ?></td>
-                                                <td width="30">
-                                                    <div class="progress"><div title="Running" class="progress-bar progress-bar-striped width100percent">Running</div></div>
-                                                </td>
-                                                <td><a href="<?php echo base_url("order-cancel/$value->id") ?>" class="bg-danger text-white text-center" data-toggle="tooltip" data-placement="left" title="Cancel"><?php echo display('cancel') ?></a></td>
-                                            </tr>
+                                        <tr>
+                                            <td><?php echo esc($value->bid_type); ?></td>
+                                            <td><?php echo esc($value->bid_price); ?></td>
+                                            <td><?php echo esc($value->bid_qty); ?></td>
+                                            <td><?php echo esc($value->bid_qty_available); ?></td>
+                                            <td><?php echo esc($value->total_amount); ?></td>
+                                            <td><?php echo esc($value->amount_available); ?></td>
+                                            <td><?php echo esc($value->market_symbol); ?></td>
+                                            <td><?php echo esc($value->open_order); ?></td>
+                                            <td width="30">
+                                                <div class="progress">
+                                                    <div title="Running"
+                                                        class="progress-bar progress-bar-striped width100percent">
+                                                        Running</div>
+                                                </div>
+                                            </td>
+                                            <td><a href="<?php echo base_url("order-cancel/$value->id") ?>"
+                                                    class="bg-danger text-white text-center" data-toggle="tooltip"
+                                                    data-placement="left"
+                                                    title="Cancel"><?php echo display('cancel') ?></a></td>
+                                        </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
@@ -645,57 +774,66 @@
                                     </thead>
                                     <tbody id="usercompleteTrade">
                                         <?php foreach ($complete_trade as $key => $value) { ?>
-                                            <tr>
-                                                <td><?php echo esc($value->bid_type); ?></td>
-                                                <td><?php echo esc($value->bid_price); ?></td>
-                                                <td><?php echo esc($value->bid_qty); ?></td>
-                                                <td><?php echo esc($value->total_amount); ?></td>
-                                                <td><?php echo esc($value->market_symbol); ?></td>
-                                                <td><?php echo esc($value->open_order); ?></td>
-                                                <td class="text-left">
-                                                    <i title='<?php echo display('success'); ?>' class='feather-check-circle text-success'></i> <?php echo display('success'); ?>
-                                                </td>
-                                            </tr>
+                                        <tr>
+                                            <td><?php echo esc($value->bid_type); ?></td>
+                                            <td><?php echo esc($value->bid_price); ?></td>
+                                            <td><?php echo esc($value->bid_qty); ?></td>
+                                            <td><?php echo esc($value->total_amount); ?></td>
+                                            <td><?php echo esc($value->market_symbol); ?></td>
+                                            <td><?php echo esc($value->open_order); ?></td>
+                                            <td class="text-left">
+                                                <i title='<?php echo display('success'); ?>'
+                                                    class='feather-check-circle text-success'></i>
+                                                <?php echo display('success'); ?>
+                                            </td>
+                                        </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
                             <div class="tab-pane fade" id="allTrade" role="tabpanel"
                                 aria-labelledby="trade-history-tab">
-                               <table  class="account-box_table table table-borderless dt-responsive nowrap">
+                                <table class="account-box_table table table-borderless dt-responsive nowrap">
                                     <thead>
                                         <tr class="table-bg">
-                                            <th title="<?php echo display('trade') ?>"><?php echo display('trade') ?></th>
+                                            <th title="<?php echo display('trade') ?>"><?php echo display('trade') ?>
+                                            </th>
                                             <th title="<?php echo display('rate') ?>"><?php echo display('rate') ?></th>
                                             <th title="<?php echo display('required_qty') ?>">Req.Qty</th>
                                             <th title="<?php echo display('available_qty') ?>">Av.Qty</th>
                                             <th title="<?php echo display('required_amount') ?>">Req.Amt</th>
                                             <th title="<?php echo display('available_amount') ?>">Av.Amt</th>
-                                            <th title="<?php echo display('market') ?>"><?php echo display('market') ?></th>
+                                            <th title="<?php echo display('market') ?>"><?php echo display('market') ?>
+                                            </th>
                                             <th title="<?php echo display('open') ?>"><?php echo display('open') ?></th>
                                             <th title="<?php echo display('complete_qty') ?>">C.Qty</th>
                                             <th title="<?php echo display('complete_amount') ?>">C.Amt</th>
-                                            <th title="<?php echo display('trade_time') ?>"><?php echo display('trade_time') ?></th>
-                                            <th title="<?php echo display('status') ?>"><?php echo display('status') ?></th>
+                                            <th title="<?php echo display('trade_time') ?>">
+                                                <?php echo display('trade_time') ?></th>
+                                            <th title="<?php echo display('status') ?>"><?php echo display('status') ?>
+                                            </th>
                                         </tr>
                                     </thead>
-                                    <tbody >
+                                    <tbody>
                                         <?php
                                         foreach ($user_trade_history as $key => $value) { ?>
-                                            <tr>
-                                                <td><?php echo esc($value->bid_type) ?></td>
-                                                <td><?php echo esc($value->bid_price) ?></td>
-                                                <td><?php echo esc($value->bid_qty) ?></td>
-                                                <td><?php echo esc($value->bid_qty_available) ?></td>
-                                                <td><?php echo esc($value->total_amount) ?></td>
-                                                <td><?php echo esc($value->amount_available) ?></td>
-                                                <td><?php echo esc($value->market_symbol) ?></td>
-                                                <td><?php echo esc($value->open_order) ?></td>
-                                                <td><?php echo esc($value->complete_qty?$value->complete_qty:"0.00") ?></td>
-                                                <td><?php echo esc($value->complete_amount?$value->complete_amount:"0.00") ?></td>
-                                                <td><?php echo esc($value->success_time?$value->success_time:$value->open_order) ?></td>
-                                                <td><?php echo esc($value->status) == 0 ? "<i title='Canceled' class='feather-x-circle text-danger'></i>Canceled" : (esc($value->status) == 1 ? "<i title='Complete' class='feather-check-circle text-success'></i>Complete" : '<div class="progress"><div title="Running" class="progress-bar progress-bar-striped width100percent">Running</div></div>') ?></td>
-                                            </tr>
+                                        <tr>
+                                            <td><?php echo esc($value->bid_type) ?></td>
+                                            <td><?php echo esc($value->bid_price) ?></td>
+                                            <td><?php echo esc($value->bid_qty) ?></td>
+                                            <td><?php echo esc($value->bid_qty_available) ?></td>
+                                            <td><?php echo esc($value->total_amount) ?></td>
+                                            <td><?php echo esc($value->amount_available) ?></td>
+                                            <td><?php echo esc($value->market_symbol) ?></td>
+                                            <td><?php echo esc($value->open_order) ?></td>
+                                            <td><?php echo esc($value->complete_qty?$value->complete_qty:"0.00") ?></td>
+                                            <td><?php echo esc($value->complete_amount?$value->complete_amount:"0.00") ?>
+                                            </td>
+                                            <td><?php echo esc($value->success_time?$value->success_time:$value->open_order) ?>
+                                            </td>
+                                            <td><?php echo esc($value->status) == 0 ? "<i title='Canceled' class='feather-x-circle text-danger'></i>Canceled" : (esc($value->status) == 1 ? "<i title='Complete' class='feather-check-circle text-success'></i>Complete" : '<div class="progress"><div title="Running" class="progress-bar progress-bar-striped width100percent">Running</div></div>') ?>
+                                            </td>
+                                        </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
@@ -703,12 +841,14 @@
                         </div>
                         <!-- Empty Box -->
                         <?php  if($session->get('user_id') == NULL){ ?>
-                            <div class="empty-box">
-                                <div class="no-login">
-                                    <a href="<?php echo base_url('login'); ?>"><?php echo display('login') ?></a>&nbsp;or&nbsp;<a href="<?php echo base_url('register'); ?>"><?php echo display('register') ?></a>
-                                </div>
+                        <div class="empty-box">
+                            <div class="no-login">
+                                <a
+                                    href="<?php echo base_url('login'); ?>"><?php echo display('login') ?></a>&nbsp;or&nbsp;<a
+                                    href="<?php echo base_url('register'); ?>"><?php echo display('register') ?></a>
                             </div>
-                            <?php } ?>
+                        </div>
+                        <?php } ?>
                         <!-- /.Empty Box -->
                     </div>
                 </div>
@@ -718,7 +858,7 @@
             <!-- /.Body Content -->
             <!-- Footer -->
             <Footer class="footer">
-               <?php echo esc($settings->footer_text); ?>
+                <?php echo esc($settings->footer_text); ?>
             </Footer>
             <!-- /.Footer -->
         </div>
@@ -750,8 +890,10 @@
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                             aria-labelledby="pills-home-tab">
                             <ul class="select-list">
-                                <li class="<?php echo isset($lang) && $lang =="english"?'active':''; ?>"><a href="#" class="english" data-id="english">English</a></li>
-                                <li class="<?php echo isset($lang) && $lang =="french"?'active':''; ?>"><a href="#" class="french" data-id="french"><?php echo esc($web_language->name); ?></a></li>
+                                <li class="<?php echo isset($lang) && $lang =="english"?'active':''; ?>"><a href="#"
+                                        class="english" data-id="english">English</a></li>
+                                <li class="<?php echo isset($lang) && $lang =="french"?'active':''; ?>"><a href="#"
+                                        class="french" data-id="french"><?php echo esc($web_language->name); ?></a></li>
                             </ul>
                         </div>
                     </div>
@@ -767,7 +909,10 @@
     <script src="<?php echo BASEPATH.'exchange/assets/plugins/datatables/dataTables.responsive.min.js' ?>"></script>
     <script src="<?php echo BASEPATH.'exchange/assets/plugins/datatables/responsive.bootstrap5.min.js' ?>"></script>
     <script src="<?php echo BASEPATH.'exchange/assets/plugins/apexcharts/apexcharts.min.js' ?>"></script>
-    <script src="<?php echo BASEPATH.'exchange/assets/plugins/bootstrap-slider/dist/bootstrap-slider.min.js' ?>"></script>
+    <script src="<?php echo BASEPATH.'exchange/assets/plugins/bootstrap-slider/dist/bootstrap-slider.min.js' ?>">
+    </script>
+    <script src="<?php echo BASEPATH.'exchange/assets/plugins/blockUI/jquery.blockUI.js' ?>">
+    </script>
     <script src="<?php echo BASEPATH.'assets/js/toastr.js?v=1' ?>"></script>
     <script src="<?php echo BASEPATH.'exchange/assets/js/pingpoliWebSocket.js' ?>"></script>
     <script src="<?php echo BASEPATH.'exchange/assets/js/pingpoliCandlestickChart.js' ?>"></script>
@@ -775,7 +920,7 @@
     <script src="<?php echo BASEPATH.'exchange/assets/js/custom.js?v=1.0' ?>"></script>
     <script src="<?php echo BASEPATH.'exchange/assets/js/exchange.js?v=1.10' ?>"></script>
     <script src="<?php echo BASEPATH.'exchange/assets/plugins/apexcharts/apexcharts.active.js?v=1' ?>"></script>
-   
-    </body>
-    
+
+</body>
+
 </html>

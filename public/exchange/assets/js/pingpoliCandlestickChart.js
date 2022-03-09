@@ -391,7 +391,7 @@ pingpoliCandlestickChart.prototype.formatDate = function (date) {
     if (hours < 10) hours = "0" + hours;
     var minutes = date.getMinutes();
     if (minutes < 10) minutes = "0" + minutes;
-    return day + "." + month + "." + date.getFullYear() + " - " + hours + ":" + minutes;
+    return date.getFullYear() + "/" + month + "/" + day + " " + hours + ":" + minutes;
 }
 
 

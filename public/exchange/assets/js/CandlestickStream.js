@@ -1,9 +1,10 @@
 var _candlestickStream;
 
 function CandlestickStream(symbol, interval) {
-    this.symbol = symbol;
+    // this.symbol = symbol; // real
+    this.symbol = symbol.replace('_', ''); // test
     this.interval = interval;
-    this.candlestickChart = new pingpoliCandlestickChart("canvas");
+    this.candlestickChart = new pingpoliCandlestickChart("chart_div");
     this.webSocketConnected = false;
     this.webSocketHost = "wss://stream.binance.com:9443/ws/" + this.symbol + "@kline_" + this.interval;
     _candlestickStream = this;
@@ -11,6 +12,30 @@ function CandlestickStream(symbol, interval) {
 
 CandlestickStream.prototype.start = function () {
     // get a few recent candlesticks before starting the stream
+    $.blockUI({
+        css: {
+            border: 'none',
+            padding: '15px',
+            backgroundColor: '#000',
+            '-webkit-border-radius': '10px',
+            '-moz-border-radius': '10px',
+            opacity: 0.5,
+            color: '#fff'
+        }
+    });
+
+    // for real
+    // $.getJSON(BDTASK.getSiteAction('tradecharthistory?symbol=' + this.symbol + "&interval=" + this.interval + "&limit=500"), function (response) {
+    //     for (var i = 0; i < response.length; i++) {
+    //         _candlestickStream.candlestickChart.addCandlestick(new pingpoliCandlestick(response[i].x, response[i].y[0], response[i].y[3], response[i].y[1], response[i].y[2]));
+    //     }
+    //     _candlestickStream.candlestickChart.addTechnicalIndicator(new MovingAverage(5, "#ffff00", 0.7));
+    //     _candlestickStream.candlestickChart.draw();
+    // });
+
+    // $.unblockUI();
+
+    // get Binance real-stream (test)
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open("GET", "https://api.binance.com/api/v3/klines?symbol=" + this.symbol.toUpperCase() + "&interval=" + this.interval + "&limit=500");
     xmlhttp.onreadystatechange = function () {
@@ -20,7 +45,7 @@ CandlestickStream.prototype.start = function () {
             for (var i = 0; i < json.length; ++i) {
                 _candlestickStream.candlestickChart.addCandlestick(new pingpoliCandlestick(json[i][0], json[i][1], json[i][4], json[i][2], json[i][3]));
             }
-            _candlestickStream.candlestickChart.addTechnicalIndicator(new MovingAverage(5, "#ffff00", 2));
+            _candlestickStream.candlestickChart.addTechnicalIndicator(new MovingAverage(5, "#ffff00", 0.7));
             _candlestickStream.candlestickChart.draw();
 
             // start the websocket stream
@@ -32,6 +57,8 @@ CandlestickStream.prototype.start = function () {
     }
     xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xmlhttp.send();
+
+    $.unblockUI();
 }
 
 CandlestickStream.prototype.close = function () {

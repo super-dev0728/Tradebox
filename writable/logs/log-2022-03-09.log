@@ -1,0 +1,528 @@
+CRITICAL - 2022-03-09 03:57:15 --> file_get_contents(https://min-api.cryptocompare.com/data/histoday?fsym=ONT&amp;tsym=USD&amp;limit=15&amp;api_key=58a4ce00281069f74475bf860babe5a7bdcfe28c2e27fbf014bc6e8efbda8f37): failed to open stream: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_conten...', 'D:\\work project...', 2687, Array)
+#1 D:\work projects\Tradebox\app\Modules\Website\Controllers\HomeController.php(2687): file_get_contents('https://min-api...', true)
+#2 D:\work projects\Tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->coingraphdata()
+#3 D:\work projects\Tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-03-09 05:39:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:39:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:39:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:39:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:39:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:40:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:40:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:40:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:40:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:40:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:41:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:41:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:41:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:41:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:41:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:42:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:42:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:42:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:42:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:42:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:43:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:43:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:43:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:43:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:43:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:44:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:44:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:44:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:44:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:44:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:45:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:45:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:45:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:45:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:45:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:46:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:46:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:46:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:46:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:46:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:47:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:47:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:47:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:47:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:47:44 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 05:48:36 --> syntax error, unexpected '?'
+#0 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->requireFile('D:\\work project...')
+#1 D:\work projects\Tradebox\system\Autoloader\Autoloader.php(258): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Modules\\Web...')
+#2 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Modules\\Web...')
+#3 [internal function]: spl_autoload_call('App\\Modules\\Web...')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(877): class_exists('\\App\\Modules\\We...', true)
+#5 D:\work projects\Tradebox\system\CodeIgniter.php(402): CodeIgniter\CodeIgniter->startController()
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-03-09 07:47:50 --> A non well formed numeric value encountered
+#0 D:\work projects\Tradebox\app\Modules\Website\Controllers\HomeController.php(2621): CodeIgniter\Debug\Exceptions->errorHandler(8, 'A non well form...', 'D:\\work project...', 2621, Array)
+#1 D:\work projects\Tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->tradecharthistory()
+#2 D:\work projects\Tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#3 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-03-09 07:48:27 --> A non well formed numeric value encountered
+#0 D:\work projects\Tradebox\app\Modules\Website\Controllers\HomeController.php(2621): CodeIgniter\Debug\Exceptions->errorHandler(8, 'A non well form...', 'D:\\work project...', 2621, Array)
+#1 D:\work projects\Tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->tradecharthistory()
+#2 D:\work projects\Tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#3 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-03-09 07:48:51 --> A non well formed numeric value encountered
+#0 D:\work projects\Tradebox\app\Modules\Website\Controllers\HomeController.php(2621): CodeIgniter\Debug\Exceptions->errorHandler(8, 'A non well form...', 'D:\\work project...', 2621, Array)
+#1 D:\work projects\Tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->tradecharthistory()
+#2 D:\work projects\Tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#3 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-03-09 07:50:28 --> A non well formed numeric value encountered
+#0 D:\work projects\Tradebox\app\Modules\Website\Controllers\HomeController.php(2621): CodeIgniter\Debug\Exceptions->errorHandler(8, 'A non well form...', 'D:\\work project...', 2621, Array)
+#1 D:\work projects\Tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->tradecharthistory()
+#2 D:\work projects\Tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#3 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-03-09 07:51:17 --> A non well formed numeric value encountered
+#0 D:\work projects\Tradebox\app\Modules\Website\Controllers\HomeController.php(2621): CodeIgniter\Debug\Exceptions->errorHandler(8, 'A non well form...', 'D:\\work project...', 2621, Array)
+#1 D:\work projects\Tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->tradecharthistory()
+#2 D:\work projects\Tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#3 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-03-09 10:21:33 --> Unknown column 'timestamp' in 'field list'
+#0 D:\work projects\Tradebox\system\Database\MySQLi\Connection.php(331): mysqli->query('INSERT INTO `db...')
+#1 D:\work projects\Tradebox\system\Database\BaseConnection.php(741): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `db...')
+#2 D:\work projects\Tradebox\system\Database\BaseConnection.php(669): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `db...')
+#3 D:\work projects\Tradebox\system\Database\BaseBuilder.php(2249): CodeIgniter\Database\BaseConnection->query('INSERT INTO `db...', Array, false)
+#4 D:\work projects\Tradebox\app\Models\Common_model.php(14): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 D:\work projects\Tradebox\app\Modules\Website\Controllers\HomeController.php(3982): App\Models\Common_model->save('dbt_coinhistory...', Array)
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->generate_random_trade()
+#7 D:\work projects\Tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#8 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2022-03-09 10:22:18 --> Unknown column 'timestamp' in 'field list'
+#0 D:\work projects\Tradebox\system\Database\MySQLi\Connection.php(331): mysqli->query('INSERT INTO `db...')
+#1 D:\work projects\Tradebox\system\Database\BaseConnection.php(741): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `db...')
+#2 D:\work projects\Tradebox\system\Database\BaseConnection.php(669): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `db...')
+#3 D:\work projects\Tradebox\system\Database\BaseBuilder.php(2249): CodeIgniter\Database\BaseConnection->query('INSERT INTO `db...', Array, false)
+#4 D:\work projects\Tradebox\app\Models\Common_model.php(14): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 D:\work projects\Tradebox\app\Modules\Website\Controllers\HomeController.php(3982): App\Models\Common_model->save('dbt_coinhistory...', Array)
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->generate_random_trade()
+#7 D:\work projects\Tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#8 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#10 {main}

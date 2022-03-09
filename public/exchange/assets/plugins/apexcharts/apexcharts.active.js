@@ -13,22 +13,41 @@ var getUrlParameter = function getUrlParameter(sParam) {
     }
 };
 
-var market = getUrlParameter('market').replace('_', '');
+// draw chart
+var market = getUrlParameter('market');
+// var interval = 5; // real
+var interval = '5m'; // test
 
-function plot() {
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET", "https://api.binance.com/api/v3/klines?symbol=" + market + "&interval=1d&limit=200");
-    xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            var json = JSON.parse(xmlhttp.responseText);
-            candlestickChart = new pingpoliCandlestickChart("chart_div");
-            for (var i = 0; i < json.length; ++i) {
-                candlestickChart.addCandlestick(new pingpoliCandlestick(json[i][0], json[i][1], json[i][4], json[i][2], json[i][3]));
-            }
-            candlestickChart.draw();
-        }
-    }
-    xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xmlhttp.send();
-}
-plot();
+var candlestickStream = new CandlestickStream(market, interval);
+candlestickStream.start();
+
+$('.control .range').on('click', function () {
+    $('.range').removeClass('active');
+    $(this).addClass('active');
+
+    // interval = $(this).data('range') * 1; // real
+    interval = $(this).text(); // test
+
+    var candlestickStream = new CandlestickStream(market, interval);
+    candlestickStream.start();
+});
+
+$('.control .sub-range').on('click', function () {
+    $('.control .sub-range').removeClass('active');
+    $('.range').removeClass('active');
+    $(this).addClass('active');
+    $('.control .dropdown').html($(this).text() + ' <i class="fa fa-sort-down"></i>');
+
+    // interval = $(this).data('range') * 1; // real
+    interval = $(this).text(); // test
+
+    var candlestickStream = new CandlestickStream(market, interval);
+    candlestickStream.start();
+});
+
+// var socket = new WebSocket(candlestickStream.webSocketHost);
+
+// socket.onmessage = function (event) {
+//     console.log(event);
+//     candlestickStream.onMessage(event);
+// }
