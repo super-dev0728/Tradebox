@@ -1951,6 +1951,16 @@ class HomeController extends BaseController
 
                                 $this->common_model->save('dbt_coinhistory', $coinhistory);
 
+                                // save trading history for chart display
+                                $coinhistory_detail = array(
+                                    'coin_symbol'       => $last_exchange->currency_symbol,
+                                    'market_symbol'     => $last_exchange->market_symbol,
+                                    'price'             => $sellexchange->bid_price,
+                                    'total_coin_supply' => @$buyer_complete_qty_log+@$total_coin_supply->complete_qty,
+                                    'date'              => $open_date
+                                );
+
+                                $this->common_model->save('dbt_coinhistory_detail', $coinhistory_detail);
                             }
                             //Order running
 
@@ -2394,7 +2404,18 @@ class HomeController extends BaseController
                                     'date'              => $open_date,
                                 );
 
-                                $this->common_model->save('dbt_coinhistory', $coinhistory);                                
+                                $this->common_model->save('dbt_coinhistory', $coinhistory);  
+                                
+                                // save trading history for chart display
+                                $coinhistory_detail = array(
+                                    'coin_symbol'       => $last_exchange->currency_symbol,
+                                    'market_symbol'     => $last_exchange->market_symbol,
+                                    'price'             => $last_exchange->bid_price,
+                                    'total_coin_supply' => @$seller_complete_qty_log+@$total_coin_supply->complete_qty,
+                                    'date'              => $open_date
+                                );
+
+                                $this->common_model->save('dbt_coinhistory_detail', $coinhistory_detail);
                             }
                             //Order running
                         }
@@ -2581,6 +2602,20 @@ class HomeController extends BaseController
         $low24              = $this->db->table('dbt_coinhistory')->selectMin('last_price')->where('market_symbol', $market_symbol)->where('date >=',$twentyHoursPreviousDate)->where('date <=', $current_date)->get()->getRow();
         $openingTrade24     = $this->db->table('dbt_coinhistory')->select('*')->where('market_symbol', $market_symbol)->where('date >=',$twentyHoursPreviousDate)->where('date <=', $current_date)->get()->getRow();
 
+        $data           = array();
+        $interval       = $this->request->getGet('interval', FILTER_SANITIZE_STRING) * 60;
+        $limit          = 500;
+
+        $coinhistory    = $this->db->table('dbt_coinhistory_detail')->selectMin('price', 'low')->selectMax('price', "high")->selectMin('date', 'open_date')->selectMax('date', 'close_date')->select('substring_index(group_concat(cast(price as DOUBLE) order by date), trim(","), 1 ) as "open"')->select('substring_index(group_concat(cast(price as DOUBLE) order by date desc), trim(","), 1 ) as "close"')->select('FLOOR(UNIX_TIMESTAMP(date)/' . $interval . ') as "timekey"')->where('market_symbol', $market_symbol)->groupBy('timekey')->orderBy('id', 'asc')->limit($limit, 0)->get()->getResult();
+
+        foreach ($coinhistory as $key => $value) {
+            $timestamp = strtotime($value->open_date);
+            
+            $string['x'] = $timestamp * 1000;
+            $string['y'] = [$value->open*1, $value->high*1,$value->low*1,$value->close*1];
+            array_push($data, $string);
+        }
+
         echo json_encode(
             
             array(
@@ -2594,6 +2629,7 @@ class HomeController extends BaseController
                 'tradehistory'          => @$tradehistory,
                 'available_buy_coin'    => @$availablebuycoin,
                 'available_sell_coin'   => @$availablesellcoin,
+                'update_candle_data'    => $data
             )
         );
     }
@@ -2623,7 +2659,7 @@ class HomeController extends BaseController
 
         // $coinhistory   = $this->db->table('dbt_coinhistory')->select('date')->selectSum('open')->selectSum('price_high_24h')->selectSum(' price_low_24h')->selectSum('close')->where('market_symbol', $market_symbol)->groupBy('DATE(date)')->groupBy('HOUR(date)')->groupBy('MINUTE(date)')->limit(1000,0)->orderBy('date', 'asc')->get()->getResult(); 
 
-        $coinhistory   = $this->db->table('dbt_coinhistory_detail')->selectMin('price', 'low')->selectMax('price', "high")->selectMin('date', 'open_date')->selectMax('date', 'close_date')->select('substring_index(group_concat(cast(price as DOUBLE) order by date), trim(","), 1 ) as "open"')->select('substring_index(group_concat(cast(price as DOUBLE) order by date desc), trim(","), 1 ) as "close"')->select('FLOOR(UNIX_TIMESTAMP(date)/' . $interval . ') as "timekey"')->where('market_symbol', $market_symbol)->groupBy('timekey')->orderBy('id', 'desc')->limit($limit, 0)->get()->getResult();
+        $coinhistory   = $this->db->table('dbt_coinhistory_detail')->selectMin('price', 'low')->selectMax('price', "high")->selectMin('date', 'open_date')->selectMax('date', 'close_date')->select('substring_index(group_concat(cast(price as DOUBLE) order by date), trim(","), 1 ) as "open"')->select('substring_index(group_concat(cast(price as DOUBLE) order by date desc), trim(","), 1 ) as "close"')->select('FLOOR(UNIX_TIMESTAMP(date)/' . $interval . ') as "timekey"')->where('market_symbol', $market_symbol)->groupBy('timekey')->orderBy('id', 'asc')->limit($limit, 0)->get()->getResult();
 
         foreach ($coinhistory as $key => $value) {
             $timestamp = strtotime($value->open_date);

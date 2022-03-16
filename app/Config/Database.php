@@ -22,7 +22,8 @@ class Database extends \CodeIgniter\Database\Config
      *
      * @var string
      */
-    public $defaultGroup = 'default';
+    // public $defaultGroup = 'default';
+    public $defaultGroup = 'test';
 
     /**
      * The default database connection.
@@ -59,17 +60,17 @@ class Database extends \CodeIgniter\Database\Config
      *
      * @var array
      */
-    public $tests = [
+    public $test = [
         'DSN'      => '',
-        'hostname' => '127.0.0.1',
-        'username' => '',
+        'hostname' => 'localhost',
+        'username' => 'root',
         'password' => '',
-        'database' => ':memory:',
-        'DBDriver' => 'SQLite3',
-        'DBPrefix' => 'db_',  // Needed to ensure we're working correctly with prefixes live. DO NOT REMOVE FOR CI DEVS
-        'pConnect' => false,
+        'database' => 'tradebox_dump',
+        'DBDriver' => 'MySQLi',
+        'DBPrefix' => '',
+        'pConnect' => true,
         'DBDebug'  => (ENVIRONMENT !== 'production'),
-        'cacheOn'  => false,
+        'cacheOn'  => true,
         'cacheDir' => '',
         'charset'  => 'utf8',
         'DBCollat' => 'utf8_general_ci',
@@ -79,6 +80,8 @@ class Database extends \CodeIgniter\Database\Config
         'strictOn' => false,
         'failover' => [],
         'port'     => 3306,
+        'failover' => array(),
+        'save_queries' => TRUE
     ];
 
     //--------------------------------------------------------------------

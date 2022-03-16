@@ -69,6 +69,10 @@
     color: #00b746;
 }
 
+.dropdown.active {
+    color: #00b746;
+}
+
 .chart-content .control .dropdown {
     margin-left: 10px;
     cursor: pointer;
@@ -131,4 +135,13 @@
 
 .blockUI.blockMsg.blockPage {
     left: 20% !important;
+}
+
+.chart-content .range-dropdown .close {
+    color: #8e8e8e;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 14px;
+    cursor: pointer;
 }

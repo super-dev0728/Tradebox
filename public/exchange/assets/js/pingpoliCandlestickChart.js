@@ -324,6 +324,7 @@ pingpoliCandlestickChart.prototype.calculateYRange = function () {
 pingpoliCandlestickChart.prototype.calculateXRange = function () {
     this.xStart = this.candlesticks[this.zoomStartID].timestamp;
     this.xEnd = this.candlesticks[this.candlesticks.length - 1].timestamp;
+
     this.xRange = this.xEnd - this.xStart;
 }
 

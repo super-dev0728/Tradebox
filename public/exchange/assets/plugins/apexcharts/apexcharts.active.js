@@ -15,39 +15,35 @@ var getUrlParameter = function getUrlParameter(sParam) {
 
 // draw chart
 var market = getUrlParameter('market');
-// var interval = 5; // real
-var interval = '5m'; // test
+var interval = 5; // real
+// var interval = '5m'; // test
 
-var candlestickStream = new CandlestickStream(market, interval);
-candlestickStream.start();
+// var candlestickStream = new CandlestickStream(market, interval, true);
+// candlestickStream.start();
 
-$('.control .range').on('click', function () {
-    $('.range').removeClass('active');
-    $(this).addClass('active');
+// $('.control .range').on('click', function () {
+//     $('.range').removeClass('active');
+//     $(this).addClass('active');
+//     $('.control .sub-range').removeClass('active');
 
-    // interval = $(this).data('range') * 1; // real
-    interval = $(this).text(); // test
+//     interval = $(this).data('range') * 1; // real
+//     // interval = $(this).text().toLowerCase(); // test
 
-    var candlestickStream = new CandlestickStream(market, interval);
-    candlestickStream.start();
-});
+//     var candlestickStream = new CandlestickStream(market, interval, true);
+//     candlestickStream.start();
+// });
 
-$('.control .sub-range').on('click', function () {
-    $('.control .sub-range').removeClass('active');
-    $('.range').removeClass('active');
-    $(this).addClass('active');
-    $('.control .dropdown').html($(this).text() + ' <i class="fa fa-sort-down"></i>');
+// $('.control .sub-range').on('click', function () {
+//     $('.control .sub-range').removeClass('active');
+//     $('.range').removeClass('active');
+//     $(this).addClass('active');
+//     $('.dropdown').addClass('active');
 
-    // interval = $(this).data('range') * 1; // real
-    interval = $(this).text(); // test
+//     $('.control .dropdown').html($(this).text() + ' <i class="fa fa-sort-down"></i>');
 
-    var candlestickStream = new CandlestickStream(market, interval);
-    candlestickStream.start();
-});
+//     interval = $(this).data('range') * 1; // real
+//     // interval = $(this).text().toLowerCase(); // test
 
-// var socket = new WebSocket(candlestickStream.webSocketHost);
-
-// socket.onmessage = function (event) {
-//     console.log(event);
-//     candlestickStream.onMessage(event);
-// }
+//     var candlestickStream = new CandlestickStream(market, interval, true);
+//     candlestickStream.start();
+// });

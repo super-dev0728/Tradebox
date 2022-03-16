@@ -393,12 +393,13 @@
                         <span class="range" data-range="240" id="4hr">4H</span>
                         <span class="range" data-range="1440" id="day">1D</span>
                         <span class="range" data-range="10080" id="week">1W</span>
-                        <span class="dropdown">1m <i class="fa fa-sort-down"></i></span>
+                        <span class="range dropdown active">1m <i class="fa fa-sort-down"></i></span>
                         <div class="range-dropdown">
                             <div class="title">Select Intervals</div>
-                            <div class="sub-range" data-range="1">1m</div>
+                            <div class="close"><i class="fa fa-times"></i></div>
+                            <div class=" sub-range" data-range="1">1m</div>
                             <div class="sub-range" data-range="3">3m</div>
-                            <div class="sub-range" data-range="5">5m</div>
+                            <div class="sub-range active" data-range="5">5m</div>
                             <div class="sub-range" data-range="15">15m</div>
                             <div class="sub-range" data-range="30">30m</div>
                             <div class="sub-range" data-range="60">1H</div>

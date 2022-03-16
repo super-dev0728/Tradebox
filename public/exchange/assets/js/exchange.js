@@ -12,9 +12,12 @@ $(function () {
         $('.chart-content .control .dropdown').css('color', '#8e8e8e');
         $('.chart-content .control .range-dropdown').hide();
     });
+
+    $('.chart-content .range-dropdown .close').on('click', function () {
+        $('.chart-content .control .range-dropdown').hide();
+    });
 });
 $(function ($) {
-
     "use strict";
     done();
     done1();
@@ -251,8 +254,22 @@ $(function ($) {
 
     //Historycal data load
     function tradehistoryupdates() {
+        var interval = 5;
+        if ($('.range.dropdown').hasClass('active')) {
+            $('.sub-range').each(function () {
+                if ($(this).hasClass('active')) {
+                    interval = $(this).data('range');
+                }
+            });
+        } else {
+            $('.range').each(function () {
+                if ($(this).hasClass('active')) {
+                    interval = $(this).data('range');
+                }
+            });
+        }
 
-        $.getJSON(BDTASK.getSiteAction('tradehistory?market=' + market), function (data) {
+        $.getJSON(BDTASK.getSiteAction('tradehistory?market=' + market + '&interval=' + interval), function (data) {
             $("#tradeHistory").empty();
             var lastprice;
             if (data.secondLast) {
@@ -352,7 +369,6 @@ $(function ($) {
             };
 
             $.each(data.tradehistory, function (index, element) {
-
                 var tradeType = "BAD_REQUEST";
                 var cls = "";
                 var cls1 = "";
@@ -370,7 +386,7 @@ $(function ($) {
                 }
                 var d = new Date(element.success_time);
 
-                $("#tradeHistory").prepend("<tr><td class='treade-size " + cls + "'>" + parseFloat(element.complete_qty).toFixed(6) + "</td><td class='price " + cls + "'>" + parseFloat(element.bid_price).toFixed(6) + "</td><td class='time'>" + element.successtime + "</td></tr>");
+                $("#tradeHistory").append("<tr><td class='treade-size " + cls + "'>" + parseFloat(element.complete_qty).toFixed(6) + "</td><td class='price " + cls + "'>" + parseFloat(element.bid_price).toFixed(6) + "</td><td class='time'>" + element.successtime + "</td></tr>");
 
                 //Max Row Show From Stemar
                 var maxTableRow = 18;
@@ -380,6 +396,10 @@ $(function ($) {
                 }
 
             });
+
+            // updating candlestick chart
+            // var candlestickStream = new CandlestickStream(market, interval, false);
+            // candlestickStream.start();
         });
     }
     //Market Price From Market place

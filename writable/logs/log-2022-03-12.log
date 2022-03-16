@@ -1,0 +1,10 @@
+CRITICAL - 2022-03-12 12:37:56 --> Undefined variable: totalTime
+#0 D:\work projects\Tradebox\system\Debug\Toolbar\Views\toolbar.tpl.php(56): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined varia...', 'D:\\work project...', 56, Array)
+#1 D:\work projects\Tradebox\system\Debug\Toolbar.php(498): include('D:\\work project...')
+#2 D:\work projects\Tradebox\system\Debug\Toolbar.php(455): CodeIgniter\Debug\Toolbar->format(Array, 'html')
+#3 D:\work projects\Tradebox\app\Config\Events.php(50): CodeIgniter\Debug\Toolbar->respond()
+#4 [internal function]: CodeIgniter\Events\Events::Config\{closure}()
+#5 D:\work projects\Tradebox\system\Events\Events.php(188): call_user_func(Object(Closure))
+#6 D:\work projects\Tradebox\system\CodeIgniter.php(301): CodeIgniter\Events\Events::trigger('pre_system')
+#7 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#8 {main}
