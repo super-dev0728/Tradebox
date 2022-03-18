@@ -1,3 +1,2 @@
-writable/debugbar/*.*
-writable/session/*.*
-
+writable/debugbar/*
+writable/session/*
