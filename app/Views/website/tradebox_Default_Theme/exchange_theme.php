@@ -390,31 +390,32 @@
                     </ul>
                     <div class="control">
                         <span>Time Range: </span>
-                        <span class="range" data-range="15" id="quarter">15m</span>
-                        <span class="range" data-range="60" id="hour">1H</span>
-                        <span class="range" data-range="240" id="4hr">4H</span>
-                        <span class="range" data-range="1440" id="day">1D</span>
-                        <span class="range" data-range="10080" id="week">1W</span>
+                        <span class="range" data-range="15" id="quarter" data-unit="minute" data-count="15">15m</span>
+                        <span class="range" data-range="60" id="hour" data-unit="hour" data-count="1">1H</span>
+                        <span class="range" data-range="240" id="4hr" data-unit="hour" data-count="4">4H</span>
+                        <span class="range" data-range="1440" id="day" data-unit="day" data-count="1">1D</span>
+                        <span class="range" data-range="10080" id="week" data-unit="day" data-count="7">1W</span>
                         <span class="range dropdown active">1m <i class="fa fa-sort-down"></i></span>
                         <div class="range-dropdown">
                             <div class="title">Select Intervals</div>
                             <div class="close"><i class="fa fa-times"></i></div>
-                            <div class=" sub-range" data-range="1">1m</div>
-                            <div class="sub-range" data-range="3">3m</div>
-                            <div class="sub-range active" data-range="5">5m</div>
-                            <div class="sub-range" data-range="15">15m</div>
-                            <div class="sub-range" data-range="30">30m</div>
-                            <div class="sub-range" data-range="60">1H</div>
-                            <div class="sub-range" data-range="120">2H</div>
-                            <div class="sub-range" data-range="240">4H</div>
-                            <div class="sub-range" data-range="720">12H</div>
-                            <div class="sub-range" data-range="1440">1D</div>
-                            <div class="sub-range" data-range="10080">1W</div>
-                            <div class="sub-range" data-range="43200">1M</div>
+                            <div class=" sub-range" data-range="1" data-unit="minute" data-count="1">1m</div>
+                            <div class="sub-range" data-range="3" data-unit="minute" data-count="3">3m</div>
+                            <div class="sub-range active" data-range="5" data-unit="minute" data-count="5">5m</div>
+                            <div class="sub-range" data-range="15" data-unit="minute" data-count="15">15m</div>
+                            <div class="sub-range" data-range="30" data-unit="minute" data-count="30">30m</div>
+                            <div class="sub-range" data-range="60" data-unit="hour" data-count="1">1H</div>
+                            <div class="sub-range" data-range="120" data-unit="hour" data-count="2">2H</div>
+                            <div class="sub-range" data-range="240" data-unit="hour" data-count="4">4H</div>
+                            <div class="sub-range" data-range="720" data-unit="hour" data-count="12">12H</div>
+                            <div class="sub-range" data-range="1440" data-unit="day" data-count="1">1D</div>
+                            <div class="sub-range" data-range="10080" data-unit="day" data-count="7">1W</div>
+                            <div class="sub-range" data-range="43200" data-unit="month" data-count="1">1M</div>
                         </div>
                     </div>
                     <!-- Chart -->
-                    <canvas width="1390" height="500" id="chart_div"></canvas>
+                    <!-- <canvas width="1390" height="500" id="chart_div"></canvas> -->
+                    <div id="chartDiv"></div>
                     <div id="tv_chart_container"></div>
                 </div>
                 <!-- /.Chart Content -->
@@ -917,12 +918,12 @@
     <script src="<?php echo BASEPATH.'exchange/assets/plugins/blockUI/jquery.blockUI.js' ?>">
     </script>
     <script src="<?php echo BASEPATH.'assets/js/toastr.js?v=1' ?>"></script>
-    <script src="<?php echo BASEPATH.'exchange/assets/js/pingpoliWebSocket.js' ?>"></script>
-    <script src="<?php echo BASEPATH.'exchange/assets/js/pingpoliCandlestickChart.js' ?>"></script>
-    <script src="<?php echo BASEPATH.'exchange/assets/js/CandlestickStream.js' ?>"></script>
+    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+    <script src="<?php echo BASEPATH.'exchange/assets/plugins/amcharts/amcharts.live1.js?v=1' ?>"></script>
     <script src="<?php echo BASEPATH.'exchange/assets/js/exchange.js?v=1.10' ?>"></script>
     <script src="<?php echo BASEPATH.'exchange/assets/js/custom.js?v=1.0' ?>"></script>
-    <script src="<?php echo BASEPATH.'exchange/assets/plugins/apexcharts/apexcharts.active.js?v=1' ?>"></script>
 
 </body>
 

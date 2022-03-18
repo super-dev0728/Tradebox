@@ -25,6 +25,7 @@ $(function ($) {
     done01();
     done02();
 
+    // Create root element
     $('#switcher').on('click', function () {
         tradehistoryupdates();
     });
@@ -76,17 +77,11 @@ $(function ($) {
     //chart-data-script
     var market_details = JSON.parse(BDTASK.market_details());
 
-    ///amchart start here
-    // if ($('#chart_div').length) {
-
-    //     $.getJSON(BDTASK.getSiteAction('tradecharthistory?market=' + market), function (response) {
-    //         chart.updateSeries([{
-    //             name: 'Market',
-    //             data: response
-    //         }])
-    //     });
+    // $.getJSON(BDTASK.getSiteAction('tradecharthistory?market=' + market + '&interval=' + interval), function (response) {
+    //     createAmChart(response, market, unit, count);
+    // });
     // }
-    ///amchart end here
+
     //message chat start
     $("#message_form").on("submit", function (event) {
         event.preventDefault();
