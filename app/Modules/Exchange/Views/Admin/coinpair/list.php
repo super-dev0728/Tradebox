@@ -8,7 +8,9 @@
                     </div>
                     <div class="text-right">
                         <div class="actions">
-                           <a class="btn btn-success w-md m-b-5 pull-right" href="<?php echo base_url("backend/exchange/add-coin-pair") ?>"><i class="fa fa-plus" aria-hidden="true"></i> Coin Pair</a>
+                            <a class="btn btn-success w-md m-b-5 pull-right"
+                                href="<?php echo base_url("backend/exchange/add-coin-pair") ?>"><i class="fa fa-plus"
+                                    aria-hidden="true"></i> Coin Pair</a>
                         </div>
                     </div>
                 </div>
@@ -17,8 +19,9 @@
                 <div class="table-responsive">
                     <table id="example" class="table table-bordered table-hover">
                         <thead>
-                            <tr> 
+                            <tr>
                                 <th><?php echo display('sl_no') ?></th>
+                                <th><?php echo display('coin_pair_code') ?></th>
                                 <th><?php echo display('market') ?></th>
                                 <th><?php echo display('coin') ?></th>
                                 <th><?php echo display('name') ?></th>
@@ -27,15 +30,16 @@
                                 <th>Initial <?php echo display('price') ?></th>
                                 <th><?php echo display('market') ?> <?php echo display('price') ?></th>
                                 <th><?php echo display('status') ?></th>
-                                <th><?php echo display('action') ?></th> 
+                                <th><?php echo display('action') ?></th>
                             </tr>
-                        </thead>    
+                        </thead>
                         <tbody>
                             <?php if (!empty($coinpair)) ?>
                             <?php $sl = 1; ?>
                             <?php foreach ($coinpair as $value) { ?>
                             <tr>
-                                <td><?php echo $sl++; ?></td> 
+                                <td><?php echo $sl++; ?></td>
+                                <td><?php echo esc($value->code); ?></td>
                                 <td>
                                     <?php foreach ($market as $mvalue) { ?>
                                     <?php echo ($value->market_symbol==$mvalue->symbol)?$mvalue->full_name:'' ?>
@@ -51,19 +55,20 @@
                                 <td><?php echo esc($value->symbol); ?></td>
                                 <td><?php echo esc($value->initial_price); ?></td>
                                 <td id="price_<?php echo esc($value->symbol) ?>">0.000000</td>
-                                <td><?php echo ((esc($value->status) == 1)?display('active'):display('inactive')); ?></td>
+                                <td><?php echo ((esc($value->status) == 1)?display('active'):display('inactive')); ?>
+                                </td>
                                 <td>
-                                    <a href="<?php echo base_url("backend/exchange/edit-coin-pair/$value->id") ?>" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left" title="Update"><i class="hvr-buzz-out fas fa-pencil-alt"></i></a>
+                                    <a href="<?php echo base_url("backend/exchange/edit-coin-pair/$value->id") ?>"
+                                        class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="left"
+                                        title="Update"><i class="hvr-buzz-out fas fa-pencil-alt"></i></a>
                                 </td>
                             </tr>
-                            <?php } ?>  
+                            <?php } ?>
                         </tbody>
                     </table>
                     <?php echo htmlspecialchars_decode($pager); ?>
                 </div>
-            </div> 
+            </div>
         </div>
     </div>
 </div>
-
- 

@@ -25,6 +25,10 @@ $(function ($) {
     done01();
     done02();
 
+    $('#switcher').on('click', function () {
+        tradehistoryupdates();
+    });
+
     if ($('#chartTab').length) {
         document.getElementById('chartTab').style.display = 'none';
     }
@@ -271,7 +275,12 @@ $(function ($) {
 
         $.getJSON(BDTASK.getSiteAction('tradehistory?market=' + market + '&interval=' + interval), function (data) {
             $("#tradeHistory").empty();
-            var lastprice;
+            // var last_price;
+            // var last_price = data[0].close;
+            // var seconde_last_price = data[1].close;
+            var secondLastPrice;
+            // data.coinhistory.last_price = data.coinhistory[0].close;
+
             if (data.secondLast) {
 
                 var secondLastPrice = data.secondLast.last_price;
@@ -293,7 +302,7 @@ $(function ($) {
                 //binance formula for price change start
                 var price_change_percent = ((data.coinhistory.last_price - openingTrade24Lastprice) / data.coinhistory.last_price) * 100;
 
-
+                // var price_change_percent = ((data.coinhistory.last_price - openingTrade24Lastprice) / data.coinhistory.last_price) * 100;
 
                 //binance formula for price change end
 
@@ -684,6 +693,13 @@ $(function ($) {
                     $("#balance_buy").text(parseFloat(trade.balance).toString());
                     $("#balance_sell").text(parseFloat(trade.balance_up_to).toString());
                     $("#buytrades").prepend("<tr><td class='buy_price coin positive'>" + trade.trades.bid_price + "</td><td class='price'>" + trade.trades.bid_qty + "</td><td class='change'>" + trade.trades.bid_qty + "</td></tr>");
+
+                    var d = new Date();
+                    var now = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+
+                    $('#openOrders').find('tbody')[0].innerHTML = '<tr class="odd"><td class="dtr-control sorting_1" tabindex="0">BUY</td><td>' + price + '</td><td>' + parseFloat(amount).toFixed(8) + '</td><td>' + parseFloat(amount).toFixed(8) + '</td><td>' + parseFloat(amount * price).toFixed(8) + '</td><td>' + parseFloat(amount * price).toFixed(8) + '</td><td>' + market_details.currency_symbol + '_' + market_details.market_symbol + '</td><td>' + now + '</td><td width="30"><div class="progress"><div title="Running" class="progress-bar progress-bar-striped width100percent">Running</div></div></td><td><a href="http://localhost/Tradebox/order-cancel/644" class="bg-danger text-white text-center" data-toggle="tooltip" data-placement="left" title="Cancel">Cancel</a></td></tr>' + $('#openOrders').find('tbody')[0].innerHTML;
+
+
                 }
 
                 document.getElementById("buyform").reset();
@@ -910,6 +926,12 @@ $(function ($) {
                     $("#balance_sell").text(parseFloat(trade.balance).toString());
                     $("#balance_buy").text(parseFloat(trade.balance_up_to).toString());
                     $("#selltrades").prepend("<tr><td class='coin negative'><div class='progres-s'></div>" + trade.trades.bid_price + "</td><td class='price'>" + trade.trades.bid_qty + "</td><td class='change'>" + trade.trades.total_amount + "</td></tr>");
+
+                    var d = new Date();
+                    var now = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+
+                    $('#openOrders').find('tbody')[0].innerHTML = '<tr class="odd"><td class="dtr-control sorting_1" tabindex="0">SELL</td><td>' + price + '</td><td>' + parseFloat(amount).toFixed(8) + '</td><td>' + parseFloat(amount).toFixed(8) + '</td><td>' + parseFloat(amount * price).toFixed(8) + '</td><td>' + parseFloat(amount * price).toFixed(8) + '</td><td>' + market_details.currency_symbol + '_' + market_details.market_symbol + '</td><td>' + now + '</td><td width="30"><div class="progress"><div title="Running" class="progress-bar progress-bar-striped width100percent">Running</div></div></td><td><a href="http://localhost/Tradebox/order-cancel/644" class="bg-danger text-white text-center" data-toggle="tooltip" data-placement="left" title="Cancel">Cancel</a></td></tr>' + $('#openOrders').find('tbody')[0].innerHTML;
+
                 }
 
                 document.getElementById("sellform").reset();
@@ -1193,8 +1215,9 @@ function marketSearch() {
     filter = input.value.toUpperCase();
     table = document.getElementById(tableId[0]);
     tr = table.getElementsByTagName("tr");
+
     for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
+        td = tr[i].getElementsByTagName("td")[1];
         if (td) {
             txtValue = td.textContent || td.innerText;
             if (txtValue.toUpperCase().indexOf(filter) > -1) {

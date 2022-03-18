@@ -37,28 +37,11 @@ $(document).ready(function () {
         scrollCollapse: true
     });
 
-    var screensize          = document.documentElement.clientWidth;
+    var screensize = document.documentElement.clientWidth;
 
-     if(screensize > 0 && screensize < 1024){
+    if (screensize > 0 && screensize < 1024) {
 
-        var middelcontentwidth  = screensize;
-
-        $("#allTrade").css("width", middelcontentwidth);
-        $("#openOrders").css("width", middelcontentwidth);
-        $("#orderHistory").css("width", middelcontentwidth);
-
-        $("#openOrders div table").removeAttr("style");
-        $("#openOrders div table").css("width", "100%");
-
-        $("#orderHistory div table").removeAttr("style");
-        $("#orderHistory div table").css("width", "100%");
-
-        $("#allTrade div table").removeAttr("style");
-        $("#allTrade div table").css("width", "100%");
-
-    }else if(screensize > 1023 && screensize < 1200){
-
-        var middelcontentwidth  = screensize - 305;
+        var middelcontentwidth = screensize;
 
         $("#allTrade").css("width", middelcontentwidth);
         $("#openOrders").css("width", middelcontentwidth);
@@ -73,9 +56,26 @@ $(document).ready(function () {
         $("#allTrade div table").removeAttr("style");
         $("#allTrade div table").css("width", "100%");
 
-    } else if(screensize > 1200){
+    } else if (screensize > 1023 && screensize < 1200) {
 
-        var middelcontentwidth  = screensize - 610;
+        var middelcontentwidth = screensize - 305;
+
+        $("#allTrade").css("width", middelcontentwidth);
+        $("#openOrders").css("width", middelcontentwidth);
+        $("#orderHistory").css("width", middelcontentwidth);
+
+        $("#openOrders div table").removeAttr("style");
+        $("#openOrders div table").css("width", "100%");
+
+        $("#orderHistory div table").removeAttr("style");
+        $("#orderHistory div table").css("width", "100%");
+
+        $("#allTrade div table").removeAttr("style");
+        $("#allTrade div table").css("width", "100%");
+
+    } else if (screensize > 1200) {
+
+        var middelcontentwidth = screensize - 610;
 
         $("#allTrade").css("width", middelcontentwidth);
         $("#openOrders").css("width", middelcontentwidth);
@@ -91,7 +91,7 @@ $(document).ready(function () {
         $("#allTrade div table").css("width", "100%");
     }
 
-    
+
     $('.place-order_header .btn-close, .orderform-overlay').on('click', function () {
         $('.place-order_container').removeClass('active');
         $('.orderform-overlay').removeClass('active');
@@ -145,6 +145,7 @@ $(document).ready(function () {
 function preloaderTextAnimation() {
     let $ = (e) => document.querySelector(e);
     let dots = $(".dots");
+
     function animate(element, className) {
         element.classList.add(className);
         setTimeout(() => {
@@ -161,6 +162,8 @@ $(window).on("load", function () {
     preloaderTextAnimation();
     setTimeout(function () {
         $('.loader-wrapper').fadeOut();
-        $('body').css({ 'overflow-y': 'visible' });
+        $('body').css({
+            'overflow-y': 'visible'
+        });
     }, 1000);
 });

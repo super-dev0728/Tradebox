@@ -122,6 +122,7 @@ body {
   border: 0;
 }
 .dark-theme .custom-navbar.navbar .navbar-nav .dropdown-menu {
+  z-index: 10000;
   color: #e8eaed;
   background-color: #2e2f32;
 }
@@ -1991,4 +1992,8 @@ table.dataTable > tbody > tr.child ul.dtr-details > li {
 .footer {
   padding: 7px 15px;
   font-size: 12px;
+}
+
+#myInput {
+  padding-top: 15px !important;
 }

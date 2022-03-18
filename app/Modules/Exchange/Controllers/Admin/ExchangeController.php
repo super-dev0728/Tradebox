@@ -349,7 +349,6 @@ class ExchangeController extends BaseController
             }
 
         } else {
-
             $this->validation->setRule('symbol', 'symbol','required|is_unique[dbt_coinpair.symbol]|max_length[100]|trim');
 
         }
@@ -377,6 +376,7 @@ class ExchangeController extends BaseController
             'full_name'         => $this->request->getPost('full_name', FILTER_SANITIZE_STRING),
             'symbol'            => $this->request->getPost('symbol', FILTER_SANITIZE_STRING),
             'initial_price'     => $initialprice,
+            'code'              => $this->request->getPost('code', FILTER_SANITIZE_STRING),
             'status'            => $this->request->getPost('status', FILTER_SANITIZE_STRING),
         );
         if($this->request->getMethod() == 'post'){

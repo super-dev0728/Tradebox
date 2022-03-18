@@ -1,5 +1,5 @@
 (function ($) {
-     "use strict"; // Start of use strict
+    "use strict"; // Start of use strict
     //Card table
     $('.card-table').DataTable({
         "bPaginate": false,
@@ -38,10 +38,9 @@
                 lengthChange: false,
                 paginate: false,
                 "info": false,
-               /*call here length*/ 
+                /*call here length*/
 
-                buttons: [
-                    {
+                buttons: [{
                         extend: 'copy',
                         text: '<i class="far fa-copy"></i>',
                         titleAttr: 'Copy',
@@ -74,7 +73,7 @@
             });
 
             table.buttons().container()
-                    .appendTo('#example_wrapper .col-md-6:eq(0)');
+                .appendTo('#example_wrapper .col-md-6:eq(0)');
         }
 
     };

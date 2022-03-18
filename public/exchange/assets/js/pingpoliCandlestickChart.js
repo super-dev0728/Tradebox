@@ -38,7 +38,7 @@ function pingpoliCandlestickChart(canvasElementID) {
         e.preventDefault();
     });
 
-    this.canvas.style.backgroundColor = "#202124";
+    this.canvas.style.backgroundColor = $('body').hasClass('dark-theme') ? "#202124" : "#FFFFFF";
     this.context.font = '12px sans-serif';
     this.gridColor = "#444444";
     this.gridTextColor = "#aaaaaa";

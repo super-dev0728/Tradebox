@@ -97,6 +97,3 @@ defined('IMAGEPATH') || define('IMAGEPATH',$root.'public/');
 /*defined('ercapikey')	|| define('ercapikey' ,'VCI8C8RTB1DWFJK342E7WFAZQNM5FSR229');
 defined('ercuri')		|| define('ercuri' ,'https://api.etherscan.io/');
 defined('tx_hash_link')	|| define('tx_hash_link ','https://etherscan.io/');*/
-
-
-

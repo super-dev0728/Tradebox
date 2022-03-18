@@ -309,6 +309,7 @@
                                                     class="table table-borderless trade-market-table display mb-0 width100percent">
                                                     <thead>
                                                         <tr>
+                                                            <th><?php echo display('coin_pair_code'); ?></th>
                                                             <th><?php echo display('pair'); ?></th>
                                                             <th class="text-end"><?php echo display('price'); ?></th>
                                                             <th class="text-end"><?php echo display('change'); ?></th>
@@ -321,6 +322,7 @@
                                                             ?>
                                                         <tr data-href="#"
                                                             onclick="window.location='<?php echo base_url("exchange?market=$valuep->symbol") ?>';">
+                                                            <td><?php echo $valuep->code;?></td>
                                                             <td>
                                                                 <div class="item-symbol d-flex align-items-center">
                                                                     <div class="favorite primary me-1">
@@ -918,8 +920,8 @@
     <script src="<?php echo BASEPATH.'exchange/assets/js/pingpoliWebSocket.js' ?>"></script>
     <script src="<?php echo BASEPATH.'exchange/assets/js/pingpoliCandlestickChart.js' ?>"></script>
     <script src="<?php echo BASEPATH.'exchange/assets/js/CandlestickStream.js' ?>"></script>
-    <script src="<?php echo BASEPATH.'exchange/assets/js/custom.js?v=1.0' ?>"></script>
     <script src="<?php echo BASEPATH.'exchange/assets/js/exchange.js?v=1.10' ?>"></script>
+    <script src="<?php echo BASEPATH.'exchange/assets/js/custom.js?v=1.0' ?>"></script>
     <script src="<?php echo BASEPATH.'exchange/assets/plugins/apexcharts/apexcharts.active.js?v=1' ?>"></script>
 
 </body>

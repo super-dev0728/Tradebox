@@ -1,0 +1,5033 @@
+/*
+ Navicat Premium Data Transfer
+
+ Source Server         : Zerofees(Server)
+ Source Server Type    : MySQL
+ Source Server Version : 50737
+ Source Host           : 103.7.9.16:3306
+ Source Schema         : zerofees_db
+
+ Target Server Type    : MySQL
+ Target Server Version : 50737
+ File Encoding         : 65001
+
+ Date: 17/03/2022 17:31:15
+*/
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for admin
+-- ----------------------------
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE `admin`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `firstname` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `lastname` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `about` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  `email` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `password` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `password_reset_token` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `image` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `last_login` datetime NULL DEFAULT NULL,
+  `last_logout` datetime NULL DEFAULT NULL,
+  `ip_address` varchar(14) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `is_admin` tinyint(4) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of admin
+-- ----------------------------
+INSERT INTO `admin` VALUES (1, 'Admin', '1', '', 'info@zerofees.exchange', '992c242cb4733c5caf34cd375c10e35a', '', 'upload/settings/1628082794_0a4c855ee1dcbdf8a638.jpg', '2022-03-16 08:35:41', '2022-03-16 08:41:57', '94.113.205.199', 1, 1);
+INSERT INTO `admin` VALUES (2, 'Admin', 'Developer', '', 'levyeugene0813@gmail.com', 'b729910d683c211ceee7412cd884f364', NULL, '///upload/dashboard1628234653_bfa8fb4620ea1a2a9adb.jpg', NULL, NULL, NULL, 1, 2);
+
+-- ----------------------------
+-- Table structure for advertisement
+-- ----------------------------
+DROP TABLE IF EXISTS `advertisement`;
+CREATE TABLE `advertisement`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `page` int(11) NULL DEFAULT NULL,
+  `image` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `script` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  `url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `serial_position` int(11) NULL DEFAULT NULL,
+  `status` int(11) NULL DEFAULT NULL,
+  `date` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of advertisement
+-- ----------------------------
+INSERT INTO `advertisement` VALUES (5, 'news-sidebar-top', 9, 'upload/advertisement/dff78ee612b37fc12c9e7fa94839d855.jpg', NULL, 'https://www.bdtask.com/', 1, 1, '2018-07-09 07:00:40');
+INSERT INTO `advertisement` VALUES (6, 'news-sidebar-bottom', 9, 'upload/advertisement/7fabc49dd69e0a0d6e111f3fcae0118a.jpg', NULL, 'https://www.bdtask.com/', 2, 1, '2018-07-09 07:02:18');
+INSERT INTO `advertisement` VALUES (7, 'news-top', 9, '/upload/advertisement/1632913645_89ab987a7e84dd181d7f.jpg', NULL, 'https://kariera.guru', 3, 1, '2021-09-29 19:07:25');
+INSERT INTO `advertisement` VALUES (8, 'news-bottom', 9, '/upload/advertisement/1614672574_04f30fde1bca314f6013.png', NULL, 'https://www.bdtask.com/', 4, 1, '2021-03-01 20:09:34');
+INSERT INTO `advertisement` VALUES (9, 'news details-top', 26, '/upload/advertisement/1614672536_9bb671550e7dbf3570a2.png', NULL, 'https://www.bdtask.com/', 3, 1, '2021-03-01 20:08:57');
+INSERT INTO `advertisement` VALUES (10, 'news details-bottom', 26, '//upload/advertisement/1614672514_0ec53a71097b84c63a82.png', NULL, 'https:/renta.world', 4, 1, '2021-09-29 19:08:35');
+INSERT INTO `advertisement` VALUES (11, 'news details-sidebar-top', 26, '/upload/advertisement/1614672490_566192aff15693225bd1.png', NULL, 'https://www.bdtask.com/', 1, 1, '2021-03-01 20:08:11');
+INSERT INTO `advertisement` VALUES (12, 'news details-sidebar-bottom', 26, '/upload/advertisement/1614657834_eb2d5f67f41ab46b4194.png', NULL, 'https://www.bdtask.com/', 2, 1, '2021-03-01 16:03:54');
+
+-- ----------------------------
+-- Table structure for coinpayments_payments
+-- ----------------------------
+DROP TABLE IF EXISTS `coinpayments_payments`;
+CREATE TABLE `coinpayments_payments`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `amount1` double NOT NULL,
+  `amount2` double NOT NULL,
+  `buyer_name` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `currency1` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `currency2` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `fee` double NOT NULL,
+  `ipn_id` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `ipn_mode` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `ipn_type` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `ipn_version` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `merchant` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `received_amount` double NOT NULL,
+  `received_confirms` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `status` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `status_text` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `txn_id` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `user_id` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of coinpayments_payments
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for crypto_payments
+-- ----------------------------
+DROP TABLE IF EXISTS `crypto_payments`;
+CREATE TABLE `crypto_payments`  (
+  `paymentID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `boxID` int(11) UNSIGNED NOT NULL DEFAULT 0,
+  `boxType` enum('paymentbox','captchabox') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `orderID` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `userID` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `countryID` varchar(3) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `coinLabel` varchar(6) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `amount` double(20, 8) NOT NULL DEFAULT 0.00000000,
+  `amountUSD` double(20, 8) NOT NULL DEFAULT 0.00000000,
+  `unrecognised` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
+  `addr` varchar(34) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `txID` char(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `txDate` datetime NULL DEFAULT NULL,
+  `txConfirmed` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
+  `txCheckDate` datetime NULL DEFAULT NULL,
+  `processed` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
+  `processedDate` datetime NULL DEFAULT NULL,
+  `recordCreated` datetime NULL DEFAULT NULL,
+  PRIMARY KEY (`paymentID`) USING BTREE,
+  UNIQUE INDEX `key3`(`boxID`, `orderID`, `userID`, `txID`, `amount`, `addr`) USING BTREE,
+  INDEX `boxID`(`boxID`) USING BTREE,
+  INDEX `boxType`(`boxType`) USING BTREE,
+  INDEX `userID`(`userID`) USING BTREE,
+  INDEX `countryID`(`countryID`) USING BTREE,
+  INDEX `orderID`(`orderID`) USING BTREE,
+  INDEX `amount`(`amount`) USING BTREE,
+  INDEX `amountUSD`(`amountUSD`) USING BTREE,
+  INDEX `coinLabel`(`coinLabel`) USING BTREE,
+  INDEX `unrecognised`(`unrecognised`) USING BTREE,
+  INDEX `addr`(`addr`) USING BTREE,
+  INDEX `txID`(`txID`) USING BTREE,
+  INDEX `txDate`(`txDate`) USING BTREE,
+  INDEX `txConfirmed`(`txConfirmed`) USING BTREE,
+  INDEX `txCheckDate`(`txCheckDate`) USING BTREE,
+  INDEX `processed`(`processed`) USING BTREE,
+  INDEX `processedDate`(`processedDate`) USING BTREE,
+  INDEX `recordCreated`(`recordCreated`) USING BTREE,
+  INDEX `key1`(`boxID`, `orderID`) USING BTREE,
+  INDEX `key2`(`boxID`, `orderID`, `userID`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of crypto_payments
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for cryptolist
+-- ----------------------------
+DROP TABLE IF EXISTS `cryptolist`;
+CREATE TABLE `cryptolist`  (
+  `cid` int(11) NOT NULL AUTO_INCREMENT,
+  `Id` int(11) NOT NULL,
+  `Url` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `ImageUrl` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `Name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `Symbol` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `CoinName` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `FullName` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `Algorithm` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `ProofType` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `FullyPremined` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `TotalCoinSupply` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `PreMinedValue` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `TotalCoinsFreeFloat` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `SortOrder` int(11) NULL DEFAULT NULL,
+  `Sponsored` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`cid`) USING BTREE,
+  UNIQUE INDEX `Id`(`Id`) USING BTREE,
+  UNIQUE INDEX `Symbol`(`Symbol`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of cryptolist
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for dbt_affiliation
+-- ----------------------------
+DROP TABLE IF EXISTS `dbt_affiliation`;
+CREATE TABLE `dbt_affiliation`  (
+  `id` int(11) NOT NULL,
+  `type` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `commission` double(19, 8) NOT NULL,
+  `status` tinyint(1) NOT NULL
+) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of dbt_affiliation
+-- ----------------------------
+INSERT INTO `dbt_affiliation` VALUES (1, 'PERCENT', 20.00000000, 1);
+
+-- ----------------------------
+-- Table structure for dbt_balance
+-- ----------------------------
+DROP TABLE IF EXISTS `dbt_balance`;
+CREATE TABLE `dbt_balance`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `currency_id` int(11) NULL DEFAULT NULL,
+  `currency_symbol` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `balance` double(19, 8) NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of dbt_balance
+-- ----------------------------
+INSERT INTO `dbt_balance` VALUES (1, '4Y0HIQ', NULL, 'AAX', 69845509.00000000, '2021-10-15 15:32:24');
+INSERT INTO `dbt_balance` VALUES (2, 'XP8M1G', NULL, 'USDE', 10606.10195618, '2022-02-01 15:47:23');
+INSERT INTO `dbt_balance` VALUES (3, 'TBFDJT', NULL, 'USDE', 43.20000000, '2021-08-08 19:09:03');
+INSERT INTO `dbt_balance` VALUES (4, 'TBFDJT', NULL, 'AAX', 9300000.00000000, '2021-10-15 15:32:24');
+INSERT INTO `dbt_balance` VALUES (5, '4Y0HIQ', NULL, 'USDE', 85.25963312, '2022-02-01 15:47:23');
+INSERT INTO `dbt_balance` VALUES (6, 'XP8M1G', NULL, 'AAX', 831381.00000000, '2021-10-14 16:07:54');
+INSERT INTO `dbt_balance` VALUES (7, '4Y0HIQ', NULL, 'IDEA', 315000.00000000, '2021-10-13 22:13:13');
+INSERT INTO `dbt_balance` VALUES (8, '4Y0HIQ', NULL, 'ETL', 505021.00000000, '2021-10-14 00:29:34');
+INSERT INTO `dbt_balance` VALUES (9, '4Y0HIQ', NULL, 'AMORE', 330000.00000000, '2021-09-21 02:40:42');
+INSERT INTO `dbt_balance` VALUES (10, '4Y0HIQ', NULL, 'RENTA', 123000.00000000, '2021-10-13 22:14:34');
+INSERT INTO `dbt_balance` VALUES (11, '4Y0HIQ', NULL, 'USDT', 99.99995000, '2021-10-08 15:00:32');
+INSERT INTO `dbt_balance` VALUES (12, 'XP8M1G', NULL, 'ETL', 8879.00000000, '2022-02-01 15:47:23');
+INSERT INTO `dbt_balance` VALUES (13, '4Y0HIQ', NULL, 'GLD', 10030.00000000, '2022-03-17 15:19:45');
+INSERT INTO `dbt_balance` VALUES (14, 'XP8M1G', NULL, 'IDEA', 35000.00000000, '2021-10-14 14:48:06');
+INSERT INTO `dbt_balance` VALUES (15, 'XP8M1G', NULL, 'RENTA', 107600.00000000, '2021-10-14 14:50:40');
+INSERT INTO `dbt_balance` VALUES (16, 'XP8M1G', NULL, 'GLD', 31.00000000, '2021-10-14 14:40:31');
+INSERT INTO `dbt_balance` VALUES (17, 'CXGSAN', NULL, 'TEST', 73900.00000000, '2022-03-16 01:12:14');
+INSERT INTO `dbt_balance` VALUES (18, 'CXGSAN', NULL, 'USDT', 102.67989586, '2022-03-16 01:12:14');
+INSERT INTO `dbt_balance` VALUES (19, '91UHYC', NULL, 'TEST', 57400.00000000, '2022-03-16 00:45:59');
+INSERT INTO `dbt_balance` VALUES (20, '91UHYC', NULL, 'USDT', 193.38134021, '2022-03-16 01:12:14');
+INSERT INTO `dbt_balance` VALUES (21, 'WYQMUB', NULL, 'TEST', 100000.00000000, '2022-03-16 02:39:40');
+INSERT INTO `dbt_balance` VALUES (22, 'WYQMUB', NULL, 'USDT', 100.00000000, '2022-03-16 02:41:13');
+INSERT INTO `dbt_balance` VALUES (23, 'WYQMUB', NULL, 'GLD', 1144.00000000, '2022-03-17 15:30:52');
+INSERT INTO `dbt_balance` VALUES (24, 'WYQMUB', NULL, 'USDE', 770.77900000, '2022-03-17 15:30:16');
+INSERT INTO `dbt_balance` VALUES (25, '3VHN6H', NULL, 'TEST', 100000.00000000, '2022-03-16 08:11:30');
+INSERT INTO `dbt_balance` VALUES (26, '3VHN6H', NULL, 'USDT', 100.00000000, '2022-03-16 08:15:31');
+INSERT INTO `dbt_balance` VALUES (27, '3VHN6H', NULL, 'GLD', 325.00000000, '2022-03-17 16:07:35');
+INSERT INTO `dbt_balance` VALUES (28, '3VHN6H', NULL, 'USDE', 631.15980000, '2022-03-17 16:07:35');
+
+-- ----------------------------
+-- Table structure for dbt_balance_log
+-- ----------------------------
+DROP TABLE IF EXISTS `dbt_balance_log`;
+CREATE TABLE `dbt_balance_log`  (
+  `log_id` bigint(22) NOT NULL AUTO_INCREMENT,
+  `balance_id` int(11) NOT NULL,
+  `user_id` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `currency_id` int(11) NULL DEFAULT NULL,
+  `currency_symbol` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `transaction_type` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `transaction_amount` double(19, 8) NOT NULL,
+  `transaction_fees` double(19, 8) NOT NULL,
+  `ip` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`log_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 140 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of dbt_balance_log
+-- ----------------------------
+INSERT INTO `dbt_balance_log` VALUES (1, 1, '4Y0HIQ', NULL, 'AAX', 'CREDITED', 10000000.00000000, 0.00000000, '89.176.136.238', '2021-08-06 06:02:06');
+INSERT INTO `dbt_balance_log` VALUES (2, 2, 'XP8M1G', NULL, 'USDE', 'CREDITED', 100.00000000, 0.00000000, '89.176.136.238', '2021-08-06 06:09:04');
+INSERT INTO `dbt_balance_log` VALUES (3, 3, 'TBFDJT', NULL, 'USDE', 'CREDITED', 50.00000000, 0.00000000, '89.176.136.238', '2021-08-06 06:11:26');
+INSERT INTO `dbt_balance_log` VALUES (4, 1, '4Y0HIQ', NULL, 'AAX', 'CREDITED', 70000000.00000000, 0.00000000, '89.176.136.238', '2021-08-08 06:42:03');
+INSERT INTO `dbt_balance_log` VALUES (5, 2, 'XP8M1G', NULL, 'USDE', 'CREDITED', -33.00000000, 0.00000000, '89.176.136.238', '2021-08-15 04:00:18');
+INSERT INTO `dbt_balance_log` VALUES (6, 2, 'XP8M1G', NULL, 'USDE', 'ADJUSTMENT', 0.00010000, 0.00000000, '89.176.136.238', '2021-09-02 06:52:51');
+INSERT INTO `dbt_balance_log` VALUES (7, 2, 'XP8M1G', NULL, 'USDE', 'ADJUSTMENT', 0.00014000, 0.00000000, '89.176.136.238', '2021-09-02 06:53:39');
+INSERT INTO `dbt_balance_log` VALUES (8, 7, '4Y0HIQ', NULL, 'IDEA', 'DEPOSIT', 15000.00000000, 0.00000000, '89.176.136.238', '2021-09-21 01:42:01');
+INSERT INTO `dbt_balance_log` VALUES (9, 8, '4Y0HIQ', NULL, 'ETL', 'DEPOSIT', 10000.00000000, 0.00000000, '89.176.136.238', '2021-09-15 03:35:39');
+INSERT INTO `dbt_balance_log` VALUES (10, 9, '4Y0HIQ', NULL, 'AMORE', 'DEPOSIT', 330000.00000000, 0.00000000, '89.176.136.238', '2021-09-13 11:11:58');
+INSERT INTO `dbt_balance_log` VALUES (11, 10, '4Y0HIQ', NULL, 'RENTA', 'DEPOSIT', 500000.00000000, 0.00000000, '89.176.136.238', '2021-09-13 10:43:37');
+INSERT INTO `dbt_balance_log` VALUES (12, 1, '4Y0HIQ', NULL, 'AAX', 'WITHDRAW', 22000.00000000, 1100.00000000, '89.176.136.238', '2021-09-21 01:46:00');
+INSERT INTO `dbt_balance_log` VALUES (13, 5, '4Y0HIQ', NULL, 'USDE', 'CREDITED', 100.00000000, 0.00000000, '89.176.136.238', '2021-09-23 05:47:43');
+INSERT INTO `dbt_balance_log` VALUES (14, 11, '4Y0HIQ', NULL, 'USDT', 'CREDITED', 100.00000000, 0.00000000, '89.176.136.238', '2021-09-23 05:49:23');
+INSERT INTO `dbt_balance_log` VALUES (15, 5, '4Y0HIQ', NULL, 'USDE', 'ADJUSTMENT', 0.00016000, 0.00000000, '89.176.133.78', '2021-10-07 00:58:40');
+INSERT INTO `dbt_balance_log` VALUES (16, 5, '4Y0HIQ', NULL, 'USDE', 'ADJUSTMENT', 0.00100000, 0.00000000, '89.176.133.78', '2021-10-07 01:00:14');
+INSERT INTO `dbt_balance_log` VALUES (17, 5, '4Y0HIQ', NULL, 'USDE', 'TRADE_CANCEL', 45.00000000, 0.00000000, '89.176.133.78', '2021-10-07 01:39:03');
+INSERT INTO `dbt_balance_log` VALUES (18, 8, '4Y0HIQ', NULL, 'ETL', 'TRADE_CANCEL', 10000.00000000, 0.00000000, '84.42.240.202', '2021-10-07 02:58:43');
+INSERT INTO `dbt_balance_log` VALUES (19, 5, '4Y0HIQ', NULL, 'USDE', 'TRADE_CANCEL', 36.00000000, 0.00000000, '84.42.240.202', '2021-10-07 02:58:47');
+INSERT INTO `dbt_balance_log` VALUES (20, 5, '4Y0HIQ', NULL, 'USDE', 'ADJUSTMENT', 0.00746000, 0.00000000, '84.42.240.202', '2021-10-07 03:02:03');
+INSERT INTO `dbt_balance_log` VALUES (21, 5, '4Y0HIQ', NULL, 'USDE', 'ADJUSTMENT', 0.00246000, 0.00000000, '84.42.240.202', '2021-10-07 03:03:30');
+INSERT INTO `dbt_balance_log` VALUES (22, 5, '4Y0HIQ', NULL, 'USDE', 'ADJUSTMENT', 0.00060000, 0.00000000, '84.42.240.202', '2021-10-07 03:05:01');
+INSERT INTO `dbt_balance_log` VALUES (23, 5, '4Y0HIQ', NULL, 'USDE', 'ADJUSTMENT', 0.00005000, 0.00000000, '84.42.240.202', '2021-10-07 03:07:06');
+INSERT INTO `dbt_balance_log` VALUES (24, 5, '4Y0HIQ', NULL, 'USDE', 'ADJUSTMENT', 0.00700000, 0.00000000, '84.42.240.202', '2021-10-07 03:14:03');
+INSERT INTO `dbt_balance_log` VALUES (25, 5, '4Y0HIQ', NULL, 'USDE', 'ADJUSTMENT', 0.00700000, 0.00000000, '84.42.240.202', '2021-10-07 03:17:00');
+INSERT INTO `dbt_balance_log` VALUES (26, 5, '4Y0HIQ', NULL, 'USDE', 'ADJUSTMENT', 0.00070000, 0.00000000, '84.42.240.202', '2021-10-07 03:20:06');
+INSERT INTO `dbt_balance_log` VALUES (27, 5, '4Y0HIQ', NULL, 'USDE', 'TRADE_CANCEL', 25.00000000, 0.00000000, '89.176.133.78', '2021-10-08 02:00:12');
+INSERT INTO `dbt_balance_log` VALUES (28, 11, '4Y0HIQ', NULL, 'USDT', 'TRADE_CANCEL', 9.99000999, 0.00000000, '89.176.133.78', '2021-10-08 02:00:18');
+INSERT INTO `dbt_balance_log` VALUES (29, 11, '4Y0HIQ', NULL, 'USDT', 'TRADE_CANCEL', 10.00001000, 0.00000000, '89.176.133.78', '2021-10-08 02:00:32');
+INSERT INTO `dbt_balance_log` VALUES (30, 5, '4Y0HIQ', NULL, 'USDE', 'TRADE_CANCEL', 10.00000000, 0.00000000, '89.176.133.78', '2021-10-08 02:00:49');
+INSERT INTO `dbt_balance_log` VALUES (31, 5, '4Y0HIQ', NULL, 'USDE', 'TRADE_CANCEL', 20.00000000, 0.00000000, '89.176.133.78', '2021-10-08 02:00:54');
+INSERT INTO `dbt_balance_log` VALUES (32, 2, 'XP8M1G', NULL, 'USDE', 'ADJUSTMENT', 0.00260000, 0.00000000, '78.102.29.104', '2021-10-12 07:49:09');
+INSERT INTO `dbt_balance_log` VALUES (33, 5, '4Y0HIQ', NULL, 'USDE', 'TRADE_CANCEL', 30.15000000, 0.00000000, '78.102.29.104', '2021-10-13 08:40:52');
+INSERT INTO `dbt_balance_log` VALUES (34, 5, '4Y0HIQ', NULL, 'USDE', 'TRADE_CANCEL', 10.04000000, 0.00000000, '78.102.29.104', '2021-10-13 08:40:57');
+INSERT INTO `dbt_balance_log` VALUES (35, 5, '4Y0HIQ', NULL, 'USDE', 'TRADE_CANCEL', 1.03800000, 0.00000000, '78.102.29.104', '2021-10-13 09:01:59');
+INSERT INTO `dbt_balance_log` VALUES (36, 5, '4Y0HIQ', NULL, 'USDE', 'TRADE_CANCEL', 1.56000000, 0.00000000, '78.102.29.104', '2021-10-13 09:02:04');
+INSERT INTO `dbt_balance_log` VALUES (37, 5, '4Y0HIQ', NULL, 'USDE', 'TRADE_CANCEL', 0.52500000, 0.00000000, '78.102.29.104', '2021-10-13 09:05:59');
+INSERT INTO `dbt_balance_log` VALUES (38, 5, '4Y0HIQ', NULL, 'USDE', 'TRADE_CANCEL', 0.93600000, 0.00000000, '78.102.29.104', '2021-10-13 09:06:06');
+INSERT INTO `dbt_balance_log` VALUES (39, 5, '4Y0HIQ', NULL, 'USDE', 'CREDITED', 300.00000000, 0.00000000, '78.102.29.104', '2021-10-13 09:11:17');
+INSERT INTO `dbt_balance_log` VALUES (40, 8, '4Y0HIQ', NULL, 'ETL', 'CREDITED', 500000.00000000, 0.00000000, '78.102.29.104', '2021-10-13 09:12:28');
+INSERT INTO `dbt_balance_log` VALUES (41, 7, '4Y0HIQ', NULL, 'IDEA', 'CREDITED', 300000.00000000, 0.00000000, '78.102.29.104', '2021-10-13 09:13:13');
+INSERT INTO `dbt_balance_log` VALUES (42, 10, '4Y0HIQ', NULL, 'RENTA', 'CREDITED', 100000.00000000, 0.00000000, '78.102.29.104', '2021-10-13 09:14:34');
+INSERT INTO `dbt_balance_log` VALUES (43, 13, '4Y0HIQ', NULL, 'GLD', 'CREDITED', 10000.00000000, 0.00000000, '78.102.29.104', '2021-10-13 09:15:29');
+INSERT INTO `dbt_balance_log` VALUES (44, 2, 'XP8M1G', NULL, 'USDE', 'CREDITED', 500.00000000, 0.00000000, '78.102.29.104', '2021-10-13 09:16:59');
+INSERT INTO `dbt_balance_log` VALUES (45, 12, 'XP8M1G', NULL, 'ETL', 'CREDITED', 300000.00000000, 0.00000000, '78.102.29.104', '2021-10-13 09:18:11');
+INSERT INTO `dbt_balance_log` VALUES (46, 14, 'XP8M1G', NULL, 'IDEA', 'CREDITED', 150000.00000000, 0.00000000, '78.102.29.104', '2021-10-13 09:22:31');
+INSERT INTO `dbt_balance_log` VALUES (47, 15, 'XP8M1G', NULL, 'RENTA', 'CREDITED', 100000.00000000, 0.00000000, '78.102.29.104', '2021-10-13 09:25:44');
+INSERT INTO `dbt_balance_log` VALUES (48, 16, 'XP8M1G', NULL, 'GLD', 'CREDITED', 500.00000000, 0.00000000, '78.102.29.104', '2021-10-13 09:30:07');
+INSERT INTO `dbt_balance_log` VALUES (49, 5, '4Y0HIQ', NULL, 'USDE', 'TRADE_CANCEL', 4.16000000, 0.00000000, '78.102.29.104', '2021-10-13 10:15:49');
+INSERT INTO `dbt_balance_log` VALUES (50, 5, '4Y0HIQ', NULL, 'USDE', 'TRADE_CANCEL', 0.96805000, 0.00000000, '78.102.29.104', '2021-10-13 10:15:56');
+INSERT INTO `dbt_balance_log` VALUES (51, 5, '4Y0HIQ', NULL, 'USDE', 'TRADE_CANCEL', 0.56540000, 0.00000000, '78.102.29.104', '2021-10-13 10:15:59');
+INSERT INTO `dbt_balance_log` VALUES (52, 5, '4Y0HIQ', NULL, 'USDE', 'TRADE_CANCEL', 2.44320000, 0.00000000, '78.102.29.104', '2021-10-13 10:16:04');
+INSERT INTO `dbt_balance_log` VALUES (53, 5, '4Y0HIQ', NULL, 'USDE', 'TRADE_CANCEL', 1.23000000, 0.00000000, '78.102.29.104', '2021-10-13 10:16:09');
+INSERT INTO `dbt_balance_log` VALUES (54, 5, '4Y0HIQ', NULL, 'USDE', 'TRADE_CANCEL', 0.85600000, 0.00000000, '78.102.29.104', '2021-10-13 10:16:14');
+INSERT INTO `dbt_balance_log` VALUES (55, 5, '4Y0HIQ', NULL, 'USDE', 'TRADE_CANCEL', 0.76650000, 0.00000000, '78.102.29.104', '2021-10-13 10:16:19');
+INSERT INTO `dbt_balance_log` VALUES (56, 2, 'XP8M1G', NULL, 'USDE', 'TRADE_CANCEL', 0.50500000, 0.00000000, '78.102.29.104', '2021-10-13 10:25:41');
+INSERT INTO `dbt_balance_log` VALUES (57, 2, 'XP8M1G', NULL, 'USDE', 'TRADE_CANCEL', 0.51000000, 0.00000000, '78.102.29.104', '2021-10-13 10:25:47');
+INSERT INTO `dbt_balance_log` VALUES (58, 2, 'XP8M1G', NULL, 'USDE', 'TRADE_CANCEL', 0.51450000, 0.00000000, '78.102.29.104', '2021-10-13 10:25:57');
+INSERT INTO `dbt_balance_log` VALUES (59, 12, 'XP8M1G', NULL, 'ETL', 'TRADE_CANCEL', 30.00000000, 0.00000000, '78.102.29.104', '2021-10-13 10:46:40');
+INSERT INTO `dbt_balance_log` VALUES (60, 16, 'XP8M1G', NULL, 'GLD', 'TRADE_CANCEL', 1.00000000, 0.00000000, '78.102.29.104', '2021-10-13 11:49:21');
+INSERT INTO `dbt_balance_log` VALUES (61, 16, 'XP8M1G', NULL, 'GLD', 'TRADE_CANCEL', 1.00000000, 0.00000000, '78.102.29.104', '2021-10-14 01:34:21');
+INSERT INTO `dbt_balance_log` VALUES (62, 14, 'XP8M1G', NULL, 'IDEA', 'TRADE_CANCEL', 1.00000000, 0.00000000, '78.102.29.104', '2021-10-14 01:47:27');
+INSERT INTO `dbt_balance_log` VALUES (63, 2, 'XP8M1G', NULL, 'USDE', 'TRADE_CANCEL', 0.00024000, 0.00000000, '78.102.29.104', '2021-10-14 02:53:20');
+INSERT INTO `dbt_balance_log` VALUES (64, 2, 'XP8M1G', NULL, 'USDE', 'TRADE_CANCEL', 0.00220030, 0.00000000, '78.102.29.104', '2021-10-14 02:53:26');
+INSERT INTO `dbt_balance_log` VALUES (65, 2, 'XP8M1G', NULL, 'USDE', 'TRADE_CANCEL', 0.00598500, 0.00000000, '78.102.29.104', '2021-10-14 02:53:36');
+INSERT INTO `dbt_balance_log` VALUES (66, 2, 'XP8M1G', NULL, 'USDE', 'TRADE_CANCEL', 0.03100000, 0.00000000, '78.102.29.104', '2021-10-14 02:53:58');
+INSERT INTO `dbt_balance_log` VALUES (67, 2, 'XP8M1G', NULL, 'USDE', 'TRADE_CANCEL', 0.01900000, 0.00000000, '78.102.29.104', '2021-10-14 02:54:06');
+INSERT INTO `dbt_balance_log` VALUES (68, 2, 'XP8M1G', NULL, 'USDE', 'TRADE_CANCEL', 0.00320000, 0.00000000, '78.102.29.104', '2021-10-14 02:54:13');
+INSERT INTO `dbt_balance_log` VALUES (69, 2, 'XP8M1G', NULL, 'USDE', 'TRADE_CANCEL', 0.00440000, 0.00000000, '78.102.29.104', '2021-10-14 02:54:19');
+INSERT INTO `dbt_balance_log` VALUES (70, 2, 'XP8M1G', NULL, 'USDE', 'TRADE_CANCEL', 0.00352000, 0.00000000, '78.102.29.104', '2021-10-14 02:54:26');
+INSERT INTO `dbt_balance_log` VALUES (71, 2, 'XP8M1G', NULL, 'USDE', 'TRADE_CANCEL', 0.00792000, 0.00000000, '78.102.29.104', '2021-10-14 02:54:33');
+INSERT INTO `dbt_balance_log` VALUES (72, 2, 'XP8M1G', NULL, 'USDE', 'TRADE_CANCEL', 0.00952000, 0.00000000, '78.102.29.104', '2021-10-14 02:54:39');
+INSERT INTO `dbt_balance_log` VALUES (73, 2, 'XP8M1G', NULL, 'USDE', 'TRADE_CANCEL', 0.00333000, 0.00000000, '78.102.29.104', '2021-10-14 02:54:46');
+INSERT INTO `dbt_balance_log` VALUES (74, 2, 'XP8M1G', NULL, 'USDE', 'TRADE_CANCEL', 0.02068000, 0.00000000, '78.102.29.104', '2021-10-14 02:54:51');
+INSERT INTO `dbt_balance_log` VALUES (75, 2, 'XP8M1G', NULL, 'USDE', 'TRADE_CANCEL', 0.00825000, 0.00000000, '78.102.29.104', '2021-10-14 02:54:58');
+INSERT INTO `dbt_balance_log` VALUES (76, 2, 'XP8M1G', NULL, 'USDE', 'TRADE_CANCEL', 0.00704000, 0.00000000, '78.102.29.104', '2021-10-14 02:55:04');
+INSERT INTO `dbt_balance_log` VALUES (77, 2, 'XP8M1G', NULL, 'USDE', 'TRADE_CANCEL', 0.00612000, 0.00000000, '78.102.29.104', '2021-10-14 02:55:10');
+INSERT INTO `dbt_balance_log` VALUES (78, 2, 'XP8M1G', NULL, 'USDE', 'TRADE_CANCEL', 1.62000000, 0.00000000, '78.102.29.104', '2021-10-14 02:55:15');
+INSERT INTO `dbt_balance_log` VALUES (79, 2, 'XP8M1G', NULL, 'USDE', 'TRADE_CANCEL', 0.95999988, 0.00000000, '78.102.29.104', '2021-10-14 02:55:22');
+INSERT INTO `dbt_balance_log` VALUES (80, 1, '4Y0HIQ', NULL, 'AAX', 'TRADE_CANCEL', 2000.00000000, 0.00000000, '78.102.29.104', '2021-10-14 02:56:57');
+INSERT INTO `dbt_balance_log` VALUES (81, 5, '4Y0HIQ', NULL, 'USDE', 'TRADE_CANCEL', 0.00042000, 0.00000000, '78.102.29.104', '2021-10-14 02:57:07');
+INSERT INTO `dbt_balance_log` VALUES (82, 5, '4Y0HIQ', NULL, 'USDE', 'TRADE_CANCEL', 0.00042000, 0.00000000, '78.102.29.104', '2021-10-14 02:57:14');
+INSERT INTO `dbt_balance_log` VALUES (83, 1, '4Y0HIQ', NULL, 'AAX', 'TRADE_CANCEL', 25000.00000000, 0.00000000, '78.102.29.104', '2021-10-14 02:57:20');
+INSERT INTO `dbt_balance_log` VALUES (84, 1, '4Y0HIQ', NULL, 'AAX', 'TRADE_CANCEL', 29700.00000000, 0.00000000, '78.102.29.104', '2021-10-14 02:57:29');
+INSERT INTO `dbt_balance_log` VALUES (85, 5, '4Y0HIQ', NULL, 'USDE', 'TRADE_CANCEL', 0.00021000, 0.00000000, '78.102.29.104', '2021-10-14 02:57:42');
+INSERT INTO `dbt_balance_log` VALUES (86, 5, '4Y0HIQ', NULL, 'USDE', 'TRADE_CANCEL', 0.00021000, 0.00000000, '78.102.29.104', '2021-10-14 02:57:54');
+INSERT INTO `dbt_balance_log` VALUES (87, 1, '4Y0HIQ', NULL, 'AAX', 'TRADE_CANCEL', 44000.00000000, 0.00000000, '78.102.29.104', '2021-10-14 02:58:00');
+INSERT INTO `dbt_balance_log` VALUES (88, 1, '4Y0HIQ', NULL, 'AAX', 'TRADE_CANCEL', 17000.00000000, 0.00000000, '78.102.29.104', '2021-10-14 02:58:19');
+INSERT INTO `dbt_balance_log` VALUES (89, 1, '4Y0HIQ', NULL, 'AAX', 'TRADE_CANCEL', 80000.00000000, 0.00000000, '78.102.29.104', '2021-10-14 02:58:33');
+INSERT INTO `dbt_balance_log` VALUES (90, 1, '4Y0HIQ', NULL, 'AAX', 'TRADE_CANCEL', 55000.00000000, 0.00000000, '78.102.29.104', '2021-10-14 02:58:58');
+INSERT INTO `dbt_balance_log` VALUES (91, 1, '4Y0HIQ', NULL, 'AAX', 'TRADE_CANCEL', 1.00000000, 0.00000000, '78.102.29.104', '2021-10-14 03:01:29');
+INSERT INTO `dbt_balance_log` VALUES (92, 2, 'XP8M1G', NULL, 'USDE', 'ADJUSTMENT', 0.00040000, 0.00000000, '78.102.29.104', '2021-10-14 03:04:24');
+INSERT INTO `dbt_balance_log` VALUES (93, 2, 'XP8M1G', NULL, 'USDE', 'CREDITED', 10000.00000000, 0.00000000, '78.102.29.226', '2021-10-25 08:05:45');
+INSERT INTO `dbt_balance_log` VALUES (94, 2, 'XP8M1G', NULL, 'USDE', 'ADJUSTMENT', 0.00300000, 0.00000000, '78.102.29.41', '2022-02-01 01:45:33');
+INSERT INTO `dbt_balance_log` VALUES (95, 2, 'XP8M1G', NULL, 'USDE', 'ADJUSTMENT', 0.00300000, 0.00000000, '78.102.29.41', '2022-02-01 01:46:40');
+INSERT INTO `dbt_balance_log` VALUES (96, 2, 'XP8M1G', NULL, 'USDE', 'ADJUSTMENT', 0.00400000, 0.00000000, '78.102.29.41', '2022-02-01 01:47:23');
+INSERT INTO `dbt_balance_log` VALUES (97, 17, 'CXGSAN', NULL, 'TEST', 'CREDITED', 100000.00000000, 0.00000000, '94.113.205.199', '2022-03-15 03:46:50');
+INSERT INTO `dbt_balance_log` VALUES (98, 18, 'CXGSAN', NULL, 'USDT', 'CREDITED', 100.00000000, 0.00000000, '94.113.205.199', '2022-03-15 03:48:37');
+INSERT INTO `dbt_balance_log` VALUES (99, 19, '91UHYC', NULL, 'TEST', 'CREDITED', 50000.00000000, 0.00000000, '94.113.205.199', '2022-03-15 04:02:45');
+INSERT INTO `dbt_balance_log` VALUES (100, 20, '91UHYC', NULL, 'USDT', 'CREDITED', 200.00000000, 0.00000000, '94.113.205.199', '2022-03-15 04:03:59');
+INSERT INTO `dbt_balance_log` VALUES (101, 20, '91UHYC', NULL, 'USDT', 'ADJUSTMENT', 0.01800000, 0.00000022, '94.113.205.199', '2022-03-15 11:17:50');
+INSERT INTO `dbt_balance_log` VALUES (102, 20, '91UHYC', NULL, 'USDT', 'ADJUSTMENT', 0.00018000, 0.00000004, '94.113.205.199', '2022-03-15 11:34:54');
+INSERT INTO `dbt_balance_log` VALUES (103, 20, '91UHYC', NULL, 'USDT', 'ADJUSTMENT', 0.00022000, 0.00000004, '94.113.205.199', '2022-03-15 11:35:42');
+INSERT INTO `dbt_balance_log` VALUES (104, 20, '91UHYC', NULL, 'USDT', 'ADJUSTMENT', 0.00100000, 0.00000006, '94.113.205.199', '2022-03-15 11:36:03');
+INSERT INTO `dbt_balance_log` VALUES (105, 20, '91UHYC', NULL, 'USDT', 'ADJUSTMENT', 0.00080000, 0.00000001, '94.113.205.199', '2022-03-15 11:36:03');
+INSERT INTO `dbt_balance_log` VALUES (106, 20, '91UHYC', NULL, 'USDT', 'ADJUSTMENT', 0.00120000, 0.00000001, '94.113.205.199', '2022-03-15 11:36:17');
+INSERT INTO `dbt_balance_log` VALUES (107, 20, '91UHYC', NULL, 'USDT', 'ADJUSTMENT', 0.00300000, 0.00000004, '94.113.205.199', '2022-03-15 11:36:24');
+INSERT INTO `dbt_balance_log` VALUES (108, 20, '91UHYC', NULL, 'USDT', 'ADJUSTMENT', 0.00600000, 0.00000003, '94.113.205.199', '2022-03-15 11:36:30');
+INSERT INTO `dbt_balance_log` VALUES (109, 20, '91UHYC', NULL, 'USDT', 'ADJUSTMENT', 0.00260000, 0.00000004, '94.113.205.199', '2022-03-15 11:36:36');
+INSERT INTO `dbt_balance_log` VALUES (110, 20, '91UHYC', NULL, 'USDT', 'ADJUSTMENT', 0.00650000, 0.00000020, '94.113.205.199', '2022-03-15 11:37:58');
+INSERT INTO `dbt_balance_log` VALUES (111, 20, '91UHYC', NULL, 'USDT', 'ADJUSTMENT', 0.00650000, 0.00000005, '94.113.205.199', '2022-03-15 11:38:04');
+INSERT INTO `dbt_balance_log` VALUES (112, 20, '91UHYC', NULL, 'USDT', 'ADJUSTMENT', 0.00440000, 0.00000010, '94.113.205.199', '2022-03-15 11:38:13');
+INSERT INTO `dbt_balance_log` VALUES (113, 20, '91UHYC', NULL, 'USDT', 'ADJUSTMENT', 0.00040000, 0.00000005, '94.113.205.199', '2022-03-15 11:38:52');
+INSERT INTO `dbt_balance_log` VALUES (114, 20, '91UHYC', NULL, 'USDT', 'ADJUSTMENT', 0.00094600, 0.00000001, '94.113.205.199', '2022-03-15 12:04:31');
+INSERT INTO `dbt_balance_log` VALUES (115, 20, '91UHYC', NULL, 'USDT', 'ADJUSTMENT', 0.00100000, 0.00000008, '94.113.205.199', '2022-03-15 12:04:50');
+INSERT INTO `dbt_balance_log` VALUES (116, 20, '91UHYC', NULL, 'USDT', 'ADJUSTMENT', 0.00030000, 0.00000002, '94.113.205.199', '2022-03-15 12:45:45');
+INSERT INTO `dbt_balance_log` VALUES (117, 20, '91UHYC', NULL, 'USDT', 'ADJUSTMENT', 0.00069000, 0.00000005, '94.113.205.199', '2022-03-15 12:45:59');
+INSERT INTO `dbt_balance_log` VALUES (118, 18, 'CXGSAN', NULL, 'USDT', 'ADJUSTMENT', 0.00300000, 0.00000003, '94.113.205.199', '2022-03-15 13:08:49');
+INSERT INTO `dbt_balance_log` VALUES (119, 18, 'CXGSAN', NULL, 'USDT', 'ADJUSTMENT', 0.00070000, 0.00000001, '94.113.205.199', '2022-03-15 13:09:29');
+INSERT INTO `dbt_balance_log` VALUES (120, 21, 'WYQMUB', NULL, 'TEST', 'CREDITED', 100000.00000000, 0.00000000, '94.113.205.199', '2022-03-16 02:39:40');
+INSERT INTO `dbt_balance_log` VALUES (121, 22, 'WYQMUB', NULL, 'USDT', 'CREDITED', 100.00000000, 0.00000000, '94.113.205.199', '2022-03-16 02:41:13');
+INSERT INTO `dbt_balance_log` VALUES (122, 23, 'WYQMUB', NULL, 'GLD', 'CREDITED', 1000.00000000, 0.00000000, '94.113.205.199', '2022-03-16 02:42:28');
+INSERT INTO `dbt_balance_log` VALUES (123, 24, 'WYQMUB', NULL, 'USDE', 'CREDITED', 1000.00000000, 0.00000000, '94.113.205.199', '2022-03-16 02:43:45');
+INSERT INTO `dbt_balance_log` VALUES (124, 25, '3VHN6H', NULL, 'TEST', 'CREDITED', 100000.00000000, 0.00000000, '94.113.205.199', '2022-03-16 08:11:30');
+INSERT INTO `dbt_balance_log` VALUES (125, 26, '3VHN6H', NULL, 'USDT', 'CREDITED', 100.00000000, 0.00000000, '94.113.205.199', '2022-03-16 08:15:32');
+INSERT INTO `dbt_balance_log` VALUES (126, 27, '3VHN6H', NULL, 'GLD', 'CREDITED', 500.00000000, 0.00000000, '94.113.205.199', '2022-03-16 08:17:40');
+INSERT INTO `dbt_balance_log` VALUES (127, 28, '3VHN6H', NULL, 'USDE', 'CREDITED', 500.00000000, 0.00000000, '94.113.205.199', '2022-03-16 08:19:17');
+INSERT INTO `dbt_balance_log` VALUES (128, 24, 'WYQMUB', NULL, 'USDE', 'ADJUSTMENT', 0.00080000, 0.00000000, '94.113.205.199', '2022-03-17 03:19:45');
+INSERT INTO `dbt_balance_log` VALUES (129, 24, 'WYQMUB', NULL, 'USDE', 'ADJUSTMENT', 0.00400000, 0.00000000, '94.113.205.199', '2022-03-17 03:29:21');
+INSERT INTO `dbt_balance_log` VALUES (130, 24, 'WYQMUB', NULL, 'USDE', 'ADJUSTMENT', 0.00400000, 0.00000000, '94.113.205.199', '2022-03-17 03:29:48');
+INSERT INTO `dbt_balance_log` VALUES (131, 24, 'WYQMUB', NULL, 'USDE', 'ADJUSTMENT', 0.00400000, 0.00000000, '94.113.205.199', '2022-03-17 03:30:16');
+INSERT INTO `dbt_balance_log` VALUES (132, 24, 'WYQMUB', NULL, 'USDE', 'ADJUSTMENT', 0.01280000, 0.00000000, '94.113.205.199', '2022-03-17 03:30:16');
+INSERT INTO `dbt_balance_log` VALUES (133, 24, 'WYQMUB', NULL, 'USDE', 'ADJUSTMENT', 0.01500000, 0.00000000, '94.113.205.199', '2022-03-17 03:30:16');
+INSERT INTO `dbt_balance_log` VALUES (134, 24, 'WYQMUB', NULL, 'USDE', 'ADJUSTMENT', 0.00130000, 0.00000000, '94.113.205.199', '2022-03-17 03:30:16');
+INSERT INTO `dbt_balance_log` VALUES (135, 28, '3VHN6H', NULL, 'USDE', 'ADJUSTMENT', 0.00050000, 0.00000000, '94.113.205.199', '2022-03-17 03:33:26');
+INSERT INTO `dbt_balance_log` VALUES (136, 28, '3VHN6H', NULL, 'USDE', 'ADJUSTMENT', 0.00450000, 0.00000000, '94.113.205.199', '2022-03-17 03:33:26');
+INSERT INTO `dbt_balance_log` VALUES (137, 28, '3VHN6H', NULL, 'USDE', 'ADJUSTMENT', 0.02700000, 0.00000000, '94.113.205.199', '2022-03-17 03:33:26');
+INSERT INTO `dbt_balance_log` VALUES (138, 28, '3VHN6H', NULL, 'USDE', 'ADJUSTMENT', 0.02520000, 0.00000000, '94.113.205.199', '2022-03-17 03:33:26');
+INSERT INTO `dbt_balance_log` VALUES (139, 28, '3VHN6H', NULL, 'USDE', 'ADJUSTMENT', 0.00600000, 0.00000000, '94.113.205.199', '2022-03-17 03:33:26');
+
+-- ----------------------------
+-- Table structure for dbt_biding
+-- ----------------------------
+DROP TABLE IF EXISTS `dbt_biding`;
+CREATE TABLE `dbt_biding`  (
+  `id` bigint(22) NOT NULL AUTO_INCREMENT,
+  `bid_type` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `bid_price` double(19, 8) NOT NULL,
+  `bid_qty` double(19, 8) NOT NULL,
+  `bid_qty_available` double(19, 8) NOT NULL,
+  `total_amount` double(19, 8) NOT NULL,
+  `amount_available` double(19, 8) NOT NULL,
+  `coin_id` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `currency_symbol` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `market_id` int(100) NULL DEFAULT NULL,
+  `market_symbol` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `user_id` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `open_order` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `fees_amount` double(19, 8) NOT NULL,
+  `status` tinyint(1) NOT NULL COMMENT '\"1=Complete, 2=Running\"',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 624 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of dbt_biding
+-- ----------------------------
+INSERT INTO `dbt_biding` VALUES (1, 'SELL', 0.00000020, 5000000.00000000, 0.00000000, 1.00000000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-08-06 09:40:10', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (2, 'BUY', 0.00000012, 8000000.00000000, 7999999.00000000, 0.96000000, 0.95999988, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-08-07 13:45:00', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (3, 'BUY', 0.00000018, 9000000.00000000, 9000000.00000000, 1.62000000, 1.62000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-08-07 13:46:06', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (4, 'BUY', 0.00000019, 20000000.00000000, 15985000.00000000, 3.80000000, 3.03715000, NULL, 'AAX', NULL, 'AAX_USDE', 'TBFDJT', '2021-08-08 06:07:24', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (5, 'BUY', 0.00000020, 15000000.00000000, 9715000.00000000, 3.00000000, 1.94300000, NULL, 'AAX', NULL, 'AAX_USDE', 'TBFDJT', '2021-08-08 06:09:03', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (6, 'SELL', 0.00000019, 4000000.00000000, 0.00000000, 0.76000000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-08-08 06:18:38', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (7, 'SELL', 0.00000022, 350000.00000000, 0.00000000, 0.07700000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-08-30 01:20:34', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (8, 'SELL', 0.00000021, 250000.00000000, 0.00000000, 0.05250000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-08-30 01:21:43', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (9, 'SELL', 0.00000023, 440000.00000000, 0.00000000, 0.10120000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-08-30 01:23:19', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (10, 'SELL', 0.00000025, 150000.00000000, 0.00000000, 0.03750000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-08-30 01:24:18', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (11, 'SELL', 0.00000012, 1.00000000, 0.00000000, 0.00000012, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-08-30 01:24:19', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (12, 'SELL', 0.00000020, 33000.00000000, 0.00000000, 0.00660000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-08-30 01:43:19', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (13, 'SELL', 0.00000019, 15000.00000000, 0.00000000, 0.00285000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-08-30 01:59:48', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (14, 'SELL', 0.00000027, 77000.00000000, 0.00000000, 0.02079000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-08-30 02:01:28', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (15, 'SELL', 0.00000028, 11000.00000000, 0.00000000, 0.00308000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-08-30 02:01:58', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (16, 'SELL', 0.00000029, 8000.00000000, 0.00000000, 0.00232000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-08-30 02:02:17', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (17, 'SELL', 0.00000030, 5000.00000000, 0.00000000, 0.00150000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-08-30 02:02:39', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (18, 'SELL', 0.00000031, 14000.00000000, 0.00000000, 0.00434000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-08-30 02:02:58', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (19, 'SELL', 0.00000032, 22000.00000000, 0.00000000, 0.00704000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-08-30 02:03:26', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (20, 'SELL', 0.00000033, 17000.00000000, 0.00000000, 0.00561000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-08-30 02:03:51', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (21, 'SELL', 0.00000035, 28000.00000000, 17000.00000000, 0.00980000, 0.00595000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-08-30 02:15:07', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (22, 'BUY', 0.00000021, 18000.00000000, 0.00000000, 0.00378000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-08-30 02:42:00', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (23, 'BUY', 0.00000017, 36000.00000000, 36000.00000000, 0.00612000, 0.00612000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-08-30 02:42:49', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (24, 'BUY', 0.00000016, 44000.00000000, 44000.00000000, 0.00704000, 0.00704000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-08-30 02:43:20', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (25, 'BUY', 0.00000015, 55000.00000000, 55000.00000000, 0.00825000, 0.00825000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-08-30 02:45:17', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (26, 'BUY', 0.00000014, 68000.00000000, 68000.00000000, 0.00952000, 0.00952000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-08-30 02:45:38', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (27, 'BUY', 0.00000011, 188000.00000000, 188000.00000000, 0.02068000, 0.02068000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-08-30 02:46:15', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (28, 'BUY', 0.00000010, 22003.00000000, 22003.00000000, 0.00220030, 0.00220030, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-08-30 02:53:33', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (29, 'BUY', 0.00000009, 37000.00000000, 37000.00000000, 0.00333000, 0.00333000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-08-30 02:53:57', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (30, 'BUY', 0.00000009, 88000.00000000, 88000.00000000, 0.00792000, 0.00792000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-08-30 02:54:58', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (31, 'BUY', 0.00000008, 44000.00000000, 44000.00000000, 0.00352000, 0.00352000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-08-30 02:55:27', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (32, 'BUY', 0.00000008, 55000.00000000, 55000.00000000, 0.00440000, 0.00440000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-08-30 02:56:33', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (33, 'BUY', 0.00000008, 40000.00000000, 40000.00000000, 0.00320000, 0.00320000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-08-30 02:56:58', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (34, 'BUY', 0.00000020, 95000.00000000, 95000.00000000, 0.01900000, 0.01900000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-08-30 02:57:41', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (35, 'BUY', 0.00000020, 155000.00000000, 155000.00000000, 0.03100000, 0.03100000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-09-02 06:45:38', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (36, 'SELL', 0.00000020, 15000.00000000, 0.00000000, 0.00300000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-09-02 06:48:26', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (37, 'BUY', 0.00000022, 300000.00000000, 0.00000000, 0.06600000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-09-02 06:49:34', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (38, 'BUY', 0.00000021, 300000.00000000, 28500.00000000, 0.06300000, 0.00598500, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-09-02 06:50:14', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (39, 'BUY', 0.00000023, 10000.00000000, 0.00000000, 0.00230000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-09-02 06:52:51', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (40, 'BUY', 0.00000023, 14000.00000000, 0.00000000, 0.00322000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-09-02 06:53:39', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (41, 'SELL', 0.00000020, 70000.00000000, 0.00000000, 0.01400000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-09-02 06:57:26', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (42, 'SELL', 0.00000020, 58000.00000000, 0.00000000, 0.01160000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-09-02 06:58:08', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (43, 'SELL', 0.00000020, 28000.00000000, 0.00000000, 0.00560000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-09-02 06:58:47', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (44, 'BUY', 1.00000000, 10.00000000, 0.00000000, 10.00000000, 0.00000000, NULL, 'USDE', NULL, 'USDE_USDT', '4Y0HIQ', '2021-09-25 02:12:08', 0.00001000, 1);
+INSERT INTO `dbt_biding` VALUES (45, 'SELL', 1.00000100, 10.00000000, 10.00000000, 10.00001000, 10.00001000, NULL, 'USDE', NULL, 'USDE_USDT', '4Y0HIQ', '2021-09-25 02:12:44', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (46, 'SELL', 1.00000000, 10.00000000, 0.00000000, 10.00000000, 0.00000000, NULL, 'USDE', NULL, 'USDE_USDT', '4Y0HIQ', '2021-09-25 02:13:26', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (47, 'BUY', 1.00000000, 10.00000000, 0.00000000, 10.00000000, 0.00000000, NULL, 'USDE', NULL, 'USDE_USDT', '4Y0HIQ', '2021-09-25 02:15:46', 0.00001000, 1);
+INSERT INTO `dbt_biding` VALUES (48, 'SELL', 1.00000000, 10.00000000, 0.00000000, 10.00000000, 0.00000000, NULL, 'USDE', NULL, 'USDE_USDT', '4Y0HIQ', '2021-09-25 02:16:10', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (49, 'BUY', 1.00000000, 10.00000000, 0.00000000, 10.00000000, 0.00000000, NULL, 'USDE', NULL, 'USDE_USDT', '4Y0HIQ', '2021-09-25 02:17:11', 0.00001000, 1);
+INSERT INTO `dbt_biding` VALUES (50, 'SELL', 1.00000000, 10.00000000, 0.00000000, 10.00000000, 0.00000000, NULL, 'USDE', NULL, 'USDE_USDT', '4Y0HIQ', '2021-09-25 02:17:33', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (51, 'BUY', 1.00000000, 10.00000000, 0.00000000, 10.00000000, 0.00000000, NULL, 'USDE', NULL, 'USDE_USDT', '4Y0HIQ', '2021-09-25 02:18:33', 0.00001000, 1);
+INSERT INTO `dbt_biding` VALUES (52, 'SELL', 1.00000000, 10.00000000, 0.00000000, 10.00000000, 0.00000000, NULL, 'USDE', NULL, 'USDE_USDT', '4Y0HIQ', '2021-09-25 02:18:56', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (53, 'BUY', 1.00000000, 10.00000000, 0.00000000, 10.00000000, 0.00000000, NULL, 'USDE', NULL, 'USDE_USDT', '4Y0HIQ', '2021-09-25 02:19:28', 0.00001000, 1);
+INSERT INTO `dbt_biding` VALUES (54, 'SELL', 1.00000000, 10.00000000, 0.00000000, 10.00000000, 0.00000000, NULL, 'USDE', NULL, 'USDE_USDT', '4Y0HIQ', '2021-09-29 05:40:00', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (55, 'SELL', 1.00500000, 20.00000000, 20.00000000, 20.10000000, 20.10000000, NULL, 'USDE', NULL, 'USDE_USDT', '4Y0HIQ', '2021-09-29 05:41:31', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (56, 'BUY', 0.00000022, 10000.00000000, 0.00000000, 0.00220000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-07 00:57:05', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (57, 'SELL', 0.00000021, 20000.00000000, 0.00000000, 0.00420000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-07 00:57:39', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (58, 'BUY', 0.00000023, 33000.00000000, 0.00000000, 0.00759000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-07 00:58:40', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (59, 'BUY', 0.00000025, 50000.00000000, 0.00000000, 0.01250000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-07 01:00:14', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (60, 'BUY', 1.00000000, 10.00000000, 10.00000000, 10.00000000, 10.00000000, NULL, 'USDE', NULL, 'USDE_USDT', '4Y0HIQ', '2021-10-07 01:07:22', 0.00001000, 0);
+INSERT INTO `dbt_biding` VALUES (61, 'BUY', 0.99900000, 10.00000000, 10.00000000, 9.99000000, 9.99000000, NULL, 'USDE', NULL, 'USDE_USDT', '4Y0HIQ', '2021-10-07 01:07:48', 0.00000999, 0);
+INSERT INTO `dbt_biding` VALUES (62, 'SELL', 0.00000021, 15000.00000000, 0.00000000, 0.00315000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-07 01:25:46', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (63, 'BUY', 0.00000500, 5000000.00000000, 5000000.00000000, 25.00000000, 25.00000000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-07 01:32:31', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (64, 'BUY', 0.00000450, 10000000.00000000, 10000000.00000000, 45.00000000, 45.00000000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-07 01:33:22', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (65, 'BUY', 0.00000450, 8000000.00000000, 8000000.00000000, 36.00000000, 36.00000000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-07 01:40:19', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (66, 'SELL', 0.00011200, 10000.00000000, 10000.00000000, 1.12000000, 1.12000000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-07 01:40:58', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (67, 'BUY', 0.00000025, 400000.00000000, 0.00000000, 0.10000000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-07 03:02:03', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (68, 'BUY', 0.00000027, 140000.00000000, 0.00000000, 0.03780000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-07 03:03:30', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (69, 'BUY', 0.00000028, 71000.00000000, 0.00000000, 0.01988000, 0.00060000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-07 03:05:00', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (70, 'BUY', 0.00000029, 8000.00000000, 0.00000000, 0.00232000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-07 03:05:59', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (71, 'BUY', 0.00000031, 19000.00000000, 0.00000000, 0.00589000, 0.00005000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-07 03:07:06', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (72, 'BUY', 0.00000032, 11000.00000000, 0.00000000, 0.00352000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-07 03:07:42', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (73, 'BUY', 0.00000032, 5000.00000000, 0.00000000, 0.00160000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-07 03:08:16', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (74, 'BUY', 0.00000032, 1000.00000000, 0.00000000, 0.00032000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-07 03:08:49', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (75, 'BUY', 0.00000032, 1000.00000000, 0.00000000, 0.00032000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-07 03:09:17', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (76, 'BUY', 0.00000032, 1000.00000000, 0.00000000, 0.00032000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-07 03:09:41', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (77, 'BUY', 0.00000032, 500.00000000, 0.00000000, 0.00016000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-07 03:10:04', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (78, 'BUY', 0.00000032, 100.00000000, 0.00000000, 0.00003200, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-07 03:10:31', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (79, 'BUY', 0.00000032, 100.00000000, 0.00000000, 0.00003200, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-07 03:10:43', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (80, 'BUY', 0.00000032, 100.00000000, 0.00000000, 0.00003200, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-07 03:11:04', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (81, 'BUY', 0.00000032, 100.00000000, 0.00000000, 0.00003200, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-07 03:11:11', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (82, 'BUY', 0.00000032, 100.00000000, 0.00000000, 0.00003200, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-07 03:11:20', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (83, 'BUY', 0.00000032, 100.00000000, 0.00000000, 0.00003200, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-07 03:11:27', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (84, 'SELL', 0.00011500, 1000.00000000, 0.00000000, 0.11500000, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-07 03:12:26', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (85, 'BUY', 0.00011500, 100.00000000, 0.00000000, 0.01150000, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-07 03:12:49', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (86, 'SELL', 0.00018500, 1000.00000000, 1000.00000000, 0.18500000, 0.18500000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-07 03:13:21', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (87, 'SELL', 0.00019800, 1000.00000000, 1000.00000000, 0.19800000, 0.19800000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-07 03:13:44', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (88, 'BUY', 0.00018500, 100.00000000, 0.00000000, 0.01850000, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-07 03:14:03', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (89, 'BUY', 0.00018500, 100.00000000, 0.00000000, 0.01850000, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-07 03:17:00', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (90, 'BUY', 0.00011500, 10.00000000, 0.00000000, 0.00115000, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-07 03:19:15', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (91, 'BUY', 0.00011500, 10.00000000, 0.00000000, 0.00115000, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-07 03:19:41', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (92, 'BUY', 0.00018500, 10.00000000, 0.00000000, 0.00185000, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-07 03:20:06', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (93, 'BUY', 0.00011500, 10.00000000, 0.00000000, 0.00115000, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-07 03:20:52', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (94, 'SELL', 0.00000022, 25000.00000000, 0.00000000, 0.00550000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-08 02:01:56', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (95, 'SELL', 0.00000023, 33000.00000000, 0.00000000, 0.00759000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-08 02:02:05', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (96, 'SELL', 0.00000024, 44000.00000000, 0.00000000, 0.01056000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-08 02:02:16', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (97, 'SELL', 0.00000025, 55000.00000000, 0.00000000, 0.01375000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-08 02:02:35', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (98, 'SELL', 0.00000027, 22000.00000000, 0.00000000, 0.00594000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-08 02:02:52', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (99, 'SELL', 0.00000029, 10000.00000000, 0.00000000, 0.00290000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-08 02:03:03', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (100, 'SELL', 0.00012500, 1000.00000000, 0.00000000, 0.12500000, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-08 02:03:49', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (101, 'SELL', 0.00013500, 1000.00000000, 0.00000000, 0.13500000, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-08 02:04:02', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (102, 'SELL', 0.00014500, 1000.00000000, 0.00000000, 0.14500000, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-08 02:04:15', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (103, 'SELL', 0.00015500, 1000.00000000, 600.00000000, 0.15500000, 0.09300000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-08 02:05:13', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (104, 'BUY', 0.00000022, 15000.00000000, 0.00000000, 0.00330000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:07:53', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (105, 'BUY', 0.00000022, 10000.00000000, 0.00000000, 0.00220000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:08:03', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (106, 'BUY', 0.00000023, 25000.00000000, 0.00000000, 0.00575000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:08:37', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (107, 'BUY', 0.00000023, 8000.00000000, 0.00000000, 0.00184000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:08:48', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (108, 'BUY', 0.00000024, 3000.00000000, 0.00000000, 0.00072000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:09:25', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (109, 'BUY', 0.00000024, 1000.00000000, 0.00000000, 0.00024000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:09:33', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (110, 'BUY', 0.00000024, 1500.00000000, 0.00000000, 0.00036000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:09:43', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (111, 'BUY', 0.00000024, 2500.00000000, 0.00000000, 0.00060000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:09:49', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (112, 'BUY', 0.00000024, 1000.00000000, 0.00000000, 0.00024000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:10:57', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (113, 'BUY', 0.00000024, 2000.00000000, 0.00000000, 0.00048000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:11:05', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (114, 'BUY', 0.00000024, 1000.00000000, 0.00000000, 0.00024000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:13:15', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (115, 'BUY', 0.00000024, 200.00000000, 0.00000000, 0.00004800, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:13:23', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (116, 'BUY', 0.00000024, 400.00000000, 0.00000000, 0.00009600, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:13:29', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (117, 'BUY', 0.00000024, 600.00000000, 0.00000000, 0.00014400, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:13:47', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (118, 'BUY', 0.00000024, 800.00000000, 0.00000000, 0.00019200, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:14:04', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (119, 'BUY', 0.00000024, 1000.00000000, 0.00000000, 0.00024000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:14:10', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (120, 'BUY', 0.00000024, 1000.00000000, 0.00000000, 0.00024000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:14:19', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (121, 'BUY', 0.00000024, 25000.00000000, 0.00000000, 0.00600000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:14:30', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (122, 'BUY', 0.00000024, 3000.00000000, 0.00000000, 0.00072000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:14:38', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (123, 'BUY', 0.00000025, 2000.00000000, 0.00000000, 0.00050000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:14:48', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (124, 'BUY', 0.00000025, 2000.00000000, 0.00000000, 0.00050000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:15:00', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (125, 'BUY', 0.00000025, 3000.00000000, 0.00000000, 0.00075000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:15:07', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (126, 'BUY', 0.00000025, 4000.00000000, 0.00000000, 0.00100000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:16:25', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (127, 'BUY', 0.00000025, 1000.00000000, 0.00000000, 0.00025000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:16:33', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (128, 'BUY', 0.00000025, 10000.00000000, 0.00000000, 0.00250000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:16:43', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (129, 'BUY', 0.00000025, 2000.00000000, 0.00000000, 0.00050000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:18:09', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (130, 'BUY', 0.00000025, 6000.00000000, 0.00000000, 0.00150000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:18:15', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (131, 'BUY', 0.00000025, 8000.00000000, 0.00000000, 0.00200000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:18:53', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (132, 'BUY', 0.00000012, 2000.00000000, 2000.00000000, 0.00024000, 0.00024000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:19:01', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (133, 'BUY', 0.00000025, 12000.00000000, 0.00000000, 0.00300000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:19:07', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (134, 'BUY', 0.00000025, 1000.00000000, 0.00000000, 0.00025000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:19:12', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (135, 'BUY', 0.00000025, 4000.00000000, 0.00000000, 0.00100000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:19:59', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (136, 'BUY', 0.00000027, 12000.00000000, 0.00000000, 0.00324000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:20:13', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (137, 'BUY', 0.00000027, 3000.00000000, 0.00000000, 0.00081000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:20:27', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (138, 'BUY', 0.00000027, 7000.00000000, 0.00000000, 0.00189000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:20:33', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (139, 'BUY', 0.00000029, 500.00000000, 0.00000000, 0.00014500, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:21:43', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (140, 'BUY', 0.00000029, 1500.00000000, 0.00000000, 0.00043500, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:21:52', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (141, 'BUY', 0.00000029, 500.00000000, 0.00000000, 0.00014500, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:21:57', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (142, 'BUY', 0.00000029, 500.00000000, 0.00000000, 0.00014500, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:22:51', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (143, 'BUY', 0.00000029, 200.00000000, 0.00000000, 0.00005800, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:23:01', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (144, 'BUY', 0.00000029, 400.00000000, 0.00000000, 0.00011600, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:23:07', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (145, 'BUY', 0.00000029, 1400.00000000, 0.00000000, 0.00040600, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:23:13', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (146, 'BUY', 0.00000029, 500.00000000, 0.00000000, 0.00014500, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:23:19', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (147, 'BUY', 0.00000029, 200.00000000, 0.00000000, 0.00005800, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:24:12', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (148, 'BUY', 0.00000029, 600.00000000, 0.00000000, 0.00017400, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:24:18', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (149, 'BUY', 0.00000029, 100.00000000, 0.00000000, 0.00002900, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:24:24', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (150, 'BUY', 0.00000029, 300.00000000, 0.00000000, 0.00008700, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:24:41', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (151, 'BUY', 0.00000029, 100.00000000, 0.00000000, 0.00002900, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:24:46', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (152, 'BUY', 0.00000029, 200.00000000, 0.00000000, 0.00005800, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:24:51', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (153, 'BUY', 0.00000029, 300.00000000, 0.00000000, 0.00008700, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:25:22', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (154, 'BUY', 0.00000029, 100.00000000, 0.00000000, 0.00002900, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:25:28', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (155, 'BUY', 0.00000029, 200.00000000, 0.00000000, 0.00005800, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:25:48', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (156, 'BUY', 0.00000029, 1000.00000000, 0.00000000, 0.00029000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:26:36', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (157, 'BUY', 0.00000029, 200.00000000, 0.00000000, 0.00005800, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:27:18', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (158, 'BUY', 0.00000029, 1200.00000000, 0.00000000, 0.00034800, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:27:45', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (159, 'BUY', 0.00000032, 100.00000000, 0.00000000, 0.00003200, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:28:19', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (160, 'BUY', 0.00000032, 200.00000000, 0.00000000, 0.00006400, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:28:32', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (161, 'BUY', 0.00000032, 100.00000000, 0.00000000, 0.00003200, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:28:41', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (162, 'BUY', 0.00000032, 200.00000000, 0.00000000, 0.00006400, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:28:48', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (163, 'BUY', 0.00000032, 300.00000000, 0.00000000, 0.00009600, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:28:55', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (164, 'BUY', 0.00000032, 1000.00000000, 0.00000000, 0.00032000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:29:32', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (165, 'BUY', 0.00000033, 1000.00000000, 0.00000000, 0.00033000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:30:34', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (166, 'BUY', 0.00000033, 2000.00000000, 0.00000000, 0.00066000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-08 02:30:39', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (167, 'BUY', 0.00000033, 2000.00000000, 0.00000000, 0.00066000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-12 07:46:30', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (168, 'BUY', 0.00000033, 500.00000000, 0.00000000, 0.00016500, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-12 07:46:35', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (169, 'BUY', 0.00000033, 1000.00000000, 0.00000000, 0.00033000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-12 07:46:41', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (170, 'BUY', 0.00000033, 3000.00000000, 0.00000000, 0.00099000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-12 07:47:08', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (171, 'BUY', 0.00010500, 5000.00000000, 4900.00000000, 0.52500000, 0.51450000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-12 07:47:58', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (172, 'BUY', 0.00010200, 5000.00000000, 5000.00000000, 0.51000000, 0.51000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-12 07:48:13', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (173, 'BUY', 0.00010100, 5000.00000000, 5000.00000000, 0.50500000, 0.50500000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-12 07:48:31', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (174, 'BUY', 0.00011500, 100.00000000, 0.00000000, 0.01150000, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-12 07:48:45', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (175, 'BUY', 0.00011500, 200.00000000, 0.00000000, 0.02300000, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-12 07:48:52', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (176, 'BUY', 0.00011500, 100.00000000, 0.00000000, 0.01150000, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-12 07:48:58', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (177, 'BUY', 0.00012500, 560.00000000, 0.00000000, 0.07000000, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-12 07:49:09', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (178, 'BUY', 0.00012500, 200.00000000, 0.00000000, 0.02500000, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-12 07:49:17', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (179, 'SELL', 0.00081800, 20000.00000000, 12400.00000000, 16.36000000, 10.14320000, NULL, 'RENTA', NULL, 'RENTA_USDE', '4Y0HIQ', '2021-10-12 08:04:08', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (180, 'SELL', 0.00082200, 25000.00000000, 25000.00000000, 20.55000000, 20.55000000, NULL, 'RENTA', NULL, 'RENTA_USDE', '4Y0HIQ', '2021-10-12 08:04:38', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (181, 'SELL', 0.00082500, 15000.00000000, 15000.00000000, 12.37500000, 12.37500000, NULL, 'RENTA', NULL, 'RENTA_USDE', '4Y0HIQ', '2021-10-12 08:05:12', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (182, 'SELL', 0.00082800, 30000.00000000, 30000.00000000, 24.84000000, 24.84000000, NULL, 'RENTA', NULL, 'RENTA_USDE', '4Y0HIQ', '2021-10-12 08:05:30', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (183, 'SELL', 0.00083300, 40000.00000000, 40000.00000000, 33.32000000, 33.32000000, NULL, 'RENTA', NULL, 'RENTA_USDE', '4Y0HIQ', '2021-10-12 08:05:55', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (184, 'SELL', 0.00083800, 45000.00000000, 45000.00000000, 37.71000000, 37.71000000, NULL, 'RENTA', NULL, 'RENTA_USDE', '4Y0HIQ', '2021-10-12 08:06:17', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (185, 'SELL', 0.00084500, 55000.00000000, 55000.00000000, 46.47500000, 46.47500000, NULL, 'RENTA', NULL, 'RENTA_USDE', '4Y0HIQ', '2021-10-12 08:09:46', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (186, 'SELL', 0.00084800, 44000.00000000, 44000.00000000, 37.31200000, 37.31200000, NULL, 'RENTA', NULL, 'RENTA_USDE', '4Y0HIQ', '2021-10-12 08:10:04', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (187, 'SELL', 0.00085500, 60000.00000000, 60000.00000000, 51.30000000, 51.30000000, NULL, 'RENTA', NULL, 'RENTA_USDE', '4Y0HIQ', '2021-10-12 08:10:17', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (188, 'SELL', 0.00088800, 88000.00000000, 88000.00000000, 78.14400000, 78.14400000, NULL, 'RENTA', NULL, 'RENTA_USDE', '4Y0HIQ', '2021-10-12 08:10:56', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (189, 'SELL', 0.00086800, 55000.00000000, 55000.00000000, 47.74000000, 47.74000000, NULL, 'RENTA', NULL, 'RENTA_USDE', '4Y0HIQ', '2021-10-12 08:11:20', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (190, 'BUY', 0.00000033, 7500.00000000, 0.00000000, 0.00247500, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-12 08:30:33', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (191, 'BUY', 0.00000035, 11000.00000000, 0.00000000, 0.00385000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-12 08:30:48', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (192, 'BUY', 0.00012500, 100.00000000, 0.00000000, 0.01250000, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-12 08:31:31', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (193, 'BUY', 0.00012500, 400.00000000, 0.00000000, 0.05000000, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-12 08:31:38', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (194, 'BUY', 0.00013500, 200.00000000, 0.00000000, 0.02700000, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-12 08:31:46', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (195, 'SELL', 0.00000022, 30000.00000000, 29700.00000000, 0.00660000, 0.00653400, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-13 02:26:35', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (196, 'SELL', 0.00000022, 25000.00000000, 25000.00000000, 0.00550000, 0.00550000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-13 02:26:50', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (197, 'SELL', 0.00000023, 55000.00000000, 55000.00000000, 0.01265000, 0.01265000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-13 02:27:22', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (198, 'SELL', 0.00000024, 80000.00000000, 80000.00000000, 0.01920000, 0.01920000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-13 02:27:35', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (199, 'SELL', 0.00000025, 44000.00000000, 44000.00000000, 0.01100000, 0.01100000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-13 02:27:57', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (200, 'BUY', 0.00000021, 2000.00000000, 2000.00000000, 0.00042000, 0.00042000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-13 02:33:53', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (201, 'BUY', 0.00000021, 1000.00000000, 1000.00000000, 0.00021000, 0.00021000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-13 02:34:04', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (202, 'BUY', 0.00000021, 1000.00000000, 1000.00000000, 0.00021000, 0.00021000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-13 04:39:43', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (203, 'BUY', 0.00000021, 2000.00000000, 2000.00000000, 0.00042000, 0.00042000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-13 04:42:03', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (204, 'SELL', 0.00010500, 100.00000000, 0.00000000, 0.01050000, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-13 04:42:50', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (205, 'SELL', 0.00000021, 2000.00000000, 0.00000000, 0.00042000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-13 04:43:09', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (206, 'SELL', 0.00000021, 200.00000000, 0.00000000, 0.00004200, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-13 04:44:48', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (207, 'SELL', 0.00000021, 300.00000000, 0.00000000, 0.00006300, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-13 04:48:14', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (208, 'SELL', 0.00000021, 1000.00000000, 0.00000000, 0.00021000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-13 05:02:48', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (209, 'SELL', 0.00000021, 1000.00000000, 0.00000000, 0.00021000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-13 05:08:38', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (210, 'SELL', 0.00000022, 2000.00000000, 2000.00000000, 0.00044000, 0.00044000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-13 05:08:47', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (211, 'BUY', 0.00000022, 300.00000000, 0.00000000, 0.00006600, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-13 05:08:57', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (212, 'BUY', 1.00000000, 10.00000000, 10.00000000, 10.00000000, 10.00000000, NULL, 'GLD', NULL, 'GLD_USDE', '4Y0HIQ', '2021-10-13 08:38:14', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (213, 'BUY', 1.00200000, 10.00000000, 0.00000000, 10.02000000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', '4Y0HIQ', '2021-10-13 08:38:44', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (214, 'BUY', 1.00400000, 10.00000000, 10.00000000, 10.04000000, 10.04000000, NULL, 'GLD', NULL, 'GLD_USDE', '4Y0HIQ', '2021-10-13 08:39:06', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (215, 'BUY', 1.00500000, 30.00000000, 30.00000000, 30.15000000, 30.15000000, NULL, 'GLD', NULL, 'GLD_USDE', '4Y0HIQ', '2021-10-13 08:39:37', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (216, 'BUY', 1.00300000, 20.00000000, 0.00000000, 20.06000000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', '4Y0HIQ', '2021-10-13 08:40:37', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (217, 'BUY', 0.00081500, 10000.00000000, 10000.00000000, 8.15000000, 8.15000000, NULL, 'RENTA', NULL, 'RENTA_USDE', '4Y0HIQ', '2021-10-13 08:41:56', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (218, 'BUY', 0.00081600, 5000.00000000, 5000.00000000, 4.08000000, 4.08000000, NULL, 'RENTA', NULL, 'RENTA_USDE', '4Y0HIQ', '2021-10-13 08:42:08', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (219, 'BUY', 0.00081700, 6000.00000000, 6000.00000000, 4.90200000, 4.90200000, NULL, 'RENTA', NULL, 'RENTA_USDE', '4Y0HIQ', '2021-10-13 08:42:25', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (220, 'BUY', 0.00081750, 11000.00000000, 11000.00000000, 8.99250000, 8.99250000, NULL, 'RENTA', NULL, 'RENTA_USDE', '4Y0HIQ', '2021-10-13 08:42:51', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (221, 'BUY', 0.00081650, 8000.00000000, 8000.00000000, 6.53200000, 6.53200000, NULL, 'RENTA', NULL, 'RENTA_USDE', '4Y0HIQ', '2021-10-13 08:43:14', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (222, 'BUY', 0.00081550, 4000.00000000, 4000.00000000, 3.26200000, 3.26200000, NULL, 'RENTA', NULL, 'RENTA_USDE', '4Y0HIQ', '2021-10-13 08:43:51', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (223, 'BUY', 0.00003000, 5000.00000000, 5000.00000000, 0.15000000, 0.15000000, NULL, 'IDEA', NULL, 'IDEA_USDE', '4Y0HIQ', '2021-10-13 08:44:30', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (224, 'BUY', 0.00002900, 6000.00000000, 6000.00000000, 0.17400000, 0.17400000, NULL, 'IDEA', NULL, 'IDEA_USDE', '4Y0HIQ', '2021-10-13 08:44:42', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (225, 'BUY', 0.00003100, 4000.00000000, 4000.00000000, 0.12400000, 0.12400000, NULL, 'IDEA', NULL, 'IDEA_USDE', '4Y0HIQ', '2021-10-13 08:44:51', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (226, 'BUY', 0.00003050, 8000.00000000, 8000.00000000, 0.24400000, 0.24400000, NULL, 'IDEA', NULL, 'IDEA_USDE', '4Y0HIQ', '2021-10-13 08:45:15', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (227, 'BUY', 0.00002950, 14000.00000000, 14000.00000000, 0.41300000, 0.41300000, NULL, 'IDEA', NULL, 'IDEA_USDE', '4Y0HIQ', '2021-10-13 08:45:36', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (228, 'BUY', 0.00002820, 30000.00000000, 30000.00000000, 0.84600000, 0.84600000, NULL, 'IDEA', NULL, 'IDEA_USDE', '4Y0HIQ', '2021-10-13 08:45:52', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (229, 'BUY', 0.00002850, 25000.00000000, 25000.00000000, 0.71250000, 0.71250000, NULL, 'IDEA', NULL, 'IDEA_USDE', '4Y0HIQ', '2021-10-13 08:46:11', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (230, 'BUY', 0.00010400, 15000.00000000, 15000.00000000, 1.56000000, 1.56000000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-13 09:00:14', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (231, 'BUY', 0.00010380, 10000.00000000, 10000.00000000, 1.03800000, 1.03800000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-13 09:00:33', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (232, 'BUY', 0.00001050, 50000.00000000, 50000.00000000, 0.52500000, 0.52500000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-13 09:03:25', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (233, 'BUY', 0.00001070, 80000.00000000, 80000.00000000, 0.85600000, 0.85600000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-13 09:03:41', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (234, 'BUY', 0.00001040, 90000.00000000, 90000.00000000, 0.93600000, 0.93600000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-13 09:03:56', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (235, 'BUY', 0.00001028, 55000.00000000, 55000.00000000, 0.56540000, 0.56540000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-13 09:04:14', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (236, 'BUY', 0.00001025, 120000.00000000, 120000.00000000, 1.23000000, 1.23000000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-13 09:04:41', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (237, 'BUY', 0.00001022, 75000.00000000, 75000.00000000, 0.76650000, 0.76650000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-13 09:05:16', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (238, 'BUY', 0.00001019, 95000.00000000, 95000.00000000, 0.96805000, 0.96805000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-13 09:05:32', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (239, 'BUY', 0.00010400, 40000.00000000, 40000.00000000, 4.16000000, 4.16000000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-13 09:07:26', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (240, 'BUY', 0.00001018, 240000.00000000, 240000.00000000, 2.44320000, 2.44320000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-13 09:07:58', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (241, 'BUY', 0.00000530, 50000.00000000, 48219.00000000, 0.26500000, 0.25556070, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-13 10:19:17', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (242, 'BUY', 0.00000525, 90000.00000000, 90000.00000000, 0.47250000, 0.47250000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-13 10:19:53', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (243, 'BUY', 0.00000522, 60000.00000000, 60000.00000000, 0.31320000, 0.31320000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-13 10:20:06', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (244, 'BUY', 0.00000515, 500000.00000000, 500000.00000000, 2.57500000, 2.57500000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-13 10:20:24', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (245, 'BUY', 0.00000512, 900000.00000000, 900000.00000000, 4.60800000, 4.60800000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-13 10:20:47', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (246, 'SELL', 0.00002080, 100000.00000000, 99000.00000000, 2.08000000, 2.05920000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:32:47', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (247, 'SELL', 0.00002050, 50000.00000000, 47000.00000000, 1.02500000, 0.96350000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:33:08', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (248, 'SELL', 0.00002030, 120000.00000000, 118000.00000000, 2.43600000, 2.39540000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:33:34', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (249, 'SELL', 0.00002020, 30000.00000000, 29500.00000000, 0.60600000, 0.59590000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:33:58', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (250, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:35:07', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (251, 'SELL', 0.00000530, 20.00000000, 0.00000000, 0.00010600, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:35:31', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (252, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:35:41', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (253, 'SELL', 0.00000530, 20.00000000, 0.00000000, 0.00010600, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:35:58', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (254, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:36:26', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (255, 'SELL', 0.00000530, 30.00000000, 0.00000000, 0.00015900, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:42:54', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (256, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:43:29', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (257, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:43:41', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (258, 'SELL', 0.00000530, 20.00000000, 0.00000000, 0.00010600, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:43:53', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (259, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:44:01', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (260, 'SELL', 0.00000530, 20.00000000, 0.00000000, 0.00010600, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:44:08', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (261, 'SELL', 0.00000530, 30.00000000, 0.00000000, 0.00015900, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:44:13', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (262, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:44:20', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (263, 'SELL', 0.00000530, 20.00000000, 0.00000000, 0.00010600, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:44:25', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (264, 'SELL', 0.00000530, 40.00000000, 0.00000000, 0.00021200, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:46:01', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (265, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:46:09', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (266, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:46:20', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (267, 'SELL', 4.91800000, 30.00000000, 30.00000000, 147.54000000, 147.54000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:46:25', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (268, 'SELL', 0.00000530, 20.00000000, 0.00000000, 0.00010600, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:47:13', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (269, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:47:19', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (270, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:47:27', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (271, 'SELL', 0.00000530, 30.00000000, 0.00000000, 0.00015900, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:47:32', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (272, 'SELL', 0.00000530, 40.00000000, 0.00000000, 0.00021200, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:48:30', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (273, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:48:36', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (274, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:48:44', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (275, 'SELL', 0.00000530, 20.00000000, 0.00000000, 0.00010600, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:48:50', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (276, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:49:02', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (277, 'SELL', 0.00000530, 50.00000000, 0.00000000, 0.00026500, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:49:08', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (278, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:49:19', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (279, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:49:24', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (280, 'SELL', 0.00000530, 100.00000000, 0.00000000, 0.00053000, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:49:30', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (281, 'SELL', 0.00000530, 20.00000000, 0.00000000, 0.00010600, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:49:36', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (282, 'SELL', 0.00000530, 30.00000000, 0.00000000, 0.00015900, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:49:42', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (283, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:49:47', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (284, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:58:54', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (285, 'SELL', 0.00000530, 50.00000000, 0.00000000, 0.00026500, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:59:03', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (286, 'SELL', 0.00000530, 20.00000000, 0.00000000, 0.00010600, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 10:59:17', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (287, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:00:13', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (288, 'SELL', 0.00000530, 20.00000000, 0.00000000, 0.00010600, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:00:51', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (289, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:00:58', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (290, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:01:06', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (291, 'SELL', 0.00000530, 20.00000000, 0.00000000, 0.00010600, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:01:13', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (292, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:01:23', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (293, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:02:01', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (294, 'SELL', 0.00000530, 20.00000000, 0.00000000, 0.00010600, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:02:08', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (295, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:02:18', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (296, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:02:27', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (297, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:03:44', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (298, 'SELL', 0.00000530, 20.00000000, 0.00000000, 0.00010600, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:03:52', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (299, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:10:58', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (300, 'SELL', 0.00000530, 20.00000000, 0.00000000, 0.00010600, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:11:06', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (301, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:11:19', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (302, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:11:31', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (303, 'SELL', 0.00000530, 20.00000000, 0.00000000, 0.00010600, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:11:43', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (304, 'SELL', 0.00000530, 20.00000000, 0.00000000, 0.00010600, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:12:24', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (305, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:12:31', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (306, 'SELL', 0.00000530, 20.00000000, 0.00000000, 0.00010600, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:12:37', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (307, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:12:44', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (308, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:12:55', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (309, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:13:28', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (310, 'SELL', 0.00000530, 20.00000000, 0.00000000, 0.00010600, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:13:37', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (311, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:13:50', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (312, 'SELL', 0.00000530, 20.00000000, 0.00000000, 0.00010600, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:14:00', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (313, 'SELL', 0.00000530, 20.00000000, 0.00000000, 0.00010600, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:14:23', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (314, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:19:40', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (315, 'SELL', 0.00000530, 20.00000000, 0.00000000, 0.00010600, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:19:50', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (316, 'SELL', 0.00000530, 20.00000000, 0.00000000, 0.00010600, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:20:18', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (317, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:20:28', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (318, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:20:39', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (319, 'SELL', 0.00000530, 20.00000000, 0.00000000, 0.00010600, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:20:49', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (320, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:20:58', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (321, 'SELL', 0.00000530, 201.00000000, 0.00000000, 0.00106530, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:21:10', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (322, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:21:48', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (323, 'SELL', 0.00000530, 20.00000000, 0.00000000, 0.00010600, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:21:57', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (324, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:22:05', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (325, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:22:14', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (326, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:22:22', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (327, 'SELL', 0.00000530, 20.00000000, 0.00000000, 0.00010600, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:22:31', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (328, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:22:39', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (329, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:23:03', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (330, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:23:09', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (331, 'SELL', 0.00000530, 20.00000000, 0.00000000, 0.00010600, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:23:16', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (332, 'SELL', 0.00000530, 10.00000000, 0.00000000, 0.00005300, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:29:00', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (333, 'SELL', 0.00000530, 200.00000000, 0.00000000, 0.00106000, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2021-10-13 11:29:34', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (334, 'SELL', 1.01000000, 200.00000000, 200.00000000, 202.00000000, 202.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 11:31:19', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (335, 'SELL', 1.00800000, 80.00000000, 80.00000000, 80.64000000, 80.64000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 11:32:46', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (336, 'SELL', 1.00700000, 40.00000000, 40.00000000, 40.28000000, 40.28000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 11:33:48', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (337, 'SELL', 1.00500000, 120.00000000, 120.00000000, 120.60000000, 120.60000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 11:34:15', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (338, 'SELL', 1.00300000, 0.50000000, 0.00000000, 0.50150000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 11:36:14', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (339, 'SELL', 1.00300000, 1.00000000, 0.00000000, 1.00300000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 11:36:31', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (340, 'SELL', 1.00300000, 1.00000000, 0.00000000, 1.00300000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 11:36:39', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (341, 'SELL', 1.00300000, 0.25000000, 0.00000000, 0.25075000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 11:41:56', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (342, 'SELL', 1.00300000, 1.00000000, 0.00000000, 1.00300000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 11:42:08', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (343, 'SELL', 1.00300000, 1.25000000, 0.00000000, 1.25375000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 11:43:07', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (344, 'SELL', 1.00300000, 0.25000000, 0.00000000, 0.25075000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 11:43:26', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (345, 'SELL', 1.00300000, 1.00000000, 0.00000000, 1.00300000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 11:43:56', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (346, 'SELL', 1.00300000, 0.25000000, 0.00000000, 0.25075000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 11:44:18', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (347, 'SELL', 1.00300000, 0.02000000, 0.00000000, 0.02006000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 11:44:35', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (348, 'SELL', 1.00300000, 1.50000000, 0.00000000, 1.50450000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 11:45:16', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (349, 'SELL', 1.00300000, 0.50000000, 0.00000000, 0.50150000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 11:45:31', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (350, 'SELL', 1.00300000, 0.02000000, 0.00000000, 0.02006000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 11:48:59', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (351, 'SELL', 1.00300000, 1.00000000, 0.00000000, 1.00300000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 11:49:08', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (352, 'SELL', 9.00000000, 1.00000000, 1.00000000, 9.00000000, 9.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 11:49:09', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (353, 'SELL', 1.00300000, 0.50000000, 0.00000000, 0.50150000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 11:50:51', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (354, 'SELL', 1.00300000, 1.00000000, 0.00000000, 1.00300000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 11:51:01', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (355, 'SELL', 1.00300000, 0.25000000, 0.00000000, 0.25075000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 11:51:41', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (356, 'SELL', 1.00300000, 0.50000000, 0.00000000, 0.50150000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 11:51:58', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (357, 'SELL', 1.00300000, 0.02000000, 0.00000000, 0.02006000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 11:52:15', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (358, 'SELL', 1.00300000, 0.50000000, 0.00000000, 0.50150000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 11:54:39', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (359, 'SELL', 1.00300000, 0.25000000, 0.00000000, 0.25075000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 11:54:49', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (360, 'SELL', 1.00300000, 0.25000000, 0.00000000, 0.25075000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 11:55:29', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (361, 'SELL', 1.00300000, 1.00000000, 0.00000000, 1.00300000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 11:55:36', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (362, 'SELL', 1.00300000, 0.25000000, 0.00000000, 0.25075000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 11:57:28', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (363, 'SELL', 1.00300000, 0.50000000, 0.00000000, 0.50150000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 11:57:39', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (364, 'SELL', 1.00300000, 0.25000000, 0.00000000, 0.25075000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:04:17', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (365, 'SELL', 1.00300000, 0.02000000, 0.00000000, 0.02006000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:04:39', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (366, 'SELL', 1.00300000, 0.25000000, 0.00000000, 0.25075000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:04:55', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (367, 'SELL', 1.00300000, 0.01000000, 0.00000000, 0.01003000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:05:08', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (368, 'SELL', 1.00300000, 0.25000000, 0.00000000, 0.25075000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:05:19', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (369, 'SELL', 1.00300000, 0.10000000, 0.00000000, 0.10030000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:05:40', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (370, 'SELL', 1.00300000, 0.10000000, 0.00000000, 0.10030000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:07:44', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (371, 'SELL', 1.00300000, 0.50000000, 0.00000000, 0.50150000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:08:04', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (372, 'SELL', 1.00300000, 0.01000000, 0.00000000, 0.01003000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:08:15', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (373, 'SELL', 1.00300000, 0.25000000, 0.00000000, 0.25075000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:09:36', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (374, 'SELL', 1.00300000, 0.25000000, 0.00000000, 0.25075000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:09:59', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (375, 'SELL', 1.00300000, 0.20000000, 0.00000000, 0.20060000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:10:14', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (376, 'SELL', 1.00300000, 0.50000000, 0.00000000, 0.50150000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:10:35', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (377, 'SELL', 1.00300000, 0.25000000, 0.00000000, 0.25075000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:10:48', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (378, 'SELL', 1.00300000, 0.25000000, 0.00000000, 0.25075000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:13:07', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (379, 'SELL', 1.00300000, 0.25000000, 0.00000000, 0.25075000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:15:48', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (380, 'SELL', 1.00300000, 0.50000000, 0.00000000, 0.50150000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:16:00', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (381, 'SELL', 1.00300000, 0.25000000, 0.00000000, 0.25075000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:16:08', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (382, 'SELL', 1.00300000, 0.25000000, 0.00000000, 0.25075000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:17:28', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (383, 'SELL', 1.00300000, 0.10000000, 0.00000000, 0.10030000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:17:43', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (384, 'SELL', 1.00300000, 0.10000000, 0.00000000, 0.10030000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:18:46', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (385, 'SELL', 1.00300000, 0.10000000, 0.00000000, 0.10030000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:19:04', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (386, 'SELL', 1.00300000, 0.20000000, 0.00000000, 0.20060000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:21:37', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (387, 'SELL', 1.00300000, 0.25000000, 0.00000000, 0.25075000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:21:46', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (388, 'SELL', 1.00300000, 0.25000000, 0.00000000, 0.25075000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:21:54', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (389, 'SELL', 1.00200000, 0.10000000, 0.00000000, 0.10020000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:23:42', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (390, 'SELL', 1.00200000, 0.10000000, 0.00000000, 0.10020000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:43:43', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (391, 'SELL', 1.00200000, 0.25000000, 0.00000000, 0.25050000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:43:53', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (392, 'SELL', 1.00200000, 0.25000000, 0.00000000, 0.25050000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:44:33', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (393, 'SELL', 1.00200000, 0.10000000, 0.00000000, 0.10020000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:44:49', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (394, 'SELL', 1.00200000, 0.20000000, 0.00000000, 0.20040000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:45:00', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (395, 'SELL', 1.00200000, 0.25000000, 0.00000000, 0.25050000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:46:23', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (396, 'SELL', 1.00200000, 0.25000000, 0.00000000, 0.25050000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:47:19', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (397, 'SELL', 1.00200000, 0.10000000, 0.00000000, 0.10020000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:47:35', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (398, 'SELL', 1.00200000, 0.10000000, 0.00000000, 0.10020000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:48:40', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (399, 'SELL', 1.00200000, 0.10000000, 0.00000000, 0.10020000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:49:15', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (400, 'SELL', 1.00200000, 0.20000000, 0.00000000, 0.20040000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:49:43', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (401, 'SELL', 1.00200000, 0.25000000, 0.00000000, 0.25050000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:52:48', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (402, 'SELL', 1.00200000, 0.10000000, 0.00000000, 0.10020000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:53:05', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (403, 'SELL', 1.00200000, 0.50000000, 0.00000000, 0.50100000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:53:18', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (404, 'SELL', 1.00200000, 0.15000000, 0.00000000, 0.15030000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:55:43', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (405, 'SELL', 1.00200000, 0.25000000, 0.00000000, 0.25050000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:59:23', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (406, 'SELL', 1.00200000, 0.10000000, 0.00000000, 0.10020000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:59:38', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (407, 'SELL', 1.00200000, 0.15000000, 0.00000000, 0.15030000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 14:59:53', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (408, 'SELL', 1.00200000, 0.25000000, 0.00000000, 0.25050000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 15:00:02', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (409, 'SELL', 1.00200000, 0.25000000, 0.00000000, 0.25050000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 15:01:17', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (410, 'SELL', 1.00200000, 0.50000000, 0.00000000, 0.50100000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-13 15:01:29', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (411, 'SELL', 1.00200000, 0.10000000, 0.00000000, 0.10020000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-14 01:32:24', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (412, 'SELL', 1.00200000, 0.20000000, 0.00000000, 0.20040000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-14 01:32:37', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (413, 'SELL', 9.00000000, 1.00000000, 1.00000000, 9.00000000, 9.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-14 01:32:46', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (414, 'SELL', 1.00200000, 0.10000000, 0.00000000, 0.10020000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-14 01:33:25', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (415, 'SELL', 1.00200000, 0.20000000, 0.00000000, 0.20040000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-14 01:33:33', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (416, 'SELL', 1.00200000, 0.25000000, 0.00000000, 0.25050000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-14 01:33:42', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (417, 'SELL', 1.00200000, 0.10000000, 0.00000000, 0.10020000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-14 01:33:52', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (418, 'SELL', 1.00200000, 0.10000000, 0.00000000, 0.10020000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-14 01:34:05', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (419, 'SELL', 1.00200000, 0.10000000, 0.00000000, 0.10020000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-14 01:34:59', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (420, 'SELL', 1.00200000, 0.10000000, 0.00000000, 0.10020000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-14 01:35:16', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (421, 'SELL', 1.00200000, 0.50000000, 0.00000000, 0.50100000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-14 01:35:24', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (422, 'SELL', 1.00200000, 0.10000000, 0.00000000, 0.10020000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-14 01:35:47', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (423, 'SELL', 1.00200000, 0.10000000, 0.00000000, 0.10020000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-14 01:36:24', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (424, 'SELL', 1.00200000, 0.25000000, 0.00000000, 0.25050000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-14 01:36:33', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (425, 'SELL', 1.00200000, 0.10000000, 0.00000000, 0.10020000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-14 01:36:45', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (426, 'SELL', 1.00200000, 0.20000000, 0.00000000, 0.20040000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-14 01:36:53', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (427, 'SELL', 1.00200000, 0.10000000, 0.00000000, 0.10020000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-14 01:37:49', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (428, 'SELL', 1.00200000, 0.20000000, 0.00000000, 0.20040000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-14 01:37:58', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (429, 'SELL', 1.00200000, 0.10000000, 0.00000000, 0.10020000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-14 01:38:06', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (430, 'SELL', 1.00200000, 0.20000000, 0.00000000, 0.20040000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-14 01:38:13', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (431, 'SELL', 1.00200000, 0.10000000, 0.00000000, 0.10020000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-14 01:38:20', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (432, 'SELL', 1.00200000, 0.20000000, 0.00000000, 0.20040000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-14 01:39:12', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (433, 'SELL', 1.00200000, 0.10000000, 0.00000000, 0.10020000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-14 01:39:19', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (434, 'SELL', 1.00200000, 0.25000000, 0.00000000, 0.25050000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-14 01:39:26', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (435, 'SELL', 1.00200000, 0.10000000, 0.00000000, 0.10020000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-14 01:39:52', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (436, 'SELL', 1.00200000, 0.10000000, 0.00000000, 0.10020000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-14 01:39:59', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (437, 'SELL', 1.00200000, 0.05000000, 0.00000000, 0.05010000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-14 01:40:08', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (438, 'SELL', 1.00200000, 0.25000000, 0.00000000, 0.25050000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-14 01:40:22', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (439, 'SELL', 1.00200000, 0.25000000, 0.00000000, 0.25050000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'XP8M1G', '2021-10-14 01:40:31', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (440, 'SELL', 0.00100000, 50000.00000000, 50000.00000000, 50.00000000, 50.00000000, NULL, 'IDEA', NULL, 'IDEA_USDE', 'XP8M1G', '2021-10-14 01:42:40', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (441, 'SELL', 0.00092000, 20000.00000000, 20000.00000000, 18.40000000, 18.40000000, NULL, 'IDEA', NULL, 'IDEA_USDE', 'XP8M1G', '2021-10-14 01:46:09', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (442, 'SELL', 0.00091500, 30000.00000000, 30000.00000000, 27.45000000, 27.45000000, NULL, 'IDEA', NULL, 'IDEA_USDE', 'XP8M1G', '2021-10-14 01:46:40', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (443, 'SELL', 0.00088500, 1.00000000, 1.00000000, 0.00088500, 0.00088500, NULL, 'IDEA', NULL, 'IDEA_USDE', 'XP8M1G', '2021-10-14 01:47:15', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (444, 'SELL', 0.00088500, 15000.00000000, 15000.00000000, 13.27500000, 13.27500000, NULL, 'IDEA', NULL, 'IDEA_USDE', 'XP8M1G', '2021-10-14 01:48:06', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (445, 'BUY', 0.00081800, 5000.00000000, 0.00000000, 4.09000000, 0.00000000, NULL, 'RENTA', NULL, 'RENTA_USDE', 'XP8M1G', '2021-10-14 01:49:31', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (446, 'BUY', 0.00081800, 1000.00000000, 0.00000000, 0.81800000, 0.00000000, NULL, 'RENTA', NULL, 'RENTA_USDE', 'XP8M1G', '2021-10-14 01:49:42', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (447, 'BUY', 0.00081800, 100.00000000, 0.00000000, 0.08180000, 0.00000000, NULL, 'RENTA', NULL, 'RENTA_USDE', 'XP8M1G', '2021-10-14 01:50:28', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (448, 'BUY', 0.00081800, 1000.00000000, 0.00000000, 0.81800000, 0.00000000, NULL, 'RENTA', NULL, 'RENTA_USDE', 'XP8M1G', '2021-10-14 01:50:35', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (449, 'BUY', 0.00081800, 500.00000000, 0.00000000, 0.40900000, 0.00000000, NULL, 'RENTA', NULL, 'RENTA_USDE', 'XP8M1G', '2021-10-14 01:50:40', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (450, 'SELL', 0.00000020, 30000.00000000, 0.00000000, 0.00600000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-14 02:59:49', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (451, 'SELL', 0.00000020, 50000.00000000, 0.00000000, 0.01000000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-14 03:00:15', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (452, 'SELL', 0.00000035, 90000.00000000, 0.00000000, 0.03150000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-14 03:01:02', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (453, 'SELL', 0.00000037, 1.00000000, 1.00000000, 0.00000037, 0.00000037, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-14 03:01:15', 0.00000000, 0);
+INSERT INTO `dbt_biding` VALUES (454, 'SELL', 0.00000037, 80000.00000000, 0.00000000, 0.02960000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-14 03:02:48', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (455, 'BUY', 0.00000035, 70000.00000000, 0.00000000, 0.02450000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-14 03:04:04', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (456, 'BUY', 0.00000037, 50000.00000000, 0.00000000, 0.01850000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-14 03:04:24', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (457, 'BUY', 0.00000037, 20000.00000000, 0.00000000, 0.00740000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-14 03:04:40', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (458, 'BUY', 0.00000037, 30000.00000000, 0.00000000, 0.01110000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-14 03:07:20', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (459, 'SELL', 0.85000000, 20.00000000, 0.00000000, 17.00000000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', 'XP8M1G', '2021-10-14 03:07:54', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (460, 'BUY', 0.85000000, 15.00000000, 0.00000000, 12.75000000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-14 03:09:30', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (461, 'BUY', 0.85000000, 5.00000000, 0.00000000, 4.25000000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-14 03:09:49', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (462, 'SELL', 0.30000000, 10.00000000, 10.00000000, 3.00000000, 3.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-14 03:10:29', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (463, 'SELL', 0.00000020, 1000.00000000, 0.00000000, 0.00020000, 0.00000000, NULL, 'AAX', NULL, 'AAX_USDE', '4Y0HIQ', '2021-10-15 02:32:24', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (464, 'BUY', 0.00000505, 3000000.00000000, 3000000.00000000, 15.15000000, 15.15000000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-22 06:17:51', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (465, 'BUY', 0.00000415, 9000000.00000000, 9000000.00000000, 37.35000000, 37.35000000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-22 06:19:02', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (466, 'BUY', 0.00000365, 15000000.00000000, 15000000.00000000, 54.75000000, 54.75000000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-22 06:19:44', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (467, 'BUY', 0.00000445, 5000000.00000000, 5000000.00000000, 22.25000000, 22.25000000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-22 06:20:16', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (468, 'BUY', 0.00000315, 24000000.00000000, 24000000.00000000, 75.60000000, 75.60000000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-22 06:23:59', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (469, 'BUY', 0.00000485, 3000000.00000000, 3000000.00000000, 14.55000000, 14.55000000, NULL, 'ETL', NULL, 'ETL_USDE', '4Y0HIQ', '2021-10-22 06:25:03', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (470, 'BUY', 0.00002020, 500.00000000, 0.00000000, 0.01010000, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2022-02-01 00:53:17', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (471, 'BUY', 0.00002030, 2000.00000000, 0.00000000, 0.04060000, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2022-02-01 00:54:40', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (472, 'BUY', 0.00002050, 3000.00000000, 0.00000000, 0.06150000, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2022-02-01 00:55:50', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (473, 'BUY', 0.00002080, 1000.00000000, 0.00000000, 0.02080000, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2022-02-01 00:56:45', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (474, 'BUY', 0.00013500, 500.00000000, 0.00000000, 0.06750000, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2022-02-01 00:57:38', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (475, 'BUY', 0.00014500, 600.00000000, 0.00000000, 0.08700000, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2022-02-01 01:45:33', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (476, 'BUY', 0.00015500, 300.00000000, 0.00000000, 0.04650000, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2022-02-01 01:46:40', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (477, 'BUY', 0.00015500, 800.00000000, 0.00000000, 0.12400000, 0.00000000, NULL, 'ETL', NULL, 'ETL_USDE', 'XP8M1G', '2022-02-01 01:47:23', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (478, 'SELL', 0.00011000, 500.00000000, 0.00000000, 0.05500000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', 'CXGSAN', '2022-03-15 07:02:06', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (479, 'SELL', 0.00012000, 1500.00000000, 0.00000000, 0.18000000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', 'CXGSAN', '2022-03-15 07:02:26', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (480, 'SELL', 0.00013000, 1000.00000000, 0.00000000, 0.13000000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', 'CXGSAN', '2022-03-15 07:02:49', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (481, 'SELL', 0.00014000, 2500.00000000, 0.00000000, 0.35000000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', 'CXGSAN', '2022-03-15 07:30:10', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (482, 'SELL', 0.00017000, 3300.00000000, 0.00000000, 0.56100000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', 'CXGSAN', '2022-03-15 07:30:26', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (483, 'SELL', 0.00018500, 700.00000000, 0.00000000, 0.12950000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', 'CXGSAN', '2022-03-15 07:30:51', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (484, 'SELL', 0.00019800, 1800.00000000, 0.00000000, 0.35640000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', 'CXGSAN', '2022-03-15 07:31:17', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (485, 'SELL', 0.00020450, 2200.00000000, 0.00000000, 0.44990000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', 'CXGSAN', '2022-03-15 07:31:40', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (486, 'SELL', 0.00023700, 4200.00000000, 0.00000000, 0.99540000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', 'CXGSAN', '2022-03-15 07:37:39', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (487, 'SELL', 0.00024800, 1100.00000000, 0.00000000, 0.27280000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', 'CXGSAN', '2022-03-15 07:37:54', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (488, 'SELL', 0.00025000, 2000.00000000, 0.00000000, 0.50000000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', 'CXGSAN', '2022-03-15 07:38:11', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (489, 'SELL', 0.00025000, 5000.00000000, 0.00000000, 1.25000000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', 'CXGSAN', '2022-03-15 07:38:23', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (490, 'SELL', 0.00012000, 5000.00000000, 0.00000000, 0.60000000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', 'CXGSAN', '2022-03-15 07:39:17', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (491, 'SELL', 0.00013000, 7000.00000000, 0.00000000, 0.91000000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', 'CXGSAN', '2022-03-15 07:40:07', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (492, 'BUY', 0.00010000, 500.00000000, 0.00000000, 0.05000000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 07:45:18', 0.00000005, 1);
+INSERT INTO `dbt_biding` VALUES (493, 'BUY', 0.00009000, 1500.00000000, 0.00000000, 0.13500000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 07:45:30', 0.00000014, 1);
+INSERT INTO `dbt_biding` VALUES (494, 'BUY', 0.00010300, 800.00000000, 0.00000000, 0.08240000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 07:45:44', 0.00000008, 1);
+INSERT INTO `dbt_biding` VALUES (495, 'BUY', 0.00008000, 300.00000000, 0.00000000, 0.02400000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 07:45:57', 0.00000002, 1);
+INSERT INTO `dbt_biding` VALUES (496, 'BUY', 0.00010900, 2000.00000000, 0.00000000, 0.21800000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 07:48:01', 0.00000022, 1);
+INSERT INTO `dbt_biding` VALUES (497, 'BUY', 0.00010945, 3000.00000000, 0.00000000, 0.32835000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 07:48:23', 0.00000033, 1);
+INSERT INTO `dbt_biding` VALUES (498, 'BUY', 0.00010300, 4000.00000000, 0.00000000, 0.41200000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 07:48:43', 0.00000041, 1);
+INSERT INTO `dbt_biding` VALUES (499, 'BUY', 0.00008550, 1200.00000000, 0.00000000, 0.10260000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 07:49:01', 0.00000010, 1);
+INSERT INTO `dbt_biding` VALUES (500, 'BUY', 0.00007700, 700.00000000, 0.00000000, 0.05390000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 07:49:14', 0.00000005, 1);
+INSERT INTO `dbt_biding` VALUES (501, 'BUY', 0.00006554, 900.00000000, 0.00000000, 0.05898960, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 07:51:00', 0.00000006, 1);
+INSERT INTO `dbt_biding` VALUES (502, 'BUY', 0.00007885, 4400.00000000, 0.00000000, 0.34695936, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 07:51:33', 0.00000035, 1);
+INSERT INTO `dbt_biding` VALUES (503, 'BUY', 0.00005533, 1100.00000000, 1100.00000000, 0.06086300, 0.06086300, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 07:52:09', 0.00000006, 2);
+INSERT INTO `dbt_biding` VALUES (504, 'BUY', 0.00010000, 3000.00000000, 0.00000000, 0.30000000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 07:52:31', 0.00000030, 1);
+INSERT INTO `dbt_biding` VALUES (505, 'BUY', 0.00011000, 200.00000000, 0.00000000, 0.02200000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 07:52:58', 0.00000002, 1);
+INSERT INTO `dbt_biding` VALUES (506, 'BUY', 0.00011000, 800.00000000, 0.00000000, 0.08800000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 07:53:20', 0.00000009, 1);
+INSERT INTO `dbt_biding` VALUES (507, 'BUY', 0.00012000, 3300.00000000, 0.00000000, 0.39600000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 07:54:11', 0.00000040, 1);
+INSERT INTO `dbt_biding` VALUES (508, 'BUY', 0.00012000, 5000.00000000, 0.00000000, 0.60000000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 07:54:34', 0.00000060, 1);
+INSERT INTO `dbt_biding` VALUES (509, 'BUY', 0.00013000, 300.00000000, 0.00000000, 0.03900000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 07:56:14', 0.00000004, 1);
+INSERT INTO `dbt_biding` VALUES (510, 'BUY', 0.00011000, 500.00000000, 0.00000000, 0.05500000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 07:56:28', 0.00000006, 1);
+INSERT INTO `dbt_biding` VALUES (511, 'BUY', 0.00011000, 1000.00000000, 0.00000000, 0.11000000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 07:57:04', 0.00000011, 1);
+INSERT INTO `dbt_biding` VALUES (512, 'BUY', 0.00011000, 2000.00000000, 0.00000000, 0.22000000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 07:57:50', 0.00000022, 1);
+INSERT INTO `dbt_biding` VALUES (513, 'BUY', 0.00011000, 3000.00000000, 0.00000000, 0.33000000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 07:58:09', 0.00000033, 1);
+INSERT INTO `dbt_biding` VALUES (514, 'BUY', 0.00011200, 500.00000000, 0.00000000, 0.05600000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 07:59:04', 0.00000006, 1);
+INSERT INTO `dbt_biding` VALUES (515, 'BUY', 0.00011800, 8000.00000000, 0.00000000, 0.94400000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 07:59:48', 0.00000094, 1);
+INSERT INTO `dbt_biding` VALUES (516, 'BUY', 0.00013000, 5000.00000000, 0.00000000, 0.65000000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 08:00:03', 0.00000065, 1);
+INSERT INTO `dbt_biding` VALUES (517, 'BUY', 0.00013000, 3000.00000000, 0.00000000, 0.39000000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 08:00:24', 0.00000039, 1);
+INSERT INTO `dbt_biding` VALUES (518, 'BUY', 0.00014000, 500.00000000, 0.00000000, 0.07000000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 08:01:00', 0.00000007, 1);
+INSERT INTO `dbt_biding` VALUES (519, 'BUY', 0.00014000, 1200.00000000, 0.00000000, 0.16800000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 08:04:18', 0.00000017, 1);
+INSERT INTO `dbt_biding` VALUES (520, 'BUY', 0.00014000, 1500.00000000, 0.00000000, 0.21000000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 08:05:02', 0.00000021, 1);
+INSERT INTO `dbt_biding` VALUES (521, 'BUY', 0.00017000, 2000.00000000, 0.00000000, 0.34000000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 08:06:04', 0.00000034, 1);
+INSERT INTO `dbt_biding` VALUES (522, 'BUY', 0.00017000, 1500.00000000, 0.00000000, 0.25500000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 08:06:38', 0.00000026, 1);
+INSERT INTO `dbt_biding` VALUES (523, 'BUY', 0.00018500, 500.00000000, 0.00000000, 0.09250000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 08:07:09', 0.00000009, 1);
+INSERT INTO `dbt_biding` VALUES (524, 'BUY', 0.00018500, 500.00000000, 0.00000000, 0.09250000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 08:07:55', 0.00000009, 1);
+INSERT INTO `dbt_biding` VALUES (525, 'BUY', 0.00019800, 3000.00000000, 0.00000000, 0.59400000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:12:16', 0.00000059, 1);
+INSERT INTO `dbt_biding` VALUES (526, 'BUY', 0.00020450, 4000.00000000, 0.00000000, 0.81800000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:12:24', 0.00000082, 1);
+INSERT INTO `dbt_biding` VALUES (527, 'BUY', 0.00023700, 5000.00000000, 0.00000000, 1.18500000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:12:52', 0.00000119, 1);
+INSERT INTO `dbt_biding` VALUES (528, 'BUY', 0.00024800, 2000.00000000, 0.00000000, 0.49600000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:14:00', 0.00000050, 1);
+INSERT INTO `dbt_biding` VALUES (529, 'BUY', 0.00025000, 8000.00000000, 0.00000000, 2.00000000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:14:10', 0.00000200, 1);
+INSERT INTO `dbt_biding` VALUES (530, 'SELL', 0.00011000, 4000.00000000, 0.00000000, 0.44000000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:17:50', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (531, 'SELL', 0.00028000, 4000.00000000, 0.00000000, 1.12000000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:18:21', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (532, 'SELL', 0.00029000, 3000.00000000, 0.00000000, 0.87000000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:18:33', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (533, 'SELL', 0.00030000, 1500.00000000, 1500.00000000, 0.45000000, 0.45000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:18:55', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (534, 'SELL', 0.00031000, 3000.00000000, 3000.00000000, 0.93000000, 0.93000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:19:07', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (535, 'SELL', 0.00033000, 6000.00000000, 6000.00000000, 1.98000000, 1.98000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:19:41', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (536, 'SELL', 0.00037000, 1200.00000000, 1200.00000000, 0.44400000, 0.44400000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:20:00', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (537, 'SELL', 0.00039000, 5000.00000000, 5000.00000000, 1.95000000, 1.95000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:20:14', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (538, 'SELL', 0.00041000, 2000.00000000, 2000.00000000, 0.82000000, 0.82000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:33:50', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (539, 'SELL', 0.00010900, 1500.00000000, 0.00000000, 0.16350000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:34:22', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (540, 'SELL', 0.00011000, 1000.00000000, 0.00000000, 0.11000000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:34:31', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (541, 'SELL', 0.00010900, 900.00000000, 0.00000000, 0.09810000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:34:54', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (542, 'SELL', 0.00010945, 3000.00000000, 0.00000000, 0.32835000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:35:42', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (543, 'SELL', 0.00011000, 4000.00000000, 0.00000000, 0.44000000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:36:03', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (544, 'SELL', 0.00011800, 8000.00000000, 0.00000000, 0.94400000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:36:17', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (545, 'SELL', 0.00013000, 500.00000000, 0.00000000, 0.06500000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:36:24', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (546, 'SELL', 0.00014000, 600.00000000, 0.00000000, 0.08400000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:36:30', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (547, 'SELL', 0.00018500, 500.00000000, 0.00000000, 0.09250000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:36:36', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (548, 'SELL', 0.00019800, 2000.00000000, 0.00000000, 0.39600000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:37:58', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (549, 'SELL', 0.00020450, 1000.00000000, 0.00000000, 0.20450000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:38:04', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (550, 'SELL', 0.00023700, 1000.00000000, 0.00000000, 0.23700000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:38:13', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (551, 'SELL', 0.00024800, 700.00000000, 0.00000000, 0.17360000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:38:52', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (552, 'SELL', 0.00025000, 1000.00000000, 0.00000000, 0.25000000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:39:41', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (553, 'SELL', 0.00010300, 5000.00000000, 0.00000000, 0.51500000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:39:50', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (554, 'SELL', 0.00010000, 4000.00000000, 0.00000000, 0.40000000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:39:58', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (555, 'SELL', 0.00011000, 2000.00000000, 0.00000000, 0.22000000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:48:34', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (556, 'SELL', 0.00009000, 2500.00000000, 0.00000000, 0.22500000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:48:42', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (557, 'SELL', 0.00008550, 2000.00000000, 0.00000000, 0.17100000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:49:01', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (558, 'SELL', 0.00008000, 500.00000000, 0.00000000, 0.04000000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:49:21', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (559, 'SELL', 0.00007885, 5000.00000000, 0.00000000, 0.39425000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:49:46', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (560, 'SELL', 0.00007700, 2000.00000000, 0.00000000, 0.15400000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 11:50:07', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (561, 'SELL', 0.00006554, 1000.00000000, 0.00000000, 0.06554000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 12:03:34', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (562, 'BUY', 0.00006533, 2000.00000000, 2000.00000000, 0.13066000, 0.13066000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 12:04:08', 0.00000013, 2);
+INSERT INTO `dbt_biding` VALUES (563, 'BUY', 0.00007500, 3000.00000000, 2900.00000000, 0.22500000, 0.21844600, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 12:04:31', 0.00000022, 2);
+INSERT INTO `dbt_biding` VALUES (564, 'BUY', 0.00007800, 1000.00000000, 0.00000000, 0.07800000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 12:04:50', 0.00000008, 1);
+INSERT INTO `dbt_biding` VALUES (565, 'BUY', 0.00007800, 4000.00000000, 3700.00000000, 0.31200000, 0.28890000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 12:45:45', 0.00000031, 2);
+INSERT INTO `dbt_biding` VALUES (566, 'BUY', 0.00008000, 3000.00000000, 2200.00000000, 0.24000000, 0.17669000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 12:45:59', 0.00000024, 2);
+INSERT INTO `dbt_biding` VALUES (567, 'BUY', 0.00008100, 4000.00000000, 4000.00000000, 0.32400000, 0.32400000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 12:46:08', 0.00000032, 2);
+INSERT INTO `dbt_biding` VALUES (568, 'BUY', 0.00008300, 6000.00000000, 6000.00000000, 0.49800000, 0.49800000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 12:47:32', 0.00000050, 2);
+INSERT INTO `dbt_biding` VALUES (569, 'BUY', 0.00008400, 8000.00000000, 8000.00000000, 0.67200000, 0.67200000, NULL, 'TEST', NULL, 'TEST_USDT', '91UHYC', '2022-03-15 12:47:59', 0.00000067, 2);
+INSERT INTO `dbt_biding` VALUES (570, 'BUY', 0.00009000, 500.00000000, 0.00000000, 0.04500000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', 'CXGSAN', '2022-03-15 12:56:04', 0.00000004, 1);
+INSERT INTO `dbt_biding` VALUES (571, 'BUY', 0.00008550, 400.00000000, 0.00000000, 0.03420000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', 'CXGSAN', '2022-03-15 12:56:18', 0.00000003, 1);
+INSERT INTO `dbt_biding` VALUES (572, 'BUY', 0.00008550, 600.00000000, 200.00000000, 0.05130000, 0.01710000, NULL, 'TEST', NULL, 'TEST_USDT', 'CXGSAN', '2022-03-15 12:56:53', 0.00000005, 2);
+INSERT INTO `dbt_biding` VALUES (573, 'BUY', 0.00009000, 300.00000000, 0.00000000, 0.02700000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', 'CXGSAN', '2022-03-15 12:57:19', 0.00000003, 1);
+INSERT INTO `dbt_biding` VALUES (574, 'BUY', 0.00009000, 700.00000000, 0.00000000, 0.06300000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', 'CXGSAN', '2022-03-15 12:57:27', 0.00000006, 1);
+INSERT INTO `dbt_biding` VALUES (575, 'BUY', 0.00010000, 800.00000000, 0.00000000, 0.08000000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', 'CXGSAN', '2022-03-15 12:57:42', 0.00000008, 1);
+INSERT INTO `dbt_biding` VALUES (576, 'BUY', 0.00010300, 600.00000000, 0.00000000, 0.06180000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', 'CXGSAN', '2022-03-15 12:58:05', 0.00000006, 1);
+INSERT INTO `dbt_biding` VALUES (577, 'BUY', 0.00011000, 3000.00000000, 900.00000000, 0.33000000, 0.09270000, NULL, 'TEST', NULL, 'TEST_USDT', 'CXGSAN', '2022-03-15 12:58:28', 0.00000033, 2);
+INSERT INTO `dbt_biding` VALUES (578, 'BUY', 0.00025000, 300.00000000, 100.00000000, 0.07500000, 0.02500000, NULL, 'TEST', NULL, 'TEST_USDT', 'CXGSAN', '2022-03-15 12:59:43', 0.00000008, 2);
+INSERT INTO `dbt_biding` VALUES (579, 'SELL', 0.00009000, 800.00000000, 0.00000000, 0.07200000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', 'CXGSAN', '2022-03-15 01:08:49', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (580, 'SELL', 0.00010300, 500.00000000, 0.00000000, 0.05150000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', 'CXGSAN', '2022-03-15 01:09:29', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (581, 'BUY', 0.00028000, 3000.00000000, 0.00000000, 0.84000000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', 'CXGSAN', '2022-03-15 01:10:06', 0.00000084, 1);
+INSERT INTO `dbt_biding` VALUES (582, 'BUY', 0.00028000, 3000.00000000, 2000.00000000, 0.84000000, 0.56000000, NULL, 'TEST', NULL, 'TEST_USDT', 'CXGSAN', '2022-03-15 01:11:43', 0.00000084, 2);
+INSERT INTO `dbt_biding` VALUES (583, 'BUY', 0.00029000, 1000.00000000, 0.00000000, 0.29000000, 0.00000000, NULL, 'TEST', NULL, 'TEST_USDT', 'CXGSAN', '2022-03-15 01:12:00', 0.00000029, 1);
+INSERT INTO `dbt_biding` VALUES (584, 'BUY', 0.00029000, 5000.00000000, 3000.00000000, 1.45000000, 0.87000000, NULL, 'TEST', NULL, 'TEST_USDT', 'CXGSAN', '2022-03-15 01:12:14', 0.00000145, 2);
+INSERT INTO `dbt_biding` VALUES (585, 'BUY', 1.00001000, 20.00000000, 20.00000000, 20.00020000, 20.00020000, NULL, 'GLD', NULL, 'GLD_USDE', 'WYQMUB', '2022-03-16 09:53:04', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (586, 'BUY', 1.00002000, 30.00000000, 30.00000000, 30.00060000, 30.00060000, NULL, 'GLD', NULL, 'GLD_USDE', 'WYQMUB', '2022-03-16 09:53:46', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (587, 'BUY', 1.00040000, 5.00000000, 5.00000000, 5.00200000, 5.00200000, NULL, 'GLD', NULL, 'GLD_USDE', 'WYQMUB', '2022-03-16 09:56:30', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (588, 'BUY', 1.00080000, 15.00000000, 0.00000000, 15.01200000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'WYQMUB', '2022-03-16 09:57:09', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (589, 'BUY', 1.00070000, 10.00000000, 10.00000000, 10.00700000, 10.00700000, NULL, 'GLD', NULL, 'GLD_USDE', 'WYQMUB', '2022-03-16 09:57:41', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (590, 'BUY', 1.00080000, 3.00000000, 0.00000000, 3.00240000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'WYQMUB', '2022-03-16 09:58:09', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (591, 'BUY', 1.00110000, 25.00000000, 0.00000000, 25.02750000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'WYQMUB', '2022-03-16 09:58:41', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (592, 'BUY', 1.00110000, 10.00000000, 0.00000000, 10.01100000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'WYQMUB', '2022-03-16 09:59:08', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (593, 'BUY', 1.00140000, 10.00000000, 0.00000000, 10.01400000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'WYQMUB', '2022-03-16 09:59:37', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (594, 'BUY', 1.00180000, 30.00000000, 0.00000000, 30.05400000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'WYQMUB', '2022-03-16 10:00:21', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (595, 'BUY', 1.00220000, 25.00000000, 0.00000000, 25.05500000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'WYQMUB', '2022-03-16 10:00:47', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (596, 'BUY', 1.00240000, 15.00000000, 0.00000000, 15.03600000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'WYQMUB', '2022-03-16 10:01:35', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (597, 'BUY', 1.00060000, 15.00000000, 15.00000000, 15.00900000, 15.00900000, NULL, 'GLD', NULL, 'GLD_USDE', 'WYQMUB', '2022-03-16 10:02:57', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (598, 'BUY', 1.00050000, 5.00000000, 5.00000000, 5.00250000, 5.00250000, NULL, 'GLD', NULL, 'GLD_USDE', 'WYQMUB', '2022-03-16 10:03:43', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (599, 'BUY', 1.00270000, 11.00000000, 0.00000000, 11.02970000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', 'WYQMUB', '2022-03-16 10:05:16', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (600, 'SELL', 1.00300000, 10.00000000, 0.00000000, 10.03000000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', '3VHN6H', '2022-03-17 03:19:24', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (601, 'SELL', 1.00200000, 5.00000000, 0.00000000, 5.01000000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', '3VHN6H', '2022-03-17 03:19:45', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (602, 'SELL', 1.00220000, 5.00000000, 0.00000000, 5.01100000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', '3VHN6H', '2022-03-17 03:20:18', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (603, 'SELL', 1.00400000, 5.00000000, 5.00000000, 5.02000000, 5.02000000, NULL, 'GLD', NULL, 'GLD_USDE', '3VHN6H', '2022-03-17 03:20:51', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (604, 'SELL', 1.00330000, 5.00000000, 5.00000000, 5.01650000, 5.01650000, NULL, 'GLD', NULL, 'GLD_USDE', '3VHN6H', '2022-03-17 03:21:17', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (605, 'SELL', 1.00290000, 10.00000000, 0.00000000, 10.02900000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', '3VHN6H', '2022-03-17 03:21:31', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (606, 'SELL', 1.00280000, 5.00000000, 0.00000000, 5.01400000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', '3VHN6H', '2022-03-17 03:21:53', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (607, 'SELL', 1.00270000, 10.00000000, 0.00000000, 10.02700000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', '3VHN6H', '2022-03-17 03:22:12', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (608, 'SELL', 1.00310000, 15.00000000, 0.00000000, 15.04650000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', '3VHN6H', '2022-03-17 03:25:27', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (609, 'SELL', 1.00320000, 5.00000000, 5.00000000, 5.01600000, 5.01600000, NULL, 'GLD', NULL, 'GLD_USDE', '3VHN6H', '2022-03-17 03:25:50', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (610, 'SELL', 1.00355000, 10.00000000, 10.00000000, 10.03550000, 10.03550000, NULL, 'GLD', NULL, 'GLD_USDE', '3VHN6H', '2022-03-17 03:26:07', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (611, 'SELL', 1.00375000, 5.00000000, 5.00000000, 5.01875000, 5.01875000, NULL, 'GLD', NULL, 'GLD_USDE', '3VHN6H', '2022-03-17 03:28:27', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (612, 'BUY', 1.00140000, 5.00000000, 0.00000000, 5.00700000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', '3VHN6H', '2022-03-17 03:28:56', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (613, 'SELL', 1.00140000, 20.00000000, 0.00000000, 20.02800000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', '3VHN6H', '2022-03-17 03:29:21', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (614, 'SELL', 1.00140000, 10.00000000, 0.00000000, 10.01400000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', '3VHN6H', '2022-03-17 03:29:48', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (615, 'SELL', 1.00140000, 50.00000000, 0.00000000, 50.07000000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', '3VHN6H', '2022-03-17 03:30:16', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (616, 'SELL', 1.00110000, 50.00000000, 0.00000000, 50.05500000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', '3VHN6H', '2022-03-17 03:30:35', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (617, 'SELL', 1.00080000, 30.00000000, 0.00000000, 30.02400000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', '3VHN6H', '2022-03-17 03:30:52', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (618, 'SELL', 1.00280000, 60.00000000, 0.00000000, 60.16800000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', '3VHN6H', '2022-03-17 03:32:22', 0.00000000, 1);
+INSERT INTO `dbt_biding` VALUES (619, 'BUY', 1.00290000, 110.00000000, 5.00000000, 110.31900000, 5.07770000, NULL, 'GLD', NULL, 'GLD_USDE', '3VHN6H', '2022-03-17 03:33:26', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (620, 'BUY', 1.00300000, 15.00000000, 5.00000000, 15.04500000, 5.01500000, NULL, 'GLD', NULL, 'GLD_USDE', '3VHN6H', '2022-03-17 03:35:51', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (621, 'BUY', 1.00310000, 20.00000000, 1.00000000, 20.06200000, 1.00310000, NULL, 'GLD', NULL, 'GLD_USDE', '3VHN6H', '2022-03-17 03:36:05', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (622, 'BUY', 1.00310000, 3.00000000, 3.00000000, 3.00930000, 3.00930000, NULL, 'GLD', NULL, 'GLD_USDE', '3VHN6H', '2022-03-17 04:07:18', 0.00000000, 2);
+INSERT INTO `dbt_biding` VALUES (623, 'SELL', 1.00310000, 4.00000000, 0.00000000, 4.01240000, 0.00000000, NULL, 'GLD', NULL, 'GLD_USDE', '3VHN6H', '2022-03-17 04:07:35', 0.00000000, 1);
+
+-- ----------------------------
+-- Table structure for dbt_biding_log
+-- ----------------------------
+DROP TABLE IF EXISTS `dbt_biding_log`;
+CREATE TABLE `dbt_biding_log`  (
+  `log_id` bigint(22) NOT NULL AUTO_INCREMENT,
+  `bid_id` bigint(22) NOT NULL,
+  `bid_type` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `bid_price` double(19, 8) NOT NULL,
+  `complete_qty` double(19, 8) NOT NULL,
+  `complete_amount` double(19, 8) NOT NULL,
+  `user_id` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `coin_id` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `currency_symbol` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `market_id` int(11) NULL DEFAULT NULL,
+  `market_symbol` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `success_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `fees_amount` double(19, 8) NOT NULL,
+  `available_amount` double(19, 8) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  PRIMARY KEY (`log_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 970 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of dbt_biding_log
+-- ----------------------------
+INSERT INTO `dbt_biding_log` VALUES (1, 1, 'SELL', 0.00000020, 5000000.00000000, 1.00000000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-08-08 06:09:03', 0.00000000, 1.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (2, 5, 'BUY', 0.00000020, 5000000.00000000, 1.00000000, 'TBFDJT', NULL, 'AAX', NULL, 'AAX_USDE', '2021-08-08 06:09:03', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (3, 4, 'BUY', 0.00000019, 4000000.00000000, 0.76000000, 'TBFDJT', NULL, 'AAX', NULL, 'AAX_USDE', '2021-08-08 06:18:38', 0.00000000, 3.80000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (4, 6, 'SELL', 0.00000019, 4000000.00000000, 0.76000000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-08-08 06:18:38', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (5, 2, 'BUY', 0.00000012, 1.00000000, 0.00000012, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-08-30 01:24:19', 0.00000000, 0.96000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (6, 11, 'SELL', 0.00000012, 1.00000000, 0.00000012, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-08-30 01:24:19', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (7, 5, 'BUY', 0.00000020, 33000.00000000, 0.00660000, 'TBFDJT', NULL, 'AAX', NULL, 'AAX_USDE', '2021-08-30 01:43:19', 0.00000000, 2.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (8, 12, 'SELL', 0.00000020, 33000.00000000, 0.00660000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-08-30 01:43:19', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (9, 4, 'BUY', 0.00000019, 15000.00000000, 0.00285000, 'TBFDJT', NULL, 'AAX', NULL, 'AAX_USDE', '2021-08-30 01:59:48', 0.00000000, 3.04000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (10, 13, 'SELL', 0.00000019, 15000.00000000, 0.00285000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-08-30 01:59:48', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (11, 8, 'SELL', 0.00000021, 18000.00000000, 0.00378000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-08-30 02:42:00', 0.00000000, 0.05250000, 1);
+INSERT INTO `dbt_biding_log` VALUES (12, 22, 'BUY', 0.00000021, 18000.00000000, 0.00378000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-08-30 02:42:00', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (13, 5, 'BUY', 0.00000020, 15000.00000000, 0.00300000, 'TBFDJT', NULL, 'AAX', NULL, 'AAX_USDE', '2021-09-02 06:48:26', 0.00000000, 1.99340000, 2);
+INSERT INTO `dbt_biding_log` VALUES (14, 36, 'SELL', 0.00000020, 15000.00000000, 0.00300000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-09-02 06:48:26', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (15, 7, 'SELL', 0.00000022, 300000.00000000, 0.06600000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-09-02 06:49:34', 0.00000000, 0.07700000, 1);
+INSERT INTO `dbt_biding_log` VALUES (16, 37, 'BUY', 0.00000022, 300000.00000000, 0.06600000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-09-02 06:49:34', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (17, 8, 'SELL', 0.00000021, 232000.00000000, 0.04872000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-09-02 06:50:14', 0.00000000, 0.04872000, 1);
+INSERT INTO `dbt_biding_log` VALUES (18, 38, 'BUY', 0.00000021, 232000.00000000, 0.04872000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-09-02 06:50:14', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (19, 7, 'SELL', 0.00000022, 10000.00000000, 0.00220000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-09-02 06:52:51', 0.00000000, 0.01100000, 1);
+INSERT INTO `dbt_biding_log` VALUES (20, 39, 'BUY', 0.00000022, 10000.00000000, 0.00220000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-09-02 06:52:51', 0.00000000, 0.00010000, 2);
+INSERT INTO `dbt_biding_log` VALUES (21, 7, 'SELL', 0.00000022, 14000.00000000, 0.00308000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-09-02 06:53:39', 0.00000000, 0.00880000, 1);
+INSERT INTO `dbt_biding_log` VALUES (22, 40, 'BUY', 0.00000022, 14000.00000000, 0.00308000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-09-02 06:53:39', 0.00000000, 0.00014000, 2);
+INSERT INTO `dbt_biding_log` VALUES (23, 5, 'BUY', 0.00000020, 70000.00000000, 0.01400000, 'TBFDJT', NULL, 'AAX', NULL, 'AAX_USDE', '2021-09-02 06:57:26', 0.00000000, 1.99040000, 1);
+INSERT INTO `dbt_biding_log` VALUES (24, 41, 'SELL', 0.00000020, 70000.00000000, 0.01400000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-09-02 06:57:26', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (25, 5, 'BUY', 0.00000020, 58000.00000000, 0.01160000, 'TBFDJT', NULL, 'AAX', NULL, 'AAX_USDE', '2021-09-02 06:58:08', 0.00000000, 1.97640000, 1);
+INSERT INTO `dbt_biding_log` VALUES (26, 42, 'SELL', 0.00000020, 58000.00000000, 0.01160000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-09-02 06:58:08', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (27, 5, 'BUY', 0.00000020, 28000.00000000, 0.00560000, 'TBFDJT', NULL, 'AAX', NULL, 'AAX_USDE', '2021-09-02 06:58:47', 0.00000000, 1.96480000, 2);
+INSERT INTO `dbt_biding_log` VALUES (28, 43, 'SELL', 0.00000020, 28000.00000000, 0.00560000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-09-02 06:58:47', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (29, 44, 'BUY', 1.00000000, 10.00000000, 10.00000000, '4Y0HIQ', NULL, 'USDE', NULL, 'USDE_USDT', '2021-09-25 02:13:26', 0.00001000, 10.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (30, 46, 'SELL', 1.00000000, 10.00000000, 10.00000000, '4Y0HIQ', NULL, 'USDE', NULL, 'USDE_USDT', '2021-09-25 02:13:26', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (31, 47, 'BUY', 1.00000000, 10.00000000, 10.00000000, '4Y0HIQ', NULL, 'USDE', NULL, 'USDE_USDT', '2021-09-25 02:16:10', 0.00001000, 10.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (32, 48, 'SELL', 1.00000000, 10.00000000, 10.00000000, '4Y0HIQ', NULL, 'USDE', NULL, 'USDE_USDT', '2021-09-25 02:16:10', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (33, 49, 'BUY', 1.00000000, 10.00000000, 10.00000000, '4Y0HIQ', NULL, 'USDE', NULL, 'USDE_USDT', '2021-09-25 02:17:33', 0.00001000, 10.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (34, 50, 'SELL', 1.00000000, 10.00000000, 10.00000000, '4Y0HIQ', NULL, 'USDE', NULL, 'USDE_USDT', '2021-09-25 02:17:33', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (35, 51, 'BUY', 1.00000000, 10.00000000, 10.00000000, '4Y0HIQ', NULL, 'USDE', NULL, 'USDE_USDT', '2021-09-25 02:18:56', 0.00001000, 10.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (36, 52, 'SELL', 1.00000000, 10.00000000, 10.00000000, '4Y0HIQ', NULL, 'USDE', NULL, 'USDE_USDT', '2021-09-25 02:18:56', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (37, 53, 'BUY', 1.00000000, 10.00000000, 10.00000000, '4Y0HIQ', NULL, 'USDE', NULL, 'USDE_USDT', '2021-09-29 05:40:00', 0.00001000, 10.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (38, 54, 'SELL', 1.00000000, 10.00000000, 10.00000000, '4Y0HIQ', NULL, 'USDE', NULL, 'USDE_USDT', '2021-09-29 05:40:00', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (39, 7, 'SELL', 0.00000022, 10000.00000000, 0.00220000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 00:57:05', 0.00000000, 0.00572000, 1);
+INSERT INTO `dbt_biding_log` VALUES (40, 56, 'BUY', 0.00000022, 10000.00000000, 0.00220000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 00:57:05', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (41, 38, 'BUY', 0.00000021, 20000.00000000, 0.00420000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 00:57:39', 0.00000000, 0.01428000, 1);
+INSERT INTO `dbt_biding_log` VALUES (42, 57, 'SELL', 0.00000021, 20000.00000000, 0.00420000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 00:57:39', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (43, 7, 'SELL', 0.00000022, 16000.00000000, 0.00352000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 00:58:40', 0.00000000, 0.00352000, 1);
+INSERT INTO `dbt_biding_log` VALUES (44, 58, 'BUY', 0.00000022, 16000.00000000, 0.00352000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 00:58:40', 0.00000000, 0.00033000, 2);
+INSERT INTO `dbt_biding_log` VALUES (45, 9, 'SELL', 0.00000023, 17000.00000000, 0.00391000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 00:58:40', 0.00000000, 0.10120000, 1);
+INSERT INTO `dbt_biding_log` VALUES (46, 58, 'BUY', 0.00000023, 17000.00000000, 0.00391000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 00:58:40', 0.00000000, 0.00016000, 2);
+INSERT INTO `dbt_biding_log` VALUES (47, 9, 'SELL', 0.00000023, 50000.00000000, 0.01150000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 01:00:14', 0.00000000, 0.09729000, 1);
+INSERT INTO `dbt_biding_log` VALUES (48, 59, 'BUY', 0.00000023, 50000.00000000, 0.01150000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 01:00:14', 0.00000000, 0.00100000, 2);
+INSERT INTO `dbt_biding_log` VALUES (49, 38, 'BUY', 0.00000021, 15000.00000000, 0.00315000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 01:25:46', 0.00000000, 0.01008000, 1);
+INSERT INTO `dbt_biding_log` VALUES (50, 62, 'SELL', 0.00000021, 15000.00000000, 0.00315000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 01:25:46', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (51, 64, 'BUY', 0.00000450, 10000000.00000000, 45.00000000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-07 01:39:03', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (52, 66, 'SELL', 0.00011200, 10000.00000000, 10000.00000000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-07 02:58:43', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (53, 65, 'BUY', 0.00000450, 8000000.00000000, 36.00000000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-07 02:58:47', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (54, 9, 'SELL', 0.00000023, 373000.00000000, 0.08579000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:02:03', 0.00000000, 0.08579000, 2);
+INSERT INTO `dbt_biding_log` VALUES (55, 67, 'BUY', 0.00000023, 373000.00000000, 0.08579000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:02:03', 0.00000000, 0.00800000, 2);
+INSERT INTO `dbt_biding_log` VALUES (56, 10, 'SELL', 0.00000025, 27000.00000000, 0.00675000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:02:03', 0.00000000, 0.03750000, 1);
+INSERT INTO `dbt_biding_log` VALUES (57, 67, 'BUY', 0.00000025, 27000.00000000, 0.00675000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:02:03', 0.00000000, 0.00746000, 2);
+INSERT INTO `dbt_biding_log` VALUES (58, 10, 'SELL', 0.00000025, 123000.00000000, 0.03075000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:03:30', 0.00000000, 0.03075000, 1);
+INSERT INTO `dbt_biding_log` VALUES (59, 68, 'BUY', 0.00000025, 123000.00000000, 0.03075000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:03:30', 0.00000000, 0.00280000, 2);
+INSERT INTO `dbt_biding_log` VALUES (60, 14, 'SELL', 0.00000027, 17000.00000000, 0.00459000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:03:30', 0.00000000, 0.02079000, 1);
+INSERT INTO `dbt_biding_log` VALUES (61, 68, 'BUY', 0.00000027, 17000.00000000, 0.00459000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:03:30', 0.00000000, 0.00246000, 2);
+INSERT INTO `dbt_biding_log` VALUES (62, 14, 'SELL', 0.00000027, 60000.00000000, 0.01620000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:05:00', 0.00000000, 0.01620000, 1);
+INSERT INTO `dbt_biding_log` VALUES (63, 69, 'BUY', 0.00000027, 60000.00000000, 0.01620000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:05:00', 0.00000000, 0.00071000, 2);
+INSERT INTO `dbt_biding_log` VALUES (64, 15, 'SELL', 0.00000028, 11000.00000000, 0.00308000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:05:00', 0.00000000, 0.00308000, 1);
+INSERT INTO `dbt_biding_log` VALUES (65, 69, 'BUY', 0.00000028, 11000.00000000, 0.00308000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:05:00', 0.00000000, 0.00060000, 2);
+INSERT INTO `dbt_biding_log` VALUES (66, 16, 'SELL', 0.00000029, 8000.00000000, 0.00232000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:05:59', 0.00000000, 0.00232000, 1);
+INSERT INTO `dbt_biding_log` VALUES (67, 70, 'BUY', 0.00000029, 8000.00000000, 0.00232000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:05:59', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (68, 17, 'SELL', 0.00000030, 5000.00000000, 0.00150000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:07:06', 0.00000000, 0.00150000, 1);
+INSERT INTO `dbt_biding_log` VALUES (69, 71, 'BUY', 0.00000030, 5000.00000000, 0.00150000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:07:06', 0.00000000, 0.00019000, 2);
+INSERT INTO `dbt_biding_log` VALUES (70, 18, 'SELL', 0.00000031, 14000.00000000, 0.00434000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:07:06', 0.00000000, 0.00434000, 1);
+INSERT INTO `dbt_biding_log` VALUES (71, 71, 'BUY', 0.00000031, 14000.00000000, 0.00434000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:07:06', 0.00000000, 0.00005000, 2);
+INSERT INTO `dbt_biding_log` VALUES (72, 19, 'SELL', 0.00000032, 11000.00000000, 0.00352000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:07:42', 0.00000000, 0.00704000, 1);
+INSERT INTO `dbt_biding_log` VALUES (73, 72, 'BUY', 0.00000032, 11000.00000000, 0.00352000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:07:42', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (74, 19, 'SELL', 0.00000032, 5000.00000000, 0.00160000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:08:16', 0.00000000, 0.00352000, 1);
+INSERT INTO `dbt_biding_log` VALUES (75, 73, 'BUY', 0.00000032, 5000.00000000, 0.00160000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:08:16', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (76, 19, 'SELL', 0.00000032, 1000.00000000, 0.00032000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:08:49', 0.00000000, 0.00192000, 1);
+INSERT INTO `dbt_biding_log` VALUES (77, 74, 'BUY', 0.00000032, 1000.00000000, 0.00032000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:08:49', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (78, 19, 'SELL', 0.00000032, 1000.00000000, 0.00032000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:09:17', 0.00000000, 0.00160000, 1);
+INSERT INTO `dbt_biding_log` VALUES (79, 75, 'BUY', 0.00000032, 1000.00000000, 0.00032000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:09:17', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (80, 19, 'SELL', 0.00000032, 1000.00000000, 0.00032000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:09:41', 0.00000000, 0.00128000, 1);
+INSERT INTO `dbt_biding_log` VALUES (81, 76, 'BUY', 0.00000032, 1000.00000000, 0.00032000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:09:41', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (82, 19, 'SELL', 0.00000032, 500.00000000, 0.00016000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:10:04', 0.00000000, 0.00096000, 1);
+INSERT INTO `dbt_biding_log` VALUES (83, 77, 'BUY', 0.00000032, 500.00000000, 0.00016000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:10:04', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (84, 19, 'SELL', 0.00000032, 100.00000000, 0.00003200, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:10:31', 0.00000000, 0.00080000, 1);
+INSERT INTO `dbt_biding_log` VALUES (85, 78, 'BUY', 0.00000032, 100.00000000, 0.00003200, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:10:31', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (86, 19, 'SELL', 0.00000032, 100.00000000, 0.00003200, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:10:43', 0.00000000, 0.00076800, 1);
+INSERT INTO `dbt_biding_log` VALUES (87, 79, 'BUY', 0.00000032, 100.00000000, 0.00003200, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:10:43', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (88, 19, 'SELL', 0.00000032, 100.00000000, 0.00003200, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:11:04', 0.00000000, 0.00073600, 1);
+INSERT INTO `dbt_biding_log` VALUES (89, 80, 'BUY', 0.00000032, 100.00000000, 0.00003200, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:11:04', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (90, 19, 'SELL', 0.00000032, 100.00000000, 0.00003200, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:11:11', 0.00000000, 0.00070400, 1);
+INSERT INTO `dbt_biding_log` VALUES (91, 81, 'BUY', 0.00000032, 100.00000000, 0.00003200, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:11:11', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (92, 19, 'SELL', 0.00000032, 100.00000000, 0.00003200, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:11:20', 0.00000000, 0.00067200, 1);
+INSERT INTO `dbt_biding_log` VALUES (93, 82, 'BUY', 0.00000032, 100.00000000, 0.00003200, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:11:20', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (94, 19, 'SELL', 0.00000032, 100.00000000, 0.00003200, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:11:27', 0.00000000, 0.00064000, 1);
+INSERT INTO `dbt_biding_log` VALUES (95, 83, 'BUY', 0.00000032, 100.00000000, 0.00003200, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-07 03:11:27', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (96, 84, 'SELL', 0.00011500, 100.00000000, 0.01150000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-07 03:12:49', 0.00000000, 0.11500000, 1);
+INSERT INTO `dbt_biding_log` VALUES (97, 85, 'BUY', 0.00011500, 100.00000000, 0.01150000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-07 03:12:49', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (98, 84, 'SELL', 0.00011500, 100.00000000, 0.01150000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-07 03:14:03', 0.00000000, 0.10350000, 1);
+INSERT INTO `dbt_biding_log` VALUES (99, 88, 'BUY', 0.00011500, 100.00000000, 0.01150000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-07 03:14:03', 0.00000000, 0.00700000, 2);
+INSERT INTO `dbt_biding_log` VALUES (100, 84, 'SELL', 0.00011500, 100.00000000, 0.01150000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-07 03:17:00', 0.00000000, 0.09200000, 1);
+INSERT INTO `dbt_biding_log` VALUES (101, 89, 'BUY', 0.00011500, 100.00000000, 0.01150000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-07 03:17:00', 0.00000000, 0.00700000, 2);
+INSERT INTO `dbt_biding_log` VALUES (102, 84, 'SELL', 0.00011500, 10.00000000, 0.00115000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-07 03:19:15', 0.00000000, 0.08050000, 1);
+INSERT INTO `dbt_biding_log` VALUES (103, 90, 'BUY', 0.00011500, 10.00000000, 0.00115000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-07 03:19:15', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (104, 84, 'SELL', 0.00011500, 10.00000000, 0.00115000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-07 03:19:41', 0.00000000, 0.07935000, 1);
+INSERT INTO `dbt_biding_log` VALUES (105, 91, 'BUY', 0.00011500, 10.00000000, 0.00115000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-07 03:19:41', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (106, 84, 'SELL', 0.00011500, 10.00000000, 0.00115000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-07 03:20:06', 0.00000000, 0.07820000, 1);
+INSERT INTO `dbt_biding_log` VALUES (107, 92, 'BUY', 0.00011500, 10.00000000, 0.00115000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-07 03:20:06', 0.00000000, 0.00070000, 2);
+INSERT INTO `dbt_biding_log` VALUES (108, 84, 'SELL', 0.00011500, 10.00000000, 0.00115000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-07 03:20:52', 0.00000000, 0.07705000, 1);
+INSERT INTO `dbt_biding_log` VALUES (109, 93, 'BUY', 0.00011500, 10.00000000, 0.00115000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-07 03:20:52', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (110, 63, 'BUY', 0.00000500, 5000000.00000000, 25.00000000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-08 02:00:12', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (111, 61, 'BUY', 0.99900000, 10.00000000, 9.99000999, '4Y0HIQ', NULL, 'USDE', NULL, 'USDE_USDT', '2021-10-08 02:00:18', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (112, 60, 'BUY', 1.00000000, 10.00000000, 10.00001000, '4Y0HIQ', NULL, 'USDE', NULL, 'USDE_USDT', '2021-10-08 02:00:32', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (113, 45, 'SELL', 1.00000100, 10.00000000, 10.00000000, '4Y0HIQ', NULL, 'USDE', NULL, 'USDE_USDT', '2021-10-08 02:00:49', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (114, 55, 'SELL', 1.00500000, 20.00000000, 20.00000000, '4Y0HIQ', NULL, 'USDE', NULL, 'USDE_USDT', '2021-10-08 02:00:54', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (115, 94, 'SELL', 0.00000022, 15000.00000000, 0.00330000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:07:53', 0.00000000, 0.00550000, 1);
+INSERT INTO `dbt_biding_log` VALUES (116, 104, 'BUY', 0.00000022, 15000.00000000, 0.00330000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:07:53', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (117, 94, 'SELL', 0.00000022, 10000.00000000, 0.00220000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:08:03', 0.00000000, 0.00220000, 1);
+INSERT INTO `dbt_biding_log` VALUES (118, 105, 'BUY', 0.00000022, 10000.00000000, 0.00220000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:08:03', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (119, 95, 'SELL', 0.00000023, 25000.00000000, 0.00575000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:08:37', 0.00000000, 0.00759000, 2);
+INSERT INTO `dbt_biding_log` VALUES (120, 106, 'BUY', 0.00000023, 25000.00000000, 0.00575000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:08:37', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (121, 95, 'SELL', 0.00000023, 8000.00000000, 0.00184000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:08:48', 0.00000000, 0.00184000, 1);
+INSERT INTO `dbt_biding_log` VALUES (122, 107, 'BUY', 0.00000023, 8000.00000000, 0.00184000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:08:48', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (123, 96, 'SELL', 0.00000024, 3000.00000000, 0.00072000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:09:25', 0.00000000, 0.01056000, 2);
+INSERT INTO `dbt_biding_log` VALUES (124, 108, 'BUY', 0.00000024, 3000.00000000, 0.00072000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:09:25', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (125, 96, 'SELL', 0.00000024, 1000.00000000, 0.00024000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:09:33', 0.00000000, 0.00984000, 1);
+INSERT INTO `dbt_biding_log` VALUES (126, 109, 'BUY', 0.00000024, 1000.00000000, 0.00024000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:09:33', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (127, 96, 'SELL', 0.00000024, 1500.00000000, 0.00036000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:09:43', 0.00000000, 0.00960000, 1);
+INSERT INTO `dbt_biding_log` VALUES (128, 110, 'BUY', 0.00000024, 1500.00000000, 0.00036000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:09:43', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (129, 96, 'SELL', 0.00000024, 2500.00000000, 0.00060000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:09:49', 0.00000000, 0.00924000, 1);
+INSERT INTO `dbt_biding_log` VALUES (130, 111, 'BUY', 0.00000024, 2500.00000000, 0.00060000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:09:49', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (131, 96, 'SELL', 0.00000024, 1000.00000000, 0.00024000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:10:57', 0.00000000, 0.00864000, 2);
+INSERT INTO `dbt_biding_log` VALUES (132, 112, 'BUY', 0.00000024, 1000.00000000, 0.00024000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:10:57', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (133, 96, 'SELL', 0.00000024, 2000.00000000, 0.00048000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:11:05', 0.00000000, 0.00840000, 1);
+INSERT INTO `dbt_biding_log` VALUES (134, 113, 'BUY', 0.00000024, 2000.00000000, 0.00048000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:11:05', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (135, 96, 'SELL', 0.00000024, 1000.00000000, 0.00024000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:13:15', 0.00000000, 0.00792000, 1);
+INSERT INTO `dbt_biding_log` VALUES (136, 114, 'BUY', 0.00000024, 1000.00000000, 0.00024000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:13:15', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (137, 96, 'SELL', 0.00000024, 200.00000000, 0.00004800, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:13:23', 0.00000000, 0.00768000, 2);
+INSERT INTO `dbt_biding_log` VALUES (138, 115, 'BUY', 0.00000024, 200.00000000, 0.00004800, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:13:23', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (139, 96, 'SELL', 0.00000024, 400.00000000, 0.00009600, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:13:29', 0.00000000, 0.00763200, 2);
+INSERT INTO `dbt_biding_log` VALUES (140, 116, 'BUY', 0.00000024, 400.00000000, 0.00009600, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:13:29', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (141, 96, 'SELL', 0.00000024, 600.00000000, 0.00014400, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:13:47', 0.00000000, 0.00753600, 2);
+INSERT INTO `dbt_biding_log` VALUES (142, 117, 'BUY', 0.00000024, 600.00000000, 0.00014400, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:13:47', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (143, 96, 'SELL', 0.00000024, 800.00000000, 0.00019200, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:14:04', 0.00000000, 0.00739200, 2);
+INSERT INTO `dbt_biding_log` VALUES (144, 118, 'BUY', 0.00000024, 800.00000000, 0.00019200, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:14:04', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (145, 96, 'SELL', 0.00000024, 1000.00000000, 0.00024000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:14:10', 0.00000000, 0.00720000, 2);
+INSERT INTO `dbt_biding_log` VALUES (146, 119, 'BUY', 0.00000024, 1000.00000000, 0.00024000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:14:10', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (147, 96, 'SELL', 0.00000024, 1000.00000000, 0.00024000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:14:19', 0.00000000, 0.00696000, 2);
+INSERT INTO `dbt_biding_log` VALUES (148, 120, 'BUY', 0.00000024, 1000.00000000, 0.00024000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:14:19', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (149, 96, 'SELL', 0.00000024, 25000.00000000, 0.00600000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:14:30', 0.00000000, 0.00672000, 2);
+INSERT INTO `dbt_biding_log` VALUES (150, 121, 'BUY', 0.00000024, 25000.00000000, 0.00600000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:14:30', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (151, 96, 'SELL', 0.00000024, 3000.00000000, 0.00072000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:14:38', 0.00000000, 0.00072000, 2);
+INSERT INTO `dbt_biding_log` VALUES (152, 122, 'BUY', 0.00000024, 3000.00000000, 0.00072000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:14:38', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (153, 97, 'SELL', 0.00000025, 2000.00000000, 0.00050000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:14:48', 0.00000000, 0.01375000, 1);
+INSERT INTO `dbt_biding_log` VALUES (154, 123, 'BUY', 0.00000025, 2000.00000000, 0.00050000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:14:48', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (155, 97, 'SELL', 0.00000025, 2000.00000000, 0.00050000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:15:00', 0.00000000, 0.01325000, 1);
+INSERT INTO `dbt_biding_log` VALUES (156, 124, 'BUY', 0.00000025, 2000.00000000, 0.00050000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:15:00', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (157, 97, 'SELL', 0.00000025, 3000.00000000, 0.00075000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:15:07', 0.00000000, 0.01275000, 1);
+INSERT INTO `dbt_biding_log` VALUES (158, 125, 'BUY', 0.00000025, 3000.00000000, 0.00075000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:15:07', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (159, 97, 'SELL', 0.00000025, 4000.00000000, 0.00100000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:16:25', 0.00000000, 0.01200000, 1);
+INSERT INTO `dbt_biding_log` VALUES (160, 126, 'BUY', 0.00000025, 4000.00000000, 0.00100000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:16:25', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (161, 97, 'SELL', 0.00000025, 1000.00000000, 0.00025000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:16:33', 0.00000000, 0.01100000, 1);
+INSERT INTO `dbt_biding_log` VALUES (162, 127, 'BUY', 0.00000025, 1000.00000000, 0.00025000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:16:33', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (163, 97, 'SELL', 0.00000025, 10000.00000000, 0.00250000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:16:43', 0.00000000, 0.01075000, 1);
+INSERT INTO `dbt_biding_log` VALUES (164, 128, 'BUY', 0.00000025, 10000.00000000, 0.00250000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:16:43', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (165, 97, 'SELL', 0.00000025, 2000.00000000, 0.00050000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:18:09', 0.00000000, 0.00825000, 1);
+INSERT INTO `dbt_biding_log` VALUES (166, 129, 'BUY', 0.00000025, 2000.00000000, 0.00050000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:18:09', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (167, 97, 'SELL', 0.00000025, 6000.00000000, 0.00150000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:18:15', 0.00000000, 0.00775000, 1);
+INSERT INTO `dbt_biding_log` VALUES (168, 130, 'BUY', 0.00000025, 6000.00000000, 0.00150000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:18:15', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (169, 97, 'SELL', 0.00000025, 8000.00000000, 0.00200000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:18:53', 0.00000000, 0.00625000, 2);
+INSERT INTO `dbt_biding_log` VALUES (170, 131, 'BUY', 0.00000025, 8000.00000000, 0.00200000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:18:53', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (171, 97, 'SELL', 0.00000025, 12000.00000000, 0.00300000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:19:07', 0.00000000, 0.00425000, 2);
+INSERT INTO `dbt_biding_log` VALUES (172, 133, 'BUY', 0.00000025, 12000.00000000, 0.00300000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:19:07', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (173, 97, 'SELL', 0.00000025, 1000.00000000, 0.00025000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:19:12', 0.00000000, 0.00125000, 1);
+INSERT INTO `dbt_biding_log` VALUES (174, 134, 'BUY', 0.00000025, 1000.00000000, 0.00025000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:19:12', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (175, 97, 'SELL', 0.00000025, 4000.00000000, 0.00100000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:19:59', 0.00000000, 0.00100000, 1);
+INSERT INTO `dbt_biding_log` VALUES (176, 135, 'BUY', 0.00000025, 4000.00000000, 0.00100000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:19:59', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (177, 98, 'SELL', 0.00000027, 12000.00000000, 0.00324000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:20:13', 0.00000000, 0.00594000, 1);
+INSERT INTO `dbt_biding_log` VALUES (178, 136, 'BUY', 0.00000027, 12000.00000000, 0.00324000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:20:13', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (179, 98, 'SELL', 0.00000027, 3000.00000000, 0.00081000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:20:27', 0.00000000, 0.00270000, 1);
+INSERT INTO `dbt_biding_log` VALUES (180, 137, 'BUY', 0.00000027, 3000.00000000, 0.00081000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:20:27', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (181, 98, 'SELL', 0.00000027, 7000.00000000, 0.00189000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:20:33', 0.00000000, 0.00189000, 1);
+INSERT INTO `dbt_biding_log` VALUES (182, 138, 'BUY', 0.00000027, 7000.00000000, 0.00189000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:20:33', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (183, 99, 'SELL', 0.00000029, 500.00000000, 0.00014500, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:21:43', 0.00000000, 0.00290000, 1);
+INSERT INTO `dbt_biding_log` VALUES (184, 139, 'BUY', 0.00000029, 500.00000000, 0.00014500, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:21:43', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (185, 99, 'SELL', 0.00000029, 1500.00000000, 0.00043500, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:21:52', 0.00000000, 0.00275500, 2);
+INSERT INTO `dbt_biding_log` VALUES (186, 140, 'BUY', 0.00000029, 1500.00000000, 0.00043500, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:21:52', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (187, 99, 'SELL', 0.00000029, 500.00000000, 0.00014500, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:21:57', 0.00000000, 0.00232000, 1);
+INSERT INTO `dbt_biding_log` VALUES (188, 141, 'BUY', 0.00000029, 500.00000000, 0.00014500, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:21:57', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (189, 99, 'SELL', 0.00000029, 500.00000000, 0.00014500, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:22:51', 0.00000000, 0.00217500, 1);
+INSERT INTO `dbt_biding_log` VALUES (190, 142, 'BUY', 0.00000029, 500.00000000, 0.00014500, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:22:51', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (191, 99, 'SELL', 0.00000029, 200.00000000, 0.00005800, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:23:01', 0.00000000, 0.00203000, 2);
+INSERT INTO `dbt_biding_log` VALUES (192, 143, 'BUY', 0.00000029, 200.00000000, 0.00005800, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:23:01', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (193, 99, 'SELL', 0.00000029, 400.00000000, 0.00011600, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:23:07', 0.00000000, 0.00197200, 1);
+INSERT INTO `dbt_biding_log` VALUES (194, 144, 'BUY', 0.00000029, 400.00000000, 0.00011600, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:23:07', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (195, 99, 'SELL', 0.00000029, 1400.00000000, 0.00040600, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:23:13', 0.00000000, 0.00185600, 2);
+INSERT INTO `dbt_biding_log` VALUES (196, 145, 'BUY', 0.00000029, 1400.00000000, 0.00040600, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:23:13', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (197, 99, 'SELL', 0.00000029, 500.00000000, 0.00014500, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:23:19', 0.00000000, 0.00145000, 1);
+INSERT INTO `dbt_biding_log` VALUES (198, 146, 'BUY', 0.00000029, 500.00000000, 0.00014500, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:23:19', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (199, 99, 'SELL', 0.00000029, 200.00000000, 0.00005800, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:24:12', 0.00000000, 0.00130500, 1);
+INSERT INTO `dbt_biding_log` VALUES (200, 147, 'BUY', 0.00000029, 200.00000000, 0.00005800, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:24:12', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (201, 99, 'SELL', 0.00000029, 600.00000000, 0.00017400, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:24:18', 0.00000000, 0.00124700, 2);
+INSERT INTO `dbt_biding_log` VALUES (202, 148, 'BUY', 0.00000029, 600.00000000, 0.00017400, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:24:18', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (203, 99, 'SELL', 0.00000029, 100.00000000, 0.00002900, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:24:24', 0.00000000, 0.00107300, 1);
+INSERT INTO `dbt_biding_log` VALUES (204, 149, 'BUY', 0.00000029, 100.00000000, 0.00002900, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:24:24', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (205, 99, 'SELL', 0.00000029, 300.00000000, 0.00008700, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:24:41', 0.00000000, 0.00104400, 1);
+INSERT INTO `dbt_biding_log` VALUES (206, 150, 'BUY', 0.00000029, 300.00000000, 0.00008700, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:24:41', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (207, 99, 'SELL', 0.00000029, 100.00000000, 0.00002900, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:24:46', 0.00000000, 0.00095700, 1);
+INSERT INTO `dbt_biding_log` VALUES (208, 151, 'BUY', 0.00000029, 100.00000000, 0.00002900, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:24:46', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (209, 99, 'SELL', 0.00000029, 200.00000000, 0.00005800, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:24:51', 0.00000000, 0.00092800, 2);
+INSERT INTO `dbt_biding_log` VALUES (210, 152, 'BUY', 0.00000029, 200.00000000, 0.00005800, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:24:51', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (211, 99, 'SELL', 0.00000029, 300.00000000, 0.00008700, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:25:22', 0.00000000, 0.00087000, 2);
+INSERT INTO `dbt_biding_log` VALUES (212, 153, 'BUY', 0.00000029, 300.00000000, 0.00008700, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:25:22', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (213, 99, 'SELL', 0.00000029, 100.00000000, 0.00002900, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:25:28', 0.00000000, 0.00078300, 1);
+INSERT INTO `dbt_biding_log` VALUES (214, 154, 'BUY', 0.00000029, 100.00000000, 0.00002900, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:25:28', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (215, 99, 'SELL', 0.00000029, 200.00000000, 0.00005800, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:25:48', 0.00000000, 0.00075400, 2);
+INSERT INTO `dbt_biding_log` VALUES (216, 155, 'BUY', 0.00000029, 200.00000000, 0.00005800, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:25:48', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (217, 99, 'SELL', 0.00000029, 1000.00000000, 0.00029000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:26:36', 0.00000000, 0.00069600, 2);
+INSERT INTO `dbt_biding_log` VALUES (218, 156, 'BUY', 0.00000029, 1000.00000000, 0.00029000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:26:36', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (219, 99, 'SELL', 0.00000029, 200.00000000, 0.00005800, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:27:18', 0.00000000, 0.00040600, 2);
+INSERT INTO `dbt_biding_log` VALUES (220, 157, 'BUY', 0.00000029, 200.00000000, 0.00005800, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:27:18', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (221, 99, 'SELL', 0.00000029, 1200.00000000, 0.00034800, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:27:45', 0.00000000, 0.00034800, 2);
+INSERT INTO `dbt_biding_log` VALUES (222, 158, 'BUY', 0.00000029, 1200.00000000, 0.00034800, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:27:45', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (223, 19, 'SELL', 0.00000032, 100.00000000, 0.00003200, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:28:19', 0.00000000, 0.00060800, 1);
+INSERT INTO `dbt_biding_log` VALUES (224, 159, 'BUY', 0.00000032, 100.00000000, 0.00003200, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:28:19', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (225, 19, 'SELL', 0.00000032, 200.00000000, 0.00006400, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:28:32', 0.00000000, 0.00057600, 1);
+INSERT INTO `dbt_biding_log` VALUES (226, 160, 'BUY', 0.00000032, 200.00000000, 0.00006400, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:28:32', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (227, 19, 'SELL', 0.00000032, 100.00000000, 0.00003200, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:28:41', 0.00000000, 0.00051200, 1);
+INSERT INTO `dbt_biding_log` VALUES (228, 161, 'BUY', 0.00000032, 100.00000000, 0.00003200, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:28:41', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (229, 19, 'SELL', 0.00000032, 200.00000000, 0.00006400, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:28:48', 0.00000000, 0.00048000, 1);
+INSERT INTO `dbt_biding_log` VALUES (230, 162, 'BUY', 0.00000032, 200.00000000, 0.00006400, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:28:48', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (231, 19, 'SELL', 0.00000032, 300.00000000, 0.00009600, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:28:55', 0.00000000, 0.00041600, 1);
+INSERT INTO `dbt_biding_log` VALUES (232, 163, 'BUY', 0.00000032, 300.00000000, 0.00009600, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:28:55', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (233, 19, 'SELL', 0.00000032, 1000.00000000, 0.00032000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:29:32', 0.00000000, 0.00032000, 1);
+INSERT INTO `dbt_biding_log` VALUES (234, 164, 'BUY', 0.00000032, 1000.00000000, 0.00032000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:29:32', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (235, 20, 'SELL', 0.00000033, 1000.00000000, 0.00033000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:30:34', 0.00000000, 0.00561000, 1);
+INSERT INTO `dbt_biding_log` VALUES (236, 165, 'BUY', 0.00000033, 1000.00000000, 0.00033000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:30:34', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (237, 20, 'SELL', 0.00000033, 2000.00000000, 0.00066000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:30:39', 0.00000000, 0.00528000, 1);
+INSERT INTO `dbt_biding_log` VALUES (238, 166, 'BUY', 0.00000033, 2000.00000000, 0.00066000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-08 02:30:39', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (239, 20, 'SELL', 0.00000033, 2000.00000000, 0.00066000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-12 07:46:30', 0.00000000, 0.00462000, 1);
+INSERT INTO `dbt_biding_log` VALUES (240, 167, 'BUY', 0.00000033, 2000.00000000, 0.00066000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-12 07:46:30', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (241, 20, 'SELL', 0.00000033, 500.00000000, 0.00016500, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-12 07:46:35', 0.00000000, 0.00396000, 1);
+INSERT INTO `dbt_biding_log` VALUES (242, 168, 'BUY', 0.00000033, 500.00000000, 0.00016500, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-12 07:46:35', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (243, 20, 'SELL', 0.00000033, 1000.00000000, 0.00033000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-12 07:46:41', 0.00000000, 0.00379500, 1);
+INSERT INTO `dbt_biding_log` VALUES (244, 169, 'BUY', 0.00000033, 1000.00000000, 0.00033000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-12 07:46:41', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (245, 20, 'SELL', 0.00000033, 3000.00000000, 0.00099000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-12 07:47:08', 0.00000000, 0.00346500, 1);
+INSERT INTO `dbt_biding_log` VALUES (246, 170, 'BUY', 0.00000033, 3000.00000000, 0.00099000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-12 07:47:08', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (247, 84, 'SELL', 0.00011500, 100.00000000, 0.01150000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-12 07:48:45', 0.00000000, 0.07590000, 1);
+INSERT INTO `dbt_biding_log` VALUES (248, 174, 'BUY', 0.00011500, 100.00000000, 0.01150000, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-12 07:48:45', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (249, 84, 'SELL', 0.00011500, 200.00000000, 0.02300000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-12 07:48:52', 0.00000000, 0.06440000, 1);
+INSERT INTO `dbt_biding_log` VALUES (250, 175, 'BUY', 0.00011500, 200.00000000, 0.02300000, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-12 07:48:52', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (251, 84, 'SELL', 0.00011500, 100.00000000, 0.01150000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-12 07:48:58', 0.00000000, 0.04140000, 1);
+INSERT INTO `dbt_biding_log` VALUES (252, 176, 'BUY', 0.00011500, 100.00000000, 0.01150000, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-12 07:48:58', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (253, 84, 'SELL', 0.00011500, 260.00000000, 0.02990000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-12 07:49:09', 0.00000000, 0.02990000, 1);
+INSERT INTO `dbt_biding_log` VALUES (254, 177, 'BUY', 0.00011500, 260.00000000, 0.02990000, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-12 07:49:09', 0.00000000, 0.00560000, 2);
+INSERT INTO `dbt_biding_log` VALUES (255, 100, 'SELL', 0.00012500, 300.00000000, 0.03750000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-12 07:49:09', 0.00000000, 0.12500000, 1);
+INSERT INTO `dbt_biding_log` VALUES (256, 177, 'BUY', 0.00012500, 300.00000000, 0.03750000, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-12 07:49:09', 0.00000000, 0.00260000, 2);
+INSERT INTO `dbt_biding_log` VALUES (257, 100, 'SELL', 0.00012500, 200.00000000, 0.02500000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-12 07:49:17', 0.00000000, 0.08750000, 1);
+INSERT INTO `dbt_biding_log` VALUES (258, 178, 'BUY', 0.00012500, 200.00000000, 0.02500000, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-12 07:49:17', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (259, 20, 'SELL', 0.00000033, 7500.00000000, 0.00247500, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-12 08:30:33', 0.00000000, 0.00247500, 1);
+INSERT INTO `dbt_biding_log` VALUES (260, 190, 'BUY', 0.00000033, 7500.00000000, 0.00247500, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-12 08:30:33', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (261, 21, 'SELL', 0.00000035, 11000.00000000, 0.00385000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-12 08:30:48', 0.00000000, 0.00980000, 1);
+INSERT INTO `dbt_biding_log` VALUES (262, 191, 'BUY', 0.00000035, 11000.00000000, 0.00385000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-12 08:30:48', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (263, 100, 'SELL', 0.00012500, 100.00000000, 0.01250000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-12 08:31:31', 0.00000000, 0.06250000, 1);
+INSERT INTO `dbt_biding_log` VALUES (264, 192, 'BUY', 0.00012500, 100.00000000, 0.01250000, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-12 08:31:31', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (265, 100, 'SELL', 0.00012500, 400.00000000, 0.05000000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-12 08:31:38', 0.00000000, 0.05000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (266, 193, 'BUY', 0.00012500, 400.00000000, 0.05000000, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-12 08:31:38', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (267, 101, 'SELL', 0.00013500, 200.00000000, 0.02700000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-12 08:31:46', 0.00000000, 0.13500000, 1);
+INSERT INTO `dbt_biding_log` VALUES (268, 194, 'BUY', 0.00013500, 200.00000000, 0.02700000, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-12 08:31:46', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (269, 171, 'BUY', 0.00010500, 100.00000000, 0.01050000, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 04:42:50', 0.00000000, 0.52500000, 1);
+INSERT INTO `dbt_biding_log` VALUES (270, 204, 'SELL', 0.00010500, 100.00000000, 0.01050000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 04:42:50', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (271, 38, 'BUY', 0.00000021, 2000.00000000, 0.00042000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-13 04:43:09', 0.00000000, 0.00693000, 1);
+INSERT INTO `dbt_biding_log` VALUES (272, 205, 'SELL', 0.00000021, 2000.00000000, 0.00042000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-13 04:43:09', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (273, 38, 'BUY', 0.00000021, 200.00000000, 0.00004200, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-13 04:44:48', 0.00000000, 0.00651000, 1);
+INSERT INTO `dbt_biding_log` VALUES (274, 206, 'SELL', 0.00000021, 200.00000000, 0.00004200, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-13 04:44:48', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (275, 38, 'BUY', 0.00000021, 300.00000000, 0.00006300, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-13 04:48:14', 0.00000000, 0.00646800, 1);
+INSERT INTO `dbt_biding_log` VALUES (276, 207, 'SELL', 0.00000021, 300.00000000, 0.00006300, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-13 04:48:14', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (277, 38, 'BUY', 0.00000021, 1000.00000000, 0.00021000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-13 05:02:48', 0.00000000, 0.00640500, 1);
+INSERT INTO `dbt_biding_log` VALUES (278, 208, 'SELL', 0.00000021, 1000.00000000, 0.00021000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-13 05:02:48', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (279, 38, 'BUY', 0.00000021, 1000.00000000, 0.00021000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-13 05:08:38', 0.00000000, 0.00619500, 1);
+INSERT INTO `dbt_biding_log` VALUES (280, 209, 'SELL', 0.00000021, 1000.00000000, 0.00021000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-13 05:08:38', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (281, 195, 'SELL', 0.00000022, 300.00000000, 0.00006600, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-13 05:08:57', 0.00000000, 0.00660000, 1);
+INSERT INTO `dbt_biding_log` VALUES (282, 211, 'BUY', 0.00000022, 300.00000000, 0.00006600, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-13 05:08:57', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (283, 215, 'BUY', 1.00500000, 30.00000000, 30.15000000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 08:40:52', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (284, 214, 'BUY', 1.00400000, 10.00000000, 10.04000000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 08:40:57', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (285, 231, 'BUY', 0.00010380, 10000.00000000, 1.03800000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 09:01:59', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (286, 230, 'BUY', 0.00010400, 15000.00000000, 1.56000000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 09:02:04', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (287, 232, 'BUY', 0.00001050, 50000.00000000, 0.52500000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 09:05:59', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (288, 234, 'BUY', 0.00001040, 90000.00000000, 0.93600000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 09:06:06', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (289, 239, 'BUY', 0.00010400, 40000.00000000, 4.16000000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:15:49', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (290, 238, 'BUY', 0.00001019, 95000.00000000, 0.96805000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:15:56', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (291, 235, 'BUY', 0.00001028, 55000.00000000, 0.56540000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:15:59', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (292, 240, 'BUY', 0.00001018, 240000.00000000, 2.44320000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:16:04', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (293, 236, 'BUY', 0.00001025, 120000.00000000, 1.23000000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:16:09', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (294, 233, 'BUY', 0.00001070, 80000.00000000, 0.85600000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:16:14', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (295, 237, 'BUY', 0.00001022, 75000.00000000, 0.76650000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:16:19', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (296, 173, 'BUY', 0.00010100, 5000.00000000, 0.50500000, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:25:41', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (297, 172, 'BUY', 0.00010200, 5000.00000000, 0.51000000, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:25:47', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (298, 171, 'BUY', 0.00010500, 4900.00000000, 0.51450000, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:25:57', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (299, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:35:07', 0.00000000, 0.26500000, 1);
+INSERT INTO `dbt_biding_log` VALUES (300, 250, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:35:07', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (301, 241, 'BUY', 0.00000530, 20.00000000, 0.00010600, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:35:31', 0.00000000, 0.26494700, 1);
+INSERT INTO `dbt_biding_log` VALUES (302, 251, 'SELL', 0.00000530, 20.00000000, 0.00010600, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:35:31', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (303, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:35:41', 0.00000000, 0.26484100, 1);
+INSERT INTO `dbt_biding_log` VALUES (304, 252, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:35:41', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (305, 241, 'BUY', 0.00000530, 20.00000000, 0.00010600, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:35:58', 0.00000000, 0.26478800, 1);
+INSERT INTO `dbt_biding_log` VALUES (306, 253, 'SELL', 0.00000530, 20.00000000, 0.00010600, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:35:58', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (307, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:36:26', 0.00000000, 0.26468200, 1);
+INSERT INTO `dbt_biding_log` VALUES (308, 254, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:36:26', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (309, 241, 'BUY', 0.00000530, 30.00000000, 0.00015900, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:42:54', 0.00000000, 0.26462900, 1);
+INSERT INTO `dbt_biding_log` VALUES (310, 255, 'SELL', 0.00000530, 30.00000000, 0.00015900, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:42:54', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (311, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:43:29', 0.00000000, 0.26447000, 1);
+INSERT INTO `dbt_biding_log` VALUES (312, 256, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:43:29', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (313, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:43:41', 0.00000000, 0.26441700, 1);
+INSERT INTO `dbt_biding_log` VALUES (314, 257, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:43:41', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (315, 241, 'BUY', 0.00000530, 20.00000000, 0.00010600, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:43:53', 0.00000000, 0.26436400, 1);
+INSERT INTO `dbt_biding_log` VALUES (316, 258, 'SELL', 0.00000530, 20.00000000, 0.00010600, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:43:53', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (317, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:44:01', 0.00000000, 0.26425800, 1);
+INSERT INTO `dbt_biding_log` VALUES (318, 259, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:44:01', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (319, 241, 'BUY', 0.00000530, 20.00000000, 0.00010600, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:44:08', 0.00000000, 0.26420500, 1);
+INSERT INTO `dbt_biding_log` VALUES (320, 260, 'SELL', 0.00000530, 20.00000000, 0.00010600, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:44:08', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (321, 241, 'BUY', 0.00000530, 30.00000000, 0.00015900, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:44:13', 0.00000000, 0.26409900, 1);
+INSERT INTO `dbt_biding_log` VALUES (322, 261, 'SELL', 0.00000530, 30.00000000, 0.00015900, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:44:13', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (323, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:44:20', 0.00000000, 0.26394000, 1);
+INSERT INTO `dbt_biding_log` VALUES (324, 262, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:44:20', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (325, 241, 'BUY', 0.00000530, 20.00000000, 0.00010600, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:44:25', 0.00000000, 0.26388700, 1);
+INSERT INTO `dbt_biding_log` VALUES (326, 263, 'SELL', 0.00000530, 20.00000000, 0.00010600, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:44:25', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (327, 241, 'BUY', 0.00000530, 40.00000000, 0.00021200, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:46:01', 0.00000000, 0.26378100, 1);
+INSERT INTO `dbt_biding_log` VALUES (328, 264, 'SELL', 0.00000530, 40.00000000, 0.00021200, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:46:01', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (329, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:46:09', 0.00000000, 0.26356900, 1);
+INSERT INTO `dbt_biding_log` VALUES (330, 265, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:46:09', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (331, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:46:20', 0.00000000, 0.26351600, 1);
+INSERT INTO `dbt_biding_log` VALUES (332, 266, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:46:20', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (333, 267, 'SELL', 4.91800000, 30.00000000, 30.00000000, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:46:40', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (334, 241, 'BUY', 0.00000530, 20.00000000, 0.00010600, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:47:13', 0.00000000, 0.26346300, 1);
+INSERT INTO `dbt_biding_log` VALUES (335, 268, 'SELL', 0.00000530, 20.00000000, 0.00010600, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:47:13', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (336, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:47:19', 0.00000000, 0.26335700, 1);
+INSERT INTO `dbt_biding_log` VALUES (337, 269, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:47:19', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (338, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:47:27', 0.00000000, 0.26330400, 1);
+INSERT INTO `dbt_biding_log` VALUES (339, 270, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:47:27', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (340, 241, 'BUY', 0.00000530, 30.00000000, 0.00015900, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:47:32', 0.00000000, 0.26325100, 1);
+INSERT INTO `dbt_biding_log` VALUES (341, 271, 'SELL', 0.00000530, 30.00000000, 0.00015900, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:47:32', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (342, 241, 'BUY', 0.00000530, 40.00000000, 0.00021200, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:48:30', 0.00000000, 0.26309200, 1);
+INSERT INTO `dbt_biding_log` VALUES (343, 272, 'SELL', 0.00000530, 40.00000000, 0.00021200, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:48:30', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (344, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:48:36', 0.00000000, 0.26288000, 1);
+INSERT INTO `dbt_biding_log` VALUES (345, 273, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:48:36', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (346, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:48:44', 0.00000000, 0.26282700, 1);
+INSERT INTO `dbt_biding_log` VALUES (347, 274, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:48:44', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (348, 241, 'BUY', 0.00000530, 20.00000000, 0.00010600, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:48:50', 0.00000000, 0.26277400, 1);
+INSERT INTO `dbt_biding_log` VALUES (349, 275, 'SELL', 0.00000530, 20.00000000, 0.00010600, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:48:50', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (350, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:49:02', 0.00000000, 0.26266800, 1);
+INSERT INTO `dbt_biding_log` VALUES (351, 276, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:49:02', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (352, 241, 'BUY', 0.00000530, 50.00000000, 0.00026500, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:49:08', 0.00000000, 0.26261500, 1);
+INSERT INTO `dbt_biding_log` VALUES (353, 277, 'SELL', 0.00000530, 50.00000000, 0.00026500, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:49:08', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (354, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:49:19', 0.00000000, 0.26235000, 1);
+INSERT INTO `dbt_biding_log` VALUES (355, 278, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:49:19', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (356, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:49:24', 0.00000000, 0.26229700, 1);
+INSERT INTO `dbt_biding_log` VALUES (357, 279, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:49:24', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (358, 241, 'BUY', 0.00000530, 100.00000000, 0.00053000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:49:30', 0.00000000, 0.26224400, 1);
+INSERT INTO `dbt_biding_log` VALUES (359, 280, 'SELL', 0.00000530, 100.00000000, 0.00053000, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:49:30', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (360, 241, 'BUY', 0.00000530, 20.00000000, 0.00010600, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:49:36', 0.00000000, 0.26171400, 1);
+INSERT INTO `dbt_biding_log` VALUES (361, 281, 'SELL', 0.00000530, 20.00000000, 0.00010600, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:49:36', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (362, 241, 'BUY', 0.00000530, 30.00000000, 0.00015900, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:49:42', 0.00000000, 0.26160800, 1);
+INSERT INTO `dbt_biding_log` VALUES (363, 282, 'SELL', 0.00000530, 30.00000000, 0.00015900, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:49:42', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (364, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:49:47', 0.00000000, 0.26144900, 1);
+INSERT INTO `dbt_biding_log` VALUES (365, 283, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:49:47', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (366, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:58:54', 0.00000000, 0.26139600, 1);
+INSERT INTO `dbt_biding_log` VALUES (367, 284, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:58:54', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (368, 241, 'BUY', 0.00000530, 50.00000000, 0.00026500, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:59:03', 0.00000000, 0.26134300, 1);
+INSERT INTO `dbt_biding_log` VALUES (369, 285, 'SELL', 0.00000530, 50.00000000, 0.00026500, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:59:03', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (370, 241, 'BUY', 0.00000530, 20.00000000, 0.00010600, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:59:17', 0.00000000, 0.26107800, 1);
+INSERT INTO `dbt_biding_log` VALUES (371, 286, 'SELL', 0.00000530, 20.00000000, 0.00010600, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 10:59:17', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (372, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:00:13', 0.00000000, 0.26097200, 1);
+INSERT INTO `dbt_biding_log` VALUES (373, 287, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:00:13', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (374, 241, 'BUY', 0.00000530, 20.00000000, 0.00010600, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:00:51', 0.00000000, 0.26091900, 1);
+INSERT INTO `dbt_biding_log` VALUES (375, 288, 'SELL', 0.00000530, 20.00000000, 0.00010600, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:00:51', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (376, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:00:58', 0.00000000, 0.26081300, 1);
+INSERT INTO `dbt_biding_log` VALUES (377, 289, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:00:58', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (378, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:01:06', 0.00000000, 0.26076000, 1);
+INSERT INTO `dbt_biding_log` VALUES (379, 290, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:01:06', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (380, 241, 'BUY', 0.00000530, 20.00000000, 0.00010600, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:01:13', 0.00000000, 0.26070700, 1);
+INSERT INTO `dbt_biding_log` VALUES (381, 291, 'SELL', 0.00000530, 20.00000000, 0.00010600, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:01:13', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (382, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:01:23', 0.00000000, 0.26060100, 1);
+INSERT INTO `dbt_biding_log` VALUES (383, 292, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:01:23', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (384, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:02:01', 0.00000000, 0.26054800, 1);
+INSERT INTO `dbt_biding_log` VALUES (385, 293, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:02:01', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (386, 241, 'BUY', 0.00000530, 20.00000000, 0.00010600, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:02:08', 0.00000000, 0.26049500, 1);
+INSERT INTO `dbt_biding_log` VALUES (387, 294, 'SELL', 0.00000530, 20.00000000, 0.00010600, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:02:08', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (388, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:02:18', 0.00000000, 0.26038900, 1);
+INSERT INTO `dbt_biding_log` VALUES (389, 295, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:02:18', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (390, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:02:27', 0.00000000, 0.26033600, 1);
+INSERT INTO `dbt_biding_log` VALUES (391, 296, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:02:27', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (392, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:03:44', 0.00000000, 0.26028300, 1);
+INSERT INTO `dbt_biding_log` VALUES (393, 297, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:03:44', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (394, 241, 'BUY', 0.00000530, 20.00000000, 0.00010600, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:03:52', 0.00000000, 0.26023000, 1);
+INSERT INTO `dbt_biding_log` VALUES (395, 298, 'SELL', 0.00000530, 20.00000000, 0.00010600, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:03:52', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (396, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:10:58', 0.00000000, 0.26012400, 1);
+INSERT INTO `dbt_biding_log` VALUES (397, 299, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:10:58', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (398, 241, 'BUY', 0.00000530, 20.00000000, 0.00010600, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:11:06', 0.00000000, 0.26007100, 1);
+INSERT INTO `dbt_biding_log` VALUES (399, 300, 'SELL', 0.00000530, 20.00000000, 0.00010600, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:11:06', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (400, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:11:19', 0.00000000, 0.25996500, 1);
+INSERT INTO `dbt_biding_log` VALUES (401, 301, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:11:19', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (402, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:11:31', 0.00000000, 0.25991200, 1);
+INSERT INTO `dbt_biding_log` VALUES (403, 302, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:11:31', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (404, 241, 'BUY', 0.00000530, 20.00000000, 0.00010600, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:11:43', 0.00000000, 0.25985900, 1);
+INSERT INTO `dbt_biding_log` VALUES (405, 303, 'SELL', 0.00000530, 20.00000000, 0.00010600, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:11:43', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (406, 241, 'BUY', 0.00000530, 20.00000000, 0.00010600, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:12:24', 0.00000000, 0.25975300, 1);
+INSERT INTO `dbt_biding_log` VALUES (407, 304, 'SELL', 0.00000530, 20.00000000, 0.00010600, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:12:24', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (408, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:12:31', 0.00000000, 0.25964700, 1);
+INSERT INTO `dbt_biding_log` VALUES (409, 305, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:12:31', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (410, 241, 'BUY', 0.00000530, 20.00000000, 0.00010600, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:12:37', 0.00000000, 0.25959400, 1);
+INSERT INTO `dbt_biding_log` VALUES (411, 306, 'SELL', 0.00000530, 20.00000000, 0.00010600, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:12:37', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (412, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:12:44', 0.00000000, 0.25948800, 1);
+INSERT INTO `dbt_biding_log` VALUES (413, 307, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:12:44', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (414, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:12:55', 0.00000000, 0.25943500, 1);
+INSERT INTO `dbt_biding_log` VALUES (415, 308, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:12:55', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (416, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:13:28', 0.00000000, 0.25938200, 1);
+INSERT INTO `dbt_biding_log` VALUES (417, 309, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:13:28', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (418, 241, 'BUY', 0.00000530, 20.00000000, 0.00010600, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:13:37', 0.00000000, 0.25932900, 1);
+INSERT INTO `dbt_biding_log` VALUES (419, 310, 'SELL', 0.00000530, 20.00000000, 0.00010600, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:13:37', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (420, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:13:50', 0.00000000, 0.25922300, 1);
+INSERT INTO `dbt_biding_log` VALUES (421, 311, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:13:50', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (422, 241, 'BUY', 0.00000530, 20.00000000, 0.00010600, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:14:00', 0.00000000, 0.25917000, 1);
+INSERT INTO `dbt_biding_log` VALUES (423, 312, 'SELL', 0.00000530, 20.00000000, 0.00010600, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:14:00', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (424, 241, 'BUY', 0.00000530, 20.00000000, 0.00010600, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:14:23', 0.00000000, 0.25906400, 1);
+INSERT INTO `dbt_biding_log` VALUES (425, 313, 'SELL', 0.00000530, 20.00000000, 0.00010600, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:14:23', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (426, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:19:40', 0.00000000, 0.25895800, 1);
+INSERT INTO `dbt_biding_log` VALUES (427, 314, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:19:40', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (428, 241, 'BUY', 0.00000530, 20.00000000, 0.00010600, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:19:50', 0.00000000, 0.25890500, 1);
+INSERT INTO `dbt_biding_log` VALUES (429, 315, 'SELL', 0.00000530, 20.00000000, 0.00010600, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:19:50', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (430, 241, 'BUY', 0.00000530, 20.00000000, 0.00010600, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:20:18', 0.00000000, 0.25879900, 1);
+INSERT INTO `dbt_biding_log` VALUES (431, 316, 'SELL', 0.00000530, 20.00000000, 0.00010600, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:20:18', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (432, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:20:28', 0.00000000, 0.25869300, 1);
+INSERT INTO `dbt_biding_log` VALUES (433, 317, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:20:28', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (434, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:20:39', 0.00000000, 0.25864000, 1);
+INSERT INTO `dbt_biding_log` VALUES (435, 318, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:20:39', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (436, 241, 'BUY', 0.00000530, 20.00000000, 0.00010600, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:20:49', 0.00000000, 0.25858700, 1);
+INSERT INTO `dbt_biding_log` VALUES (437, 319, 'SELL', 0.00000530, 20.00000000, 0.00010600, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:20:49', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (438, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:20:58', 0.00000000, 0.25848100, 1);
+INSERT INTO `dbt_biding_log` VALUES (439, 320, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:20:58', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (440, 241, 'BUY', 0.00000530, 201.00000000, 0.00106530, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:21:10', 0.00000000, 0.25842800, 1);
+INSERT INTO `dbt_biding_log` VALUES (441, 321, 'SELL', 0.00000530, 201.00000000, 0.00106530, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:21:10', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (442, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:21:48', 0.00000000, 0.25736270, 1);
+INSERT INTO `dbt_biding_log` VALUES (443, 322, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:21:48', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (444, 241, 'BUY', 0.00000530, 20.00000000, 0.00010600, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:21:57', 0.00000000, 0.25730970, 1);
+INSERT INTO `dbt_biding_log` VALUES (445, 323, 'SELL', 0.00000530, 20.00000000, 0.00010600, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:21:57', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (446, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:22:05', 0.00000000, 0.25720370, 1);
+INSERT INTO `dbt_biding_log` VALUES (447, 324, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:22:05', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (448, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:22:14', 0.00000000, 0.25715070, 1);
+INSERT INTO `dbt_biding_log` VALUES (449, 325, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:22:14', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (450, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:22:22', 0.00000000, 0.25709770, 1);
+INSERT INTO `dbt_biding_log` VALUES (451, 326, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:22:22', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (452, 241, 'BUY', 0.00000530, 20.00000000, 0.00010600, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:22:31', 0.00000000, 0.25704470, 1);
+INSERT INTO `dbt_biding_log` VALUES (453, 327, 'SELL', 0.00000530, 20.00000000, 0.00010600, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:22:31', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (454, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:22:39', 0.00000000, 0.25693870, 1);
+INSERT INTO `dbt_biding_log` VALUES (455, 328, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:22:39', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (456, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:23:03', 0.00000000, 0.25688570, 1);
+INSERT INTO `dbt_biding_log` VALUES (457, 329, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:23:03', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (458, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:23:09', 0.00000000, 0.25683270, 1);
+INSERT INTO `dbt_biding_log` VALUES (459, 330, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:23:09', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (460, 241, 'BUY', 0.00000530, 20.00000000, 0.00010600, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:23:16', 0.00000000, 0.25677970, 1);
+INSERT INTO `dbt_biding_log` VALUES (461, 331, 'SELL', 0.00000530, 20.00000000, 0.00010600, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:23:16', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (462, 241, 'BUY', 0.00000530, 10.00000000, 0.00005300, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:29:00', 0.00000000, 0.25667370, 1);
+INSERT INTO `dbt_biding_log` VALUES (463, 332, 'SELL', 0.00000530, 10.00000000, 0.00005300, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:29:00', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (464, 241, 'BUY', 0.00000530, 200.00000000, 0.00106000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:29:34', 0.00000000, 0.25662070, 1);
+INSERT INTO `dbt_biding_log` VALUES (465, 333, 'SELL', 0.00000530, 200.00000000, 0.00106000, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2021-10-13 11:29:34', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (466, 216, 'BUY', 1.00300000, 0.50000000, 0.50150000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:36:14', 0.00000000, 20.06000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (467, 338, 'SELL', 1.00300000, 0.50000000, 0.50150000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:36:14', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (468, 216, 'BUY', 1.00300000, 1.00000000, 1.00300000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:36:31', 0.00000000, 19.55850000, 1);
+INSERT INTO `dbt_biding_log` VALUES (469, 339, 'SELL', 1.00300000, 1.00000000, 1.00300000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:36:31', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (470, 216, 'BUY', 1.00300000, 1.00000000, 1.00300000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:36:39', 0.00000000, 18.55550000, 1);
+INSERT INTO `dbt_biding_log` VALUES (471, 340, 'SELL', 1.00300000, 1.00000000, 1.00300000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:36:39', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (472, 216, 'BUY', 1.00300000, 0.25000000, 0.25075000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:41:56', 0.00000000, 17.55250000, 1);
+INSERT INTO `dbt_biding_log` VALUES (473, 341, 'SELL', 1.00300000, 0.25000000, 0.25075000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:41:56', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (474, 216, 'BUY', 1.00300000, 1.00000000, 1.00300000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:42:08', 0.00000000, 17.30175000, 1);
+INSERT INTO `dbt_biding_log` VALUES (475, 342, 'SELL', 1.00300000, 1.00000000, 1.00300000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:42:08', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (476, 216, 'BUY', 1.00300000, 1.25000000, 1.25375000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:43:07', 0.00000000, 16.29875000, 1);
+INSERT INTO `dbt_biding_log` VALUES (477, 343, 'SELL', 1.00300000, 1.25000000, 1.25375000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:43:07', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (478, 216, 'BUY', 1.00300000, 0.25000000, 0.25075000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:43:26', 0.00000000, 15.04500000, 2);
+INSERT INTO `dbt_biding_log` VALUES (479, 344, 'SELL', 1.00300000, 0.25000000, 0.25075000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:43:26', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (480, 216, 'BUY', 1.00300000, 1.00000000, 1.00300000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:43:56', 0.00000000, 14.79425000, 2);
+INSERT INTO `dbt_biding_log` VALUES (481, 345, 'SELL', 1.00300000, 1.00000000, 1.00300000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:43:56', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (482, 216, 'BUY', 1.00300000, 0.25000000, 0.25075000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:44:18', 0.00000000, 13.79125000, 2);
+INSERT INTO `dbt_biding_log` VALUES (483, 346, 'SELL', 1.00300000, 0.25000000, 0.25075000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:44:18', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (484, 216, 'BUY', 1.00300000, 0.02000000, 0.02006000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:44:35', 0.00000000, 13.54050000, 2);
+INSERT INTO `dbt_biding_log` VALUES (485, 347, 'SELL', 1.00300000, 0.02000000, 0.02006000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:44:35', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (486, 216, 'BUY', 1.00300000, 1.50000000, 1.50450000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:45:16', 0.00000000, 13.52044000, 2);
+INSERT INTO `dbt_biding_log` VALUES (487, 348, 'SELL', 1.00300000, 1.50000000, 1.50450000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:45:16', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (488, 216, 'BUY', 1.00300000, 0.50000000, 0.50150000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:45:31', 0.00000000, 12.01594000, 2);
+INSERT INTO `dbt_biding_log` VALUES (489, 349, 'SELL', 1.00300000, 0.50000000, 0.50150000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:45:31', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (490, 216, 'BUY', 1.00300000, 0.02000000, 0.02006000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:48:59', 0.00000000, 11.51444000, 2);
+INSERT INTO `dbt_biding_log` VALUES (491, 350, 'SELL', 1.00300000, 0.02000000, 0.02006000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:48:59', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (492, 216, 'BUY', 1.00300000, 1.00000000, 1.00300000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:49:08', 0.00000000, 11.49438000, 1);
+INSERT INTO `dbt_biding_log` VALUES (493, 351, 'SELL', 1.00300000, 1.00000000, 1.00300000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:49:08', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (494, 352, 'SELL', 9.00000000, 1.00000000, 1.00000000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:49:21', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (495, 216, 'BUY', 1.00300000, 0.50000000, 0.50150000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:50:51', 0.00000000, 10.49138000, 1);
+INSERT INTO `dbt_biding_log` VALUES (496, 353, 'SELL', 1.00300000, 0.50000000, 0.50150000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:50:51', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (497, 216, 'BUY', 1.00300000, 1.00000000, 1.00300000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:51:01', 0.00000000, 9.98988000, 1);
+INSERT INTO `dbt_biding_log` VALUES (498, 354, 'SELL', 1.00300000, 1.00000000, 1.00300000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:51:01', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (499, 216, 'BUY', 1.00300000, 0.25000000, 0.25075000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:51:41', 0.00000000, 8.98688000, 1);
+INSERT INTO `dbt_biding_log` VALUES (500, 355, 'SELL', 1.00300000, 0.25000000, 0.25075000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:51:41', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (501, 216, 'BUY', 1.00300000, 0.50000000, 0.50150000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:51:58', 0.00000000, 8.73613000, 1);
+INSERT INTO `dbt_biding_log` VALUES (502, 356, 'SELL', 1.00300000, 0.50000000, 0.50150000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:51:58', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (503, 216, 'BUY', 1.00300000, 0.02000000, 0.02006000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:52:15', 0.00000000, 8.23463000, 1);
+INSERT INTO `dbt_biding_log` VALUES (504, 357, 'SELL', 1.00300000, 0.02000000, 0.02006000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:52:15', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (505, 216, 'BUY', 1.00300000, 0.50000000, 0.50150000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:54:39', 0.00000000, 8.21457000, 2);
+INSERT INTO `dbt_biding_log` VALUES (506, 358, 'SELL', 1.00300000, 0.50000000, 0.50150000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:54:39', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (507, 216, 'BUY', 1.00300000, 0.25000000, 0.25075000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:54:49', 0.00000000, 7.71307000, 2);
+INSERT INTO `dbt_biding_log` VALUES (508, 359, 'SELL', 1.00300000, 0.25000000, 0.25075000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:54:49', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (509, 216, 'BUY', 1.00300000, 0.25000000, 0.25075000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:55:29', 0.00000000, 7.46232000, 2);
+INSERT INTO `dbt_biding_log` VALUES (510, 360, 'SELL', 1.00300000, 0.25000000, 0.25075000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:55:29', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (511, 216, 'BUY', 1.00300000, 1.00000000, 1.00300000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:55:36', 0.00000000, 7.21157000, 1);
+INSERT INTO `dbt_biding_log` VALUES (512, 361, 'SELL', 1.00300000, 1.00000000, 1.00300000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:55:36', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (513, 216, 'BUY', 1.00300000, 0.25000000, 0.25075000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:57:28', 0.00000000, 6.20857000, 1);
+INSERT INTO `dbt_biding_log` VALUES (514, 362, 'SELL', 1.00300000, 0.25000000, 0.25075000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:57:28', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (515, 216, 'BUY', 1.00300000, 0.50000000, 0.50150000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:57:39', 0.00000000, 5.95782000, 1);
+INSERT INTO `dbt_biding_log` VALUES (516, 363, 'SELL', 1.00300000, 0.50000000, 0.50150000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 11:57:39', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (517, 216, 'BUY', 1.00300000, 0.25000000, 0.25075000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:04:17', 0.00000000, 5.45632000, 1);
+INSERT INTO `dbt_biding_log` VALUES (518, 364, 'SELL', 1.00300000, 0.25000000, 0.25075000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:04:17', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (519, 216, 'BUY', 1.00300000, 0.02000000, 0.02006000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:04:39', 0.00000000, 5.20557000, 1);
+INSERT INTO `dbt_biding_log` VALUES (520, 365, 'SELL', 1.00300000, 0.02000000, 0.02006000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:04:39', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (521, 216, 'BUY', 1.00300000, 0.25000000, 0.25075000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:04:55', 0.00000000, 5.18551000, 2);
+INSERT INTO `dbt_biding_log` VALUES (522, 366, 'SELL', 1.00300000, 0.25000000, 0.25075000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:04:55', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (523, 216, 'BUY', 1.00300000, 0.01000000, 0.01003000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:05:08', 0.00000000, 4.93476000, 1);
+INSERT INTO `dbt_biding_log` VALUES (524, 367, 'SELL', 1.00300000, 0.01000000, 0.01003000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:05:08', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (525, 216, 'BUY', 1.00300000, 0.25000000, 0.25075000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:05:19', 0.00000000, 4.92473000, 2);
+INSERT INTO `dbt_biding_log` VALUES (526, 368, 'SELL', 1.00300000, 0.25000000, 0.25075000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:05:19', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (527, 216, 'BUY', 1.00300000, 0.10000000, 0.10030000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:05:40', 0.00000000, 4.67398000, 2);
+INSERT INTO `dbt_biding_log` VALUES (528, 369, 'SELL', 1.00300000, 0.10000000, 0.10030000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:05:40', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (529, 216, 'BUY', 1.00300000, 0.10000000, 0.10030000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:07:44', 0.00000000, 4.57368000, 2);
+INSERT INTO `dbt_biding_log` VALUES (530, 370, 'SELL', 1.00300000, 0.10000000, 0.10030000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:07:44', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (531, 216, 'BUY', 1.00300000, 0.50000000, 0.50150000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:08:04', 0.00000000, 4.47338000, 1);
+INSERT INTO `dbt_biding_log` VALUES (532, 371, 'SELL', 1.00300000, 0.50000000, 0.50150000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:08:04', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (533, 216, 'BUY', 1.00300000, 0.01000000, 0.01003000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:08:15', 0.00000000, 3.97188000, 2);
+INSERT INTO `dbt_biding_log` VALUES (534, 372, 'SELL', 1.00300000, 0.01000000, 0.01003000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:08:15', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (535, 216, 'BUY', 1.00300000, 0.25000000, 0.25075000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:09:36', 0.00000000, 3.96185000, 2);
+INSERT INTO `dbt_biding_log` VALUES (536, 373, 'SELL', 1.00300000, 0.25000000, 0.25075000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:09:36', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (537, 216, 'BUY', 1.00300000, 0.25000000, 0.25075000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:09:59', 0.00000000, 3.71110000, 2);
+INSERT INTO `dbt_biding_log` VALUES (538, 374, 'SELL', 1.00300000, 0.25000000, 0.25075000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:09:59', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (539, 216, 'BUY', 1.00300000, 0.20000000, 0.20060000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:10:14', 0.00000000, 3.46035000, 2);
+INSERT INTO `dbt_biding_log` VALUES (540, 375, 'SELL', 1.00300000, 0.20000000, 0.20060000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:10:14', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (541, 216, 'BUY', 1.00300000, 0.50000000, 0.50150000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:10:35', 0.00000000, 3.25975000, 2);
+INSERT INTO `dbt_biding_log` VALUES (542, 376, 'SELL', 1.00300000, 0.50000000, 0.50150000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:10:35', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (543, 216, 'BUY', 1.00300000, 0.25000000, 0.25075000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:10:48', 0.00000000, 2.75825000, 1);
+INSERT INTO `dbt_biding_log` VALUES (544, 377, 'SELL', 1.00300000, 0.25000000, 0.25075000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:10:48', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (545, 216, 'BUY', 1.00300000, 0.25000000, 0.25075000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:13:07', 0.00000000, 2.50750000, 1);
+INSERT INTO `dbt_biding_log` VALUES (546, 378, 'SELL', 1.00300000, 0.25000000, 0.25075000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:13:07', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (547, 216, 'BUY', 1.00300000, 0.25000000, 0.25075000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:15:48', 0.00000000, 2.25675000, 1);
+INSERT INTO `dbt_biding_log` VALUES (548, 379, 'SELL', 1.00300000, 0.25000000, 0.25075000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:15:48', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (549, 216, 'BUY', 1.00300000, 0.50000000, 0.50150000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:16:00', 0.00000000, 2.00600000, 1);
+INSERT INTO `dbt_biding_log` VALUES (550, 380, 'SELL', 1.00300000, 0.50000000, 0.50150000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:16:00', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (551, 216, 'BUY', 1.00300000, 0.25000000, 0.25075000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:16:08', 0.00000000, 1.50450000, 2);
+INSERT INTO `dbt_biding_log` VALUES (552, 381, 'SELL', 1.00300000, 0.25000000, 0.25075000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:16:08', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (553, 216, 'BUY', 1.00300000, 0.25000000, 0.25075000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:17:28', 0.00000000, 1.25375000, 1);
+INSERT INTO `dbt_biding_log` VALUES (554, 382, 'SELL', 1.00300000, 0.25000000, 0.25075000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:17:28', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (555, 216, 'BUY', 1.00300000, 0.10000000, 0.10030000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:17:43', 0.00000000, 1.00300000, 1);
+INSERT INTO `dbt_biding_log` VALUES (556, 383, 'SELL', 1.00300000, 0.10000000, 0.10030000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:17:43', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (557, 216, 'BUY', 1.00300000, 0.10000000, 0.10030000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:18:46', 0.00000000, 0.90270000, 1);
+INSERT INTO `dbt_biding_log` VALUES (558, 384, 'SELL', 1.00300000, 0.10000000, 0.10030000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:18:46', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (559, 216, 'BUY', 1.00300000, 0.10000000, 0.10030000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:19:04', 0.00000000, 0.80240000, 1);
+INSERT INTO `dbt_biding_log` VALUES (560, 385, 'SELL', 1.00300000, 0.10000000, 0.10030000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:19:04', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (561, 216, 'BUY', 1.00300000, 0.20000000, 0.20060000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:21:37', 0.00000000, 0.70210000, 2);
+INSERT INTO `dbt_biding_log` VALUES (562, 386, 'SELL', 1.00300000, 0.20000000, 0.20060000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:21:37', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (563, 216, 'BUY', 1.00300000, 0.25000000, 0.25075000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:21:46', 0.00000000, 0.50150000, 1);
+INSERT INTO `dbt_biding_log` VALUES (564, 387, 'SELL', 1.00300000, 0.25000000, 0.25075000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:21:46', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (565, 216, 'BUY', 1.00300000, 0.25000000, 0.25075000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:21:54', 0.00000000, 0.25075000, 1);
+INSERT INTO `dbt_biding_log` VALUES (566, 388, 'SELL', 1.00300000, 0.25000000, 0.25075000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:21:54', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (567, 213, 'BUY', 1.00200000, 0.10000000, 0.10020000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:23:42', 0.00000000, 10.02000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (568, 389, 'SELL', 1.00200000, 0.10000000, 0.10020000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:23:42', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (569, 213, 'BUY', 1.00200000, 0.10000000, 0.10020000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:43:43', 0.00000000, 9.91980000, 1);
+INSERT INTO `dbt_biding_log` VALUES (570, 390, 'SELL', 1.00200000, 0.10000000, 0.10020000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:43:43', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (571, 213, 'BUY', 1.00200000, 0.25000000, 0.25050000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:43:53', 0.00000000, 9.81960000, 1);
+INSERT INTO `dbt_biding_log` VALUES (572, 391, 'SELL', 1.00200000, 0.25000000, 0.25050000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:43:53', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (573, 213, 'BUY', 1.00200000, 0.25000000, 0.25050000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:44:33', 0.00000000, 9.56910000, 1);
+INSERT INTO `dbt_biding_log` VALUES (574, 392, 'SELL', 1.00200000, 0.25000000, 0.25050000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:44:33', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (575, 213, 'BUY', 1.00200000, 0.10000000, 0.10020000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:44:49', 0.00000000, 9.31860000, 1);
+INSERT INTO `dbt_biding_log` VALUES (576, 393, 'SELL', 1.00200000, 0.10000000, 0.10020000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:44:49', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (577, 213, 'BUY', 1.00200000, 0.20000000, 0.20040000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:45:00', 0.00000000, 9.21840000, 2);
+INSERT INTO `dbt_biding_log` VALUES (578, 394, 'SELL', 1.00200000, 0.20000000, 0.20040000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:45:00', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (579, 213, 'BUY', 1.00200000, 0.25000000, 0.25050000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:46:23', 0.00000000, 9.01800000, 1);
+INSERT INTO `dbt_biding_log` VALUES (580, 395, 'SELL', 1.00200000, 0.25000000, 0.25050000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:46:23', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (581, 213, 'BUY', 1.00200000, 0.25000000, 0.25050000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:47:19', 0.00000000, 8.76750000, 1);
+INSERT INTO `dbt_biding_log` VALUES (582, 396, 'SELL', 1.00200000, 0.25000000, 0.25050000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:47:19', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (583, 213, 'BUY', 1.00200000, 0.10000000, 0.10020000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:47:35', 0.00000000, 8.51700000, 1);
+INSERT INTO `dbt_biding_log` VALUES (584, 397, 'SELL', 1.00200000, 0.10000000, 0.10020000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:47:35', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (585, 213, 'BUY', 1.00200000, 0.10000000, 0.10020000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:48:40', 0.00000000, 8.41680000, 1);
+INSERT INTO `dbt_biding_log` VALUES (586, 398, 'SELL', 1.00200000, 0.10000000, 0.10020000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:48:40', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (587, 213, 'BUY', 1.00200000, 0.10000000, 0.10020000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:49:15', 0.00000000, 8.31660000, 1);
+INSERT INTO `dbt_biding_log` VALUES (588, 399, 'SELL', 1.00200000, 0.10000000, 0.10020000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:49:15', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (589, 213, 'BUY', 1.00200000, 0.20000000, 0.20040000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:49:43', 0.00000000, 8.21640000, 1);
+INSERT INTO `dbt_biding_log` VALUES (590, 400, 'SELL', 1.00200000, 0.20000000, 0.20040000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:49:43', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (591, 213, 'BUY', 1.00200000, 0.25000000, 0.25050000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:52:48', 0.00000000, 8.01600000, 1);
+INSERT INTO `dbt_biding_log` VALUES (592, 401, 'SELL', 1.00200000, 0.25000000, 0.25050000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:52:48', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (593, 213, 'BUY', 1.00200000, 0.10000000, 0.10020000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:53:05', 0.00000000, 7.76550000, 1);
+INSERT INTO `dbt_biding_log` VALUES (594, 402, 'SELL', 1.00200000, 0.10000000, 0.10020000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:53:05', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (595, 213, 'BUY', 1.00200000, 0.50000000, 0.50100000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:53:18', 0.00000000, 7.66530000, 1);
+INSERT INTO `dbt_biding_log` VALUES (596, 403, 'SELL', 1.00200000, 0.50000000, 0.50100000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:53:18', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (597, 213, 'BUY', 1.00200000, 0.15000000, 0.15030000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:55:43', 0.00000000, 7.16430000, 1);
+INSERT INTO `dbt_biding_log` VALUES (598, 404, 'SELL', 1.00200000, 0.15000000, 0.15030000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:55:43', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (599, 213, 'BUY', 1.00200000, 0.25000000, 0.25050000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:59:23', 0.00000000, 7.01400000, 1);
+INSERT INTO `dbt_biding_log` VALUES (600, 405, 'SELL', 1.00200000, 0.25000000, 0.25050000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:59:23', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (601, 213, 'BUY', 1.00200000, 0.10000000, 0.10020000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:59:38', 0.00000000, 6.76350000, 1);
+INSERT INTO `dbt_biding_log` VALUES (602, 406, 'SELL', 1.00200000, 0.10000000, 0.10020000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:59:38', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (603, 213, 'BUY', 1.00200000, 0.15000000, 0.15030000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:59:53', 0.00000000, 6.66330000, 1);
+INSERT INTO `dbt_biding_log` VALUES (604, 407, 'SELL', 1.00200000, 0.15000000, 0.15030000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 14:59:53', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (605, 213, 'BUY', 1.00200000, 0.25000000, 0.25050000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 15:00:02', 0.00000000, 6.51300000, 1);
+INSERT INTO `dbt_biding_log` VALUES (606, 408, 'SELL', 1.00200000, 0.25000000, 0.25050000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 15:00:02', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (607, 213, 'BUY', 1.00200000, 0.25000000, 0.25050000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 15:01:17', 0.00000000, 6.26250000, 1);
+INSERT INTO `dbt_biding_log` VALUES (608, 409, 'SELL', 1.00200000, 0.25000000, 0.25050000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 15:01:17', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (609, 213, 'BUY', 1.00200000, 0.50000000, 0.50100000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 15:01:29', 0.00000000, 6.01200000, 1);
+INSERT INTO `dbt_biding_log` VALUES (610, 410, 'SELL', 1.00200000, 0.50000000, 0.50100000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-13 15:01:29', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (611, 213, 'BUY', 1.00200000, 0.10000000, 0.10020000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:32:24', 0.00000000, 5.51100000, 1);
+INSERT INTO `dbt_biding_log` VALUES (612, 411, 'SELL', 1.00200000, 0.10000000, 0.10020000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:32:24', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (613, 213, 'BUY', 1.00200000, 0.20000000, 0.20040000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:32:37', 0.00000000, 5.41080000, 1);
+INSERT INTO `dbt_biding_log` VALUES (614, 412, 'SELL', 1.00200000, 0.20000000, 0.20040000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:32:37', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (615, 213, 'BUY', 1.00200000, 0.10000000, 0.10020000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:33:25', 0.00000000, 5.21040000, 1);
+INSERT INTO `dbt_biding_log` VALUES (616, 414, 'SELL', 1.00200000, 0.10000000, 0.10020000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:33:25', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (617, 213, 'BUY', 1.00200000, 0.20000000, 0.20040000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:33:33', 0.00000000, 5.11020000, 1);
+INSERT INTO `dbt_biding_log` VALUES (618, 415, 'SELL', 1.00200000, 0.20000000, 0.20040000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:33:33', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (619, 213, 'BUY', 1.00200000, 0.25000000, 0.25050000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:33:42', 0.00000000, 4.90980000, 1);
+INSERT INTO `dbt_biding_log` VALUES (620, 416, 'SELL', 1.00200000, 0.25000000, 0.25050000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:33:42', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (621, 213, 'BUY', 1.00200000, 0.10000000, 0.10020000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:33:52', 0.00000000, 4.65930000, 1);
+INSERT INTO `dbt_biding_log` VALUES (622, 417, 'SELL', 1.00200000, 0.10000000, 0.10020000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:33:52', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (623, 213, 'BUY', 1.00200000, 0.10000000, 0.10020000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:34:05', 0.00000000, 4.55910000, 1);
+INSERT INTO `dbt_biding_log` VALUES (624, 418, 'SELL', 1.00200000, 0.10000000, 0.10020000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:34:05', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (625, 413, 'SELL', 9.00000000, 1.00000000, 1.00000000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:34:21', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (626, 213, 'BUY', 1.00200000, 0.10000000, 0.10020000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:34:59', 0.00000000, 4.45890000, 1);
+INSERT INTO `dbt_biding_log` VALUES (627, 419, 'SELL', 1.00200000, 0.10000000, 0.10020000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:34:59', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (628, 213, 'BUY', 1.00200000, 0.10000000, 0.10020000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:35:16', 0.00000000, 4.35870000, 1);
+INSERT INTO `dbt_biding_log` VALUES (629, 420, 'SELL', 1.00200000, 0.10000000, 0.10020000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:35:16', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (630, 213, 'BUY', 1.00200000, 0.50000000, 0.50100000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:35:24', 0.00000000, 4.25850000, 1);
+INSERT INTO `dbt_biding_log` VALUES (631, 421, 'SELL', 1.00200000, 0.50000000, 0.50100000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:35:24', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (632, 213, 'BUY', 1.00200000, 0.10000000, 0.10020000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:35:47', 0.00000000, 3.75750000, 1);
+INSERT INTO `dbt_biding_log` VALUES (633, 422, 'SELL', 1.00200000, 0.10000000, 0.10020000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:35:47', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (634, 213, 'BUY', 1.00200000, 0.10000000, 0.10020000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:36:24', 0.00000000, 3.65730000, 2);
+INSERT INTO `dbt_biding_log` VALUES (635, 423, 'SELL', 1.00200000, 0.10000000, 0.10020000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:36:24', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (636, 213, 'BUY', 1.00200000, 0.25000000, 0.25050000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:36:33', 0.00000000, 3.55710000, 2);
+INSERT INTO `dbt_biding_log` VALUES (637, 424, 'SELL', 1.00200000, 0.25000000, 0.25050000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:36:33', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (638, 213, 'BUY', 1.00200000, 0.10000000, 0.10020000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:36:45', 0.00000000, 3.30660000, 1);
+INSERT INTO `dbt_biding_log` VALUES (639, 425, 'SELL', 1.00200000, 0.10000000, 0.10020000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:36:45', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (640, 213, 'BUY', 1.00200000, 0.20000000, 0.20040000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:36:53', 0.00000000, 3.20640000, 1);
+INSERT INTO `dbt_biding_log` VALUES (641, 426, 'SELL', 1.00200000, 0.20000000, 0.20040000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:36:53', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (642, 213, 'BUY', 1.00200000, 0.10000000, 0.10020000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:37:49', 0.00000000, 3.00600000, 1);
+INSERT INTO `dbt_biding_log` VALUES (643, 427, 'SELL', 1.00200000, 0.10000000, 0.10020000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:37:49', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (644, 213, 'BUY', 1.00200000, 0.20000000, 0.20040000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:37:58', 0.00000000, 2.90580000, 2);
+INSERT INTO `dbt_biding_log` VALUES (645, 428, 'SELL', 1.00200000, 0.20000000, 0.20040000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:37:58', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (646, 213, 'BUY', 1.00200000, 0.10000000, 0.10020000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:38:06', 0.00000000, 2.70540000, 1);
+INSERT INTO `dbt_biding_log` VALUES (647, 429, 'SELL', 1.00200000, 0.10000000, 0.10020000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:38:06', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (648, 213, 'BUY', 1.00200000, 0.20000000, 0.20040000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:38:13', 0.00000000, 2.60520000, 1);
+INSERT INTO `dbt_biding_log` VALUES (649, 430, 'SELL', 1.00200000, 0.20000000, 0.20040000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:38:13', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (650, 213, 'BUY', 1.00200000, 0.10000000, 0.10020000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:38:20', 0.00000000, 2.40480000, 1);
+INSERT INTO `dbt_biding_log` VALUES (651, 431, 'SELL', 1.00200000, 0.10000000, 0.10020000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:38:20', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (652, 213, 'BUY', 1.00200000, 0.20000000, 0.20040000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:39:12', 0.00000000, 2.30460000, 2);
+INSERT INTO `dbt_biding_log` VALUES (653, 432, 'SELL', 1.00200000, 0.20000000, 0.20040000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:39:12', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (654, 213, 'BUY', 1.00200000, 0.10000000, 0.10020000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:39:19', 0.00000000, 2.10420000, 1);
+INSERT INTO `dbt_biding_log` VALUES (655, 433, 'SELL', 1.00200000, 0.10000000, 0.10020000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:39:19', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (656, 213, 'BUY', 1.00200000, 0.25000000, 0.25050000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:39:26', 0.00000000, 2.00400000, 1);
+INSERT INTO `dbt_biding_log` VALUES (657, 434, 'SELL', 1.00200000, 0.25000000, 0.25050000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:39:26', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (658, 213, 'BUY', 1.00200000, 0.10000000, 0.10020000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:39:52', 0.00000000, 1.75350000, 1);
+INSERT INTO `dbt_biding_log` VALUES (659, 435, 'SELL', 1.00200000, 0.10000000, 0.10020000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:39:52', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (660, 213, 'BUY', 1.00200000, 0.10000000, 0.10020000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:39:59', 0.00000000, 1.65330000, 1);
+INSERT INTO `dbt_biding_log` VALUES (661, 436, 'SELL', 1.00200000, 0.10000000, 0.10020000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:39:59', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (662, 213, 'BUY', 1.00200000, 0.05000000, 0.05010000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:40:08', 0.00000000, 1.55310000, 1);
+INSERT INTO `dbt_biding_log` VALUES (663, 437, 'SELL', 1.00200000, 0.05000000, 0.05010000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:40:08', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (664, 213, 'BUY', 1.00200000, 0.25000000, 0.25050000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:40:22', 0.00000000, 1.50300000, 1);
+INSERT INTO `dbt_biding_log` VALUES (665, 438, 'SELL', 1.00200000, 0.25000000, 0.25050000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:40:22', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (666, 213, 'BUY', 1.00200000, 0.25000000, 0.25050000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:40:31', 0.00000000, 1.25250000, 1);
+INSERT INTO `dbt_biding_log` VALUES (667, 439, 'SELL', 1.00200000, 0.25000000, 0.25050000, 'XP8M1G', NULL, 'GLD', NULL, 'GLD_USDE', '2021-10-14 01:40:31', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (668, 443, 'SELL', 0.00088500, 1.00000000, 1.00000000, 'XP8M1G', NULL, 'IDEA', NULL, 'IDEA_USDE', '2021-10-14 01:47:27', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (669, 179, 'SELL', 0.00081800, 5000.00000000, 4.09000000, '4Y0HIQ', NULL, 'RENTA', NULL, 'RENTA_USDE', '2021-10-14 01:49:31', 0.00000000, 16.36000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (670, 445, 'BUY', 0.00081800, 5000.00000000, 4.09000000, 'XP8M1G', NULL, 'RENTA', NULL, 'RENTA_USDE', '2021-10-14 01:49:31', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (671, 179, 'SELL', 0.00081800, 1000.00000000, 0.81800000, '4Y0HIQ', NULL, 'RENTA', NULL, 'RENTA_USDE', '2021-10-14 01:49:42', 0.00000000, 12.27000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (672, 446, 'BUY', 0.00081800, 1000.00000000, 0.81800000, 'XP8M1G', NULL, 'RENTA', NULL, 'RENTA_USDE', '2021-10-14 01:49:42', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (673, 179, 'SELL', 0.00081800, 100.00000000, 0.08180000, '4Y0HIQ', NULL, 'RENTA', NULL, 'RENTA_USDE', '2021-10-14 01:50:28', 0.00000000, 11.45200000, 1);
+INSERT INTO `dbt_biding_log` VALUES (674, 447, 'BUY', 0.00081800, 100.00000000, 0.08180000, 'XP8M1G', NULL, 'RENTA', NULL, 'RENTA_USDE', '2021-10-14 01:50:28', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (675, 179, 'SELL', 0.00081800, 1000.00000000, 0.81800000, '4Y0HIQ', NULL, 'RENTA', NULL, 'RENTA_USDE', '2021-10-14 01:50:35', 0.00000000, 11.37020000, 1);
+INSERT INTO `dbt_biding_log` VALUES (676, 448, 'BUY', 0.00081800, 1000.00000000, 0.81800000, 'XP8M1G', NULL, 'RENTA', NULL, 'RENTA_USDE', '2021-10-14 01:50:35', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (677, 179, 'SELL', 0.00081800, 500.00000000, 0.40900000, '4Y0HIQ', NULL, 'RENTA', NULL, 'RENTA_USDE', '2021-10-14 01:50:40', 0.00000000, 10.55220000, 1);
+INSERT INTO `dbt_biding_log` VALUES (678, 449, 'BUY', 0.00081800, 500.00000000, 0.40900000, 'XP8M1G', NULL, 'RENTA', NULL, 'RENTA_USDE', '2021-10-14 01:50:40', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (679, 132, 'BUY', 0.00000012, 2000.00000000, 0.00024000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 02:53:20', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (680, 28, 'BUY', 0.00000010, 22003.00000000, 0.00220030, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 02:53:26', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (681, 38, 'BUY', 0.00000021, 28500.00000000, 0.00598500, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 02:53:36', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (682, 35, 'BUY', 0.00000020, 155000.00000000, 0.03100000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 02:53:58', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (683, 34, 'BUY', 0.00000020, 95000.00000000, 0.01900000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 02:54:06', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (684, 33, 'BUY', 0.00000008, 40000.00000000, 0.00320000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 02:54:13', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (685, 32, 'BUY', 0.00000008, 55000.00000000, 0.00440000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 02:54:19', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (686, 31, 'BUY', 0.00000008, 44000.00000000, 0.00352000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 02:54:26', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (687, 30, 'BUY', 0.00000009, 88000.00000000, 0.00792000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 02:54:33', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (688, 26, 'BUY', 0.00000014, 68000.00000000, 0.00952000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 02:54:39', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (689, 29, 'BUY', 0.00000009, 37000.00000000, 0.00333000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 02:54:46', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (690, 27, 'BUY', 0.00000011, 188000.00000000, 0.02068000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 02:54:51', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (691, 25, 'BUY', 0.00000015, 55000.00000000, 0.00825000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 02:54:58', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (692, 24, 'BUY', 0.00000016, 44000.00000000, 0.00704000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 02:55:04', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (693, 23, 'BUY', 0.00000017, 36000.00000000, 0.00612000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 02:55:10', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (694, 3, 'BUY', 0.00000018, 9000000.00000000, 1.62000000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 02:55:15', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (695, 2, 'BUY', 0.00000012, 7999999.00000000, 0.95999988, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 02:55:22', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (696, 210, 'SELL', 0.00000022, 2000.00000000, 2000.00000000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 02:56:57', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (697, 203, 'BUY', 0.00000021, 2000.00000000, 0.00042000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 02:57:07', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (698, 200, 'BUY', 0.00000021, 2000.00000000, 0.00042000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 02:57:14', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (699, 196, 'SELL', 0.00000022, 25000.00000000, 25000.00000000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 02:57:20', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (700, 195, 'SELL', 0.00000022, 29700.00000000, 29700.00000000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 02:57:29', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (701, 202, 'BUY', 0.00000021, 1000.00000000, 0.00021000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 02:57:42', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (702, 201, 'BUY', 0.00000021, 1000.00000000, 0.00021000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 02:57:54', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (703, 199, 'SELL', 0.00000025, 44000.00000000, 44000.00000000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 02:58:00', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (704, 21, 'SELL', 0.00000035, 17000.00000000, 17000.00000000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 02:58:19', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (705, 198, 'SELL', 0.00000024, 80000.00000000, 80000.00000000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 02:58:33', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (706, 197, 'SELL', 0.00000023, 55000.00000000, 55000.00000000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 02:58:58', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (707, 5, 'BUY', 0.00000020, 30000.00000000, 0.00600000, 'TBFDJT', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 02:59:49', 0.00000000, 1.95920000, 2);
+INSERT INTO `dbt_biding_log` VALUES (708, 450, 'SELL', 0.00000020, 30000.00000000, 0.00600000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 02:59:49', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (709, 5, 'BUY', 0.00000020, 50000.00000000, 0.01000000, 'TBFDJT', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 03:00:15', 0.00000000, 1.95320000, 2);
+INSERT INTO `dbt_biding_log` VALUES (710, 451, 'SELL', 0.00000020, 50000.00000000, 0.01000000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 03:00:15', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (711, 453, 'SELL', 0.00000037, 1.00000000, 1.00000000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 03:01:29', 0.00000000, 0.00000000, 0);
+INSERT INTO `dbt_biding_log` VALUES (712, 452, 'SELL', 0.00000035, 70000.00000000, 0.02450000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 03:04:04', 0.00000000, 0.03150000, 1);
+INSERT INTO `dbt_biding_log` VALUES (713, 455, 'BUY', 0.00000035, 70000.00000000, 0.02450000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 03:04:04', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (714, 452, 'SELL', 0.00000035, 20000.00000000, 0.00700000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 03:04:24', 0.00000000, 0.00700000, 2);
+INSERT INTO `dbt_biding_log` VALUES (715, 456, 'BUY', 0.00000035, 20000.00000000, 0.00700000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 03:04:24', 0.00000000, 0.00100000, 2);
+INSERT INTO `dbt_biding_log` VALUES (716, 454, 'SELL', 0.00000037, 30000.00000000, 0.01110000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 03:04:24', 0.00000000, 0.02960000, 1);
+INSERT INTO `dbt_biding_log` VALUES (717, 456, 'BUY', 0.00000037, 30000.00000000, 0.01110000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 03:04:24', 0.00000000, 0.00040000, 2);
+INSERT INTO `dbt_biding_log` VALUES (718, 454, 'SELL', 0.00000037, 20000.00000000, 0.00740000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 03:04:40', 0.00000000, 0.01850000, 1);
+INSERT INTO `dbt_biding_log` VALUES (719, 457, 'BUY', 0.00000037, 20000.00000000, 0.00740000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 03:04:40', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (720, 454, 'SELL', 0.00000037, 30000.00000000, 0.01110000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 03:07:20', 0.00000000, 0.01110000, 1);
+INSERT INTO `dbt_biding_log` VALUES (721, 458, 'BUY', 0.00000037, 30000.00000000, 0.01110000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 03:07:20', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (722, 459, 'SELL', 0.85000000, 15.00000000, 12.75000000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 03:09:30', 0.00000000, 17.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (723, 460, 'BUY', 0.85000000, 15.00000000, 12.75000000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 03:09:30', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (724, 459, 'SELL', 0.85000000, 5.00000000, 4.25000000, 'XP8M1G', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 03:09:49', 0.00000000, 4.25000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (725, 461, 'BUY', 0.85000000, 5.00000000, 4.25000000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-14 03:09:49', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (726, 5, 'BUY', 0.00000020, 1000.00000000, 0.00020000, 'TBFDJT', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-15 02:32:24', 0.00000000, 1.94320000, 2);
+INSERT INTO `dbt_biding_log` VALUES (727, 463, 'SELL', 0.00000020, 1000.00000000, 0.00020000, '4Y0HIQ', NULL, 'AAX', NULL, 'AAX_USDE', '2021-10-15 02:32:24', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (728, 249, 'SELL', 0.00002020, 500.00000000, 0.01010000, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2022-02-01 00:53:17', 0.00000000, 0.60600000, 1);
+INSERT INTO `dbt_biding_log` VALUES (729, 470, 'BUY', 0.00002020, 500.00000000, 0.01010000, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2022-02-01 00:53:17', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (730, 248, 'SELL', 0.00002030, 2000.00000000, 0.04060000, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2022-02-01 00:54:40', 0.00000000, 2.43600000, 1);
+INSERT INTO `dbt_biding_log` VALUES (731, 471, 'BUY', 0.00002030, 2000.00000000, 0.04060000, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2022-02-01 00:54:40', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (732, 247, 'SELL', 0.00002050, 3000.00000000, 0.06150000, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2022-02-01 00:55:50', 0.00000000, 1.02500000, 1);
+INSERT INTO `dbt_biding_log` VALUES (733, 472, 'BUY', 0.00002050, 3000.00000000, 0.06150000, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2022-02-01 00:55:50', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (734, 246, 'SELL', 0.00002080, 1000.00000000, 0.02080000, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2022-02-01 00:56:45', 0.00000000, 2.08000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (735, 473, 'BUY', 0.00002080, 1000.00000000, 0.02080000, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2022-02-01 00:56:45', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (736, 101, 'SELL', 0.00013500, 500.00000000, 0.06750000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2022-02-01 00:57:38', 0.00000000, 0.10800000, 1);
+INSERT INTO `dbt_biding_log` VALUES (737, 474, 'BUY', 0.00013500, 500.00000000, 0.06750000, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2022-02-01 00:57:38', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (738, 101, 'SELL', 0.00013500, 300.00000000, 0.04050000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2022-02-01 01:45:33', 0.00000000, 0.04050000, 1);
+INSERT INTO `dbt_biding_log` VALUES (739, 475, 'BUY', 0.00013500, 300.00000000, 0.04050000, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2022-02-01 01:45:33', 0.00000000, 0.00600000, 2);
+INSERT INTO `dbt_biding_log` VALUES (740, 102, 'SELL', 0.00014500, 300.00000000, 0.04350000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2022-02-01 01:45:33', 0.00000000, 0.14500000, 1);
+INSERT INTO `dbt_biding_log` VALUES (741, 475, 'BUY', 0.00014500, 300.00000000, 0.04350000, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2022-02-01 01:45:33', 0.00000000, 0.00300000, 2);
+INSERT INTO `dbt_biding_log` VALUES (742, 102, 'SELL', 0.00014500, 300.00000000, 0.04350000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2022-02-01 01:46:40', 0.00000000, 0.10150000, 1);
+INSERT INTO `dbt_biding_log` VALUES (743, 476, 'BUY', 0.00014500, 300.00000000, 0.04350000, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2022-02-01 01:46:40', 0.00000000, 0.00300000, 2);
+INSERT INTO `dbt_biding_log` VALUES (744, 102, 'SELL', 0.00014500, 400.00000000, 0.05800000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2022-02-01 01:47:23', 0.00000000, 0.05800000, 1);
+INSERT INTO `dbt_biding_log` VALUES (745, 477, 'BUY', 0.00014500, 400.00000000, 0.05800000, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2022-02-01 01:47:23', 0.00000000, 0.00800000, 2);
+INSERT INTO `dbt_biding_log` VALUES (746, 103, 'SELL', 0.00015500, 400.00000000, 0.06200000, '4Y0HIQ', NULL, 'ETL', NULL, 'ETL_USDE', '2022-02-01 01:47:23', 0.00000000, 0.15500000, 1);
+INSERT INTO `dbt_biding_log` VALUES (747, 477, 'BUY', 0.00015500, 400.00000000, 0.06200000, 'XP8M1G', NULL, 'ETL', NULL, 'ETL_USDE', '2022-02-01 01:47:23', 0.00000000, 0.00400000, 2);
+INSERT INTO `dbt_biding_log` VALUES (748, 478, 'SELL', 0.00011000, 200.00000000, 0.02200000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 07:52:58', 0.00000000, 0.05500000, 1);
+INSERT INTO `dbt_biding_log` VALUES (749, 505, 'BUY', 0.00011000, 200.00000000, 0.02200000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 07:52:58', 0.00000002, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (750, 478, 'SELL', 0.00011000, 300.00000000, 0.03300000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 07:53:20', 0.00000000, 0.03300000, 1);
+INSERT INTO `dbt_biding_log` VALUES (751, 506, 'BUY', 0.00011000, 300.00000000, 0.03300000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 07:53:20', 0.00000009, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (752, 479, 'SELL', 0.00012000, 1500.00000000, 0.18000000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 07:54:11', 0.00000000, 0.18000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (753, 507, 'BUY', 0.00012000, 1500.00000000, 0.18000000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 07:54:11', 0.00000040, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (754, 490, 'SELL', 0.00012000, 1800.00000000, 0.21600000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 07:54:11', 0.00000000, 0.60000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (755, 507, 'BUY', 0.00012000, 1800.00000000, 0.21600000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 07:54:11', 0.00000040, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (756, 490, 'SELL', 0.00012000, 3200.00000000, 0.38400000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 07:54:34', 0.00000000, 0.38400000, 1);
+INSERT INTO `dbt_biding_log` VALUES (757, 508, 'BUY', 0.00012000, 3200.00000000, 0.38400000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 07:54:34', 0.00000060, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (758, 480, 'SELL', 0.00013000, 300.00000000, 0.03900000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 07:56:14', 0.00000000, 0.13000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (759, 509, 'BUY', 0.00013000, 300.00000000, 0.03900000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 07:56:14', 0.00000004, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (760, 480, 'SELL', 0.00013000, 700.00000000, 0.09100000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 08:00:03', 0.00000000, 0.09100000, 1);
+INSERT INTO `dbt_biding_log` VALUES (761, 516, 'BUY', 0.00013000, 700.00000000, 0.09100000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 08:00:03', 0.00000065, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (762, 491, 'SELL', 0.00013000, 4300.00000000, 0.55900000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 08:00:03', 0.00000000, 0.91000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (763, 516, 'BUY', 0.00013000, 4300.00000000, 0.55900000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 08:00:03', 0.00000065, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (764, 491, 'SELL', 0.00013000, 2700.00000000, 0.35100000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 08:00:24', 0.00000000, 0.35100000, 1);
+INSERT INTO `dbt_biding_log` VALUES (765, 517, 'BUY', 0.00013000, 2700.00000000, 0.35100000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 08:00:24', 0.00000039, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (766, 481, 'SELL', 0.00014000, 500.00000000, 0.07000000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 08:01:00', 0.00000000, 0.35000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (767, 518, 'BUY', 0.00014000, 500.00000000, 0.07000000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 08:01:00', 0.00000007, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (768, 481, 'SELL', 0.00014000, 1200.00000000, 0.16800000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 08:04:18', 0.00000000, 0.28000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (769, 519, 'BUY', 0.00014000, 1200.00000000, 0.16800000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 08:04:18', 0.00000017, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (770, 481, 'SELL', 0.00014000, 800.00000000, 0.11200000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 08:05:02', 0.00000000, 0.11200000, 2);
+INSERT INTO `dbt_biding_log` VALUES (771, 520, 'BUY', 0.00014000, 800.00000000, 0.11200000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 08:05:02', 0.00000021, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (772, 482, 'SELL', 0.00017000, 2000.00000000, 0.34000000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 08:06:04', 0.00000000, 0.56100000, 1);
+INSERT INTO `dbt_biding_log` VALUES (773, 521, 'BUY', 0.00017000, 2000.00000000, 0.34000000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 08:06:04', 0.00000034, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (774, 482, 'SELL', 0.00017000, 1300.00000000, 0.22100000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 08:06:38', 0.00000000, 0.22100000, 1);
+INSERT INTO `dbt_biding_log` VALUES (775, 522, 'BUY', 0.00017000, 1300.00000000, 0.22100000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 08:06:38', 0.00000026, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (776, 483, 'SELL', 0.00018500, 500.00000000, 0.09250000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 08:07:09', 0.00000000, 0.12950000, 1);
+INSERT INTO `dbt_biding_log` VALUES (777, 523, 'BUY', 0.00018500, 500.00000000, 0.09250000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 08:07:09', 0.00000009, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (778, 483, 'SELL', 0.00018500, 200.00000000, 0.03700000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 08:07:55', 0.00000000, 0.03700000, 1);
+INSERT INTO `dbt_biding_log` VALUES (779, 524, 'BUY', 0.00018500, 200.00000000, 0.03700000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 08:07:55', 0.00000009, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (780, 484, 'SELL', 0.00019800, 1800.00000000, 0.35640000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:12:16', 0.00000000, 0.35640000, 1);
+INSERT INTO `dbt_biding_log` VALUES (781, 525, 'BUY', 0.00019800, 1800.00000000, 0.35640000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:12:16', 0.00000059, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (782, 485, 'SELL', 0.00020450, 2200.00000000, 0.44990000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:12:24', 0.00000000, 0.44990000, 1);
+INSERT INTO `dbt_biding_log` VALUES (783, 526, 'BUY', 0.00020450, 2200.00000000, 0.44990000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:12:24', 0.00000082, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (784, 486, 'SELL', 0.00023700, 4200.00000000, 0.99540000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:12:52', 0.00000000, 0.99540000, 1);
+INSERT INTO `dbt_biding_log` VALUES (785, 527, 'BUY', 0.00023700, 4200.00000000, 0.99540000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:12:52', 0.00000119, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (786, 487, 'SELL', 0.00024800, 1100.00000000, 0.27280000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:14:00', 0.00000000, 0.27280000, 1);
+INSERT INTO `dbt_biding_log` VALUES (787, 528, 'BUY', 0.00024800, 1100.00000000, 0.27280000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:14:00', 0.00000050, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (788, 488, 'SELL', 0.00025000, 2000.00000000, 0.50000000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:14:10', 0.00000000, 0.50000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (789, 529, 'BUY', 0.00025000, 2000.00000000, 0.50000000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:14:10', 0.00000200, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (790, 489, 'SELL', 0.00025000, 5000.00000000, 1.25000000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:14:10', 0.00000000, 1.25000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (791, 529, 'BUY', 0.00025000, 5000.00000000, 1.25000000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:14:10', 0.00000200, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (792, 506, 'BUY', 0.00011000, 500.00000000, 0.05500000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:17:50', 0.00000009, 0.05500000, 1);
+INSERT INTO `dbt_biding_log` VALUES (793, 530, 'SELL', 0.00011000, 500.00000000, 0.05500000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:17:50', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (794, 508, 'BUY', 0.00011000, 1800.00000000, 0.19800000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:17:50', 0.00000060, 0.19800000, 2);
+INSERT INTO `dbt_biding_log` VALUES (795, 530, 'SELL', 0.00011000, 1800.00000000, 0.19800000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:17:50', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (796, 510, 'BUY', 0.00011000, 500.00000000, 0.05500000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:17:50', 0.00000006, 0.05500000, 1);
+INSERT INTO `dbt_biding_log` VALUES (797, 530, 'SELL', 0.00011000, 500.00000000, 0.05500000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:17:50', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (798, 511, 'BUY', 0.00011000, 1000.00000000, 0.11000000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:17:50', 0.00000011, 0.11000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (799, 530, 'SELL', 0.00011000, 1000.00000000, 0.11000000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:17:50', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (800, 512, 'BUY', 0.00011000, 200.00000000, 0.02200000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:17:50', 0.00000022, 0.22000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (801, 530, 'SELL', 0.00011000, 200.00000000, 0.02200000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:17:50', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (802, 496, 'BUY', 0.00010900, 1500.00000000, 0.16350000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:34:22', 0.00000022, 0.21800000, 1);
+INSERT INTO `dbt_biding_log` VALUES (803, 539, 'SELL', 0.00010900, 1500.00000000, 0.16350000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:34:22', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (804, 512, 'BUY', 0.00011000, 1000.00000000, 0.11000000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:34:31', 0.00000022, 0.19800000, 1);
+INSERT INTO `dbt_biding_log` VALUES (805, 540, 'SELL', 0.00011000, 1000.00000000, 0.11000000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:34:31', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (806, 496, 'BUY', 0.00010900, 500.00000000, 0.05450000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:34:54', 0.00000022, 0.05450000, 1);
+INSERT INTO `dbt_biding_log` VALUES (807, 541, 'SELL', 0.00010900, 500.00000000, 0.05450000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:34:54', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (808, 497, 'BUY', 0.00010900, 400.00000000, 0.04360000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:34:54', 0.00000033, 0.32700000, 2);
+INSERT INTO `dbt_biding_log` VALUES (809, 541, 'SELL', 0.00010900, 400.00000000, 0.04360000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:34:54', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (810, 497, 'BUY', 0.00010945, 2600.00000000, 0.28457000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:35:42', 0.00000033, 0.28457000, 1);
+INSERT INTO `dbt_biding_log` VALUES (811, 542, 'SELL', 0.00010945, 2600.00000000, 0.28457000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:35:42', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (812, 512, 'BUY', 0.00010945, 400.00000000, 0.04378000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:35:42', 0.00000022, 0.08756000, 2);
+INSERT INTO `dbt_biding_log` VALUES (813, 542, 'SELL', 0.00010945, 400.00000000, 0.04378000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:35:42', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (814, 512, 'BUY', 0.00011000, 400.00000000, 0.04400000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:36:03', 0.00000022, 0.04400000, 1);
+INSERT INTO `dbt_biding_log` VALUES (815, 543, 'SELL', 0.00011000, 400.00000000, 0.04400000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:36:03', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (816, 513, 'BUY', 0.00011000, 3000.00000000, 0.33000000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:36:03', 0.00000033, 0.33000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (817, 543, 'SELL', 0.00011000, 3000.00000000, 0.33000000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:36:03', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (818, 514, 'BUY', 0.00011000, 500.00000000, 0.05500000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:36:03', 0.00000006, 0.05500000, 2);
+INSERT INTO `dbt_biding_log` VALUES (819, 543, 'SELL', 0.00011000, 500.00000000, 0.05500000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:36:03', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (820, 515, 'BUY', 0.00011000, 100.00000000, 0.01100000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:36:03', 0.00000094, 0.88000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (821, 543, 'SELL', 0.00011000, 100.00000000, 0.01100000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:36:03', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (822, 515, 'BUY', 0.00011800, 7900.00000000, 0.93220000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:36:17', 0.00000094, 0.93220000, 1);
+INSERT INTO `dbt_biding_log` VALUES (823, 544, 'SELL', 0.00011800, 7900.00000000, 0.93220000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:36:17', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (824, 517, 'BUY', 0.00011800, 100.00000000, 0.01180000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:36:17', 0.00000039, 0.03540000, 2);
+INSERT INTO `dbt_biding_log` VALUES (825, 544, 'SELL', 0.00011800, 100.00000000, 0.01180000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:36:17', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (826, 517, 'BUY', 0.00013000, 200.00000000, 0.02600000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:36:24', 0.00000039, 0.02600000, 1);
+INSERT INTO `dbt_biding_log` VALUES (827, 545, 'SELL', 0.00013000, 200.00000000, 0.02600000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:36:24', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (828, 520, 'BUY', 0.00013000, 300.00000000, 0.03900000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:36:24', 0.00000021, 0.09100000, 2);
+INSERT INTO `dbt_biding_log` VALUES (829, 545, 'SELL', 0.00013000, 300.00000000, 0.03900000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:36:24', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (830, 520, 'BUY', 0.00014000, 400.00000000, 0.05600000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:36:30', 0.00000021, 0.05600000, 1);
+INSERT INTO `dbt_biding_log` VALUES (831, 546, 'SELL', 0.00014000, 400.00000000, 0.05600000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:36:30', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (832, 522, 'BUY', 0.00014000, 200.00000000, 0.02800000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:36:30', 0.00000026, 0.02800000, 2);
+INSERT INTO `dbt_biding_log` VALUES (833, 546, 'SELL', 0.00014000, 200.00000000, 0.02800000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:36:30', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (834, 524, 'BUY', 0.00018500, 300.00000000, 0.05550000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:36:36', 0.00000009, 0.05550000, 1);
+INSERT INTO `dbt_biding_log` VALUES (835, 547, 'SELL', 0.00018500, 300.00000000, 0.05550000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:36:36', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (836, 525, 'BUY', 0.00018500, 200.00000000, 0.03700000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:36:36', 0.00000059, 0.22200000, 2);
+INSERT INTO `dbt_biding_log` VALUES (837, 547, 'SELL', 0.00018500, 200.00000000, 0.03700000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:36:36', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (838, 525, 'BUY', 0.00019800, 1000.00000000, 0.19800000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:37:58', 0.00000059, 0.19800000, 1);
+INSERT INTO `dbt_biding_log` VALUES (839, 548, 'SELL', 0.00019800, 1000.00000000, 0.19800000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:37:58', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (840, 526, 'BUY', 0.00019800, 1000.00000000, 0.19800000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:37:58', 0.00000082, 0.35640000, 2);
+INSERT INTO `dbt_biding_log` VALUES (841, 548, 'SELL', 0.00019800, 1000.00000000, 0.19800000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:37:58', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (842, 526, 'BUY', 0.00020450, 800.00000000, 0.16360000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:38:04', 0.00000082, 0.16360000, 1);
+INSERT INTO `dbt_biding_log` VALUES (843, 549, 'SELL', 0.00020450, 800.00000000, 0.16360000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:38:04', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (844, 527, 'BUY', 0.00020450, 200.00000000, 0.04090000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:38:04', 0.00000119, 0.16360000, 2);
+INSERT INTO `dbt_biding_log` VALUES (845, 549, 'SELL', 0.00020450, 200.00000000, 0.04090000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:38:04', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (846, 527, 'BUY', 0.00023700, 600.00000000, 0.14220000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:38:13', 0.00000119, 0.14220000, 1);
+INSERT INTO `dbt_biding_log` VALUES (847, 550, 'SELL', 0.00023700, 600.00000000, 0.14220000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:38:13', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (848, 528, 'BUY', 0.00023700, 400.00000000, 0.09480000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:38:13', 0.00000050, 0.21330000, 2);
+INSERT INTO `dbt_biding_log` VALUES (849, 550, 'SELL', 0.00023700, 400.00000000, 0.09480000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:38:13', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (850, 528, 'BUY', 0.00024800, 500.00000000, 0.12400000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:38:52', 0.00000050, 0.12400000, 1);
+INSERT INTO `dbt_biding_log` VALUES (851, 551, 'SELL', 0.00024800, 500.00000000, 0.12400000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:38:52', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (852, 529, 'BUY', 0.00024800, 200.00000000, 0.04960000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:38:52', 0.00000200, 0.24800000, 2);
+INSERT INTO `dbt_biding_log` VALUES (853, 551, 'SELL', 0.00024800, 200.00000000, 0.04960000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:38:52', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (854, 529, 'BUY', 0.00025000, 800.00000000, 0.20000000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:39:41', 0.00000200, 0.20000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (855, 552, 'SELL', 0.00025000, 800.00000000, 0.20000000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:39:41', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (856, 494, 'BUY', 0.00010300, 800.00000000, 0.08240000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:39:50', 0.00000008, 0.08240000, 1);
+INSERT INTO `dbt_biding_log` VALUES (857, 553, 'SELL', 0.00010300, 800.00000000, 0.08240000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:39:50', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (858, 498, 'BUY', 0.00010300, 4000.00000000, 0.41200000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:39:50', 0.00000041, 0.41200000, 1);
+INSERT INTO `dbt_biding_log` VALUES (859, 553, 'SELL', 0.00010300, 4000.00000000, 0.41200000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:39:50', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (860, 492, 'BUY', 0.00010000, 500.00000000, 0.05000000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:39:58', 0.00000005, 0.05000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (861, 554, 'SELL', 0.00010000, 500.00000000, 0.05000000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:39:58', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (862, 504, 'BUY', 0.00010000, 3000.00000000, 0.30000000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:39:58', 0.00000030, 0.30000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (863, 554, 'SELL', 0.00010000, 3000.00000000, 0.30000000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:39:58', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (864, 493, 'BUY', 0.00009000, 1500.00000000, 0.13500000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:48:42', 0.00000014, 0.13500000, 1);
+INSERT INTO `dbt_biding_log` VALUES (865, 556, 'SELL', 0.00009000, 1500.00000000, 0.13500000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:48:42', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (866, 499, 'BUY', 0.00008550, 1200.00000000, 0.10260000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:49:01', 0.00000010, 0.10260000, 1);
+INSERT INTO `dbt_biding_log` VALUES (867, 557, 'SELL', 0.00008550, 1200.00000000, 0.10260000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:49:01', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (868, 495, 'BUY', 0.00008000, 300.00000000, 0.02400000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:49:21', 0.00000002, 0.02400000, 1);
+INSERT INTO `dbt_biding_log` VALUES (869, 558, 'SELL', 0.00008000, 300.00000000, 0.02400000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:49:21', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (870, 502, 'BUY', 0.00007885, 4400.00000000, 0.34694000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:49:46', 0.00000035, 0.34694000, 2);
+INSERT INTO `dbt_biding_log` VALUES (871, 559, 'SELL', 0.00007885, 4400.00000000, 0.34694000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:49:46', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (872, 500, 'BUY', 0.00007700, 700.00000000, 0.05390000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:50:07', 0.00000005, 0.05390000, 1);
+INSERT INTO `dbt_biding_log` VALUES (873, 560, 'SELL', 0.00007700, 700.00000000, 0.05390000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 11:50:07', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (874, 501, 'BUY', 0.00006554, 900.00000000, 0.05898600, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 12:03:34', 0.00000006, 0.05898600, 2);
+INSERT INTO `dbt_biding_log` VALUES (875, 561, 'SELL', 0.00006554, 900.00000000, 0.05898600, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 12:03:34', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (876, 561, 'SELL', 0.00006554, 100.00000000, 0.00655400, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 12:04:31', 0.00000000, 0.00655400, 1);
+INSERT INTO `dbt_biding_log` VALUES (877, 563, 'BUY', 0.00006554, 100.00000000, 0.00655400, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 12:04:31', 0.00000022, 0.02838000, 2);
+INSERT INTO `dbt_biding_log` VALUES (878, 560, 'SELL', 0.00007700, 1000.00000000, 0.07700000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 12:04:50', 0.00000000, 0.10010000, 1);
+INSERT INTO `dbt_biding_log` VALUES (879, 564, 'BUY', 0.00007700, 1000.00000000, 0.07700000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 12:04:50', 0.00000008, 0.00100000, 2);
+INSERT INTO `dbt_biding_log` VALUES (880, 560, 'SELL', 0.00007700, 300.00000000, 0.02310000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 12:45:45', 0.00000000, 0.02310000, 1);
+INSERT INTO `dbt_biding_log` VALUES (881, 565, 'BUY', 0.00007700, 300.00000000, 0.02310000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 12:45:45', 0.00000031, 0.00400000, 2);
+INSERT INTO `dbt_biding_log` VALUES (882, 558, 'SELL', 0.00008000, 200.00000000, 0.01600000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 12:45:59', 0.00000000, 0.01600000, 1);
+INSERT INTO `dbt_biding_log` VALUES (883, 566, 'BUY', 0.00008000, 200.00000000, 0.01600000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 12:45:59', 0.00000024, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (884, 559, 'SELL', 0.00007885, 600.00000000, 0.04731000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 12:45:59', 0.00000000, 0.04731000, 1);
+INSERT INTO `dbt_biding_log` VALUES (885, 566, 'BUY', 0.00007885, 600.00000000, 0.04731000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 12:45:59', 0.00000024, 0.00322000, 2);
+INSERT INTO `dbt_biding_log` VALUES (886, 556, 'SELL', 0.00009000, 500.00000000, 0.04500000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 12:56:04', 0.00000000, 0.09000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (887, 570, 'BUY', 0.00009000, 500.00000000, 0.04500000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 12:56:04', 0.00000004, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (888, 557, 'SELL', 0.00008550, 400.00000000, 0.03420000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 12:56:18', 0.00000000, 0.06840000, 1);
+INSERT INTO `dbt_biding_log` VALUES (889, 571, 'BUY', 0.00008550, 400.00000000, 0.03420000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 12:56:18', 0.00000003, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (890, 557, 'SELL', 0.00008550, 400.00000000, 0.03420000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 12:56:53', 0.00000000, 0.03420000, 1);
+INSERT INTO `dbt_biding_log` VALUES (891, 572, 'BUY', 0.00008550, 400.00000000, 0.03420000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 12:56:53', 0.00000005, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (892, 556, 'SELL', 0.00009000, 300.00000000, 0.02700000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 12:57:19', 0.00000000, 0.04500000, 1);
+INSERT INTO `dbt_biding_log` VALUES (893, 573, 'BUY', 0.00009000, 300.00000000, 0.02700000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 12:57:19', 0.00000003, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (894, 556, 'SELL', 0.00009000, 200.00000000, 0.01800000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 12:57:27', 0.00000000, 0.01800000, 1);
+INSERT INTO `dbt_biding_log` VALUES (895, 574, 'BUY', 0.00009000, 200.00000000, 0.01800000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 12:57:27', 0.00000006, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (896, 554, 'SELL', 0.00010000, 500.00000000, 0.05000000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 12:57:42', 0.00000000, 0.05000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (897, 575, 'BUY', 0.00010000, 500.00000000, 0.05000000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 12:57:42', 0.00000008, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (898, 553, 'SELL', 0.00010300, 200.00000000, 0.02060000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 12:58:05', 0.00000000, 0.02060000, 1);
+INSERT INTO `dbt_biding_log` VALUES (899, 576, 'BUY', 0.00010300, 200.00000000, 0.02060000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 12:58:05', 0.00000006, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (900, 555, 'SELL', 0.00011000, 2000.00000000, 0.22000000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 12:58:28', 0.00000000, 0.22000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (901, 577, 'BUY', 0.00011000, 2000.00000000, 0.22000000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 12:58:28', 0.00000033, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (902, 552, 'SELL', 0.00025000, 200.00000000, 0.05000000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 12:59:43', 0.00000000, 0.05000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (903, 578, 'BUY', 0.00025000, 200.00000000, 0.05000000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 12:59:43', 0.00000008, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (904, 574, 'BUY', 0.00009000, 500.00000000, 0.04500000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 01:08:49', 0.00000006, 0.04500000, 1);
+INSERT INTO `dbt_biding_log` VALUES (905, 579, 'SELL', 0.00009000, 500.00000000, 0.04500000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 01:08:49', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (906, 575, 'BUY', 0.00009000, 300.00000000, 0.02700000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 01:08:49', 0.00000008, 0.02700000, 2);
+INSERT INTO `dbt_biding_log` VALUES (907, 579, 'SELL', 0.00009000, 300.00000000, 0.02700000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 01:08:49', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (908, 576, 'BUY', 0.00010300, 400.00000000, 0.04120000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 01:09:29', 0.00000006, 0.04120000, 1);
+INSERT INTO `dbt_biding_log` VALUES (909, 580, 'SELL', 0.00010300, 400.00000000, 0.04120000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 01:09:29', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (910, 577, 'BUY', 0.00010300, 100.00000000, 0.01030000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 01:09:29', 0.00000033, 0.10300000, 2);
+INSERT INTO `dbt_biding_log` VALUES (911, 580, 'SELL', 0.00010300, 100.00000000, 0.01030000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 01:09:29', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (912, 531, 'SELL', 0.00028000, 3000.00000000, 0.84000000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 01:10:06', 0.00000000, 1.12000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (913, 581, 'BUY', 0.00028000, 3000.00000000, 0.84000000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 01:10:06', 0.00000084, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (914, 531, 'SELL', 0.00028000, 1000.00000000, 0.28000000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 01:11:43', 0.00000000, 0.28000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (915, 582, 'BUY', 0.00028000, 1000.00000000, 0.28000000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 01:11:43', 0.00000084, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (916, 532, 'SELL', 0.00029000, 1000.00000000, 0.29000000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 01:12:00', 0.00000000, 0.87000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (917, 583, 'BUY', 0.00029000, 1000.00000000, 0.29000000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 01:12:00', 0.00000029, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (918, 532, 'SELL', 0.00029000, 2000.00000000, 0.58000000, '91UHYC', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 01:12:14', 0.00000000, 0.58000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (919, 584, 'BUY', 0.00029000, 2000.00000000, 0.58000000, 'CXGSAN', NULL, 'TEST', NULL, 'TEST_USDT', '2022-03-15 01:12:14', 0.00000145, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (920, 213, 'BUY', 1.00200000, 1.00000000, 1.00200000, '4Y0HIQ', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:19:45', 0.00000000, 1.00200000, 1);
+INSERT INTO `dbt_biding_log` VALUES (921, 601, 'SELL', 1.00200000, 1.00000000, 1.00200000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:19:45', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (922, 595, 'BUY', 1.00200000, 4.00000000, 4.00800000, 'WYQMUB', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:19:45', 0.00000000, 25.05000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (923, 601, 'SELL', 1.00200000, 4.00000000, 4.00800000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:19:45', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (924, 595, 'BUY', 1.00220000, 5.00000000, 5.01100000, 'WYQMUB', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:20:18', 0.00000000, 21.04620000, 1);
+INSERT INTO `dbt_biding_log` VALUES (925, 602, 'SELL', 1.00220000, 5.00000000, 5.01100000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:20:18', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (926, 599, 'BUY', 1.00270000, 10.00000000, 10.02700000, 'WYQMUB', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:22:12', 0.00000000, 11.02970000, 2);
+INSERT INTO `dbt_biding_log` VALUES (927, 607, 'SELL', 1.00270000, 10.00000000, 10.02700000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:22:12', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (928, 593, 'BUY', 1.00140000, 10.00000000, 10.01400000, 'WYQMUB', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:29:21', 0.00000000, 10.01400000, 1);
+INSERT INTO `dbt_biding_log` VALUES (929, 613, 'SELL', 1.00140000, 10.00000000, 10.01400000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:29:21', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (930, 594, 'BUY', 1.00140000, 10.00000000, 10.01400000, 'WYQMUB', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:29:21', 0.00000000, 30.04200000, 2);
+INSERT INTO `dbt_biding_log` VALUES (931, 613, 'SELL', 1.00140000, 10.00000000, 10.01400000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:29:21', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (932, 594, 'BUY', 1.00140000, 10.00000000, 10.01400000, 'WYQMUB', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:29:48', 0.00000000, 20.02800000, 1);
+INSERT INTO `dbt_biding_log` VALUES (933, 614, 'SELL', 1.00140000, 10.00000000, 10.01400000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:29:48', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (934, 594, 'BUY', 1.00140000, 10.00000000, 10.01400000, 'WYQMUB', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:30:16', 0.00000000, 10.01400000, 1);
+INSERT INTO `dbt_biding_log` VALUES (935, 615, 'SELL', 1.00140000, 10.00000000, 10.01400000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:30:16', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (936, 595, 'BUY', 1.00140000, 16.00000000, 16.02240000, 'WYQMUB', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:30:16', 0.00000000, 16.02240000, 2);
+INSERT INTO `dbt_biding_log` VALUES (937, 615, 'SELL', 1.00140000, 16.00000000, 16.02240000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:30:16', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (938, 596, 'BUY', 1.00140000, 15.00000000, 15.02100000, 'WYQMUB', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:30:16', 0.00000000, 15.02100000, 2);
+INSERT INTO `dbt_biding_log` VALUES (939, 615, 'SELL', 1.00140000, 15.00000000, 15.02100000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:30:16', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (940, 599, 'BUY', 1.00140000, 1.00000000, 1.00140000, 'WYQMUB', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:30:16', 0.00000000, 1.00140000, 2);
+INSERT INTO `dbt_biding_log` VALUES (941, 615, 'SELL', 1.00140000, 1.00000000, 1.00140000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:30:16', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (942, 612, 'BUY', 1.00140000, 5.00000000, 5.00700000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:30:16', 0.00000000, 5.00700000, 1);
+INSERT INTO `dbt_biding_log` VALUES (943, 615, 'SELL', 1.00140000, 5.00000000, 5.00700000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:30:16', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (944, 591, 'BUY', 1.00110000, 25.00000000, 25.02750000, 'WYQMUB', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:30:35', 0.00000000, 25.02750000, 1);
+INSERT INTO `dbt_biding_log` VALUES (945, 616, 'SELL', 1.00110000, 25.00000000, 25.02750000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:30:35', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (946, 592, 'BUY', 1.00110000, 10.00000000, 10.01100000, 'WYQMUB', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:30:35', 0.00000000, 10.01100000, 1);
+INSERT INTO `dbt_biding_log` VALUES (947, 616, 'SELL', 1.00110000, 10.00000000, 10.01100000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:30:35', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (948, 588, 'BUY', 1.00080000, 15.00000000, 15.01200000, 'WYQMUB', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:30:52', 0.00000000, 15.01200000, 2);
+INSERT INTO `dbt_biding_log` VALUES (949, 617, 'SELL', 1.00080000, 15.00000000, 15.01200000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:30:52', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (950, 590, 'BUY', 1.00080000, 3.00000000, 3.00240000, 'WYQMUB', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:30:52', 0.00000000, 3.00240000, 2);
+INSERT INTO `dbt_biding_log` VALUES (951, 617, 'SELL', 1.00080000, 3.00000000, 3.00240000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:30:52', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (952, 605, 'SELL', 1.00290000, 10.00000000, 10.02900000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:33:26', 0.00000000, 10.02900000, 1);
+INSERT INTO `dbt_biding_log` VALUES (953, 619, 'BUY', 1.00290000, 10.00000000, 10.02900000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:33:26', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (954, 606, 'SELL', 1.00280000, 5.00000000, 5.01400000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:33:26', 0.00000000, 5.01400000, 2);
+INSERT INTO `dbt_biding_log` VALUES (955, 619, 'BUY', 1.00280000, 5.00000000, 5.01400000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:33:26', 0.00000000, 0.01000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (956, 615, 'SELL', 1.00140000, 3.00000000, 3.00420000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:33:26', 0.00000000, 3.00420000, 1);
+INSERT INTO `dbt_biding_log` VALUES (957, 619, 'BUY', 1.00140000, 3.00000000, 3.00420000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:33:26', 0.00000000, 0.14300000, 2);
+INSERT INTO `dbt_biding_log` VALUES (958, 616, 'SELL', 1.00110000, 15.00000000, 15.01650000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:33:26', 0.00000000, 15.01650000, 1);
+INSERT INTO `dbt_biding_log` VALUES (959, 619, 'BUY', 1.00110000, 15.00000000, 15.01650000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:33:26', 0.00000000, 0.17060000, 2);
+INSERT INTO `dbt_biding_log` VALUES (960, 617, 'SELL', 1.00080000, 12.00000000, 12.00960000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:33:26', 0.00000000, 12.00960000, 2);
+INSERT INTO `dbt_biding_log` VALUES (961, 619, 'BUY', 1.00080000, 12.00000000, 12.00960000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:33:26', 0.00000000, 0.19370000, 2);
+INSERT INTO `dbt_biding_log` VALUES (962, 618, 'SELL', 1.00280000, 60.00000000, 60.16800000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:33:26', 0.00000000, 60.16800000, 2);
+INSERT INTO `dbt_biding_log` VALUES (963, 619, 'BUY', 1.00280000, 60.00000000, 60.16800000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:33:26', 0.00000000, 0.06370000, 2);
+INSERT INTO `dbt_biding_log` VALUES (964, 600, 'SELL', 1.00300000, 10.00000000, 10.03000000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:35:51', 0.00000000, 10.03000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (965, 620, 'BUY', 1.00300000, 10.00000000, 10.03000000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:35:51', 0.00000000, 0.00000000, 2);
+INSERT INTO `dbt_biding_log` VALUES (966, 608, 'SELL', 1.00310000, 15.00000000, 15.04650000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:36:05', 0.00000000, 15.04650000, 1);
+INSERT INTO `dbt_biding_log` VALUES (967, 621, 'BUY', 1.00310000, 15.00000000, 15.04650000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 03:36:05', 0.00000000, 0.00000000, 1);
+INSERT INTO `dbt_biding_log` VALUES (968, 621, 'BUY', 1.00310000, 4.00000000, 4.01240000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 04:07:35', 0.00000000, 5.01550000, 1);
+INSERT INTO `dbt_biding_log` VALUES (969, 623, 'SELL', 1.00310000, 4.00000000, 4.01240000, '3VHN6H', NULL, 'GLD', NULL, 'GLD_USDE', '2022-03-17 04:07:35', 0.00000000, 0.00000000, 1);
+
+-- ----------------------------
+-- Table structure for dbt_blocklist
+-- ----------------------------
+DROP TABLE IF EXISTS `dbt_blocklist`;
+CREATE TABLE `dbt_blocklist`  (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ip_mail` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of dbt_blocklist
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for dbt_chat
+-- ----------------------------
+DROP TABLE IF EXISTS `dbt_chat`;
+CREATE TABLE `dbt_chat`  (
+  `id` bigint(21) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `message` varchar(1000) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `datetime` datetime NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of dbt_chat
+-- ----------------------------
+INSERT INTO `dbt_chat` VALUES (1, '4Y0HIQ', 'Test  message 001', '2021-08-30 01:16:05');
+
+-- ----------------------------
+-- Table structure for dbt_coinhistory
+-- ----------------------------
+DROP TABLE IF EXISTS `dbt_coinhistory`;
+CREATE TABLE `dbt_coinhistory`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `coin_symbol` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `market_symbol` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `last_price` double(19, 8) NOT NULL,
+  `total_coin_supply` double(19, 8) NOT NULL,
+  `price_high_1h` double(19, 8) NOT NULL,
+  `price_low_1h` double(19, 8) NOT NULL,
+  `price_change_1h` double(19, 8) NOT NULL,
+  `volume_1h` double(19, 8) NOT NULL,
+  `price_high_24h` double(19, 8) NOT NULL,
+  `price_low_24h` double(19, 8) NOT NULL,
+  `price_change_24h` double(19, 8) NOT NULL,
+  `volume_24h` double(19, 8) NOT NULL,
+  `open` double(19, 8) NOT NULL,
+  `close` double(19, 8) NOT NULL,
+  `volumefrom` double(19, 8) NOT NULL,
+  `volumeto` double(19, 8) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 457 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of dbt_coinhistory
+-- ----------------------------
+INSERT INTO `dbt_coinhistory` VALUES (1, 'AAX', 'AAX_USDE', 0.00000020, 10000000.00000000, 0.00000020, 0.00000020, 0.00000000, 5000000.00000000, 0.00000020, 0.00000020, 0.00000000, 5000000.00000000, 0.00000020, 0.00000020, 10000000.00000000, 5000000.00000000, '2021-08-08 06:09:03');
+INSERT INTO `dbt_coinhistory` VALUES (2, 'AAX', 'AAX_USDE', 0.00000019, 13000000.00000000, 0.00000019, 0.00000019, 0.00000000, 9000000.00000000, 0.00000020, 0.00000019, -0.00000001, 9000000.00000000, 0.00000019, 0.00000019, 13000000.00000000, 9000000.00000000, '2021-08-08 06:18:38');
+INSERT INTO `dbt_coinhistory` VALUES (3, 'AAX', 'AAX_USDE', 0.00000012, 9000002.00000000, 0.00000012, 0.00000012, 0.00000000, 9000001.00000000, 0.00000012, 0.00000012, 0.00000000, 9000001.00000000, 0.00000012, 0.00000012, 9000002.00000000, 9000001.00000000, '2021-08-30 01:24:19');
+INSERT INTO `dbt_coinhistory` VALUES (4, 'AAX', 'AAX_USDE', 0.00000020, 9066001.00000000, 0.00000020, 0.00000020, 0.00000000, 9033001.00000000, 0.00000020, 0.00000012, 0.00000000, 9033001.00000000, 0.00000020, 0.00000020, 9066001.00000000, 9033001.00000000, '2021-08-30 01:43:19');
+INSERT INTO `dbt_coinhistory` VALUES (5, 'AAX', 'AAX_USDE', 0.00000019, 9063001.00000000, 0.00000019, 0.00000019, 0.00000000, 9048001.00000000, 0.00000020, 0.00000012, -0.00000001, 9048001.00000000, 0.00000019, 0.00000019, 9063001.00000000, 9048001.00000000, '2021-08-30 01:59:48');
+INSERT INTO `dbt_coinhistory` VALUES (6, 'AAX', 'AAX_USDE', 0.00000021, 9084001.00000000, 0.00000021, 0.00000021, 0.00000000, 9066001.00000000, 0.00000021, 0.00000012, 0.00000009, 9066001.00000000, 0.00000021, 0.00000021, 9084001.00000000, 9066001.00000000, '2021-08-30 02:42:00');
+INSERT INTO `dbt_coinhistory` VALUES (7, 'AAX', 'AAX_USDE', 0.00000020, 9096001.00000000, 0.00000020, 0.00000020, 0.00000000, 9081001.00000000, 0.00000020, 0.00000020, 0.00000000, 9081001.00000000, 0.00000020, 0.00000020, 9096001.00000000, 9081001.00000000, '2021-09-02 06:48:26');
+INSERT INTO `dbt_coinhistory` VALUES (8, 'AAX', 'AAX_USDE', 0.00000022, 9681001.00000000, 0.00000022, 0.00000022, 0.00000000, 9381001.00000000, 0.00000022, 0.00000020, 0.00000002, 9381001.00000000, 0.00000022, 0.00000022, 9681001.00000000, 9381001.00000000, '2021-09-02 06:49:34');
+INSERT INTO `dbt_coinhistory` VALUES (9, 'AAX', 'AAX_USDE', 0.00000021, 9845001.00000000, 0.00000021, 0.00000021, 0.00000000, 9613001.00000000, 0.00000022, 0.00000020, -0.00000002, 9613001.00000000, 0.00000021, 0.00000021, 9845001.00000000, 9613001.00000000, '2021-09-02 06:50:14');
+INSERT INTO `dbt_coinhistory` VALUES (10, 'AAX', 'AAX_USDE', 0.00000022, 9633001.00000000, 0.00000022, 0.00000022, 0.00000000, 9623001.00000000, 0.00000022, 0.00000020, 0.00000002, 9623001.00000000, 0.00000023, 0.00000022, 9633001.00000000, 9623001.00000000, '2021-09-02 06:52:51');
+INSERT INTO `dbt_coinhistory` VALUES (11, 'AAX', 'AAX_USDE', 0.00000022, 9651001.00000000, 0.00000022, 0.00000022, 0.00000000, 9637001.00000000, 0.00000022, 0.00000020, 0.00000002, 9637001.00000000, 0.00000023, 0.00000022, 9651001.00000000, 9637001.00000000, '2021-09-02 06:53:39');
+INSERT INTO `dbt_coinhistory` VALUES (12, 'AAX', 'AAX_USDE', 0.00000020, 9777001.00000000, 0.00000020, 0.00000020, 0.00000000, 9707001.00000000, 0.00000022, 0.00000020, -0.00000002, 9707001.00000000, 0.00000020, 0.00000020, 9777001.00000000, 9707001.00000000, '2021-09-02 06:57:26');
+INSERT INTO `dbt_coinhistory` VALUES (13, 'AAX', 'AAX_USDE', 0.00000020, 9823001.00000000, 0.00000020, 0.00000020, 0.00000000, 9765001.00000000, 0.00000022, 0.00000020, 0.00000002, 9765001.00000000, 0.00000020, 0.00000020, 9823001.00000000, 9765001.00000000, '2021-09-02 06:58:08');
+INSERT INTO `dbt_coinhistory` VALUES (14, 'AAX', 'AAX_USDE', 0.00000020, 9821001.00000000, 0.00000020, 0.00000020, 0.00000000, 9793001.00000000, 0.00000022, 0.00000020, 0.00000002, 9793001.00000000, 0.00000020, 0.00000020, 9821001.00000000, 9793001.00000000, '2021-09-02 06:58:47');
+INSERT INTO `dbt_coinhistory` VALUES (15, 'USDE', 'USDE_USDT', 1.00000000, 20.00000000, 1.00000000, 1.00000000, 0.00000000, 10.00000000, 1.00000000, 1.00000000, 0.00000000, 10.00000000, 1.00000000, 1.00000000, 20.00000000, 10.00000000, '2021-09-25 02:13:26');
+INSERT INTO `dbt_coinhistory` VALUES (16, 'USDE', 'USDE_USDT', 1.00000000, 30.00000000, 1.00000000, 1.00000000, 0.00000000, 20.00000000, 1.00000000, 1.00000000, 0.00000000, 20.00000000, 1.00000000, 1.00000000, 30.00000000, 20.00000000, '2021-09-25 02:16:10');
+INSERT INTO `dbt_coinhistory` VALUES (17, 'USDE', 'USDE_USDT', 1.00000000, 40.00000000, 1.00000000, 1.00000000, 0.00000000, 30.00000000, 1.00000000, 1.00000000, 0.00000000, 30.00000000, 1.00000000, 1.00000000, 40.00000000, 30.00000000, '2021-09-25 02:17:33');
+INSERT INTO `dbt_coinhistory` VALUES (18, 'USDE', 'USDE_USDT', 1.00000000, 50.00000000, 1.00000000, 1.00000000, 0.00000000, 40.00000000, 1.00000000, 1.00000000, 0.00000000, 40.00000000, 1.00000000, 1.00000000, 50.00000000, 40.00000000, '2021-09-25 02:18:56');
+INSERT INTO `dbt_coinhistory` VALUES (19, 'USDE', 'USDE_USDT', 1.00000000, 60.00000000, 1.00000000, 1.00000000, 0.00000000, 50.00000000, 1.00000000, 1.00000000, 0.00000000, 50.00000000, 1.00000000, 1.00000000, 60.00000000, 50.00000000, '2021-09-29 05:40:00');
+INSERT INTO `dbt_coinhistory` VALUES (20, 'AAX', 'AAX_USDE', 0.00000022, 9813001.00000000, 0.00000022, 0.00000022, 0.00000000, 9803001.00000000, 0.00000022, 0.00000022, 0.00000000, 9803001.00000000, 0.00000022, 0.00000022, 9813001.00000000, 9803001.00000000, '2021-10-07 00:57:05');
+INSERT INTO `dbt_coinhistory` VALUES (21, 'AAX', 'AAX_USDE', 0.00000021, 9843001.00000000, 0.00000021, 0.00000021, 0.00000000, 9823001.00000000, 0.00000022, 0.00000021, -0.00000001, 9823001.00000000, 0.00000021, 0.00000021, 9843001.00000000, 9823001.00000000, '2021-10-07 00:57:39');
+INSERT INTO `dbt_coinhistory` VALUES (22, 'AAX', 'AAX_USDE', 0.00000022, 9855001.00000000, 0.00000022, 0.00000022, 0.00000000, 9839001.00000000, 0.00000022, 0.00000021, 0.00000001, 9839001.00000000, 0.00000023, 0.00000022, 9855001.00000000, 9839001.00000000, '2021-10-07 00:58:40');
+INSERT INTO `dbt_coinhistory` VALUES (23, 'AAX', 'AAX_USDE', 0.00000023, 9873001.00000000, 0.00000023, 0.00000023, 0.00000000, 9856001.00000000, 0.00000023, 0.00000021, 0.00000002, 9856001.00000000, 0.00000023, 0.00000023, 9873001.00000000, 9856001.00000000, '2021-10-07 00:58:40');
+INSERT INTO `dbt_coinhistory` VALUES (24, 'AAX', 'AAX_USDE', 0.00000023, 9956001.00000000, 0.00000023, 0.00000023, 0.00000000, 9906001.00000000, 0.00000023, 0.00000021, 0.00000002, 9906001.00000000, 0.00000025, 0.00000023, 9956001.00000000, 9906001.00000000, '2021-10-07 01:00:14');
+INSERT INTO `dbt_coinhistory` VALUES (25, 'AAX', 'AAX_USDE', 0.00000021, 9936001.00000000, 0.00000021, 0.00000021, 0.00000000, 9921001.00000000, 0.00000023, 0.00000021, -0.00000002, 9921001.00000000, 0.00000021, 0.00000021, 9936001.00000000, 9921001.00000000, '2021-10-07 01:25:46');
+INSERT INTO `dbt_coinhistory` VALUES (26, 'AAX', 'AAX_USDE', 0.00000023, 10667001.00000000, 0.00000023, 0.00000023, 0.00000000, 10294001.00000000, 0.00000023, 0.00000021, 0.00000002, 10294001.00000000, 0.00000025, 0.00000023, 10667001.00000000, 10294001.00000000, '2021-10-07 03:02:03');
+INSERT INTO `dbt_coinhistory` VALUES (27, 'AAX', 'AAX_USDE', 0.00000025, 10348001.00000000, 0.00000025, 0.00000025, 0.00000000, 10321001.00000000, 0.00000025, 0.00000021, 0.00000004, 10321001.00000000, 0.00000025, 0.00000025, 10348001.00000000, 10321001.00000000, '2021-10-07 03:02:03');
+INSERT INTO `dbt_coinhistory` VALUES (28, 'AAX', 'AAX_USDE', 0.00000025, 10567001.00000000, 0.00000025, 0.00000025, 0.00000000, 10444001.00000000, 0.00000025, 0.00000021, 0.00000004, 10444001.00000000, 0.00000027, 0.00000025, 10567001.00000000, 10444001.00000000, '2021-10-07 03:03:30');
+INSERT INTO `dbt_coinhistory` VALUES (29, 'AAX', 'AAX_USDE', 0.00000027, 10478001.00000000, 0.00000027, 0.00000027, 0.00000000, 10461001.00000000, 0.00000027, 0.00000021, 0.00000006, 10461001.00000000, 0.00000027, 0.00000027, 10478001.00000000, 10461001.00000000, '2021-10-07 03:03:30');
+INSERT INTO `dbt_coinhistory` VALUES (30, 'AAX', 'AAX_USDE', 0.00000027, 10581001.00000000, 0.00000027, 0.00000027, 0.00000000, 10521001.00000000, 0.00000027, 0.00000021, 0.00000006, 10521001.00000000, 0.00000028, 0.00000027, 10581001.00000000, 10521001.00000000, '2021-10-07 03:05:00');
+INSERT INTO `dbt_coinhistory` VALUES (31, 'AAX', 'AAX_USDE', 0.00000028, 10543001.00000000, 0.00000028, 0.00000028, 0.00000000, 10532001.00000000, 0.00000028, 0.00000021, 0.00000007, 10532001.00000000, 0.00000028, 0.00000028, 10543001.00000000, 10532001.00000000, '2021-10-07 03:05:00');
+INSERT INTO `dbt_coinhistory` VALUES (32, 'AAX', 'AAX_USDE', 0.00000029, 10548001.00000000, 0.00000029, 0.00000029, 0.00000000, 10540001.00000000, 0.00000029, 0.00000021, 0.00000008, 10540001.00000000, 0.00000029, 0.00000029, 10548001.00000000, 10540001.00000000, '2021-10-07 03:05:59');
+INSERT INTO `dbt_coinhistory` VALUES (33, 'AAX', 'AAX_USDE', 0.00000030, 10550001.00000000, 0.00000030, 0.00000030, 0.00000000, 10545001.00000000, 0.00000030, 0.00000021, 0.00000009, 10545001.00000000, 0.00000031, 0.00000030, 10550001.00000000, 10545001.00000000, '2021-10-07 03:07:06');
+INSERT INTO `dbt_coinhistory` VALUES (34, 'AAX', 'AAX_USDE', 0.00000031, 10573001.00000000, 0.00000031, 0.00000031, 0.00000000, 10559001.00000000, 0.00000031, 0.00000021, 0.00000010, 10559001.00000000, 0.00000031, 0.00000031, 10573001.00000000, 10559001.00000000, '2021-10-07 03:07:06');
+INSERT INTO `dbt_coinhistory` VALUES (35, 'AAX', 'AAX_USDE', 0.00000032, 10581001.00000000, 0.00000032, 0.00000032, 0.00000000, 10570001.00000000, 0.00000032, 0.00000021, 0.00000011, 10570001.00000000, 0.00000032, 0.00000032, 10581001.00000000, 10570001.00000000, '2021-10-07 03:07:42');
+INSERT INTO `dbt_coinhistory` VALUES (36, 'AAX', 'AAX_USDE', 0.00000032, 10580001.00000000, 0.00000032, 0.00000032, 0.00000000, 10575001.00000000, 0.00000032, 0.00000021, 0.00000011, 10575001.00000000, 0.00000032, 0.00000032, 10580001.00000000, 10575001.00000000, '2021-10-07 03:08:16');
+INSERT INTO `dbt_coinhistory` VALUES (37, 'AAX', 'AAX_USDE', 0.00000032, 10577001.00000000, 0.00000032, 0.00000032, 0.00000000, 10576001.00000000, 0.00000032, 0.00000021, 0.00000011, 10576001.00000000, 0.00000032, 0.00000032, 10577001.00000000, 10576001.00000000, '2021-10-07 03:08:49');
+INSERT INTO `dbt_coinhistory` VALUES (38, 'AAX', 'AAX_USDE', 0.00000032, 10578001.00000000, 0.00000032, 0.00000032, 0.00000000, 10577001.00000000, 0.00000032, 0.00000021, 0.00000011, 10577001.00000000, 0.00000032, 0.00000032, 10578001.00000000, 10577001.00000000, '2021-10-07 03:09:17');
+INSERT INTO `dbt_coinhistory` VALUES (39, 'AAX', 'AAX_USDE', 0.00000032, 10579001.00000000, 0.00000032, 0.00000032, 0.00000000, 10578001.00000000, 0.00000032, 0.00000021, 0.00000011, 10578001.00000000, 0.00000032, 0.00000032, 10579001.00000000, 10578001.00000000, '2021-10-07 03:09:41');
+INSERT INTO `dbt_coinhistory` VALUES (40, 'AAX', 'AAX_USDE', 0.00000032, 10579001.00000000, 0.00000032, 0.00000032, 0.00000000, 10578501.00000000, 0.00000032, 0.00000021, 0.00000011, 10578501.00000000, 0.00000032, 0.00000032, 10579001.00000000, 10578501.00000000, '2021-10-07 03:10:04');
+INSERT INTO `dbt_coinhistory` VALUES (41, 'AAX', 'AAX_USDE', 0.00000032, 10578701.00000000, 0.00000032, 0.00000032, 0.00000000, 10578601.00000000, 0.00000032, 0.00000021, 0.00000011, 10578601.00000000, 0.00000032, 0.00000032, 10578701.00000000, 10578601.00000000, '2021-10-07 03:10:31');
+INSERT INTO `dbt_coinhistory` VALUES (42, 'AAX', 'AAX_USDE', 0.00000032, 10578801.00000000, 0.00000032, 0.00000032, 0.00000000, 10578701.00000000, 0.00000032, 0.00000021, 0.00000011, 10578701.00000000, 0.00000032, 0.00000032, 10578801.00000000, 10578701.00000000, '2021-10-07 03:10:43');
+INSERT INTO `dbt_coinhistory` VALUES (43, 'AAX', 'AAX_USDE', 0.00000032, 10578901.00000000, 0.00000032, 0.00000032, 0.00000000, 10578801.00000000, 0.00000032, 0.00000021, 0.00000011, 10578801.00000000, 0.00000032, 0.00000032, 10578901.00000000, 10578801.00000000, '2021-10-07 03:11:04');
+INSERT INTO `dbt_coinhistory` VALUES (44, 'AAX', 'AAX_USDE', 0.00000032, 10579001.00000000, 0.00000032, 0.00000032, 0.00000000, 10578901.00000000, 0.00000032, 0.00000021, 0.00000011, 10578901.00000000, 0.00000032, 0.00000032, 10579001.00000000, 10578901.00000000, '2021-10-07 03:11:11');
+INSERT INTO `dbt_coinhistory` VALUES (45, 'AAX', 'AAX_USDE', 0.00000032, 10579101.00000000, 0.00000032, 0.00000032, 0.00000000, 10579001.00000000, 0.00000032, 0.00000021, 0.00000011, 10579001.00000000, 0.00000032, 0.00000032, 10579101.00000000, 10579001.00000000, '2021-10-07 03:11:20');
+INSERT INTO `dbt_coinhistory` VALUES (46, 'AAX', 'AAX_USDE', 0.00000032, 10579201.00000000, 0.00000032, 0.00000032, 0.00000000, 10579101.00000000, 0.00000032, 0.00000021, 0.00000011, 10579101.00000000, 0.00000032, 0.00000032, 10579201.00000000, 10579101.00000000, '2021-10-07 03:11:27');
+INSERT INTO `dbt_coinhistory` VALUES (47, 'ETL', 'ETL_USDE', 0.00011500, 18000200.00000000, 0.00011500, 0.00011500, 0.00000000, 18000100.00000000, 0.00011500, 0.00000450, 0.00011050, 18000100.00000000, 0.00011500, 0.00011500, 18000200.00000000, 18000100.00000000, '2021-10-07 03:12:49');
+INSERT INTO `dbt_coinhistory` VALUES (48, 'ETL', 'ETL_USDE', 0.00011500, 18000300.00000000, 0.00011500, 0.00011500, 0.00000000, 18000200.00000000, 0.00011500, 0.00000450, 0.00011050, 18000200.00000000, 0.00018500, 0.00011500, 18000300.00000000, 18000200.00000000, '2021-10-07 03:14:03');
+INSERT INTO `dbt_coinhistory` VALUES (49, 'ETL', 'ETL_USDE', 0.00011500, 18000400.00000000, 0.00011500, 0.00011500, 0.00000000, 18000300.00000000, 0.00011500, 0.00000450, 0.00011050, 18000300.00000000, 0.00018500, 0.00011500, 18000400.00000000, 18000300.00000000, '2021-10-07 03:17:00');
+INSERT INTO `dbt_coinhistory` VALUES (50, 'ETL', 'ETL_USDE', 0.00011500, 18000320.00000000, 0.00011500, 0.00011500, 0.00000000, 18000310.00000000, 0.00011500, 0.00000450, 0.00011050, 18000310.00000000, 0.00011500, 0.00011500, 18000320.00000000, 18000310.00000000, '2021-10-07 03:19:15');
+INSERT INTO `dbt_coinhistory` VALUES (51, 'ETL', 'ETL_USDE', 0.00011500, 18000330.00000000, 0.00011500, 0.00011500, 0.00000000, 18000320.00000000, 0.00011500, 0.00000450, 0.00011050, 18000320.00000000, 0.00011500, 0.00011500, 18000330.00000000, 18000320.00000000, '2021-10-07 03:19:41');
+INSERT INTO `dbt_coinhistory` VALUES (52, 'ETL', 'ETL_USDE', 0.00011500, 18000340.00000000, 0.00011500, 0.00011500, 0.00000000, 18000330.00000000, 0.00011500, 0.00000450, 0.00011050, 18000330.00000000, 0.00018500, 0.00011500, 18000340.00000000, 18000330.00000000, '2021-10-07 03:20:06');
+INSERT INTO `dbt_coinhistory` VALUES (53, 'ETL', 'ETL_USDE', 0.00011500, 18000350.00000000, 0.00011500, 0.00011500, 0.00000000, 18000340.00000000, 0.00011500, 0.00000450, 0.00011050, 18000340.00000000, 0.00011500, 0.00011500, 18000350.00000000, 18000340.00000000, '2021-10-07 03:20:52');
+INSERT INTO `dbt_coinhistory` VALUES (54, 'AAX', 'AAX_USDE', 0.00000022, 10609101.00000000, 0.00000022, 0.00000022, 0.00000000, 10594101.00000000, 0.00000022, 0.00000022, 0.00000000, 10594101.00000000, 0.00000022, 0.00000022, 10609101.00000000, 10594101.00000000, '2021-10-08 02:07:53');
+INSERT INTO `dbt_coinhistory` VALUES (55, 'AAX', 'AAX_USDE', 0.00000022, 10614101.00000000, 0.00000022, 0.00000022, 0.00000000, 10604101.00000000, 0.00000022, 0.00000022, 0.00000000, 10604101.00000000, 0.00000022, 0.00000022, 10614101.00000000, 10604101.00000000, '2021-10-08 02:08:03');
+INSERT INTO `dbt_coinhistory` VALUES (56, 'AAX', 'AAX_USDE', 0.00000023, 10654101.00000000, 0.00000023, 0.00000023, 0.00000000, 10629101.00000000, 0.00000023, 0.00000022, 0.00000001, 10629101.00000000, 0.00000023, 0.00000023, 10654101.00000000, 10629101.00000000, '2021-10-08 02:08:37');
+INSERT INTO `dbt_coinhistory` VALUES (57, 'AAX', 'AAX_USDE', 0.00000023, 10645101.00000000, 0.00000023, 0.00000023, 0.00000000, 10637101.00000000, 0.00000023, 0.00000022, 0.00000001, 10637101.00000000, 0.00000023, 0.00000023, 10645101.00000000, 10637101.00000000, '2021-10-08 02:08:48');
+INSERT INTO `dbt_coinhistory` VALUES (58, 'AAX', 'AAX_USDE', 0.00000024, 10643101.00000000, 0.00000024, 0.00000024, 0.00000000, 10640101.00000000, 0.00000024, 0.00000022, 0.00000002, 10640101.00000000, 0.00000024, 0.00000024, 10643101.00000000, 10640101.00000000, '2021-10-08 02:09:25');
+INSERT INTO `dbt_coinhistory` VALUES (59, 'AAX', 'AAX_USDE', 0.00000024, 10642101.00000000, 0.00000024, 0.00000024, 0.00000000, 10641101.00000000, 0.00000024, 0.00000022, 0.00000002, 10641101.00000000, 0.00000024, 0.00000024, 10642101.00000000, 10641101.00000000, '2021-10-08 02:09:33');
+INSERT INTO `dbt_coinhistory` VALUES (60, 'AAX', 'AAX_USDE', 0.00000024, 10644101.00000000, 0.00000024, 0.00000024, 0.00000000, 10642601.00000000, 0.00000024, 0.00000022, 0.00000002, 10642601.00000000, 0.00000024, 0.00000024, 10644101.00000000, 10642601.00000000, '2021-10-08 02:09:43');
+INSERT INTO `dbt_coinhistory` VALUES (61, 'AAX', 'AAX_USDE', 0.00000024, 10647601.00000000, 0.00000024, 0.00000024, 0.00000000, 10645101.00000000, 0.00000024, 0.00000022, 0.00000002, 10645101.00000000, 0.00000024, 0.00000024, 10647601.00000000, 10645101.00000000, '2021-10-08 02:09:49');
+INSERT INTO `dbt_coinhistory` VALUES (62, 'AAX', 'AAX_USDE', 0.00000024, 10647101.00000000, 0.00000024, 0.00000024, 0.00000000, 10646101.00000000, 0.00000024, 0.00000022, 0.00000002, 10646101.00000000, 0.00000024, 0.00000024, 10647101.00000000, 10646101.00000000, '2021-10-08 02:10:57');
+INSERT INTO `dbt_coinhistory` VALUES (63, 'AAX', 'AAX_USDE', 0.00000024, 10650101.00000000, 0.00000024, 0.00000024, 0.00000000, 10648101.00000000, 0.00000024, 0.00000022, 0.00000002, 10648101.00000000, 0.00000024, 0.00000024, 10650101.00000000, 10648101.00000000, '2021-10-08 02:11:05');
+INSERT INTO `dbt_coinhistory` VALUES (64, 'AAX', 'AAX_USDE', 0.00000024, 10650101.00000000, 0.00000024, 0.00000024, 0.00000000, 10649101.00000000, 0.00000024, 0.00000022, 0.00000002, 10649101.00000000, 0.00000024, 0.00000024, 10650101.00000000, 10649101.00000000, '2021-10-08 02:13:15');
+INSERT INTO `dbt_coinhistory` VALUES (65, 'AAX', 'AAX_USDE', 0.00000024, 10649501.00000000, 0.00000024, 0.00000024, 0.00000000, 10649301.00000000, 0.00000024, 0.00000022, 0.00000002, 10649301.00000000, 0.00000024, 0.00000024, 10649501.00000000, 10649301.00000000, '2021-10-08 02:13:23');
+INSERT INTO `dbt_coinhistory` VALUES (66, 'AAX', 'AAX_USDE', 0.00000024, 10650101.00000000, 0.00000024, 0.00000024, 0.00000000, 10649701.00000000, 0.00000024, 0.00000022, 0.00000002, 10649701.00000000, 0.00000024, 0.00000024, 10650101.00000000, 10649701.00000000, '2021-10-08 02:13:29');
+INSERT INTO `dbt_coinhistory` VALUES (67, 'AAX', 'AAX_USDE', 0.00000024, 10650901.00000000, 0.00000024, 0.00000024, 0.00000000, 10650301.00000000, 0.00000024, 0.00000022, 0.00000002, 10650301.00000000, 0.00000024, 0.00000024, 10650901.00000000, 10650301.00000000, '2021-10-08 02:13:47');
+INSERT INTO `dbt_coinhistory` VALUES (68, 'AAX', 'AAX_USDE', 0.00000024, 10651901.00000000, 0.00000024, 0.00000024, 0.00000000, 10651101.00000000, 0.00000024, 0.00000022, 0.00000002, 10651101.00000000, 0.00000024, 0.00000024, 10651901.00000000, 10651101.00000000, '2021-10-08 02:14:04');
+INSERT INTO `dbt_coinhistory` VALUES (69, 'AAX', 'AAX_USDE', 0.00000024, 10653101.00000000, 0.00000024, 0.00000024, 0.00000000, 10652101.00000000, 0.00000024, 0.00000022, 0.00000002, 10652101.00000000, 0.00000024, 0.00000024, 10653101.00000000, 10652101.00000000, '2021-10-08 02:14:10');
+INSERT INTO `dbt_coinhistory` VALUES (70, 'AAX', 'AAX_USDE', 0.00000024, 10654101.00000000, 0.00000024, 0.00000024, 0.00000000, 10653101.00000000, 0.00000024, 0.00000022, 0.00000002, 10653101.00000000, 0.00000024, 0.00000024, 10654101.00000000, 10653101.00000000, '2021-10-08 02:14:19');
+INSERT INTO `dbt_coinhistory` VALUES (71, 'AAX', 'AAX_USDE', 0.00000024, 10703101.00000000, 0.00000024, 0.00000024, 0.00000000, 10678101.00000000, 0.00000024, 0.00000022, 0.00000002, 10678101.00000000, 0.00000024, 0.00000024, 10703101.00000000, 10678101.00000000, '2021-10-08 02:14:30');
+INSERT INTO `dbt_coinhistory` VALUES (72, 'AAX', 'AAX_USDE', 0.00000024, 10684101.00000000, 0.00000024, 0.00000024, 0.00000000, 10681101.00000000, 0.00000024, 0.00000022, 0.00000002, 10681101.00000000, 0.00000024, 0.00000024, 10684101.00000000, 10681101.00000000, '2021-10-08 02:14:38');
+INSERT INTO `dbt_coinhistory` VALUES (73, 'AAX', 'AAX_USDE', 0.00000025, 10685101.00000000, 0.00000025, 0.00000025, 0.00000000, 10683101.00000000, 0.00000025, 0.00000022, 0.00000003, 10683101.00000000, 0.00000025, 0.00000025, 10685101.00000000, 10683101.00000000, '2021-10-08 02:14:48');
+INSERT INTO `dbt_coinhistory` VALUES (74, 'AAX', 'AAX_USDE', 0.00000025, 10687101.00000000, 0.00000025, 0.00000025, 0.00000000, 10685101.00000000, 0.00000025, 0.00000022, 0.00000003, 10685101.00000000, 0.00000025, 0.00000025, 10687101.00000000, 10685101.00000000, '2021-10-08 02:15:00');
+INSERT INTO `dbt_coinhistory` VALUES (75, 'AAX', 'AAX_USDE', 0.00000025, 10691101.00000000, 0.00000025, 0.00000025, 0.00000000, 10688101.00000000, 0.00000025, 0.00000022, 0.00000003, 10688101.00000000, 0.00000025, 0.00000025, 10691101.00000000, 10688101.00000000, '2021-10-08 02:15:07');
+INSERT INTO `dbt_coinhistory` VALUES (76, 'AAX', 'AAX_USDE', 0.00000025, 10696101.00000000, 0.00000025, 0.00000025, 0.00000000, 10692101.00000000, 0.00000025, 0.00000022, 0.00000003, 10692101.00000000, 0.00000025, 0.00000025, 10696101.00000000, 10692101.00000000, '2021-10-08 02:16:25');
+INSERT INTO `dbt_coinhistory` VALUES (77, 'AAX', 'AAX_USDE', 0.00000025, 10694101.00000000, 0.00000025, 0.00000025, 0.00000000, 10693101.00000000, 0.00000025, 0.00000022, 0.00000003, 10693101.00000000, 0.00000025, 0.00000025, 10694101.00000000, 10693101.00000000, '2021-10-08 02:16:33');
+INSERT INTO `dbt_coinhistory` VALUES (78, 'AAX', 'AAX_USDE', 0.00000025, 10713101.00000000, 0.00000025, 0.00000025, 0.00000000, 10703101.00000000, 0.00000025, 0.00000022, 0.00000003, 10703101.00000000, 0.00000025, 0.00000025, 10713101.00000000, 10703101.00000000, '2021-10-08 02:16:43');
+INSERT INTO `dbt_coinhistory` VALUES (79, 'AAX', 'AAX_USDE', 0.00000025, 10707101.00000000, 0.00000025, 0.00000025, 0.00000000, 10705101.00000000, 0.00000025, 0.00000022, 0.00000003, 10705101.00000000, 0.00000025, 0.00000025, 10707101.00000000, 10705101.00000000, '2021-10-08 02:18:09');
+INSERT INTO `dbt_coinhistory` VALUES (80, 'AAX', 'AAX_USDE', 0.00000025, 10717101.00000000, 0.00000025, 0.00000025, 0.00000000, 10711101.00000000, 0.00000025, 0.00000022, 0.00000003, 10711101.00000000, 0.00000025, 0.00000025, 10717101.00000000, 10711101.00000000, '2021-10-08 02:18:15');
+INSERT INTO `dbt_coinhistory` VALUES (81, 'AAX', 'AAX_USDE', 0.00000025, 10727101.00000000, 0.00000025, 0.00000025, 0.00000000, 10719101.00000000, 0.00000025, 0.00000022, 0.00000003, 10719101.00000000, 0.00000025, 0.00000025, 10727101.00000000, 10719101.00000000, '2021-10-08 02:18:53');
+INSERT INTO `dbt_coinhistory` VALUES (82, 'AAX', 'AAX_USDE', 0.00000025, 10743101.00000000, 0.00000025, 0.00000025, 0.00000000, 10731101.00000000, 0.00000025, 0.00000022, 0.00000003, 10731101.00000000, 0.00000025, 0.00000025, 10743101.00000000, 10731101.00000000, '2021-10-08 02:19:07');
+INSERT INTO `dbt_coinhistory` VALUES (83, 'AAX', 'AAX_USDE', 0.00000025, 10733101.00000000, 0.00000025, 0.00000025, 0.00000000, 10732101.00000000, 0.00000025, 0.00000022, 0.00000003, 10732101.00000000, 0.00000025, 0.00000025, 10733101.00000000, 10732101.00000000, '2021-10-08 02:19:12');
+INSERT INTO `dbt_coinhistory` VALUES (84, 'AAX', 'AAX_USDE', 0.00000025, 10740101.00000000, 0.00000025, 0.00000025, 0.00000000, 10736101.00000000, 0.00000025, 0.00000022, 0.00000003, 10736101.00000000, 0.00000025, 0.00000025, 10740101.00000000, 10736101.00000000, '2021-10-08 02:19:59');
+INSERT INTO `dbt_coinhistory` VALUES (85, 'AAX', 'AAX_USDE', 0.00000027, 10760101.00000000, 0.00000027, 0.00000027, 0.00000000, 10748101.00000000, 0.00000027, 0.00000022, 0.00000005, 10748101.00000000, 0.00000027, 0.00000027, 10760101.00000000, 10748101.00000000, '2021-10-08 02:20:13');
+INSERT INTO `dbt_coinhistory` VALUES (86, 'AAX', 'AAX_USDE', 0.00000027, 10754101.00000000, 0.00000027, 0.00000027, 0.00000000, 10751101.00000000, 0.00000027, 0.00000022, 0.00000005, 10751101.00000000, 0.00000027, 0.00000027, 10754101.00000000, 10751101.00000000, '2021-10-08 02:20:27');
+INSERT INTO `dbt_coinhistory` VALUES (87, 'AAX', 'AAX_USDE', 0.00000027, 10765101.00000000, 0.00000027, 0.00000027, 0.00000000, 10758101.00000000, 0.00000027, 0.00000022, 0.00000005, 10758101.00000000, 0.00000027, 0.00000027, 10765101.00000000, 10758101.00000000, '2021-10-08 02:20:33');
+INSERT INTO `dbt_coinhistory` VALUES (88, 'AAX', 'AAX_USDE', 0.00000029, 10759101.00000000, 0.00000029, 0.00000029, 0.00000000, 10758601.00000000, 0.00000029, 0.00000022, 0.00000007, 10758601.00000000, 0.00000029, 0.00000029, 10759101.00000000, 10758601.00000000, '2021-10-08 02:21:43');
+INSERT INTO `dbt_coinhistory` VALUES (89, 'AAX', 'AAX_USDE', 0.00000029, 10761601.00000000, 0.00000029, 0.00000029, 0.00000000, 10760101.00000000, 0.00000029, 0.00000022, 0.00000007, 10760101.00000000, 0.00000029, 0.00000029, 10761601.00000000, 10760101.00000000, '2021-10-08 02:21:52');
+INSERT INTO `dbt_coinhistory` VALUES (90, 'AAX', 'AAX_USDE', 0.00000029, 10761101.00000000, 0.00000029, 0.00000029, 0.00000000, 10760601.00000000, 0.00000029, 0.00000022, 0.00000007, 10760601.00000000, 0.00000029, 0.00000029, 10761101.00000000, 10760601.00000000, '2021-10-08 02:21:57');
+INSERT INTO `dbt_coinhistory` VALUES (91, 'AAX', 'AAX_USDE', 0.00000029, 10761601.00000000, 0.00000029, 0.00000029, 0.00000000, 10761101.00000000, 0.00000029, 0.00000022, 0.00000007, 10761101.00000000, 0.00000029, 0.00000029, 10761601.00000000, 10761101.00000000, '2021-10-08 02:22:51');
+INSERT INTO `dbt_coinhistory` VALUES (92, 'AAX', 'AAX_USDE', 0.00000029, 10761501.00000000, 0.00000029, 0.00000029, 0.00000000, 10761301.00000000, 0.00000029, 0.00000022, 0.00000007, 10761301.00000000, 0.00000029, 0.00000029, 10761501.00000000, 10761301.00000000, '2021-10-08 02:23:01');
+INSERT INTO `dbt_coinhistory` VALUES (93, 'AAX', 'AAX_USDE', 0.00000029, 10762101.00000000, 0.00000029, 0.00000029, 0.00000000, 10761701.00000000, 0.00000029, 0.00000022, 0.00000007, 10761701.00000000, 0.00000029, 0.00000029, 10762101.00000000, 10761701.00000000, '2021-10-08 02:23:07');
+INSERT INTO `dbt_coinhistory` VALUES (94, 'AAX', 'AAX_USDE', 0.00000029, 10764501.00000000, 0.00000029, 0.00000029, 0.00000000, 10763101.00000000, 0.00000029, 0.00000022, 0.00000007, 10763101.00000000, 0.00000029, 0.00000029, 10764501.00000000, 10763101.00000000, '2021-10-08 02:23:13');
+INSERT INTO `dbt_coinhistory` VALUES (95, 'AAX', 'AAX_USDE', 0.00000029, 10764101.00000000, 0.00000029, 0.00000029, 0.00000000, 10763601.00000000, 0.00000029, 0.00000022, 0.00000007, 10763601.00000000, 0.00000029, 0.00000029, 10764101.00000000, 10763601.00000000, '2021-10-08 02:23:19');
+INSERT INTO `dbt_coinhistory` VALUES (96, 'AAX', 'AAX_USDE', 0.00000029, 10764001.00000000, 0.00000029, 0.00000029, 0.00000000, 10763801.00000000, 0.00000029, 0.00000022, 0.00000007, 10763801.00000000, 0.00000029, 0.00000029, 10764001.00000000, 10763801.00000000, '2021-10-08 02:24:12');
+INSERT INTO `dbt_coinhistory` VALUES (97, 'AAX', 'AAX_USDE', 0.00000029, 10765001.00000000, 0.00000029, 0.00000029, 0.00000000, 10764401.00000000, 0.00000029, 0.00000022, 0.00000007, 10764401.00000000, 0.00000029, 0.00000029, 10765001.00000000, 10764401.00000000, '2021-10-08 02:24:18');
+INSERT INTO `dbt_coinhistory` VALUES (98, 'AAX', 'AAX_USDE', 0.00000029, 10764601.00000000, 0.00000029, 0.00000029, 0.00000000, 10764501.00000000, 0.00000029, 0.00000022, 0.00000007, 10764501.00000000, 0.00000029, 0.00000029, 10764601.00000000, 10764501.00000000, '2021-10-08 02:24:24');
+INSERT INTO `dbt_coinhistory` VALUES (99, 'AAX', 'AAX_USDE', 0.00000029, 10765101.00000000, 0.00000029, 0.00000029, 0.00000000, 10764801.00000000, 0.00000029, 0.00000022, 0.00000007, 10764801.00000000, 0.00000029, 0.00000029, 10765101.00000000, 10764801.00000000, '2021-10-08 02:24:41');
+INSERT INTO `dbt_coinhistory` VALUES (100, 'AAX', 'AAX_USDE', 0.00000029, 10765001.00000000, 0.00000029, 0.00000029, 0.00000000, 10764901.00000000, 0.00000029, 0.00000022, 0.00000007, 10764901.00000000, 0.00000029, 0.00000029, 10765001.00000000, 10764901.00000000, '2021-10-08 02:24:46');
+INSERT INTO `dbt_coinhistory` VALUES (101, 'AAX', 'AAX_USDE', 0.00000029, 10765301.00000000, 0.00000029, 0.00000029, 0.00000000, 10765101.00000000, 0.00000029, 0.00000022, 0.00000007, 10765101.00000000, 0.00000029, 0.00000029, 10765301.00000000, 10765101.00000000, '2021-10-08 02:24:51');
+INSERT INTO `dbt_coinhistory` VALUES (102, 'AAX', 'AAX_USDE', 0.00000029, 10765701.00000000, 0.00000029, 0.00000029, 0.00000000, 10765401.00000000, 0.00000029, 0.00000022, 0.00000007, 10765401.00000000, 0.00000029, 0.00000029, 10765701.00000000, 10765401.00000000, '2021-10-08 02:25:22');
+INSERT INTO `dbt_coinhistory` VALUES (103, 'AAX', 'AAX_USDE', 0.00000029, 10765601.00000000, 0.00000029, 0.00000029, 0.00000000, 10765501.00000000, 0.00000029, 0.00000022, 0.00000007, 10765501.00000000, 0.00000029, 0.00000029, 10765601.00000000, 10765501.00000000, '2021-10-08 02:25:28');
+INSERT INTO `dbt_coinhistory` VALUES (104, 'AAX', 'AAX_USDE', 0.00000029, 10765901.00000000, 0.00000029, 0.00000029, 0.00000000, 10765701.00000000, 0.00000029, 0.00000022, 0.00000007, 10765701.00000000, 0.00000029, 0.00000029, 10765901.00000000, 10765701.00000000, '2021-10-08 02:25:48');
+INSERT INTO `dbt_coinhistory` VALUES (105, 'AAX', 'AAX_USDE', 0.00000029, 10767701.00000000, 0.00000029, 0.00000029, 0.00000000, 10766701.00000000, 0.00000029, 0.00000022, 0.00000007, 10766701.00000000, 0.00000029, 0.00000029, 10767701.00000000, 10766701.00000000, '2021-10-08 02:26:36');
+INSERT INTO `dbt_coinhistory` VALUES (106, 'AAX', 'AAX_USDE', 0.00000029, 10767101.00000000, 0.00000029, 0.00000029, 0.00000000, 10766901.00000000, 0.00000029, 0.00000022, 0.00000007, 10766901.00000000, 0.00000029, 0.00000029, 10767101.00000000, 10766901.00000000, '2021-10-08 02:27:18');
+INSERT INTO `dbt_coinhistory` VALUES (107, 'AAX', 'AAX_USDE', 0.00000029, 10769301.00000000, 0.00000029, 0.00000029, 0.00000000, 10768101.00000000, 0.00000029, 0.00000022, 0.00000007, 10768101.00000000, 0.00000029, 0.00000029, 10769301.00000000, 10768101.00000000, '2021-10-08 02:27:45');
+INSERT INTO `dbt_coinhistory` VALUES (108, 'AAX', 'AAX_USDE', 0.00000032, 10768301.00000000, 0.00000032, 0.00000032, 0.00000000, 10768201.00000000, 0.00000032, 0.00000022, 0.00000010, 10768201.00000000, 0.00000032, 0.00000032, 10768301.00000000, 10768201.00000000, '2021-10-08 02:28:19');
+INSERT INTO `dbt_coinhistory` VALUES (109, 'AAX', 'AAX_USDE', 0.00000032, 10768601.00000000, 0.00000032, 0.00000032, 0.00000000, 10768401.00000000, 0.00000032, 0.00000022, 0.00000010, 10768401.00000000, 0.00000032, 0.00000032, 10768601.00000000, 10768401.00000000, '2021-10-08 02:28:32');
+INSERT INTO `dbt_coinhistory` VALUES (110, 'AAX', 'AAX_USDE', 0.00000032, 10768601.00000000, 0.00000032, 0.00000032, 0.00000000, 10768501.00000000, 0.00000032, 0.00000022, 0.00000010, 10768501.00000000, 0.00000032, 0.00000032, 10768601.00000000, 10768501.00000000, '2021-10-08 02:28:41');
+INSERT INTO `dbt_coinhistory` VALUES (111, 'AAX', 'AAX_USDE', 0.00000032, 10768901.00000000, 0.00000032, 0.00000032, 0.00000000, 10768701.00000000, 0.00000032, 0.00000022, 0.00000010, 10768701.00000000, 0.00000032, 0.00000032, 10768901.00000000, 10768701.00000000, '2021-10-08 02:28:48');
+INSERT INTO `dbt_coinhistory` VALUES (112, 'AAX', 'AAX_USDE', 0.00000032, 10769301.00000000, 0.00000032, 0.00000032, 0.00000000, 10769001.00000000, 0.00000032, 0.00000022, 0.00000010, 10769001.00000000, 0.00000032, 0.00000032, 10769301.00000000, 10769001.00000000, '2021-10-08 02:28:55');
+INSERT INTO `dbt_coinhistory` VALUES (113, 'AAX', 'AAX_USDE', 0.00000032, 10771001.00000000, 0.00000032, 0.00000032, 0.00000000, 10770001.00000000, 0.00000032, 0.00000022, 0.00000010, 10770001.00000000, 0.00000032, 0.00000032, 10771001.00000000, 10770001.00000000, '2021-10-08 02:29:32');
+INSERT INTO `dbt_coinhistory` VALUES (114, 'AAX', 'AAX_USDE', 0.00000033, 10772001.00000000, 0.00000033, 0.00000033, 0.00000000, 10771001.00000000, 0.00000033, 0.00000022, 0.00000011, 10771001.00000000, 0.00000033, 0.00000033, 10772001.00000000, 10771001.00000000, '2021-10-08 02:30:34');
+INSERT INTO `dbt_coinhistory` VALUES (115, 'AAX', 'AAX_USDE', 0.00000033, 10775001.00000000, 0.00000033, 0.00000033, 0.00000000, 10773001.00000000, 0.00000033, 0.00000022, 0.00000011, 10773001.00000000, 0.00000033, 0.00000033, 10775001.00000000, 10773001.00000000, '2021-10-08 02:30:39');
+INSERT INTO `dbt_coinhistory` VALUES (116, 'AAX', 'AAX_USDE', 0.00000033, 10777001.00000000, 0.00000033, 0.00000033, 0.00000000, 10775001.00000000, 0.00000033, 0.00000033, 0.00000000, 10775001.00000000, 0.00000033, 0.00000033, 10777001.00000000, 10775001.00000000, '2021-10-12 07:46:30');
+INSERT INTO `dbt_coinhistory` VALUES (117, 'AAX', 'AAX_USDE', 0.00000033, 10776001.00000000, 0.00000033, 0.00000033, 0.00000000, 10775501.00000000, 0.00000033, 0.00000033, 0.00000000, 10775501.00000000, 0.00000033, 0.00000033, 10776001.00000000, 10775501.00000000, '2021-10-12 07:46:35');
+INSERT INTO `dbt_coinhistory` VALUES (118, 'AAX', 'AAX_USDE', 0.00000033, 10777501.00000000, 0.00000033, 0.00000033, 0.00000000, 10776501.00000000, 0.00000033, 0.00000033, 0.00000000, 10776501.00000000, 0.00000033, 0.00000033, 10777501.00000000, 10776501.00000000, '2021-10-12 07:46:41');
+INSERT INTO `dbt_coinhistory` VALUES (119, 'AAX', 'AAX_USDE', 0.00000033, 10782501.00000000, 0.00000033, 0.00000033, 0.00000000, 10779501.00000000, 0.00000033, 0.00000033, 0.00000000, 10779501.00000000, 0.00000033, 0.00000033, 10782501.00000000, 10779501.00000000, '2021-10-12 07:47:08');
+INSERT INTO `dbt_coinhistory` VALUES (120, 'ETL', 'ETL_USDE', 0.00011500, 23000540.00000000, 0.00011500, 0.00011500, 0.00000000, 23000440.00000000, 0.00011500, 0.00011500, 0.00000000, 23000440.00000000, 0.00011500, 0.00011500, 23000540.00000000, 23000440.00000000, '2021-10-12 07:48:45');
+INSERT INTO `dbt_coinhistory` VALUES (121, 'ETL', 'ETL_USDE', 0.00011500, 23000840.00000000, 0.00011500, 0.00011500, 0.00000000, 23000640.00000000, 0.00011500, 0.00011500, 0.00000000, 23000640.00000000, 0.00011500, 0.00011500, 23000840.00000000, 23000640.00000000, '2021-10-12 07:48:52');
+INSERT INTO `dbt_coinhistory` VALUES (122, 'ETL', 'ETL_USDE', 0.00011500, 23000840.00000000, 0.00011500, 0.00011500, 0.00000000, 23000740.00000000, 0.00011500, 0.00011500, 0.00000000, 23000740.00000000, 0.00011500, 0.00011500, 23000840.00000000, 23000740.00000000, '2021-10-12 07:48:58');
+INSERT INTO `dbt_coinhistory` VALUES (123, 'ETL', 'ETL_USDE', 0.00011500, 23001260.00000000, 0.00011500, 0.00011500, 0.00000000, 23001000.00000000, 0.00011500, 0.00011500, 0.00000000, 23001000.00000000, 0.00012500, 0.00011500, 23001260.00000000, 23001000.00000000, '2021-10-12 07:49:09');
+INSERT INTO `dbt_coinhistory` VALUES (124, 'ETL', 'ETL_USDE', 0.00012500, 23001600.00000000, 0.00012500, 0.00012500, 0.00000000, 23001300.00000000, 0.00012500, 0.00011500, 0.00001000, 23001300.00000000, 0.00012500, 0.00012500, 23001600.00000000, 23001300.00000000, '2021-10-12 07:49:09');
+INSERT INTO `dbt_coinhistory` VALUES (125, 'ETL', 'ETL_USDE', 0.00012500, 23001700.00000000, 0.00012500, 0.00012500, 0.00000000, 23001500.00000000, 0.00012500, 0.00011500, 0.00001000, 23001500.00000000, 0.00012500, 0.00012500, 23001700.00000000, 23001500.00000000, '2021-10-12 07:49:17');
+INSERT INTO `dbt_coinhistory` VALUES (126, 'AAX', 'AAX_USDE', 0.00000033, 10794501.00000000, 0.00000033, 0.00000033, 0.00000000, 10787001.00000000, 0.00000033, 0.00000033, 0.00000000, 10787001.00000000, 0.00000033, 0.00000033, 10794501.00000000, 10787001.00000000, '2021-10-12 08:30:33');
+INSERT INTO `dbt_coinhistory` VALUES (127, 'AAX', 'AAX_USDE', 0.00000035, 10809001.00000000, 0.00000035, 0.00000035, 0.00000000, 10798001.00000000, 0.00000035, 0.00000033, 0.00000002, 10798001.00000000, 0.00000035, 0.00000035, 10809001.00000000, 10798001.00000000, '2021-10-12 08:30:48');
+INSERT INTO `dbt_coinhistory` VALUES (128, 'ETL', 'ETL_USDE', 0.00012500, 23001700.00000000, 0.00012500, 0.00012500, 0.00000000, 23001600.00000000, 0.00012500, 0.00011500, 0.00001000, 23001600.00000000, 0.00012500, 0.00012500, 23001700.00000000, 23001600.00000000, '2021-10-12 08:31:31');
+INSERT INTO `dbt_coinhistory` VALUES (129, 'ETL', 'ETL_USDE', 0.00012500, 23002400.00000000, 0.00012500, 0.00012500, 0.00000000, 23002000.00000000, 0.00012500, 0.00011500, 0.00001000, 23002000.00000000, 0.00012500, 0.00012500, 23002400.00000000, 23002000.00000000, '2021-10-12 08:31:38');
+INSERT INTO `dbt_coinhistory` VALUES (130, 'ETL', 'ETL_USDE', 0.00013500, 23002400.00000000, 0.00013500, 0.00013500, 0.00000000, 23002200.00000000, 0.00013500, 0.00011500, 0.00002000, 23002200.00000000, 0.00013500, 0.00013500, 23002400.00000000, 23002200.00000000, '2021-10-12 08:31:46');
+INSERT INTO `dbt_coinhistory` VALUES (131, 'ETL', 'ETL_USDE', 0.00010500, 23002400.00000000, 0.00010500, 0.00010500, 0.00000000, 23002300.00000000, 0.00010500, 0.00010500, 0.00000000, 23002300.00000000, 0.00010500, 0.00010500, 23002400.00000000, 23002300.00000000, '2021-10-13 04:42:50');
+INSERT INTO `dbt_coinhistory` VALUES (132, 'AAX', 'AAX_USDE', 0.00000021, 10802001.00000000, 0.00000021, 0.00000021, 0.00000000, 10800001.00000000, 0.00000021, 0.00000021, 0.00000000, 10800001.00000000, 0.00000021, 0.00000021, 10802001.00000000, 10800001.00000000, '2021-10-13 04:43:09');
+INSERT INTO `dbt_coinhistory` VALUES (133, 'AAX', 'AAX_USDE', 0.00000021, 10800401.00000000, 0.00000021, 0.00000021, 0.00000000, 10800201.00000000, 0.00000021, 0.00000021, 0.00000000, 10800201.00000000, 0.00000021, 0.00000021, 10800401.00000000, 10800201.00000000, '2021-10-13 04:44:48');
+INSERT INTO `dbt_coinhistory` VALUES (134, 'AAX', 'AAX_USDE', 0.00000021, 10800801.00000000, 0.00000021, 0.00000021, 0.00000000, 10800501.00000000, 0.00000021, 0.00000021, 0.00000000, 10800501.00000000, 0.00000021, 0.00000021, 10800801.00000000, 10800501.00000000, '2021-10-13 04:48:14');
+INSERT INTO `dbt_coinhistory` VALUES (135, 'AAX', 'AAX_USDE', 0.00000021, 10802501.00000000, 0.00000021, 0.00000021, 0.00000000, 10801501.00000000, 0.00000021, 0.00000021, 0.00000000, 10801501.00000000, 0.00000021, 0.00000021, 10802501.00000000, 10801501.00000000, '2021-10-13 05:02:48');
+INSERT INTO `dbt_coinhistory` VALUES (136, 'AAX', 'AAX_USDE', 0.00000021, 10803501.00000000, 0.00000021, 0.00000021, 0.00000000, 10802501.00000000, 0.00000021, 0.00000021, 0.00000000, 10802501.00000000, 0.00000021, 0.00000021, 10803501.00000000, 10802501.00000000, '2021-10-13 05:08:38');
+INSERT INTO `dbt_coinhistory` VALUES (137, 'AAX', 'AAX_USDE', 0.00000022, 10803101.00000000, 0.00000022, 0.00000022, 0.00000000, 10802801.00000000, 0.00000022, 0.00000021, 0.00000001, 10802801.00000000, 0.00000022, 0.00000022, 10803101.00000000, 10802801.00000000, '2021-10-13 05:08:57');
+INSERT INTO `dbt_coinhistory` VALUES (138, 'ETL', 'ETL_USDE', 0.00000530, 23887220.00000000, 0.00000530, 0.00000530, 0.00000000, 23887210.00000000, 0.00010500, 0.00000530, -0.00009970, 23887210.00000000, 0.00000530, 0.00000530, 23887220.00000000, 23887210.00000000, '2021-10-13 10:35:07');
+INSERT INTO `dbt_coinhistory` VALUES (139, 'ETL', 'ETL_USDE', 0.00000530, 23887250.00000000, 0.00000530, 0.00000530, 0.00000000, 23887230.00000000, 0.00010500, 0.00000530, 0.00009970, 23887230.00000000, 0.00000530, 0.00000530, 23887250.00000000, 23887230.00000000, '2021-10-13 10:35:31');
+INSERT INTO `dbt_coinhistory` VALUES (140, 'ETL', 'ETL_USDE', 0.00000530, 23887250.00000000, 0.00000530, 0.00000530, 0.00000000, 23887240.00000000, 0.00010500, 0.00000530, 0.00009970, 23887240.00000000, 0.00000530, 0.00000530, 23887250.00000000, 23887240.00000000, '2021-10-13 10:35:41');
+INSERT INTO `dbt_coinhistory` VALUES (141, 'ETL', 'ETL_USDE', 0.00000530, 23887280.00000000, 0.00000530, 0.00000530, 0.00000000, 23887260.00000000, 0.00010500, 0.00000530, 0.00009970, 23887260.00000000, 0.00000530, 0.00000530, 23887280.00000000, 23887260.00000000, '2021-10-13 10:35:58');
+INSERT INTO `dbt_coinhistory` VALUES (142, 'ETL', 'ETL_USDE', 0.00000530, 23887280.00000000, 0.00000530, 0.00000530, 0.00000000, 23887270.00000000, 0.00010500, 0.00000530, 0.00009970, 23887270.00000000, 0.00000530, 0.00000530, 23887280.00000000, 23887270.00000000, '2021-10-13 10:36:26');
+INSERT INTO `dbt_coinhistory` VALUES (143, 'ETL', 'ETL_USDE', 0.00000530, 23887330.00000000, 0.00000530, 0.00000530, 0.00000000, 23887300.00000000, 0.00010500, 0.00000530, 0.00009970, 23887300.00000000, 0.00000530, 0.00000530, 23887330.00000000, 23887300.00000000, '2021-10-13 10:42:54');
+INSERT INTO `dbt_coinhistory` VALUES (144, 'ETL', 'ETL_USDE', 0.00000530, 23887320.00000000, 0.00000530, 0.00000530, 0.00000000, 23887310.00000000, 0.00010500, 0.00000530, 0.00009970, 23887310.00000000, 0.00000530, 0.00000530, 23887320.00000000, 23887310.00000000, '2021-10-13 10:43:29');
+INSERT INTO `dbt_coinhistory` VALUES (145, 'ETL', 'ETL_USDE', 0.00000530, 23887330.00000000, 0.00000530, 0.00000530, 0.00000000, 23887320.00000000, 0.00010500, 0.00000530, 0.00009970, 23887320.00000000, 0.00000530, 0.00000530, 23887330.00000000, 23887320.00000000, '2021-10-13 10:43:41');
+INSERT INTO `dbt_coinhistory` VALUES (146, 'ETL', 'ETL_USDE', 0.00000530, 23887360.00000000, 0.00000530, 0.00000530, 0.00000000, 23887340.00000000, 0.00010500, 0.00000530, 0.00009970, 23887340.00000000, 0.00000530, 0.00000530, 23887360.00000000, 23887340.00000000, '2021-10-13 10:43:53');
+INSERT INTO `dbt_coinhistory` VALUES (147, 'ETL', 'ETL_USDE', 0.00000530, 23887360.00000000, 0.00000530, 0.00000530, 0.00000000, 23887350.00000000, 0.00010500, 0.00000530, 0.00009970, 23887350.00000000, 0.00000530, 0.00000530, 23887360.00000000, 23887350.00000000, '2021-10-13 10:44:01');
+INSERT INTO `dbt_coinhistory` VALUES (148, 'ETL', 'ETL_USDE', 0.00000530, 23887390.00000000, 0.00000530, 0.00000530, 0.00000000, 23887370.00000000, 0.00010500, 0.00000530, 0.00009970, 23887370.00000000, 0.00000530, 0.00000530, 23887390.00000000, 23887370.00000000, '2021-10-13 10:44:08');
+INSERT INTO `dbt_coinhistory` VALUES (149, 'ETL', 'ETL_USDE', 0.00000530, 23887430.00000000, 0.00000530, 0.00000530, 0.00000000, 23887400.00000000, 0.00010500, 0.00000530, 0.00009970, 23887400.00000000, 0.00000530, 0.00000530, 23887430.00000000, 23887400.00000000, '2021-10-13 10:44:13');
+INSERT INTO `dbt_coinhistory` VALUES (150, 'ETL', 'ETL_USDE', 0.00000530, 23887420.00000000, 0.00000530, 0.00000530, 0.00000000, 23887410.00000000, 0.00010500, 0.00000530, 0.00009970, 23887410.00000000, 0.00000530, 0.00000530, 23887420.00000000, 23887410.00000000, '2021-10-13 10:44:20');
+INSERT INTO `dbt_coinhistory` VALUES (151, 'ETL', 'ETL_USDE', 0.00000530, 23887450.00000000, 0.00000530, 0.00000530, 0.00000000, 23887430.00000000, 0.00010500, 0.00000530, 0.00009970, 23887430.00000000, 0.00000530, 0.00000530, 23887450.00000000, 23887430.00000000, '2021-10-13 10:44:25');
+INSERT INTO `dbt_coinhistory` VALUES (152, 'ETL', 'ETL_USDE', 0.00000530, 23887510.00000000, 0.00000530, 0.00000530, 0.00000000, 23887470.00000000, 0.00010500, 0.00000530, 0.00009970, 23887470.00000000, 0.00000530, 0.00000530, 23887510.00000000, 23887470.00000000, '2021-10-13 10:46:01');
+INSERT INTO `dbt_coinhistory` VALUES (153, 'ETL', 'ETL_USDE', 0.00000530, 23887490.00000000, 0.00000530, 0.00000530, 0.00000000, 23887480.00000000, 0.00010500, 0.00000530, 0.00009970, 23887480.00000000, 0.00000530, 0.00000530, 23887490.00000000, 23887480.00000000, '2021-10-13 10:46:09');
+INSERT INTO `dbt_coinhistory` VALUES (154, 'ETL', 'ETL_USDE', 0.00000530, 23887500.00000000, 0.00000530, 0.00000530, 0.00000000, 23887490.00000000, 0.00010500, 0.00000530, 0.00009970, 23887490.00000000, 0.00000530, 0.00000530, 23887500.00000000, 23887490.00000000, '2021-10-13 10:46:20');
+INSERT INTO `dbt_coinhistory` VALUES (155, 'ETL', 'ETL_USDE', 0.00000530, 23887530.00000000, 0.00000530, 0.00000530, 0.00000000, 23887510.00000000, 4.91800000, 0.00000530, 4.91799470, 23887510.00000000, 0.00000530, 0.00000530, 23887530.00000000, 23887510.00000000, '2021-10-13 10:47:13');
+INSERT INTO `dbt_coinhistory` VALUES (156, 'ETL', 'ETL_USDE', 0.00000530, 23887530.00000000, 0.00000530, 0.00000530, 0.00000000, 23887520.00000000, 4.91800000, 0.00000530, 4.91799470, 23887520.00000000, 0.00000530, 0.00000530, 23887530.00000000, 23887520.00000000, '2021-10-13 10:47:19');
+INSERT INTO `dbt_coinhistory` VALUES (157, 'ETL', 'ETL_USDE', 0.00000530, 23887540.00000000, 0.00000530, 0.00000530, 0.00000000, 23887530.00000000, 4.91800000, 0.00000530, 4.91799470, 23887530.00000000, 0.00000530, 0.00000530, 23887540.00000000, 23887530.00000000, '2021-10-13 10:47:27');
+INSERT INTO `dbt_coinhistory` VALUES (158, 'ETL', 'ETL_USDE', 0.00000530, 23887590.00000000, 0.00000530, 0.00000530, 0.00000000, 23887560.00000000, 4.91800000, 0.00000530, 4.91799470, 23887560.00000000, 0.00000530, 0.00000530, 23887590.00000000, 23887560.00000000, '2021-10-13 10:47:32');
+INSERT INTO `dbt_coinhistory` VALUES (159, 'ETL', 'ETL_USDE', 0.00000530, 23887640.00000000, 0.00000530, 0.00000530, 0.00000000, 23887600.00000000, 4.91800000, 0.00000530, 4.91799470, 23887600.00000000, 0.00000530, 0.00000530, 23887640.00000000, 23887600.00000000, '2021-10-13 10:48:30');
+INSERT INTO `dbt_coinhistory` VALUES (160, 'ETL', 'ETL_USDE', 0.00000530, 23887620.00000000, 0.00000530, 0.00000530, 0.00000000, 23887610.00000000, 4.91800000, 0.00000530, 4.91799470, 23887610.00000000, 0.00000530, 0.00000530, 23887620.00000000, 23887610.00000000, '2021-10-13 10:48:36');
+INSERT INTO `dbt_coinhistory` VALUES (161, 'ETL', 'ETL_USDE', 0.00000530, 23887630.00000000, 0.00000530, 0.00000530, 0.00000000, 23887620.00000000, 4.91800000, 0.00000530, 4.91799470, 23887620.00000000, 0.00000530, 0.00000530, 23887630.00000000, 23887620.00000000, '2021-10-13 10:48:44');
+INSERT INTO `dbt_coinhistory` VALUES (162, 'ETL', 'ETL_USDE', 0.00000530, 23887660.00000000, 0.00000530, 0.00000530, 0.00000000, 23887640.00000000, 4.91800000, 0.00000530, 4.91799470, 23887640.00000000, 0.00000530, 0.00000530, 23887660.00000000, 23887640.00000000, '2021-10-13 10:48:50');
+INSERT INTO `dbt_coinhistory` VALUES (163, 'ETL', 'ETL_USDE', 0.00000530, 23887660.00000000, 0.00000530, 0.00000530, 0.00000000, 23887650.00000000, 4.91800000, 0.00000530, 4.91799470, 23887650.00000000, 0.00000530, 0.00000530, 23887660.00000000, 23887650.00000000, '2021-10-13 10:49:02');
+INSERT INTO `dbt_coinhistory` VALUES (164, 'ETL', 'ETL_USDE', 0.00000530, 23887750.00000000, 0.00000530, 0.00000530, 0.00000000, 23887700.00000000, 4.91800000, 0.00000530, 4.91799470, 23887700.00000000, 0.00000530, 0.00000530, 23887750.00000000, 23887700.00000000, '2021-10-13 10:49:08');
+INSERT INTO `dbt_coinhistory` VALUES (165, 'ETL', 'ETL_USDE', 0.00000530, 23887720.00000000, 0.00000530, 0.00000530, 0.00000000, 23887710.00000000, 4.91800000, 0.00000530, 4.91799470, 23887710.00000000, 0.00000530, 0.00000530, 23887720.00000000, 23887710.00000000, '2021-10-13 10:49:19');
+INSERT INTO `dbt_coinhistory` VALUES (166, 'ETL', 'ETL_USDE', 0.00000530, 23887730.00000000, 0.00000530, 0.00000530, 0.00000000, 23887720.00000000, 4.91800000, 0.00000530, 4.91799470, 23887720.00000000, 0.00000530, 0.00000530, 23887730.00000000, 23887720.00000000, '2021-10-13 10:49:24');
+INSERT INTO `dbt_coinhistory` VALUES (167, 'ETL', 'ETL_USDE', 0.00000530, 23887920.00000000, 0.00000530, 0.00000530, 0.00000000, 23887820.00000000, 4.91800000, 0.00000530, 4.91799470, 23887820.00000000, 0.00000530, 0.00000530, 23887920.00000000, 23887820.00000000, '2021-10-13 10:49:30');
+INSERT INTO `dbt_coinhistory` VALUES (168, 'ETL', 'ETL_USDE', 0.00000530, 23887860.00000000, 0.00000530, 0.00000530, 0.00000000, 23887840.00000000, 4.91800000, 0.00000530, 4.91799470, 23887840.00000000, 0.00000530, 0.00000530, 23887860.00000000, 23887840.00000000, '2021-10-13 10:49:36');
+INSERT INTO `dbt_coinhistory` VALUES (169, 'ETL', 'ETL_USDE', 0.00000530, 23887900.00000000, 0.00000530, 0.00000530, 0.00000000, 23887870.00000000, 4.91800000, 0.00000530, 4.91799470, 23887870.00000000, 0.00000530, 0.00000530, 23887900.00000000, 23887870.00000000, '2021-10-13 10:49:42');
+INSERT INTO `dbt_coinhistory` VALUES (170, 'ETL', 'ETL_USDE', 0.00000530, 23887890.00000000, 0.00000530, 0.00000530, 0.00000000, 23887880.00000000, 4.91800000, 0.00000530, 4.91799470, 23887880.00000000, 0.00000530, 0.00000530, 23887890.00000000, 23887880.00000000, '2021-10-13 10:49:47');
+INSERT INTO `dbt_coinhistory` VALUES (171, 'ETL', 'ETL_USDE', 0.00000530, 23887900.00000000, 0.00000530, 0.00000530, 0.00000000, 23887890.00000000, 4.91800000, 0.00000530, 4.91799470, 23887890.00000000, 0.00000530, 0.00000530, 23887900.00000000, 23887890.00000000, '2021-10-13 10:58:54');
+INSERT INTO `dbt_coinhistory` VALUES (172, 'ETL', 'ETL_USDE', 0.00000530, 23887990.00000000, 0.00000530, 0.00000530, 0.00000000, 23887940.00000000, 4.91800000, 0.00000530, 4.91799470, 23887940.00000000, 0.00000530, 0.00000530, 23887990.00000000, 23887940.00000000, '2021-10-13 10:59:03');
+INSERT INTO `dbt_coinhistory` VALUES (173, 'ETL', 'ETL_USDE', 0.00000530, 23887980.00000000, 0.00000530, 0.00000530, 0.00000000, 23887960.00000000, 4.91800000, 0.00000530, 4.91799470, 23887960.00000000, 0.00000530, 0.00000530, 23887980.00000000, 23887960.00000000, '2021-10-13 10:59:17');
+INSERT INTO `dbt_coinhistory` VALUES (174, 'ETL', 'ETL_USDE', 0.00000530, 23887980.00000000, 0.00000530, 0.00000530, 0.00000000, 23887970.00000000, 4.91800000, 0.00000530, 4.91799470, 23887970.00000000, 0.00000530, 0.00000530, 23887980.00000000, 23887970.00000000, '2021-10-13 11:00:13');
+INSERT INTO `dbt_coinhistory` VALUES (175, 'ETL', 'ETL_USDE', 0.00000530, 23888010.00000000, 0.00000530, 0.00000530, 0.00000000, 23887990.00000000, 4.91800000, 0.00000530, 4.91799470, 23887990.00000000, 0.00000530, 0.00000530, 23888010.00000000, 23887990.00000000, '2021-10-13 11:00:51');
+INSERT INTO `dbt_coinhistory` VALUES (176, 'ETL', 'ETL_USDE', 0.00000530, 23888010.00000000, 0.00000530, 0.00000530, 0.00000000, 23888000.00000000, 4.91800000, 0.00000530, 4.91799470, 23888000.00000000, 0.00000530, 0.00000530, 23888010.00000000, 23888000.00000000, '2021-10-13 11:00:58');
+INSERT INTO `dbt_coinhistory` VALUES (177, 'ETL', 'ETL_USDE', 0.00000530, 23888020.00000000, 0.00000530, 0.00000530, 0.00000000, 23888010.00000000, 4.91800000, 0.00000530, 4.91799470, 23888010.00000000, 0.00000530, 0.00000530, 23888020.00000000, 23888010.00000000, '2021-10-13 11:01:06');
+INSERT INTO `dbt_coinhistory` VALUES (178, 'ETL', 'ETL_USDE', 0.00000530, 23888050.00000000, 0.00000530, 0.00000530, 0.00000000, 23888030.00000000, 4.91800000, 0.00000530, 4.91799470, 23888030.00000000, 0.00000530, 0.00000530, 23888050.00000000, 23888030.00000000, '2021-10-13 11:01:13');
+INSERT INTO `dbt_coinhistory` VALUES (179, 'ETL', 'ETL_USDE', 0.00000530, 23888050.00000000, 0.00000530, 0.00000530, 0.00000000, 23888040.00000000, 4.91800000, 0.00000530, 4.91799470, 23888040.00000000, 0.00000530, 0.00000530, 23888050.00000000, 23888040.00000000, '2021-10-13 11:01:23');
+INSERT INTO `dbt_coinhistory` VALUES (180, 'ETL', 'ETL_USDE', 0.00000530, 23888060.00000000, 0.00000530, 0.00000530, 0.00000000, 23888050.00000000, 4.91800000, 0.00000530, 4.91799470, 23888050.00000000, 0.00000530, 0.00000530, 23888060.00000000, 23888050.00000000, '2021-10-13 11:02:01');
+INSERT INTO `dbt_coinhistory` VALUES (181, 'ETL', 'ETL_USDE', 0.00000530, 23888090.00000000, 0.00000530, 0.00000530, 0.00000000, 23888070.00000000, 4.91800000, 0.00000530, 4.91799470, 23888070.00000000, 0.00000530, 0.00000530, 23888090.00000000, 23888070.00000000, '2021-10-13 11:02:08');
+INSERT INTO `dbt_coinhistory` VALUES (182, 'ETL', 'ETL_USDE', 0.00000530, 23888090.00000000, 0.00000530, 0.00000530, 0.00000000, 23888080.00000000, 4.91800000, 0.00000530, 4.91799470, 23888080.00000000, 0.00000530, 0.00000530, 23888090.00000000, 23888080.00000000, '2021-10-13 11:02:18');
+INSERT INTO `dbt_coinhistory` VALUES (183, 'ETL', 'ETL_USDE', 0.00000530, 23888100.00000000, 0.00000530, 0.00000530, 0.00000000, 23888090.00000000, 4.91800000, 0.00000530, 4.91799470, 23888090.00000000, 0.00000530, 0.00000530, 23888100.00000000, 23888090.00000000, '2021-10-13 11:02:27');
+INSERT INTO `dbt_coinhistory` VALUES (184, 'ETL', 'ETL_USDE', 0.00000530, 23888110.00000000, 0.00000530, 0.00000530, 0.00000000, 23888100.00000000, 4.91800000, 0.00000530, 4.91799470, 23888100.00000000, 0.00000530, 0.00000530, 23888110.00000000, 23888100.00000000, '2021-10-13 11:03:44');
+INSERT INTO `dbt_coinhistory` VALUES (185, 'ETL', 'ETL_USDE', 0.00000530, 23888140.00000000, 0.00000530, 0.00000530, 0.00000000, 23888120.00000000, 4.91800000, 0.00000530, 4.91799470, 23888120.00000000, 0.00000530, 0.00000530, 23888140.00000000, 23888120.00000000, '2021-10-13 11:03:52');
+INSERT INTO `dbt_coinhistory` VALUES (186, 'ETL', 'ETL_USDE', 0.00000530, 23888140.00000000, 0.00000530, 0.00000530, 0.00000000, 23888130.00000000, 4.91800000, 0.00000530, 4.91799470, 23888130.00000000, 0.00000530, 0.00000530, 23888140.00000000, 23888130.00000000, '2021-10-13 11:10:58');
+INSERT INTO `dbt_coinhistory` VALUES (187, 'ETL', 'ETL_USDE', 0.00000530, 23888170.00000000, 0.00000530, 0.00000530, 0.00000000, 23888150.00000000, 4.91800000, 0.00000530, 4.91799470, 23888150.00000000, 0.00000530, 0.00000530, 23888170.00000000, 23888150.00000000, '2021-10-13 11:11:06');
+INSERT INTO `dbt_coinhistory` VALUES (188, 'ETL', 'ETL_USDE', 0.00000530, 23888170.00000000, 0.00000530, 0.00000530, 0.00000000, 23888160.00000000, 4.91800000, 0.00000530, 4.91799470, 23888160.00000000, 0.00000530, 0.00000530, 23888170.00000000, 23888160.00000000, '2021-10-13 11:11:19');
+INSERT INTO `dbt_coinhistory` VALUES (189, 'ETL', 'ETL_USDE', 0.00000530, 23888180.00000000, 0.00000530, 0.00000530, 0.00000000, 23888170.00000000, 4.91800000, 0.00000530, 4.91799470, 23888170.00000000, 0.00000530, 0.00000530, 23888180.00000000, 23888170.00000000, '2021-10-13 11:11:31');
+INSERT INTO `dbt_coinhistory` VALUES (190, 'ETL', 'ETL_USDE', 0.00000530, 23888210.00000000, 0.00000530, 0.00000530, 0.00000000, 23888190.00000000, 4.91800000, 0.00000530, 4.91799470, 23888190.00000000, 0.00000530, 0.00000530, 23888210.00000000, 23888190.00000000, '2021-10-13 11:11:43');
+INSERT INTO `dbt_coinhistory` VALUES (191, 'ETL', 'ETL_USDE', 0.00000530, 23888230.00000000, 0.00000530, 0.00000530, 0.00000000, 23888210.00000000, 4.91800000, 0.00000530, 4.91799470, 23888210.00000000, 0.00000530, 0.00000530, 23888230.00000000, 23888210.00000000, '2021-10-13 11:12:24');
+INSERT INTO `dbt_coinhistory` VALUES (192, 'ETL', 'ETL_USDE', 0.00000530, 23888230.00000000, 0.00000530, 0.00000530, 0.00000000, 23888220.00000000, 4.91800000, 0.00000530, 4.91799470, 23888220.00000000, 0.00000530, 0.00000530, 23888230.00000000, 23888220.00000000, '2021-10-13 11:12:31');
+INSERT INTO `dbt_coinhistory` VALUES (193, 'ETL', 'ETL_USDE', 0.00000530, 23888260.00000000, 0.00000530, 0.00000530, 0.00000000, 23888240.00000000, 4.91800000, 0.00000530, 4.91799470, 23888240.00000000, 0.00000530, 0.00000530, 23888260.00000000, 23888240.00000000, '2021-10-13 11:12:37');
+INSERT INTO `dbt_coinhistory` VALUES (194, 'ETL', 'ETL_USDE', 0.00000530, 23888260.00000000, 0.00000530, 0.00000530, 0.00000000, 23888250.00000000, 4.91800000, 0.00000530, 4.91799470, 23888250.00000000, 0.00000530, 0.00000530, 23888260.00000000, 23888250.00000000, '2021-10-13 11:12:44');
+INSERT INTO `dbt_coinhistory` VALUES (195, 'ETL', 'ETL_USDE', 0.00000530, 23888270.00000000, 0.00000530, 0.00000530, 0.00000000, 23888260.00000000, 4.91800000, 0.00000530, 4.91799470, 23888260.00000000, 0.00000530, 0.00000530, 23888270.00000000, 23888260.00000000, '2021-10-13 11:12:55');
+INSERT INTO `dbt_coinhistory` VALUES (196, 'ETL', 'ETL_USDE', 0.00000530, 23888280.00000000, 0.00000530, 0.00000530, 0.00000000, 23888270.00000000, 4.91800000, 0.00000530, 4.91799470, 23888270.00000000, 0.00000530, 0.00000530, 23888280.00000000, 23888270.00000000, '2021-10-13 11:13:28');
+INSERT INTO `dbt_coinhistory` VALUES (197, 'ETL', 'ETL_USDE', 0.00000530, 23888310.00000000, 0.00000530, 0.00000530, 0.00000000, 23888290.00000000, 4.91800000, 0.00000530, 4.91799470, 23888290.00000000, 0.00000530, 0.00000530, 23888310.00000000, 23888290.00000000, '2021-10-13 11:13:37');
+INSERT INTO `dbt_coinhistory` VALUES (198, 'ETL', 'ETL_USDE', 0.00000530, 23888310.00000000, 0.00000530, 0.00000530, 0.00000000, 23888300.00000000, 4.91800000, 0.00000530, 4.91799470, 23888300.00000000, 0.00000530, 0.00000530, 23888310.00000000, 23888300.00000000, '2021-10-13 11:13:50');
+INSERT INTO `dbt_coinhistory` VALUES (199, 'ETL', 'ETL_USDE', 0.00000530, 23888340.00000000, 0.00000530, 0.00000530, 0.00000000, 23888320.00000000, 4.91800000, 0.00000530, 4.91799470, 23888320.00000000, 0.00000530, 0.00000530, 23888340.00000000, 23888320.00000000, '2021-10-13 11:14:00');
+INSERT INTO `dbt_coinhistory` VALUES (200, 'ETL', 'ETL_USDE', 0.00000530, 23888360.00000000, 0.00000530, 0.00000530, 0.00000000, 23888340.00000000, 4.91800000, 0.00000530, 4.91799470, 23888340.00000000, 0.00000530, 0.00000530, 23888360.00000000, 23888340.00000000, '2021-10-13 11:14:23');
+INSERT INTO `dbt_coinhistory` VALUES (201, 'ETL', 'ETL_USDE', 0.00000530, 23888360.00000000, 0.00000530, 0.00000530, 0.00000000, 23888350.00000000, 4.91800000, 0.00000530, 4.91799470, 23888350.00000000, 0.00000530, 0.00000530, 23888360.00000000, 23888350.00000000, '2021-10-13 11:19:40');
+INSERT INTO `dbt_coinhistory` VALUES (202, 'ETL', 'ETL_USDE', 0.00000530, 23888390.00000000, 0.00000530, 0.00000530, 0.00000000, 23888370.00000000, 4.91800000, 0.00000530, 4.91799470, 23888370.00000000, 0.00000530, 0.00000530, 23888390.00000000, 23888370.00000000, '2021-10-13 11:19:50');
+INSERT INTO `dbt_coinhistory` VALUES (203, 'ETL', 'ETL_USDE', 0.00000530, 23888410.00000000, 0.00000530, 0.00000530, 0.00000000, 23888390.00000000, 4.91800000, 0.00000530, 4.91799470, 23888390.00000000, 0.00000530, 0.00000530, 23888410.00000000, 23888390.00000000, '2021-10-13 11:20:18');
+INSERT INTO `dbt_coinhistory` VALUES (204, 'ETL', 'ETL_USDE', 0.00000530, 23888410.00000000, 0.00000530, 0.00000530, 0.00000000, 23888400.00000000, 4.91800000, 0.00000530, 4.91799470, 23888400.00000000, 0.00000530, 0.00000530, 23888410.00000000, 23888400.00000000, '2021-10-13 11:20:28');
+INSERT INTO `dbt_coinhistory` VALUES (205, 'ETL', 'ETL_USDE', 0.00000530, 23888420.00000000, 0.00000530, 0.00000530, 0.00000000, 23888410.00000000, 4.91800000, 0.00000530, 4.91799470, 23888410.00000000, 0.00000530, 0.00000530, 23888420.00000000, 23888410.00000000, '2021-10-13 11:20:39');
+INSERT INTO `dbt_coinhistory` VALUES (206, 'ETL', 'ETL_USDE', 0.00000530, 23888450.00000000, 0.00000530, 0.00000530, 0.00000000, 23888430.00000000, 4.91800000, 0.00000530, 4.91799470, 23888430.00000000, 0.00000530, 0.00000530, 23888450.00000000, 23888430.00000000, '2021-10-13 11:20:49');
+INSERT INTO `dbt_coinhistory` VALUES (207, 'ETL', 'ETL_USDE', 0.00000530, 23888450.00000000, 0.00000530, 0.00000530, 0.00000000, 23888440.00000000, 4.91800000, 0.00000530, 4.91799470, 23888440.00000000, 0.00000530, 0.00000530, 23888450.00000000, 23888440.00000000, '2021-10-13 11:20:58');
+INSERT INTO `dbt_coinhistory` VALUES (208, 'ETL', 'ETL_USDE', 0.00000530, 23888842.00000000, 0.00000530, 0.00000530, 0.00000000, 23888641.00000000, 4.91800000, 0.00000530, 4.91799470, 23888641.00000000, 0.00000530, 0.00000530, 23888842.00000000, 23888641.00000000, '2021-10-13 11:21:10');
+INSERT INTO `dbt_coinhistory` VALUES (209, 'ETL', 'ETL_USDE', 0.00000530, 23888661.00000000, 0.00000530, 0.00000530, 0.00000000, 23888651.00000000, 4.91800000, 0.00000530, 4.91799470, 23888651.00000000, 0.00000530, 0.00000530, 23888661.00000000, 23888651.00000000, '2021-10-13 11:21:48');
+INSERT INTO `dbt_coinhistory` VALUES (210, 'ETL', 'ETL_USDE', 0.00000530, 23888691.00000000, 0.00000530, 0.00000530, 0.00000000, 23888671.00000000, 4.91800000, 0.00000530, 4.91799470, 23888671.00000000, 0.00000530, 0.00000530, 23888691.00000000, 23888671.00000000, '2021-10-13 11:21:57');
+INSERT INTO `dbt_coinhistory` VALUES (211, 'ETL', 'ETL_USDE', 0.00000530, 23888691.00000000, 0.00000530, 0.00000530, 0.00000000, 23888681.00000000, 4.91800000, 0.00000530, 4.91799470, 23888681.00000000, 0.00000530, 0.00000530, 23888691.00000000, 23888681.00000000, '2021-10-13 11:22:05');
+INSERT INTO `dbt_coinhistory` VALUES (212, 'ETL', 'ETL_USDE', 0.00000530, 23888701.00000000, 0.00000530, 0.00000530, 0.00000000, 23888691.00000000, 4.91800000, 0.00000530, 4.91799470, 23888691.00000000, 0.00000530, 0.00000530, 23888701.00000000, 23888691.00000000, '2021-10-13 11:22:14');
+INSERT INTO `dbt_coinhistory` VALUES (213, 'ETL', 'ETL_USDE', 0.00000530, 23888711.00000000, 0.00000530, 0.00000530, 0.00000000, 23888701.00000000, 4.91800000, 0.00000530, 4.91799470, 23888701.00000000, 0.00000530, 0.00000530, 23888711.00000000, 23888701.00000000, '2021-10-13 11:22:22');
+INSERT INTO `dbt_coinhistory` VALUES (214, 'ETL', 'ETL_USDE', 0.00000530, 23888741.00000000, 0.00000530, 0.00000530, 0.00000000, 23888721.00000000, 4.91800000, 0.00000530, 4.91799470, 23888721.00000000, 0.00000530, 0.00000530, 23888741.00000000, 23888721.00000000, '2021-10-13 11:22:31');
+INSERT INTO `dbt_coinhistory` VALUES (215, 'ETL', 'ETL_USDE', 0.00000530, 23888741.00000000, 0.00000530, 0.00000530, 0.00000000, 23888731.00000000, 4.91800000, 0.00000530, 4.91799470, 23888731.00000000, 0.00000530, 0.00000530, 23888741.00000000, 23888731.00000000, '2021-10-13 11:22:39');
+INSERT INTO `dbt_coinhistory` VALUES (216, 'ETL', 'ETL_USDE', 0.00000530, 23888751.00000000, 0.00000530, 0.00000530, 0.00000000, 23888741.00000000, 4.91800000, 0.00000530, 4.91799470, 23888741.00000000, 0.00000530, 0.00000530, 23888751.00000000, 23888741.00000000, '2021-10-13 11:23:03');
+INSERT INTO `dbt_coinhistory` VALUES (217, 'ETL', 'ETL_USDE', 0.00000530, 23888761.00000000, 0.00000530, 0.00000530, 0.00000000, 23888751.00000000, 4.91800000, 0.00000530, 4.91799470, 23888751.00000000, 0.00000530, 0.00000530, 23888761.00000000, 23888751.00000000, '2021-10-13 11:23:09');
+INSERT INTO `dbt_coinhistory` VALUES (218, 'ETL', 'ETL_USDE', 0.00000530, 23888791.00000000, 0.00000530, 0.00000530, 0.00000000, 23888771.00000000, 4.91800000, 0.00000530, 4.91799470, 23888771.00000000, 0.00000530, 0.00000530, 23888791.00000000, 23888771.00000000, '2021-10-13 11:23:16');
+INSERT INTO `dbt_coinhistory` VALUES (219, 'ETL', 'ETL_USDE', 0.00000530, 23888791.00000000, 0.00000530, 0.00000530, 0.00000000, 23888781.00000000, 4.91800000, 0.00000530, 4.91799470, 23888781.00000000, 0.00000530, 0.00000530, 23888791.00000000, 23888781.00000000, '2021-10-13 11:29:00');
+INSERT INTO `dbt_coinhistory` VALUES (220, 'ETL', 'ETL_USDE', 0.00000530, 23889181.00000000, 0.00000530, 0.00000530, 0.00000000, 23888981.00000000, 4.91800000, 0.00000530, 4.91799470, 23888981.00000000, 0.00000530, 0.00000530, 23889181.00000000, 23888981.00000000, '2021-10-13 11:29:34');
+INSERT INTO `dbt_coinhistory` VALUES (221, 'GLD', 'GLD_USDE', 1.00300000, 41.00000000, 1.00300000, 1.00300000, 0.00000000, 40.50000000, 1.00500000, 1.00300000, 0.00200000, 40.50000000, 1.00300000, 1.00300000, 41.00000000, 40.50000000, '2021-10-13 11:36:14');
+INSERT INTO `dbt_coinhistory` VALUES (222, 'GLD', 'GLD_USDE', 1.00300000, 42.50000000, 1.00300000, 1.00300000, 0.00000000, 41.50000000, 1.00500000, 1.00300000, 0.00200000, 41.50000000, 1.00300000, 1.00300000, 42.50000000, 41.50000000, '2021-10-13 11:36:31');
+INSERT INTO `dbt_coinhistory` VALUES (223, 'GLD', 'GLD_USDE', 1.00300000, 43.50000000, 1.00300000, 1.00300000, 0.00000000, 42.50000000, 1.00500000, 1.00300000, 0.00200000, 42.50000000, 1.00300000, 1.00300000, 43.50000000, 42.50000000, '2021-10-13 11:36:39');
+INSERT INTO `dbt_coinhistory` VALUES (224, 'GLD', 'GLD_USDE', 1.00300000, 43.00000000, 1.00300000, 1.00300000, 0.00000000, 42.75000000, 1.00500000, 1.00300000, 0.00200000, 42.75000000, 1.00300000, 1.00300000, 43.00000000, 42.75000000, '2021-10-13 11:41:56');
+INSERT INTO `dbt_coinhistory` VALUES (225, 'GLD', 'GLD_USDE', 1.00300000, 44.75000000, 1.00300000, 1.00300000, 0.00000000, 43.75000000, 1.00500000, 1.00300000, 0.00200000, 43.75000000, 1.00300000, 1.00300000, 44.75000000, 43.75000000, '2021-10-13 11:42:08');
+INSERT INTO `dbt_coinhistory` VALUES (226, 'GLD', 'GLD_USDE', 1.00300000, 46.25000000, 1.00300000, 1.00300000, 0.00000000, 45.00000000, 1.00500000, 1.00300000, 0.00200000, 45.00000000, 1.00300000, 1.00300000, 46.25000000, 45.00000000, '2021-10-13 11:43:07');
+INSERT INTO `dbt_coinhistory` VALUES (227, 'GLD', 'GLD_USDE', 1.00300000, 45.50000000, 1.00300000, 1.00300000, 0.00000000, 45.25000000, 1.00500000, 1.00300000, 0.00200000, 45.25000000, 1.00300000, 1.00300000, 45.50000000, 45.25000000, '2021-10-13 11:43:26');
+INSERT INTO `dbt_coinhistory` VALUES (228, 'GLD', 'GLD_USDE', 1.00300000, 47.25000000, 1.00300000, 1.00300000, 0.00000000, 46.25000000, 1.00500000, 1.00300000, 0.00200000, 46.25000000, 1.00300000, 1.00300000, 47.25000000, 46.25000000, '2021-10-13 11:43:56');
+INSERT INTO `dbt_coinhistory` VALUES (229, 'GLD', 'GLD_USDE', 1.00300000, 46.75000000, 1.00300000, 1.00300000, 0.00000000, 46.50000000, 1.00500000, 1.00300000, 0.00200000, 46.50000000, 1.00300000, 1.00300000, 46.75000000, 46.50000000, '2021-10-13 11:44:18');
+INSERT INTO `dbt_coinhistory` VALUES (230, 'GLD', 'GLD_USDE', 1.00300000, 46.54000000, 1.00300000, 1.00300000, 0.00000000, 46.52000000, 1.00500000, 1.00300000, 0.00200000, 46.52000000, 1.00300000, 1.00300000, 46.54000000, 46.52000000, '2021-10-13 11:44:35');
+INSERT INTO `dbt_coinhistory` VALUES (231, 'GLD', 'GLD_USDE', 1.00300000, 49.52000000, 1.00300000, 1.00300000, 0.00000000, 48.02000000, 1.00500000, 1.00300000, 0.00200000, 48.02000000, 1.00300000, 1.00300000, 49.52000000, 48.02000000, '2021-10-13 11:45:16');
+INSERT INTO `dbt_coinhistory` VALUES (232, 'GLD', 'GLD_USDE', 1.00300000, 49.02000000, 1.00300000, 1.00300000, 0.00000000, 48.52000000, 1.00500000, 1.00300000, 0.00200000, 48.52000000, 1.00300000, 1.00300000, 49.02000000, 48.52000000, '2021-10-13 11:45:31');
+INSERT INTO `dbt_coinhistory` VALUES (233, 'GLD', 'GLD_USDE', 1.00300000, 48.56000000, 1.00300000, 1.00300000, 0.00000000, 48.54000000, 1.00500000, 1.00300000, 0.00200000, 48.54000000, 1.00300000, 1.00300000, 48.56000000, 48.54000000, '2021-10-13 11:48:59');
+INSERT INTO `dbt_coinhistory` VALUES (234, 'GLD', 'GLD_USDE', 1.00300000, 50.54000000, 1.00300000, 1.00300000, 0.00000000, 49.54000000, 1.00500000, 1.00300000, 0.00200000, 49.54000000, 1.00300000, 1.00300000, 50.54000000, 49.54000000, '2021-10-13 11:49:08');
+INSERT INTO `dbt_coinhistory` VALUES (235, 'GLD', 'GLD_USDE', 1.00300000, 50.54000000, 1.00300000, 1.00300000, 0.00000000, 50.04000000, 9.00000000, 1.00300000, 7.99700000, 50.04000000, 1.00300000, 1.00300000, 50.54000000, 50.04000000, '2021-10-13 11:50:51');
+INSERT INTO `dbt_coinhistory` VALUES (236, 'GLD', 'GLD_USDE', 1.00300000, 52.04000000, 1.00300000, 1.00300000, 0.00000000, 51.04000000, 9.00000000, 1.00300000, 7.99700000, 51.04000000, 1.00300000, 1.00300000, 52.04000000, 51.04000000, '2021-10-13 11:51:01');
+INSERT INTO `dbt_coinhistory` VALUES (237, 'GLD', 'GLD_USDE', 1.00300000, 51.54000000, 1.00300000, 1.00300000, 0.00000000, 51.29000000, 9.00000000, 1.00300000, 7.99700000, 51.29000000, 1.00300000, 1.00300000, 51.54000000, 51.29000000, '2021-10-13 11:51:41');
+INSERT INTO `dbt_coinhistory` VALUES (238, 'GLD', 'GLD_USDE', 1.00300000, 52.29000000, 1.00300000, 1.00300000, 0.00000000, 51.79000000, 9.00000000, 1.00300000, 7.99700000, 51.79000000, 1.00300000, 1.00300000, 52.29000000, 51.79000000, '2021-10-13 11:51:58');
+INSERT INTO `dbt_coinhistory` VALUES (239, 'GLD', 'GLD_USDE', 1.00300000, 51.83000000, 1.00300000, 1.00300000, 0.00000000, 51.81000000, 9.00000000, 1.00300000, 7.99700000, 51.81000000, 1.00300000, 1.00300000, 51.83000000, 51.81000000, '2021-10-13 11:52:15');
+INSERT INTO `dbt_coinhistory` VALUES (240, 'GLD', 'GLD_USDE', 1.00300000, 52.81000000, 1.00300000, 1.00300000, 0.00000000, 52.31000000, 9.00000000, 1.00300000, 7.99700000, 52.31000000, 1.00300000, 1.00300000, 52.81000000, 52.31000000, '2021-10-13 11:54:39');
+INSERT INTO `dbt_coinhistory` VALUES (241, 'GLD', 'GLD_USDE', 1.00300000, 52.81000000, 1.00300000, 1.00300000, 0.00000000, 52.56000000, 9.00000000, 1.00300000, 7.99700000, 52.56000000, 1.00300000, 1.00300000, 52.81000000, 52.56000000, '2021-10-13 11:54:49');
+INSERT INTO `dbt_coinhistory` VALUES (242, 'GLD', 'GLD_USDE', 1.00300000, 53.06000000, 1.00300000, 1.00300000, 0.00000000, 52.81000000, 9.00000000, 1.00300000, 7.99700000, 52.81000000, 1.00300000, 1.00300000, 53.06000000, 52.81000000, '2021-10-13 11:55:29');
+INSERT INTO `dbt_coinhistory` VALUES (243, 'GLD', 'GLD_USDE', 1.00300000, 54.81000000, 1.00300000, 1.00300000, 0.00000000, 53.81000000, 9.00000000, 1.00300000, 7.99700000, 53.81000000, 1.00300000, 1.00300000, 54.81000000, 53.81000000, '2021-10-13 11:55:36');
+INSERT INTO `dbt_coinhistory` VALUES (244, 'GLD', 'GLD_USDE', 1.00300000, 54.31000000, 1.00300000, 1.00300000, 0.00000000, 54.06000000, 9.00000000, 1.00300000, 7.99700000, 54.06000000, 1.00300000, 1.00300000, 54.31000000, 54.06000000, '2021-10-13 11:57:28');
+INSERT INTO `dbt_coinhistory` VALUES (245, 'GLD', 'GLD_USDE', 1.00300000, 55.06000000, 1.00300000, 1.00300000, 0.00000000, 54.56000000, 9.00000000, 1.00300000, 7.99700000, 54.56000000, 1.00300000, 1.00300000, 55.06000000, 54.56000000, '2021-10-13 11:57:39');
+INSERT INTO `dbt_coinhistory` VALUES (246, 'GLD', 'GLD_USDE', 1.00300000, 55.06000000, 1.00300000, 1.00300000, 0.00000000, 54.81000000, 9.00000000, 1.00300000, 7.99700000, 54.81000000, 1.00300000, 1.00300000, 55.06000000, 54.81000000, '2021-10-13 14:04:17');
+INSERT INTO `dbt_coinhistory` VALUES (247, 'GLD', 'GLD_USDE', 1.00300000, 54.85000000, 1.00300000, 1.00300000, 0.00000000, 54.83000000, 9.00000000, 1.00300000, 7.99700000, 54.83000000, 1.00300000, 1.00300000, 54.85000000, 54.83000000, '2021-10-13 14:04:39');
+INSERT INTO `dbt_coinhistory` VALUES (248, 'GLD', 'GLD_USDE', 1.00300000, 55.33000000, 1.00300000, 1.00300000, 0.00000000, 55.08000000, 9.00000000, 1.00300000, 7.99700000, 55.08000000, 1.00300000, 1.00300000, 55.33000000, 55.08000000, '2021-10-13 14:04:55');
+INSERT INTO `dbt_coinhistory` VALUES (249, 'GLD', 'GLD_USDE', 1.00300000, 55.10000000, 1.00300000, 1.00300000, 0.00000000, 55.09000000, 9.00000000, 1.00300000, 7.99700000, 55.09000000, 1.00300000, 1.00300000, 55.10000000, 55.09000000, '2021-10-13 14:05:08');
+INSERT INTO `dbt_coinhistory` VALUES (250, 'GLD', 'GLD_USDE', 1.00300000, 55.59000000, 1.00300000, 1.00300000, 0.00000000, 55.34000000, 9.00000000, 1.00300000, 7.99700000, 55.34000000, 1.00300000, 1.00300000, 55.59000000, 55.34000000, '2021-10-13 14:05:19');
+INSERT INTO `dbt_coinhistory` VALUES (251, 'GLD', 'GLD_USDE', 1.00300000, 55.54000000, 1.00300000, 1.00300000, 0.00000000, 55.44000000, 9.00000000, 1.00300000, 7.99700000, 55.44000000, 1.00300000, 1.00300000, 55.54000000, 55.44000000, '2021-10-13 14:05:40');
+INSERT INTO `dbt_coinhistory` VALUES (252, 'GLD', 'GLD_USDE', 1.00300000, 55.64000000, 1.00300000, 1.00300000, 0.00000000, 55.54000000, 9.00000000, 1.00300000, 7.99700000, 55.54000000, 1.00300000, 1.00300000, 55.64000000, 55.54000000, '2021-10-13 14:07:44');
+INSERT INTO `dbt_coinhistory` VALUES (253, 'GLD', 'GLD_USDE', 1.00300000, 56.54000000, 1.00300000, 1.00300000, 0.00000000, 56.04000000, 9.00000000, 1.00300000, 7.99700000, 56.04000000, 1.00300000, 1.00300000, 56.54000000, 56.04000000, '2021-10-13 14:08:04');
+INSERT INTO `dbt_coinhistory` VALUES (254, 'GLD', 'GLD_USDE', 1.00300000, 56.06000000, 1.00300000, 1.00300000, 0.00000000, 56.05000000, 9.00000000, 1.00300000, 7.99700000, 56.05000000, 1.00300000, 1.00300000, 56.06000000, 56.05000000, '2021-10-13 14:08:15');
+INSERT INTO `dbt_coinhistory` VALUES (255, 'GLD', 'GLD_USDE', 1.00300000, 56.55000000, 1.00300000, 1.00300000, 0.00000000, 56.30000000, 9.00000000, 1.00300000, 7.99700000, 56.30000000, 1.00300000, 1.00300000, 56.55000000, 56.30000000, '2021-10-13 14:09:36');
+INSERT INTO `dbt_coinhistory` VALUES (256, 'GLD', 'GLD_USDE', 1.00300000, 56.80000000, 1.00300000, 1.00300000, 0.00000000, 56.55000000, 9.00000000, 1.00300000, 7.99700000, 56.55000000, 1.00300000, 1.00300000, 56.80000000, 56.55000000, '2021-10-13 14:09:59');
+INSERT INTO `dbt_coinhistory` VALUES (257, 'GLD', 'GLD_USDE', 1.00300000, 56.95000000, 1.00300000, 1.00300000, 0.00000000, 56.75000000, 9.00000000, 1.00300000, 7.99700000, 56.75000000, 1.00300000, 1.00300000, 56.95000000, 56.75000000, '2021-10-13 14:10:14');
+INSERT INTO `dbt_coinhistory` VALUES (258, 'GLD', 'GLD_USDE', 1.00300000, 57.75000000, 1.00300000, 1.00300000, 0.00000000, 57.25000000, 9.00000000, 1.00300000, 7.99700000, 57.25000000, 1.00300000, 1.00300000, 57.75000000, 57.25000000, '2021-10-13 14:10:35');
+INSERT INTO `dbt_coinhistory` VALUES (259, 'GLD', 'GLD_USDE', 1.00300000, 57.75000000, 1.00300000, 1.00300000, 0.00000000, 57.50000000, 9.00000000, 1.00300000, 7.99700000, 57.50000000, 1.00300000, 1.00300000, 57.75000000, 57.50000000, '2021-10-13 14:10:48');
+INSERT INTO `dbt_coinhistory` VALUES (260, 'GLD', 'GLD_USDE', 1.00300000, 58.00000000, 1.00300000, 1.00300000, 0.00000000, 57.75000000, 9.00000000, 1.00300000, 7.99700000, 57.75000000, 1.00300000, 1.00300000, 58.00000000, 57.75000000, '2021-10-13 14:13:07');
+INSERT INTO `dbt_coinhistory` VALUES (261, 'GLD', 'GLD_USDE', 1.00300000, 58.25000000, 1.00300000, 1.00300000, 0.00000000, 58.00000000, 9.00000000, 1.00300000, 7.99700000, 58.00000000, 1.00300000, 1.00300000, 58.25000000, 58.00000000, '2021-10-13 14:15:48');
+INSERT INTO `dbt_coinhistory` VALUES (262, 'GLD', 'GLD_USDE', 1.00300000, 59.00000000, 1.00300000, 1.00300000, 0.00000000, 58.50000000, 9.00000000, 1.00300000, 7.99700000, 58.50000000, 1.00300000, 1.00300000, 59.00000000, 58.50000000, '2021-10-13 14:16:00');
+INSERT INTO `dbt_coinhistory` VALUES (263, 'GLD', 'GLD_USDE', 1.00300000, 59.00000000, 1.00300000, 1.00300000, 0.00000000, 58.75000000, 9.00000000, 1.00300000, 7.99700000, 58.75000000, 1.00300000, 1.00300000, 59.00000000, 58.75000000, '2021-10-13 14:16:08');
+INSERT INTO `dbt_coinhistory` VALUES (264, 'GLD', 'GLD_USDE', 1.00300000, 59.25000000, 1.00300000, 1.00300000, 0.00000000, 59.00000000, 9.00000000, 1.00300000, 7.99700000, 59.00000000, 1.00300000, 1.00300000, 59.25000000, 59.00000000, '2021-10-13 14:17:28');
+INSERT INTO `dbt_coinhistory` VALUES (265, 'GLD', 'GLD_USDE', 1.00300000, 59.20000000, 1.00300000, 1.00300000, 0.00000000, 59.10000000, 9.00000000, 1.00300000, 7.99700000, 59.10000000, 1.00300000, 1.00300000, 59.20000000, 59.10000000, '2021-10-13 14:17:43');
+INSERT INTO `dbt_coinhistory` VALUES (266, 'GLD', 'GLD_USDE', 1.00300000, 59.30000000, 1.00300000, 1.00300000, 0.00000000, 59.20000000, 9.00000000, 1.00300000, 7.99700000, 59.20000000, 1.00300000, 1.00300000, 59.30000000, 59.20000000, '2021-10-13 14:18:46');
+INSERT INTO `dbt_coinhistory` VALUES (267, 'GLD', 'GLD_USDE', 1.00300000, 59.40000000, 1.00300000, 1.00300000, 0.00000000, 59.30000000, 9.00000000, 1.00300000, 7.99700000, 59.30000000, 1.00300000, 1.00300000, 59.40000000, 59.30000000, '2021-10-13 14:19:04');
+INSERT INTO `dbt_coinhistory` VALUES (268, 'GLD', 'GLD_USDE', 1.00300000, 59.70000000, 1.00300000, 1.00300000, 0.00000000, 59.50000000, 9.00000000, 1.00300000, 7.99700000, 59.50000000, 1.00300000, 1.00300000, 59.70000000, 59.50000000, '2021-10-13 14:21:37');
+INSERT INTO `dbt_coinhistory` VALUES (269, 'GLD', 'GLD_USDE', 1.00300000, 60.00000000, 1.00300000, 1.00300000, 0.00000000, 59.75000000, 9.00000000, 1.00300000, 7.99700000, 59.75000000, 1.00300000, 1.00300000, 60.00000000, 59.75000000, '2021-10-13 14:21:46');
+INSERT INTO `dbt_coinhistory` VALUES (270, 'GLD', 'GLD_USDE', 1.00300000, 60.25000000, 1.00300000, 1.00300000, 0.00000000, 60.00000000, 9.00000000, 1.00300000, 7.99700000, 60.00000000, 1.00300000, 1.00300000, 60.25000000, 60.00000000, '2021-10-13 14:21:54');
+INSERT INTO `dbt_coinhistory` VALUES (271, 'GLD', 'GLD_USDE', 1.00200000, 60.20000000, 1.00200000, 1.00200000, 0.00000000, 60.10000000, 9.00000000, 1.00200000, -7.99800000, 60.10000000, 1.00200000, 1.00200000, 60.20000000, 60.10000000, '2021-10-13 14:23:42');
+INSERT INTO `dbt_coinhistory` VALUES (272, 'GLD', 'GLD_USDE', 1.00200000, 60.30000000, 1.00200000, 1.00200000, 0.00000000, 60.20000000, 9.00000000, 1.00200000, 7.99800000, 60.20000000, 1.00200000, 1.00200000, 60.30000000, 60.20000000, '2021-10-13 14:43:43');
+INSERT INTO `dbt_coinhistory` VALUES (273, 'GLD', 'GLD_USDE', 1.00200000, 60.70000000, 1.00200000, 1.00200000, 0.00000000, 60.45000000, 9.00000000, 1.00200000, 7.99800000, 60.45000000, 1.00200000, 1.00200000, 60.70000000, 60.45000000, '2021-10-13 14:43:53');
+INSERT INTO `dbt_coinhistory` VALUES (274, 'GLD', 'GLD_USDE', 1.00200000, 60.95000000, 1.00200000, 1.00200000, 0.00000000, 60.70000000, 9.00000000, 1.00200000, 7.99800000, 60.70000000, 1.00200000, 1.00200000, 60.95000000, 60.70000000, '2021-10-13 14:44:33');
+INSERT INTO `dbt_coinhistory` VALUES (275, 'GLD', 'GLD_USDE', 1.00200000, 60.90000000, 1.00200000, 1.00200000, 0.00000000, 60.80000000, 9.00000000, 1.00200000, 7.99800000, 60.80000000, 1.00200000, 1.00200000, 60.90000000, 60.80000000, '2021-10-13 14:44:49');
+INSERT INTO `dbt_coinhistory` VALUES (276, 'GLD', 'GLD_USDE', 1.00200000, 61.20000000, 1.00200000, 1.00200000, 0.00000000, 61.00000000, 9.00000000, 1.00200000, 7.99800000, 61.00000000, 1.00200000, 1.00200000, 61.20000000, 61.00000000, '2021-10-13 14:45:00');
+INSERT INTO `dbt_coinhistory` VALUES (277, 'GLD', 'GLD_USDE', 1.00200000, 61.50000000, 1.00200000, 1.00200000, 0.00000000, 61.25000000, 9.00000000, 1.00200000, 7.99800000, 61.25000000, 1.00200000, 1.00200000, 61.50000000, 61.25000000, '2021-10-13 14:46:23');
+INSERT INTO `dbt_coinhistory` VALUES (278, 'GLD', 'GLD_USDE', 1.00200000, 61.75000000, 1.00200000, 1.00200000, 0.00000000, 61.50000000, 9.00000000, 1.00200000, 7.99800000, 61.50000000, 1.00200000, 1.00200000, 61.75000000, 61.50000000, '2021-10-13 14:47:19');
+INSERT INTO `dbt_coinhistory` VALUES (279, 'GLD', 'GLD_USDE', 1.00200000, 61.70000000, 1.00200000, 1.00200000, 0.00000000, 61.60000000, 9.00000000, 1.00200000, 7.99800000, 61.60000000, 1.00200000, 1.00200000, 61.70000000, 61.60000000, '2021-10-13 14:47:35');
+INSERT INTO `dbt_coinhistory` VALUES (280, 'GLD', 'GLD_USDE', 1.00200000, 61.80000000, 1.00200000, 1.00200000, 0.00000000, 61.70000000, 9.00000000, 1.00200000, 7.99800000, 61.70000000, 1.00200000, 1.00200000, 61.80000000, 61.70000000, '2021-10-13 14:48:40');
+INSERT INTO `dbt_coinhistory` VALUES (281, 'GLD', 'GLD_USDE', 1.00200000, 61.90000000, 1.00200000, 1.00200000, 0.00000000, 61.80000000, 9.00000000, 1.00200000, 7.99800000, 61.80000000, 1.00200000, 1.00200000, 61.90000000, 61.80000000, '2021-10-13 14:49:15');
+INSERT INTO `dbt_coinhistory` VALUES (282, 'GLD', 'GLD_USDE', 1.00200000, 62.20000000, 1.00200000, 1.00200000, 0.00000000, 62.00000000, 9.00000000, 1.00200000, 7.99800000, 62.00000000, 1.00200000, 1.00200000, 62.20000000, 62.00000000, '2021-10-13 14:49:43');
+INSERT INTO `dbt_coinhistory` VALUES (283, 'GLD', 'GLD_USDE', 1.00200000, 62.50000000, 1.00200000, 1.00200000, 0.00000000, 62.25000000, 9.00000000, 1.00200000, 7.99800000, 62.25000000, 1.00200000, 1.00200000, 62.50000000, 62.25000000, '2021-10-13 14:52:48');
+INSERT INTO `dbt_coinhistory` VALUES (284, 'GLD', 'GLD_USDE', 1.00200000, 62.45000000, 1.00200000, 1.00200000, 0.00000000, 62.35000000, 9.00000000, 1.00200000, 7.99800000, 62.35000000, 1.00200000, 1.00200000, 62.45000000, 62.35000000, '2021-10-13 14:53:05');
+INSERT INTO `dbt_coinhistory` VALUES (285, 'GLD', 'GLD_USDE', 1.00200000, 63.35000000, 1.00200000, 1.00200000, 0.00000000, 62.85000000, 9.00000000, 1.00200000, 7.99800000, 62.85000000, 1.00200000, 1.00200000, 63.35000000, 62.85000000, '2021-10-13 14:53:18');
+INSERT INTO `dbt_coinhistory` VALUES (286, 'GLD', 'GLD_USDE', 1.00200000, 63.15000000, 1.00200000, 1.00200000, 0.00000000, 63.00000000, 9.00000000, 1.00200000, 7.99800000, 63.00000000, 1.00200000, 1.00200000, 63.15000000, 63.00000000, '2021-10-13 14:55:43');
+INSERT INTO `dbt_coinhistory` VALUES (287, 'GLD', 'GLD_USDE', 1.00200000, 63.50000000, 1.00200000, 1.00200000, 0.00000000, 63.25000000, 9.00000000, 1.00200000, 7.99800000, 63.25000000, 1.00200000, 1.00200000, 63.50000000, 63.25000000, '2021-10-13 14:59:23');
+INSERT INTO `dbt_coinhistory` VALUES (288, 'GLD', 'GLD_USDE', 1.00200000, 63.45000000, 1.00200000, 1.00200000, 0.00000000, 63.35000000, 9.00000000, 1.00200000, 7.99800000, 63.35000000, 1.00200000, 1.00200000, 63.45000000, 63.35000000, '2021-10-13 14:59:38');
+INSERT INTO `dbt_coinhistory` VALUES (289, 'GLD', 'GLD_USDE', 1.00200000, 63.65000000, 1.00200000, 1.00200000, 0.00000000, 63.50000000, 9.00000000, 1.00200000, 7.99800000, 63.50000000, 1.00200000, 1.00200000, 63.65000000, 63.50000000, '2021-10-13 14:59:53');
+INSERT INTO `dbt_coinhistory` VALUES (290, 'GLD', 'GLD_USDE', 1.00200000, 64.00000000, 1.00200000, 1.00200000, 0.00000000, 63.75000000, 9.00000000, 1.00200000, 7.99800000, 63.75000000, 1.00200000, 1.00200000, 64.00000000, 63.75000000, '2021-10-13 15:00:02');
+INSERT INTO `dbt_coinhistory` VALUES (291, 'GLD', 'GLD_USDE', 1.00200000, 64.25000000, 1.00200000, 1.00200000, 0.00000000, 64.00000000, 9.00000000, 1.00200000, 7.99800000, 64.00000000, 1.00200000, 1.00200000, 64.25000000, 64.00000000, '2021-10-13 15:01:17');
+INSERT INTO `dbt_coinhistory` VALUES (292, 'GLD', 'GLD_USDE', 1.00200000, 65.00000000, 1.00200000, 1.00200000, 0.00000000, 64.50000000, 9.00000000, 1.00200000, 7.99800000, 64.50000000, 1.00200000, 1.00200000, 65.00000000, 64.50000000, '2021-10-13 15:01:29');
+INSERT INTO `dbt_coinhistory` VALUES (293, 'GLD', 'GLD_USDE', 1.00200000, 64.70000000, 1.00200000, 1.00200000, 0.00000000, 64.60000000, 1.00200000, 1.00200000, 0.00000000, 64.60000000, 1.00200000, 1.00200000, 64.70000000, 64.60000000, '2021-10-14 01:32:24');
+INSERT INTO `dbt_coinhistory` VALUES (294, 'GLD', 'GLD_USDE', 1.00200000, 65.00000000, 1.00200000, 1.00200000, 0.00000000, 64.80000000, 1.00200000, 1.00200000, 0.00000000, 64.80000000, 1.00200000, 1.00200000, 65.00000000, 64.80000000, '2021-10-14 01:32:37');
+INSERT INTO `dbt_coinhistory` VALUES (295, 'GLD', 'GLD_USDE', 1.00200000, 65.00000000, 1.00200000, 1.00200000, 0.00000000, 64.90000000, 1.00200000, 1.00200000, 0.00000000, 64.90000000, 1.00200000, 1.00200000, 65.00000000, 64.90000000, '2021-10-14 01:33:25');
+INSERT INTO `dbt_coinhistory` VALUES (296, 'GLD', 'GLD_USDE', 1.00200000, 65.30000000, 1.00200000, 1.00200000, 0.00000000, 65.10000000, 1.00200000, 1.00200000, 0.00000000, 65.10000000, 1.00200000, 1.00200000, 65.30000000, 65.10000000, '2021-10-14 01:33:33');
+INSERT INTO `dbt_coinhistory` VALUES (297, 'GLD', 'GLD_USDE', 1.00200000, 65.60000000, 1.00200000, 1.00200000, 0.00000000, 65.35000000, 1.00200000, 1.00200000, 0.00000000, 65.35000000, 1.00200000, 1.00200000, 65.60000000, 65.35000000, '2021-10-14 01:33:42');
+INSERT INTO `dbt_coinhistory` VALUES (298, 'GLD', 'GLD_USDE', 1.00200000, 65.55000000, 1.00200000, 1.00200000, 0.00000000, 65.45000000, 1.00200000, 1.00200000, 0.00000000, 65.45000000, 1.00200000, 1.00200000, 65.55000000, 65.45000000, '2021-10-14 01:33:52');
+INSERT INTO `dbt_coinhistory` VALUES (299, 'GLD', 'GLD_USDE', 1.00200000, 65.65000000, 1.00200000, 1.00200000, 0.00000000, 65.55000000, 1.00200000, 1.00200000, 0.00000000, 65.55000000, 1.00200000, 1.00200000, 65.65000000, 65.55000000, '2021-10-14 01:34:05');
+INSERT INTO `dbt_coinhistory` VALUES (300, 'GLD', 'GLD_USDE', 1.00200000, 65.75000000, 1.00200000, 1.00200000, 0.00000000, 65.65000000, 9.00000000, 1.00200000, 7.99800000, 65.65000000, 1.00200000, 1.00200000, 65.75000000, 65.65000000, '2021-10-14 01:34:59');
+INSERT INTO `dbt_coinhistory` VALUES (301, 'GLD', 'GLD_USDE', 1.00200000, 65.85000000, 1.00200000, 1.00200000, 0.00000000, 65.75000000, 9.00000000, 1.00200000, 7.99800000, 65.75000000, 1.00200000, 1.00200000, 65.85000000, 65.75000000, '2021-10-14 01:35:16');
+INSERT INTO `dbt_coinhistory` VALUES (302, 'GLD', 'GLD_USDE', 1.00200000, 66.75000000, 1.00200000, 1.00200000, 0.00000000, 66.25000000, 9.00000000, 1.00200000, 7.99800000, 66.25000000, 1.00200000, 1.00200000, 66.75000000, 66.25000000, '2021-10-14 01:35:24');
+INSERT INTO `dbt_coinhistory` VALUES (303, 'GLD', 'GLD_USDE', 1.00200000, 66.45000000, 1.00200000, 1.00200000, 0.00000000, 66.35000000, 9.00000000, 1.00200000, 7.99800000, 66.35000000, 1.00200000, 1.00200000, 66.45000000, 66.35000000, '2021-10-14 01:35:47');
+INSERT INTO `dbt_coinhistory` VALUES (304, 'GLD', 'GLD_USDE', 1.00200000, 66.55000000, 1.00200000, 1.00200000, 0.00000000, 66.45000000, 9.00000000, 1.00200000, 7.99800000, 66.45000000, 1.00200000, 1.00200000, 66.55000000, 66.45000000, '2021-10-14 01:36:24');
+INSERT INTO `dbt_coinhistory` VALUES (305, 'GLD', 'GLD_USDE', 1.00200000, 66.95000000, 1.00200000, 1.00200000, 0.00000000, 66.70000000, 9.00000000, 1.00200000, 7.99800000, 66.70000000, 1.00200000, 1.00200000, 66.95000000, 66.70000000, '2021-10-14 01:36:33');
+INSERT INTO `dbt_coinhistory` VALUES (306, 'GLD', 'GLD_USDE', 1.00200000, 66.90000000, 1.00200000, 1.00200000, 0.00000000, 66.80000000, 9.00000000, 1.00200000, 7.99800000, 66.80000000, 1.00200000, 1.00200000, 66.90000000, 66.80000000, '2021-10-14 01:36:45');
+INSERT INTO `dbt_coinhistory` VALUES (307, 'GLD', 'GLD_USDE', 1.00200000, 67.20000000, 1.00200000, 1.00200000, 0.00000000, 67.00000000, 9.00000000, 1.00200000, 7.99800000, 67.00000000, 1.00200000, 1.00200000, 67.20000000, 67.00000000, '2021-10-14 01:36:53');
+INSERT INTO `dbt_coinhistory` VALUES (308, 'GLD', 'GLD_USDE', 1.00200000, 67.20000000, 1.00200000, 1.00200000, 0.00000000, 67.10000000, 9.00000000, 1.00200000, 7.99800000, 67.10000000, 1.00200000, 1.00200000, 67.20000000, 67.10000000, '2021-10-14 01:37:49');
+INSERT INTO `dbt_coinhistory` VALUES (309, 'GLD', 'GLD_USDE', 1.00200000, 67.50000000, 1.00200000, 1.00200000, 0.00000000, 67.30000000, 9.00000000, 1.00200000, 7.99800000, 67.30000000, 1.00200000, 1.00200000, 67.50000000, 67.30000000, '2021-10-14 01:37:58');
+INSERT INTO `dbt_coinhistory` VALUES (310, 'GLD', 'GLD_USDE', 1.00200000, 67.50000000, 1.00200000, 1.00200000, 0.00000000, 67.40000000, 9.00000000, 1.00200000, 7.99800000, 67.40000000, 1.00200000, 1.00200000, 67.50000000, 67.40000000, '2021-10-14 01:38:06');
+INSERT INTO `dbt_coinhistory` VALUES (311, 'GLD', 'GLD_USDE', 1.00200000, 67.80000000, 1.00200000, 1.00200000, 0.00000000, 67.60000000, 9.00000000, 1.00200000, 7.99800000, 67.60000000, 1.00200000, 1.00200000, 67.80000000, 67.60000000, '2021-10-14 01:38:13');
+INSERT INTO `dbt_coinhistory` VALUES (312, 'GLD', 'GLD_USDE', 1.00200000, 67.80000000, 1.00200000, 1.00200000, 0.00000000, 67.70000000, 9.00000000, 1.00200000, 7.99800000, 67.70000000, 1.00200000, 1.00200000, 67.80000000, 67.70000000, '2021-10-14 01:38:20');
+INSERT INTO `dbt_coinhistory` VALUES (313, 'GLD', 'GLD_USDE', 1.00200000, 68.10000000, 1.00200000, 1.00200000, 0.00000000, 67.90000000, 9.00000000, 1.00200000, 7.99800000, 67.90000000, 1.00200000, 1.00200000, 68.10000000, 67.90000000, '2021-10-14 01:39:12');
+INSERT INTO `dbt_coinhistory` VALUES (314, 'GLD', 'GLD_USDE', 1.00200000, 68.10000000, 1.00200000, 1.00200000, 0.00000000, 68.00000000, 9.00000000, 1.00200000, 7.99800000, 68.00000000, 1.00200000, 1.00200000, 68.10000000, 68.00000000, '2021-10-14 01:39:19');
+INSERT INTO `dbt_coinhistory` VALUES (315, 'GLD', 'GLD_USDE', 1.00200000, 68.50000000, 1.00200000, 1.00200000, 0.00000000, 68.25000000, 9.00000000, 1.00200000, 7.99800000, 68.25000000, 1.00200000, 1.00200000, 68.50000000, 68.25000000, '2021-10-14 01:39:26');
+INSERT INTO `dbt_coinhistory` VALUES (316, 'GLD', 'GLD_USDE', 1.00200000, 68.45000000, 1.00200000, 1.00200000, 0.00000000, 68.35000000, 9.00000000, 1.00200000, 7.99800000, 68.35000000, 1.00200000, 1.00200000, 68.45000000, 68.35000000, '2021-10-14 01:39:52');
+INSERT INTO `dbt_coinhistory` VALUES (317, 'GLD', 'GLD_USDE', 1.00200000, 68.55000000, 1.00200000, 1.00200000, 0.00000000, 68.45000000, 9.00000000, 1.00200000, 7.99800000, 68.45000000, 1.00200000, 1.00200000, 68.55000000, 68.45000000, '2021-10-14 01:39:59');
+INSERT INTO `dbt_coinhistory` VALUES (318, 'GLD', 'GLD_USDE', 1.00200000, 68.55000000, 1.00200000, 1.00200000, 0.00000000, 68.50000000, 9.00000000, 1.00200000, 7.99800000, 68.50000000, 1.00200000, 1.00200000, 68.55000000, 68.50000000, '2021-10-14 01:40:08');
+INSERT INTO `dbt_coinhistory` VALUES (319, 'GLD', 'GLD_USDE', 1.00200000, 69.00000000, 1.00200000, 1.00200000, 0.00000000, 68.75000000, 9.00000000, 1.00200000, 7.99800000, 68.75000000, 1.00200000, 1.00200000, 69.00000000, 68.75000000, '2021-10-14 01:40:22');
+INSERT INTO `dbt_coinhistory` VALUES (320, 'GLD', 'GLD_USDE', 1.00200000, 69.25000000, 1.00200000, 1.00200000, 0.00000000, 69.00000000, 9.00000000, 1.00200000, 7.99800000, 69.00000000, 1.00200000, 1.00200000, 69.25000000, 69.00000000, '2021-10-14 01:40:31');
+INSERT INTO `dbt_coinhistory` VALUES (321, 'RENTA', 'RENTA_USDE', 0.00081800, 10000.00000000, 0.00081800, 0.00081800, 0.00000000, 5000.00000000, 0.00081800, 0.00081800, 0.00000000, 5000.00000000, 0.00081800, 0.00081800, 10000.00000000, 5000.00000000, '2021-10-14 01:49:31');
+INSERT INTO `dbt_coinhistory` VALUES (322, 'RENTA', 'RENTA_USDE', 0.00081800, 7000.00000000, 0.00081800, 0.00081800, 0.00000000, 6000.00000000, 0.00081800, 0.00081800, 0.00000000, 6000.00000000, 0.00081800, 0.00081800, 7000.00000000, 6000.00000000, '2021-10-14 01:49:42');
+INSERT INTO `dbt_coinhistory` VALUES (323, 'RENTA', 'RENTA_USDE', 0.00081800, 6200.00000000, 0.00081800, 0.00081800, 0.00000000, 6100.00000000, 0.00081800, 0.00081800, 0.00000000, 6100.00000000, 0.00081800, 0.00081800, 6200.00000000, 6100.00000000, '2021-10-14 01:50:28');
+INSERT INTO `dbt_coinhistory` VALUES (324, 'RENTA', 'RENTA_USDE', 0.00081800, 8100.00000000, 0.00081800, 0.00081800, 0.00000000, 7100.00000000, 0.00081800, 0.00081800, 0.00000000, 7100.00000000, 0.00081800, 0.00081800, 8100.00000000, 7100.00000000, '2021-10-14 01:50:35');
+INSERT INTO `dbt_coinhistory` VALUES (325, 'RENTA', 'RENTA_USDE', 0.00081800, 8100.00000000, 0.00081800, 0.00081800, 0.00000000, 7600.00000000, 0.00081800, 0.00081800, 0.00000000, 7600.00000000, 0.00081800, 0.00081800, 8100.00000000, 7600.00000000, '2021-10-14 01:50:40');
+INSERT INTO `dbt_coinhistory` VALUES (326, 'AAX', 'AAX_USDE', 0.00000020, 28826303.00000000, 0.00000020, 0.00000020, 0.00000000, 28796303.00000000, 0.00000035, 0.00000008, -0.00000015, 28796303.00000000, 0.00000020, 0.00000020, 28826303.00000000, 28796303.00000000, '2021-10-14 02:59:49');
+INSERT INTO `dbt_coinhistory` VALUES (327, 'AAX', 'AAX_USDE', 0.00000020, 28896303.00000000, 0.00000020, 0.00000020, 0.00000000, 28846303.00000000, 0.00000035, 0.00000008, 0.00000015, 28846303.00000000, 0.00000020, 0.00000020, 28896303.00000000, 28846303.00000000, '2021-10-14 03:00:15');
+INSERT INTO `dbt_coinhistory` VALUES (328, 'AAX', 'AAX_USDE', 0.00000035, 28986303.00000000, 0.00000035, 0.00000035, 0.00000000, 28916303.00000000, 0.00000037, 0.00000008, 0.00000029, 28916303.00000000, 0.00000035, 0.00000035, 28986303.00000000, 28916303.00000000, '2021-10-14 03:04:04');
+INSERT INTO `dbt_coinhistory` VALUES (329, 'AAX', 'AAX_USDE', 0.00000035, 28956303.00000000, 0.00000035, 0.00000035, 0.00000000, 28936303.00000000, 0.00000037, 0.00000008, 0.00000029, 28936303.00000000, 0.00000037, 0.00000035, 28956303.00000000, 28936303.00000000, '2021-10-14 03:04:24');
+INSERT INTO `dbt_coinhistory` VALUES (330, 'AAX', 'AAX_USDE', 0.00000037, 28996303.00000000, 0.00000037, 0.00000037, 0.00000000, 28966303.00000000, 0.00000037, 0.00000008, 0.00000029, 28966303.00000000, 0.00000037, 0.00000037, 28996303.00000000, 28966303.00000000, '2021-10-14 03:04:24');
+INSERT INTO `dbt_coinhistory` VALUES (331, 'AAX', 'AAX_USDE', 0.00000037, 29006303.00000000, 0.00000037, 0.00000037, 0.00000000, 28986303.00000000, 0.00000037, 0.00000008, 0.00000029, 28986303.00000000, 0.00000037, 0.00000037, 29006303.00000000, 28986303.00000000, '2021-10-14 03:04:40');
+INSERT INTO `dbt_coinhistory` VALUES (332, 'AAX', 'AAX_USDE', 0.00000037, 29046303.00000000, 0.00000037, 0.00000037, 0.00000000, 29016303.00000000, 0.00000037, 0.00000008, 0.00000029, 29016303.00000000, 0.00000037, 0.00000037, 29046303.00000000, 29016303.00000000, '2021-10-14 03:07:20');
+INSERT INTO `dbt_coinhistory` VALUES (333, 'AAX', 'AAX_USDE', 0.85000000, 29016333.00000000, 0.85000000, 0.85000000, 0.00000000, 29016318.00000000, 0.85000000, 0.00000008, 0.84999992, 29016318.00000000, 0.85000000, 0.85000000, 29016333.00000000, 29016318.00000000, '2021-10-14 03:09:30');
+INSERT INTO `dbt_coinhistory` VALUES (334, 'AAX', 'AAX_USDE', 0.85000000, 29016328.00000000, 0.85000000, 0.85000000, 0.00000000, 29016323.00000000, 0.85000000, 0.00000008, 0.84999992, 29016323.00000000, 0.85000000, 0.85000000, 29016328.00000000, 29016323.00000000, '2021-10-14 03:09:49');
+INSERT INTO `dbt_coinhistory` VALUES (335, 'AAX', 'AAX_USDE', 0.00000020, 29018323.00000000, 0.00000020, 0.00000020, 0.00000000, 29017323.00000000, 0.00000020, 0.00000020, 0.00000000, 29017323.00000000, 0.00000020, 0.00000020, 29018323.00000000, 29017323.00000000, '2021-10-15 02:32:24');
+INSERT INTO `dbt_coinhistory` VALUES (336, 'ETL', 'ETL_USDE', 0.00002020, 23889981.00000000, 0.00002020, 0.00002020, 0.00000000, 23889481.00000000, 0.00002020, 0.00002020, 0.00000000, 23889481.00000000, 0.00002020, 0.00002020, 23889981.00000000, 23889481.00000000, '2022-02-01 00:53:17');
+INSERT INTO `dbt_coinhistory` VALUES (337, 'ETL', 'ETL_USDE', 0.00002030, 23893481.00000000, 0.00002030, 0.00002030, 0.00000000, 23891481.00000000, 0.00002030, 0.00002020, 0.00000010, 23891481.00000000, 0.00002030, 0.00002030, 23893481.00000000, 23891481.00000000, '2022-02-01 00:54:40');
+INSERT INTO `dbt_coinhistory` VALUES (338, 'ETL', 'ETL_USDE', 0.00002050, 23897481.00000000, 0.00002050, 0.00002050, 0.00000000, 23894481.00000000, 0.00002050, 0.00002020, 0.00000030, 23894481.00000000, 0.00002050, 0.00002050, 23897481.00000000, 23894481.00000000, '2022-02-01 00:55:50');
+INSERT INTO `dbt_coinhistory` VALUES (339, 'ETL', 'ETL_USDE', 0.00002080, 23896481.00000000, 0.00002080, 0.00002080, 0.00000000, 23895481.00000000, 0.00002080, 0.00002020, 0.00000060, 23895481.00000000, 0.00002080, 0.00002080, 23896481.00000000, 23895481.00000000, '2022-02-01 00:56:45');
+INSERT INTO `dbt_coinhistory` VALUES (340, 'ETL', 'ETL_USDE', 0.00013500, 23896481.00000000, 0.00013500, 0.00013500, 0.00000000, 23895981.00000000, 0.00013500, 0.00002020, 0.00011480, 23895981.00000000, 0.00013500, 0.00013500, 23896481.00000000, 23895981.00000000, '2022-02-01 00:57:38');
+INSERT INTO `dbt_coinhistory` VALUES (341, 'ETL', 'ETL_USDE', 0.00013500, 23896581.00000000, 0.00013500, 0.00013500, 0.00000000, 23896281.00000000, 0.00013500, 0.00002020, 0.00011480, 23896281.00000000, 0.00014500, 0.00013500, 23896581.00000000, 23896281.00000000, '2022-02-01 01:45:33');
+INSERT INTO `dbt_coinhistory` VALUES (342, 'ETL', 'ETL_USDE', 0.00014500, 23896881.00000000, 0.00014500, 0.00014500, 0.00000000, 23896581.00000000, 0.00014500, 0.00002020, 0.00012480, 23896581.00000000, 0.00014500, 0.00014500, 23896881.00000000, 23896581.00000000, '2022-02-01 01:45:33');
+INSERT INTO `dbt_coinhistory` VALUES (343, 'ETL', 'ETL_USDE', 0.00014500, 23897181.00000000, 0.00014500, 0.00014500, 0.00000000, 23896881.00000000, 0.00014500, 0.00002020, 0.00012480, 23896881.00000000, 0.00015500, 0.00014500, 23897181.00000000, 23896881.00000000, '2022-02-01 01:46:40');
+INSERT INTO `dbt_coinhistory` VALUES (344, 'ETL', 'ETL_USDE', 0.00014500, 23897681.00000000, 0.00014500, 0.00014500, 0.00000000, 23897281.00000000, 0.00014500, 0.00002020, 0.00012480, 23897281.00000000, 0.00015500, 0.00014500, 23897681.00000000, 23897281.00000000, '2022-02-01 01:47:23');
+INSERT INTO `dbt_coinhistory` VALUES (345, 'ETL', 'ETL_USDE', 0.00015500, 23898081.00000000, 0.00015500, 0.00015500, 0.00000000, 23897681.00000000, 0.00015500, 0.00002020, 0.00013480, 23897681.00000000, 0.00015500, 0.00015500, 23898081.00000000, 23897681.00000000, '2022-02-01 01:47:23');
+INSERT INTO `dbt_coinhistory` VALUES (346, 'TEST', 'TEST_USDT', 0.00011000, 400.00000000, 0.00011000, 0.00011000, 0.00000000, 200.00000000, 0.00011000, 0.00011000, 0.00000000, 200.00000000, 0.00011000, 0.00011000, 400.00000000, 200.00000000, '2022-03-15 07:52:58');
+INSERT INTO `dbt_coinhistory` VALUES (347, 'TEST', 'TEST_USDT', 0.00011000, 800.00000000, 0.00011000, 0.00011000, 0.00000000, 500.00000000, 0.00011000, 0.00011000, 0.00000000, 500.00000000, 0.00011000, 0.00011000, 800.00000000, 500.00000000, '2022-03-15 07:53:20');
+INSERT INTO `dbt_coinhistory` VALUES (348, 'TEST', 'TEST_USDT', 0.00012000, 3500.00000000, 0.00012000, 0.00012000, 0.00000000, 2000.00000000, 0.00012000, 0.00011000, 0.00001000, 2000.00000000, 0.00012000, 0.00012000, 3500.00000000, 2000.00000000, '2022-03-15 07:54:11');
+INSERT INTO `dbt_coinhistory` VALUES (349, 'TEST', 'TEST_USDT', 0.00012000, 5600.00000000, 0.00012000, 0.00012000, 0.00000000, 3800.00000000, 0.00012000, 0.00011000, 0.00001000, 3800.00000000, 0.00012000, 0.00012000, 5600.00000000, 3800.00000000, '2022-03-15 07:54:11');
+INSERT INTO `dbt_coinhistory` VALUES (350, 'TEST', 'TEST_USDT', 0.00012000, 10200.00000000, 0.00012000, 0.00012000, 0.00000000, 7000.00000000, 0.00012000, 0.00011000, 0.00001000, 7000.00000000, 0.00012000, 0.00012000, 10200.00000000, 7000.00000000, '2022-03-15 07:54:34');
+INSERT INTO `dbt_coinhistory` VALUES (351, 'TEST', 'TEST_USDT', 0.00013000, 7600.00000000, 0.00013000, 0.00013000, 0.00000000, 7300.00000000, 0.00013000, 0.00011000, 0.00002000, 7300.00000000, 0.00013000, 0.00013000, 7600.00000000, 7300.00000000, '2022-03-15 07:56:14');
+INSERT INTO `dbt_coinhistory` VALUES (352, 'TEST', 'TEST_USDT', 0.00013000, 8700.00000000, 0.00013000, 0.00013000, 0.00000000, 8000.00000000, 0.00013000, 0.00011000, 0.00002000, 8000.00000000, 0.00013000, 0.00013000, 8700.00000000, 8000.00000000, '2022-03-15 08:00:03');
+INSERT INTO `dbt_coinhistory` VALUES (353, 'TEST', 'TEST_USDT', 0.00013000, 16600.00000000, 0.00013000, 0.00013000, 0.00000000, 12300.00000000, 0.00013000, 0.00011000, 0.00002000, 12300.00000000, 0.00013000, 0.00013000, 16600.00000000, 12300.00000000, '2022-03-15 08:00:03');
+INSERT INTO `dbt_coinhistory` VALUES (354, 'TEST', 'TEST_USDT', 0.00013000, 17700.00000000, 0.00013000, 0.00013000, 0.00000000, 15000.00000000, 0.00013000, 0.00011000, 0.00002000, 15000.00000000, 0.00013000, 0.00013000, 17700.00000000, 15000.00000000, '2022-03-15 08:00:24');
+INSERT INTO `dbt_coinhistory` VALUES (355, 'TEST', 'TEST_USDT', 0.00014000, 16000.00000000, 0.00014000, 0.00014000, 0.00000000, 15500.00000000, 0.00014000, 0.00011000, 0.00003000, 15500.00000000, 0.00014000, 0.00014000, 16000.00000000, 15500.00000000, '2022-03-15 08:01:00');
+INSERT INTO `dbt_coinhistory` VALUES (356, 'TEST', 'TEST_USDT', 0.00014000, 17900.00000000, 0.00014000, 0.00014000, 0.00000000, 16700.00000000, 0.00014000, 0.00011000, 0.00003000, 16700.00000000, 0.00014000, 0.00014000, 17900.00000000, 16700.00000000, '2022-03-15 08:04:18');
+INSERT INTO `dbt_coinhistory` VALUES (357, 'TEST', 'TEST_USDT', 0.00014000, 18300.00000000, 0.00014000, 0.00014000, 0.00000000, 17500.00000000, 0.00014000, 0.00011000, 0.00003000, 17500.00000000, 0.00014000, 0.00014000, 18300.00000000, 17500.00000000, '2022-03-15 08:05:02');
+INSERT INTO `dbt_coinhistory` VALUES (358, 'TEST', 'TEST_USDT', 0.00017000, 21500.00000000, 0.00017000, 0.00017000, 0.00000000, 19500.00000000, 0.00017000, 0.00011000, 0.00006000, 19500.00000000, 0.00017000, 0.00017000, 21500.00000000, 19500.00000000, '2022-03-15 08:06:04');
+INSERT INTO `dbt_coinhistory` VALUES (359, 'TEST', 'TEST_USDT', 0.00017000, 22100.00000000, 0.00017000, 0.00017000, 0.00000000, 20800.00000000, 0.00017000, 0.00011000, 0.00006000, 20800.00000000, 0.00017000, 0.00017000, 22100.00000000, 20800.00000000, '2022-03-15 08:06:38');
+INSERT INTO `dbt_coinhistory` VALUES (360, 'TEST', 'TEST_USDT', 0.00018500, 21800.00000000, 0.00018500, 0.00018500, 0.00000000, 21300.00000000, 0.00018500, 0.00011000, 0.00007500, 21300.00000000, 0.00018500, 0.00018500, 21800.00000000, 21300.00000000, '2022-03-15 08:07:09');
+INSERT INTO `dbt_coinhistory` VALUES (361, 'TEST', 'TEST_USDT', 0.00018500, 21700.00000000, 0.00018500, 0.00018500, 0.00000000, 21500.00000000, 0.00018500, 0.00011000, 0.00007500, 21500.00000000, 0.00018500, 0.00018500, 21700.00000000, 21500.00000000, '2022-03-15 08:07:55');
+INSERT INTO `dbt_coinhistory` VALUES (362, 'TEST', 'TEST_USDT', 0.00019800, 25100.00000000, 0.00019800, 0.00019800, 0.00000000, 23300.00000000, 0.00019800, 0.00011000, 0.00008800, 23300.00000000, 0.00019800, 0.00019800, 25100.00000000, 23300.00000000, '2022-03-15 11:12:16');
+INSERT INTO `dbt_coinhistory` VALUES (363, 'TEST', 'TEST_USDT', 0.00020450, 27700.00000000, 0.00020450, 0.00020450, 0.00000000, 25500.00000000, 0.00020450, 0.00011000, 0.00009450, 25500.00000000, 0.00020450, 0.00020450, 27700.00000000, 25500.00000000, '2022-03-15 11:12:24');
+INSERT INTO `dbt_coinhistory` VALUES (364, 'TEST', 'TEST_USDT', 0.00023700, 33900.00000000, 0.00023700, 0.00023700, 0.00000000, 29700.00000000, 0.00023700, 0.00011000, 0.00012700, 29700.00000000, 0.00023700, 0.00023700, 33900.00000000, 29700.00000000, '2022-03-15 11:12:52');
+INSERT INTO `dbt_coinhistory` VALUES (365, 'TEST', 'TEST_USDT', 0.00024800, 31900.00000000, 0.00024800, 0.00024800, 0.00000000, 30800.00000000, 0.00024800, 0.00011000, 0.00013800, 30800.00000000, 0.00024800, 0.00024800, 31900.00000000, 30800.00000000, '2022-03-15 11:14:00');
+INSERT INTO `dbt_coinhistory` VALUES (366, 'TEST', 'TEST_USDT', 0.00025000, 34800.00000000, 0.00025000, 0.00025000, 0.00000000, 32800.00000000, 0.00025000, 0.00011000, 0.00014000, 32800.00000000, 0.00025000, 0.00025000, 34800.00000000, 32800.00000000, '2022-03-15 11:14:10');
+INSERT INTO `dbt_coinhistory` VALUES (367, 'TEST', 'TEST_USDT', 0.00025000, 42800.00000000, 0.00025000, 0.00025000, 0.00000000, 37800.00000000, 0.00025000, 0.00011000, 0.00014000, 37800.00000000, 0.00025000, 0.00025000, 42800.00000000, 37800.00000000, '2022-03-15 11:14:10');
+INSERT INTO `dbt_coinhistory` VALUES (368, 'TEST', 'TEST_USDT', 0.00011000, 38800.00000000, 0.00011000, 0.00011000, 0.00000000, 38300.00000000, 0.00025000, 0.00011000, -0.00014000, 38300.00000000, 0.00011000, 0.00011000, 38800.00000000, 38300.00000000, '2022-03-15 11:17:50');
+INSERT INTO `dbt_coinhistory` VALUES (369, 'TEST', 'TEST_USDT', 0.00011000, 41900.00000000, 0.00011000, 0.00011000, 0.00000000, 40100.00000000, 0.00025000, 0.00011000, 0.00014000, 40100.00000000, 0.00011000, 0.00011000, 41900.00000000, 40100.00000000, '2022-03-15 11:17:50');
+INSERT INTO `dbt_coinhistory` VALUES (370, 'TEST', 'TEST_USDT', 0.00011000, 41100.00000000, 0.00011000, 0.00011000, 0.00000000, 40600.00000000, 0.00025000, 0.00011000, 0.00014000, 40600.00000000, 0.00011000, 0.00011000, 41100.00000000, 40600.00000000, '2022-03-15 11:17:50');
+INSERT INTO `dbt_coinhistory` VALUES (371, 'TEST', 'TEST_USDT', 0.00011000, 42600.00000000, 0.00011000, 0.00011000, 0.00000000, 41600.00000000, 0.00025000, 0.00011000, 0.00014000, 41600.00000000, 0.00011000, 0.00011000, 42600.00000000, 41600.00000000, '2022-03-15 11:17:50');
+INSERT INTO `dbt_coinhistory` VALUES (372, 'TEST', 'TEST_USDT', 0.00011000, 42000.00000000, 0.00011000, 0.00011000, 0.00000000, 41800.00000000, 0.00025000, 0.00011000, 0.00014000, 41800.00000000, 0.00011000, 0.00011000, 42000.00000000, 41800.00000000, '2022-03-15 11:17:50');
+INSERT INTO `dbt_coinhistory` VALUES (373, 'TEST', 'TEST_USDT', 0.00010900, 44800.00000000, 0.00010900, 0.00010900, 0.00000000, 43300.00000000, 0.00025000, 0.00010900, -0.00014100, 43300.00000000, 0.00010900, 0.00010900, 44800.00000000, 43300.00000000, '2022-03-15 11:34:22');
+INSERT INTO `dbt_coinhistory` VALUES (374, 'TEST', 'TEST_USDT', 0.00011000, 45300.00000000, 0.00011000, 0.00011000, 0.00000000, 44300.00000000, 0.00025000, 0.00010900, 0.00014000, 44300.00000000, 0.00011000, 0.00011000, 45300.00000000, 44300.00000000, '2022-03-15 11:34:31');
+INSERT INTO `dbt_coinhistory` VALUES (375, 'TEST', 'TEST_USDT', 0.00010900, 45300.00000000, 0.00010900, 0.00010900, 0.00000000, 44800.00000000, 0.00025000, 0.00010900, -0.00014100, 44800.00000000, 0.00010900, 0.00010900, 45300.00000000, 44800.00000000, '2022-03-15 11:34:54');
+INSERT INTO `dbt_coinhistory` VALUES (376, 'TEST', 'TEST_USDT', 0.00010900, 45600.00000000, 0.00010900, 0.00010900, 0.00000000, 45200.00000000, 0.00025000, 0.00010900, 0.00014100, 45200.00000000, 0.00010900, 0.00010900, 45600.00000000, 45200.00000000, '2022-03-15 11:34:54');
+INSERT INTO `dbt_coinhistory` VALUES (377, 'TEST', 'TEST_USDT', 0.00010945, 50400.00000000, 0.00010945, 0.00010945, 0.00000000, 47800.00000000, 0.00025000, 0.00010900, 0.00014055, 47800.00000000, 0.00010945, 0.00010945, 50400.00000000, 47800.00000000, '2022-03-15 11:35:42');
+INSERT INTO `dbt_coinhistory` VALUES (378, 'TEST', 'TEST_USDT', 0.00010945, 48600.00000000, 0.00010945, 0.00010945, 0.00000000, 48200.00000000, 0.00025000, 0.00010900, 0.00014055, 48200.00000000, 0.00010945, 0.00010945, 48600.00000000, 48200.00000000, '2022-03-15 11:35:42');
+INSERT INTO `dbt_coinhistory` VALUES (379, 'TEST', 'TEST_USDT', 0.00011000, 49000.00000000, 0.00011000, 0.00011000, 0.00000000, 48600.00000000, 0.00025000, 0.00010900, 0.00014000, 48600.00000000, 0.00011000, 0.00011000, 49000.00000000, 48600.00000000, '2022-03-15 11:36:03');
+INSERT INTO `dbt_coinhistory` VALUES (380, 'TEST', 'TEST_USDT', 0.00011000, 54600.00000000, 0.00011000, 0.00011000, 0.00000000, 51600.00000000, 0.00025000, 0.00010900, 0.00014000, 51600.00000000, 0.00011000, 0.00011000, 54600.00000000, 51600.00000000, '2022-03-15 11:36:03');
+INSERT INTO `dbt_coinhistory` VALUES (381, 'TEST', 'TEST_USDT', 0.00011000, 52600.00000000, 0.00011000, 0.00011000, 0.00000000, 52100.00000000, 0.00025000, 0.00010900, 0.00014000, 52100.00000000, 0.00011000, 0.00011000, 52600.00000000, 52100.00000000, '2022-03-15 11:36:03');
+INSERT INTO `dbt_coinhistory` VALUES (382, 'TEST', 'TEST_USDT', 0.00011000, 52300.00000000, 0.00011000, 0.00011000, 0.00000000, 52200.00000000, 0.00025000, 0.00010900, 0.00014000, 52200.00000000, 0.00011000, 0.00011000, 52300.00000000, 52200.00000000, '2022-03-15 11:36:03');
+INSERT INTO `dbt_coinhistory` VALUES (383, 'TEST', 'TEST_USDT', 0.00011800, 68000.00000000, 0.00011800, 0.00011800, 0.00000000, 60100.00000000, 0.00025000, 0.00010900, 0.00013200, 60100.00000000, 0.00011800, 0.00011800, 68000.00000000, 60100.00000000, '2022-03-15 11:36:17');
+INSERT INTO `dbt_coinhistory` VALUES (384, 'TEST', 'TEST_USDT', 0.00011800, 60300.00000000, 0.00011800, 0.00011800, 0.00000000, 60200.00000000, 0.00025000, 0.00010900, 0.00013200, 60200.00000000, 0.00011800, 0.00011800, 60300.00000000, 60200.00000000, '2022-03-15 11:36:17');
+INSERT INTO `dbt_coinhistory` VALUES (385, 'TEST', 'TEST_USDT', 0.00013000, 60600.00000000, 0.00013000, 0.00013000, 0.00000000, 60400.00000000, 0.00025000, 0.00010900, 0.00012000, 60400.00000000, 0.00013000, 0.00013000, 60600.00000000, 60400.00000000, '2022-03-15 11:36:24');
+INSERT INTO `dbt_coinhistory` VALUES (386, 'TEST', 'TEST_USDT', 0.00013000, 61000.00000000, 0.00013000, 0.00013000, 0.00000000, 60700.00000000, 0.00025000, 0.00010900, 0.00012000, 60700.00000000, 0.00013000, 0.00013000, 61000.00000000, 60700.00000000, '2022-03-15 11:36:24');
+INSERT INTO `dbt_coinhistory` VALUES (387, 'TEST', 'TEST_USDT', 0.00014000, 61500.00000000, 0.00014000, 0.00014000, 0.00000000, 61100.00000000, 0.00025000, 0.00010900, 0.00011000, 61100.00000000, 0.00014000, 0.00014000, 61500.00000000, 61100.00000000, '2022-03-15 11:36:30');
+INSERT INTO `dbt_coinhistory` VALUES (388, 'TEST', 'TEST_USDT', 0.00014000, 61500.00000000, 0.00014000, 0.00014000, 0.00000000, 61300.00000000, 0.00025000, 0.00010900, 0.00011000, 61300.00000000, 0.00014000, 0.00014000, 61500.00000000, 61300.00000000, '2022-03-15 11:36:30');
+INSERT INTO `dbt_coinhistory` VALUES (389, 'TEST', 'TEST_USDT', 0.00018500, 61900.00000000, 0.00018500, 0.00018500, 0.00000000, 61600.00000000, 0.00025000, 0.00010900, 0.00006500, 61600.00000000, 0.00018500, 0.00018500, 61900.00000000, 61600.00000000, '2022-03-15 11:36:36');
+INSERT INTO `dbt_coinhistory` VALUES (390, 'TEST', 'TEST_USDT', 0.00018500, 62000.00000000, 0.00018500, 0.00018500, 0.00000000, 61800.00000000, 0.00025000, 0.00010900, 0.00006500, 61800.00000000, 0.00018500, 0.00018500, 62000.00000000, 61800.00000000, '2022-03-15 11:36:36');
+INSERT INTO `dbt_coinhistory` VALUES (391, 'TEST', 'TEST_USDT', 0.00019800, 63800.00000000, 0.00019800, 0.00019800, 0.00000000, 62800.00000000, 0.00025000, 0.00010900, 0.00005200, 62800.00000000, 0.00019800, 0.00019800, 63800.00000000, 62800.00000000, '2022-03-15 11:37:58');
+INSERT INTO `dbt_coinhistory` VALUES (392, 'TEST', 'TEST_USDT', 0.00019800, 64800.00000000, 0.00019800, 0.00019800, 0.00000000, 63800.00000000, 0.00025000, 0.00010900, 0.00005200, 63800.00000000, 0.00019800, 0.00019800, 64800.00000000, 63800.00000000, '2022-03-15 11:37:58');
+INSERT INTO `dbt_coinhistory` VALUES (393, 'TEST', 'TEST_USDT', 0.00020450, 65400.00000000, 0.00020450, 0.00020450, 0.00000000, 64600.00000000, 0.00025000, 0.00010900, 0.00004550, 64600.00000000, 0.00020450, 0.00020450, 65400.00000000, 64600.00000000, '2022-03-15 11:38:04');
+INSERT INTO `dbt_coinhistory` VALUES (394, 'TEST', 'TEST_USDT', 0.00020450, 65000.00000000, 0.00020450, 0.00020450, 0.00000000, 64800.00000000, 0.00025000, 0.00010900, 0.00004550, 64800.00000000, 0.00020450, 0.00020450, 65000.00000000, 64800.00000000, '2022-03-15 11:38:04');
+INSERT INTO `dbt_coinhistory` VALUES (395, 'TEST', 'TEST_USDT', 0.00023700, 66000.00000000, 0.00023700, 0.00023700, 0.00000000, 65400.00000000, 0.00025000, 0.00010900, 0.00001300, 65400.00000000, 0.00023700, 0.00023700, 66000.00000000, 65400.00000000, '2022-03-15 11:38:13');
+INSERT INTO `dbt_coinhistory` VALUES (396, 'TEST', 'TEST_USDT', 0.00023700, 66200.00000000, 0.00023700, 0.00023700, 0.00000000, 65800.00000000, 0.00025000, 0.00010900, 0.00001300, 65800.00000000, 0.00023700, 0.00023700, 66200.00000000, 65800.00000000, '2022-03-15 11:38:13');
+INSERT INTO `dbt_coinhistory` VALUES (397, 'TEST', 'TEST_USDT', 0.00024800, 66800.00000000, 0.00024800, 0.00024800, 0.00000000, 66300.00000000, 0.00025000, 0.00010900, 0.00000200, 66300.00000000, 0.00024800, 0.00024800, 66800.00000000, 66300.00000000, '2022-03-15 11:38:52');
+INSERT INTO `dbt_coinhistory` VALUES (398, 'TEST', 'TEST_USDT', 0.00024800, 66700.00000000, 0.00024800, 0.00024800, 0.00000000, 66500.00000000, 0.00025000, 0.00010900, 0.00000200, 66500.00000000, 0.00024800, 0.00024800, 66700.00000000, 66500.00000000, '2022-03-15 11:38:52');
+INSERT INTO `dbt_coinhistory` VALUES (399, 'TEST', 'TEST_USDT', 0.00025000, 68100.00000000, 0.00025000, 0.00025000, 0.00000000, 67300.00000000, 0.00025000, 0.00010900, 0.00000000, 67300.00000000, 0.00025000, 0.00025000, 68100.00000000, 67300.00000000, '2022-03-15 11:39:41');
+INSERT INTO `dbt_coinhistory` VALUES (400, 'TEST', 'TEST_USDT', 0.00010300, 68900.00000000, 0.00010300, 0.00010300, 0.00000000, 68100.00000000, 0.00025000, 0.00010300, -0.00014700, 68100.00000000, 0.00010300, 0.00010300, 68900.00000000, 68100.00000000, '2022-03-15 11:39:50');
+INSERT INTO `dbt_coinhistory` VALUES (401, 'TEST', 'TEST_USDT', 0.00010300, 76100.00000000, 0.00010300, 0.00010300, 0.00000000, 72100.00000000, 0.00025000, 0.00010300, 0.00014700, 72100.00000000, 0.00010300, 0.00010300, 76100.00000000, 72100.00000000, '2022-03-15 11:39:50');
+INSERT INTO `dbt_coinhistory` VALUES (402, 'TEST', 'TEST_USDT', 0.00010000, 73100.00000000, 0.00010000, 0.00010000, 0.00000000, 72600.00000000, 0.00025000, 0.00010000, -0.00015000, 72600.00000000, 0.00010000, 0.00010000, 73100.00000000, 72600.00000000, '2022-03-15 11:39:58');
+INSERT INTO `dbt_coinhistory` VALUES (403, 'TEST', 'TEST_USDT', 0.00010000, 78600.00000000, 0.00010000, 0.00010000, 0.00000000, 75600.00000000, 0.00025000, 0.00010000, 0.00015000, 75600.00000000, 0.00010000, 0.00010000, 78600.00000000, 75600.00000000, '2022-03-15 11:39:58');
+INSERT INTO `dbt_coinhistory` VALUES (404, 'TEST', 'TEST_USDT', 0.00009000, 78600.00000000, 0.00009000, 0.00009000, 0.00000000, 77100.00000000, 0.00025000, 0.00009000, -0.00016000, 77100.00000000, 0.00009000, 0.00009000, 78600.00000000, 77100.00000000, '2022-03-15 11:48:42');
+INSERT INTO `dbt_coinhistory` VALUES (405, 'TEST', 'TEST_USDT', 0.00008550, 79500.00000000, 0.00008550, 0.00008550, 0.00000000, 78300.00000000, 0.00025000, 0.00008550, -0.00016450, 78300.00000000, 0.00008550, 0.00008550, 79500.00000000, 78300.00000000, '2022-03-15 11:49:01');
+INSERT INTO `dbt_coinhistory` VALUES (406, 'TEST', 'TEST_USDT', 0.00008000, 78900.00000000, 0.00008000, 0.00008000, 0.00000000, 78600.00000000, 0.00025000, 0.00008000, -0.00017000, 78600.00000000, 0.00008000, 0.00008000, 78900.00000000, 78600.00000000, '2022-03-15 11:49:21');
+INSERT INTO `dbt_coinhistory` VALUES (407, 'TEST', 'TEST_USDT', 0.00007885, 87400.00000000, 0.00007885, 0.00007885, 0.00000000, 83000.00000000, 0.00025000, 0.00007885, -0.00017115, 83000.00000000, 0.00007885, 0.00007885, 87400.00000000, 83000.00000000, '2022-03-15 11:49:46');
+INSERT INTO `dbt_coinhistory` VALUES (408, 'TEST', 'TEST_USDT', 0.00007700, 84400.00000000, 0.00007700, 0.00007700, 0.00000000, 83700.00000000, 0.00025000, 0.00007700, -0.00017300, 83700.00000000, 0.00007700, 0.00007700, 84400.00000000, 83700.00000000, '2022-03-15 11:50:07');
+INSERT INTO `dbt_coinhistory` VALUES (409, 'TEST', 'TEST_USDT', 0.00006554, 85500.00000000, 0.00006554, 0.00006554, 0.00000000, 84600.00000000, 0.00025000, 0.00006554, -0.00018446, 84600.00000000, 0.00006554, 0.00006554, 85500.00000000, 84600.00000000, '2022-03-15 12:03:34');
+INSERT INTO `dbt_coinhistory` VALUES (410, 'TEST', 'TEST_USDT', 0.00006554, 84800.00000000, 0.00006554, 0.00006554, 0.00000000, 84700.00000000, 0.00025000, 0.00006554, 0.00018446, 84700.00000000, 0.00007500, 0.00006554, 84800.00000000, 84700.00000000, '2022-03-15 12:04:31');
+INSERT INTO `dbt_coinhistory` VALUES (411, 'TEST', 'TEST_USDT', 0.00007700, 86700.00000000, 0.00007700, 0.00007700, 0.00000000, 85700.00000000, 0.00025000, 0.00006554, 0.00018446, 85700.00000000, 0.00007800, 0.00007700, 86700.00000000, 85700.00000000, '2022-03-15 12:04:50');
+INSERT INTO `dbt_coinhistory` VALUES (412, 'TEST', 'TEST_USDT', 0.00007700, 86300.00000000, 0.00007700, 0.00007700, 0.00000000, 86000.00000000, 0.00025000, 0.00006554, 0.00018446, 86000.00000000, 0.00007800, 0.00007700, 86300.00000000, 86000.00000000, '2022-03-15 12:45:45');
+INSERT INTO `dbt_coinhistory` VALUES (413, 'TEST', 'TEST_USDT', 0.00008000, 86400.00000000, 0.00008000, 0.00008000, 0.00000000, 86200.00000000, 0.00025000, 0.00006554, 0.00018446, 86200.00000000, 0.00008000, 0.00008000, 86400.00000000, 86200.00000000, '2022-03-15 12:45:59');
+INSERT INTO `dbt_coinhistory` VALUES (414, 'TEST', 'TEST_USDT', 0.00007885, 87400.00000000, 0.00007885, 0.00007885, 0.00000000, 86800.00000000, 0.00025000, 0.00006554, -0.00018446, 86800.00000000, 0.00008000, 0.00007885, 87400.00000000, 86800.00000000, '2022-03-15 12:45:59');
+INSERT INTO `dbt_coinhistory` VALUES (415, 'TEST', 'TEST_USDT', 0.00009000, 87800.00000000, 0.00009000, 0.00009000, 0.00000000, 87300.00000000, 0.00025000, 0.00006554, 0.00018446, 87300.00000000, 0.00009000, 0.00009000, 87800.00000000, 87300.00000000, '2022-03-15 12:56:04');
+INSERT INTO `dbt_coinhistory` VALUES (416, 'TEST', 'TEST_USDT', 0.00008550, 88100.00000000, 0.00008550, 0.00008550, 0.00000000, 87700.00000000, 0.00025000, 0.00006554, -0.00018446, 87700.00000000, 0.00008550, 0.00008550, 88100.00000000, 87700.00000000, '2022-03-15 12:56:18');
+INSERT INTO `dbt_coinhistory` VALUES (417, 'TEST', 'TEST_USDT', 0.00008550, 88500.00000000, 0.00008550, 0.00008550, 0.00000000, 88100.00000000, 0.00025000, 0.00006554, 0.00018446, 88100.00000000, 0.00008550, 0.00008550, 88500.00000000, 88100.00000000, '2022-03-15 12:56:53');
+INSERT INTO `dbt_coinhistory` VALUES (418, 'TEST', 'TEST_USDT', 0.00009000, 88700.00000000, 0.00009000, 0.00009000, 0.00000000, 88400.00000000, 0.00025000, 0.00006554, 0.00018446, 88400.00000000, 0.00009000, 0.00009000, 88700.00000000, 88400.00000000, '2022-03-15 12:57:19');
+INSERT INTO `dbt_coinhistory` VALUES (419, 'TEST', 'TEST_USDT', 0.00009000, 88800.00000000, 0.00009000, 0.00009000, 0.00000000, 88600.00000000, 0.00025000, 0.00006554, 0.00018446, 88600.00000000, 0.00009000, 0.00009000, 88800.00000000, 88600.00000000, '2022-03-15 12:57:27');
+INSERT INTO `dbt_coinhistory` VALUES (420, 'TEST', 'TEST_USDT', 0.00010000, 89600.00000000, 0.00010000, 0.00010000, 0.00000000, 89100.00000000, 0.00025000, 0.00006554, 0.00018446, 89100.00000000, 0.00010000, 0.00010000, 89600.00000000, 89100.00000000, '2022-03-15 12:57:42');
+INSERT INTO `dbt_coinhistory` VALUES (421, 'TEST', 'TEST_USDT', 0.00010300, 89500.00000000, 0.00010300, 0.00010300, 0.00000000, 89300.00000000, 0.00025000, 0.00006554, 0.00018446, 89300.00000000, 0.00010300, 0.00010300, 89500.00000000, 89300.00000000, '2022-03-15 12:58:05');
+INSERT INTO `dbt_coinhistory` VALUES (422, 'TEST', 'TEST_USDT', 0.00011000, 93300.00000000, 0.00011000, 0.00011000, 0.00000000, 91300.00000000, 0.00025000, 0.00006554, 0.00018446, 91300.00000000, 0.00011000, 0.00011000, 93300.00000000, 91300.00000000, '2022-03-15 12:58:28');
+INSERT INTO `dbt_coinhistory` VALUES (423, 'TEST', 'TEST_USDT', 0.00025000, 91700.00000000, 0.00025000, 0.00025000, 0.00000000, 91500.00000000, 0.00025000, 0.00006554, 0.00018446, 91500.00000000, 0.00025000, 0.00025000, 91700.00000000, 91500.00000000, '2022-03-15 12:59:43');
+INSERT INTO `dbt_coinhistory` VALUES (424, 'TEST', 'TEST_USDT', 0.00009000, 92500.00000000, 0.00009000, 0.00009000, 0.00000000, 92000.00000000, 0.00025000, 0.00006554, -0.00016000, 92000.00000000, 0.00009000, 0.00009000, 92500.00000000, 92000.00000000, '2022-03-15 01:08:49');
+INSERT INTO `dbt_coinhistory` VALUES (425, 'TEST', 'TEST_USDT', 0.00009000, 92600.00000000, 0.00009000, 0.00009000, 0.00000000, 92300.00000000, 0.00025000, 0.00006554, -0.00016000, 92300.00000000, 0.00009000, 0.00009000, 92600.00000000, 92300.00000000, '2022-03-15 01:08:49');
+INSERT INTO `dbt_coinhistory` VALUES (426, 'TEST', 'TEST_USDT', 0.00010300, 93100.00000000, 0.00010300, 0.00010300, 0.00000000, 92700.00000000, 0.00025000, 0.00006554, -0.00014700, 92700.00000000, 0.00010300, 0.00010300, 93100.00000000, 92700.00000000, '2022-03-15 01:09:29');
+INSERT INTO `dbt_coinhistory` VALUES (427, 'TEST', 'TEST_USDT', 0.00010300, 92900.00000000, 0.00010300, 0.00010300, 0.00000000, 92800.00000000, 0.00025000, 0.00006554, -0.00014700, 92800.00000000, 0.00010300, 0.00010300, 92900.00000000, 92800.00000000, '2022-03-15 01:09:29');
+INSERT INTO `dbt_coinhistory` VALUES (428, 'TEST', 'TEST_USDT', 0.00028000, 98800.00000000, 0.00028000, 0.00028000, 0.00000000, 95800.00000000, 0.00028000, 0.00006554, 0.00021446, 95800.00000000, 0.00028000, 0.00028000, 98800.00000000, 95800.00000000, '2022-03-15 01:10:06');
+INSERT INTO `dbt_coinhistory` VALUES (429, 'TEST', 'TEST_USDT', 0.00028000, 97800.00000000, 0.00028000, 0.00028000, 0.00000000, 96800.00000000, 0.00028000, 0.00006554, 0.00021446, 96800.00000000, 0.00028000, 0.00028000, 97800.00000000, 96800.00000000, '2022-03-15 01:11:43');
+INSERT INTO `dbt_coinhistory` VALUES (430, 'TEST', 'TEST_USDT', 0.00029000, 98800.00000000, 0.00029000, 0.00029000, 0.00000000, 97800.00000000, 0.00029000, 0.00006554, 0.00022446, 97800.00000000, 0.00029000, 0.00029000, 98800.00000000, 97800.00000000, '2022-03-15 01:12:00');
+INSERT INTO `dbt_coinhistory` VALUES (431, 'TEST', 'TEST_USDT', 0.00029000, 101800.00000000, 0.00029000, 0.00029000, 0.00000000, 99800.00000000, 0.00029000, 0.00006554, 0.00022446, 99800.00000000, 0.00029000, 0.00029000, 101800.00000000, 99800.00000000, '2022-03-15 01:12:14');
+INSERT INTO `dbt_coinhistory` VALUES (432, 'GLD', 'GLD_USDE', 1.00200000, 71.00000000, 1.00200000, 1.00200000, 0.00000000, 70.00000000, 1.00200000, 1.00200000, 0.00000000, 70.00000000, 1.00200000, 1.00200000, 71.00000000, 70.00000000, '2022-03-17 03:19:45');
+INSERT INTO `dbt_coinhistory` VALUES (433, 'GLD', 'GLD_USDE', 1.00200000, 78.00000000, 1.00200000, 1.00200000, 0.00000000, 74.00000000, 1.00200000, 1.00200000, 0.00000000, 74.00000000, 1.00200000, 1.00200000, 78.00000000, 74.00000000, '2022-03-17 03:19:45');
+INSERT INTO `dbt_coinhistory` VALUES (434, 'GLD', 'GLD_USDE', 1.00220000, 84.00000000, 1.00220000, 1.00220000, 0.00000000, 79.00000000, 1.00220000, 1.00200000, 0.00000000, 79.00000000, 1.00220000, 1.00220000, 84.00000000, 79.00000000, '2022-03-17 03:20:18');
+INSERT INTO `dbt_coinhistory` VALUES (435, 'GLD', 'GLD_USDE', 1.00270000, 99.00000000, 1.00270000, 1.00270000, 0.00000000, 89.00000000, 1.00270000, 1.00200000, 0.00000000, 89.00000000, 1.00270000, 1.00270000, 99.00000000, 89.00000000, '2022-03-17 03:22:12');
+INSERT INTO `dbt_coinhistory` VALUES (436, 'GLD', 'GLD_USDE', 1.00140000, 109.00000000, 1.00140000, 1.00140000, 0.00000000, 99.00000000, 1.00270000, 1.00140000, -0.00130000, 99.00000000, 1.00140000, 1.00140000, 109.00000000, 99.00000000, '2022-03-17 03:29:21');
+INSERT INTO `dbt_coinhistory` VALUES (437, 'GLD', 'GLD_USDE', 1.00140000, 119.00000000, 1.00140000, 1.00140000, 0.00000000, 109.00000000, 1.00270000, 1.00140000, 0.00130000, 109.00000000, 1.00140000, 1.00140000, 119.00000000, 109.00000000, '2022-03-17 03:29:21');
+INSERT INTO `dbt_coinhistory` VALUES (438, 'GLD', 'GLD_USDE', 1.00140000, 129.00000000, 1.00140000, 1.00140000, 0.00000000, 119.00000000, 1.00270000, 1.00140000, 0.00130000, 119.00000000, 1.00140000, 1.00140000, 129.00000000, 119.00000000, '2022-03-17 03:29:48');
+INSERT INTO `dbt_coinhistory` VALUES (439, 'GLD', 'GLD_USDE', 1.00140000, 139.00000000, 1.00140000, 1.00140000, 0.00000000, 129.00000000, 1.00270000, 1.00140000, 0.00130000, 129.00000000, 1.00140000, 1.00140000, 139.00000000, 129.00000000, '2022-03-17 03:30:16');
+INSERT INTO `dbt_coinhistory` VALUES (440, 'GLD', 'GLD_USDE', 1.00140000, 161.00000000, 1.00140000, 1.00140000, 0.00000000, 145.00000000, 1.00270000, 1.00140000, 0.00130000, 145.00000000, 1.00140000, 1.00140000, 161.00000000, 145.00000000, '2022-03-17 03:30:16');
+INSERT INTO `dbt_coinhistory` VALUES (441, 'GLD', 'GLD_USDE', 1.00140000, 175.00000000, 1.00140000, 1.00140000, 0.00000000, 160.00000000, 1.00270000, 1.00140000, 0.00130000, 160.00000000, 1.00140000, 1.00140000, 175.00000000, 160.00000000, '2022-03-17 03:30:16');
+INSERT INTO `dbt_coinhistory` VALUES (442, 'GLD', 'GLD_USDE', 1.00140000, 162.00000000, 1.00140000, 1.00140000, 0.00000000, 161.00000000, 1.00270000, 1.00140000, 0.00130000, 161.00000000, 1.00140000, 1.00140000, 162.00000000, 161.00000000, '2022-03-17 03:30:16');
+INSERT INTO `dbt_coinhistory` VALUES (443, 'GLD', 'GLD_USDE', 1.00140000, 171.00000000, 1.00140000, 1.00140000, 0.00000000, 166.00000000, 1.00270000, 1.00140000, 0.00130000, 166.00000000, 1.00140000, 1.00140000, 171.00000000, 166.00000000, '2022-03-17 03:30:16');
+INSERT INTO `dbt_coinhistory` VALUES (444, 'GLD', 'GLD_USDE', 1.00110000, 216.00000000, 1.00110000, 1.00110000, 0.00000000, 191.00000000, 1.00270000, 1.00110000, -0.00160000, 191.00000000, 1.00110000, 1.00110000, 216.00000000, 191.00000000, '2022-03-17 03:30:35');
+INSERT INTO `dbt_coinhistory` VALUES (445, 'GLD', 'GLD_USDE', 1.00110000, 211.00000000, 1.00110000, 1.00110000, 0.00000000, 201.00000000, 1.00270000, 1.00110000, 0.00160000, 201.00000000, 1.00110000, 1.00110000, 211.00000000, 201.00000000, '2022-03-17 03:30:35');
+INSERT INTO `dbt_coinhistory` VALUES (446, 'GLD', 'GLD_USDE', 1.00080000, 231.00000000, 1.00080000, 1.00080000, 0.00000000, 216.00000000, 1.00270000, 1.00080000, -0.00190000, 216.00000000, 1.00080000, 1.00080000, 231.00000000, 216.00000000, '2022-03-17 03:30:52');
+INSERT INTO `dbt_coinhistory` VALUES (447, 'GLD', 'GLD_USDE', 1.00080000, 222.00000000, 1.00080000, 1.00080000, 0.00000000, 219.00000000, 1.00270000, 1.00080000, 0.00190000, 219.00000000, 1.00080000, 1.00080000, 222.00000000, 219.00000000, '2022-03-17 03:30:52');
+INSERT INTO `dbt_coinhistory` VALUES (448, 'GLD', 'GLD_USDE', 1.00290000, 239.00000000, 1.00290000, 1.00290000, 0.00000000, 229.00000000, 1.00290000, 1.00080000, 0.00210000, 229.00000000, 1.00290000, 1.00290000, 239.00000000, 229.00000000, '2022-03-17 03:33:26');
+INSERT INTO `dbt_coinhistory` VALUES (449, 'GLD', 'GLD_USDE', 1.00280000, 239.00000000, 1.00280000, 1.00280000, 0.00000000, 234.00000000, 1.00290000, 1.00080000, -0.00210000, 234.00000000, 1.00290000, 1.00280000, 239.00000000, 234.00000000, '2022-03-17 03:33:26');
+INSERT INTO `dbt_coinhistory` VALUES (450, 'GLD', 'GLD_USDE', 1.00140000, 240.00000000, 1.00140000, 1.00140000, 0.00000000, 237.00000000, 1.00290000, 1.00080000, -0.00210000, 237.00000000, 1.00290000, 1.00140000, 240.00000000, 237.00000000, '2022-03-17 03:33:26');
+INSERT INTO `dbt_coinhistory` VALUES (451, 'GLD', 'GLD_USDE', 1.00110000, 267.00000000, 1.00110000, 1.00110000, 0.00000000, 252.00000000, 1.00290000, 1.00080000, -0.00210000, 252.00000000, 1.00290000, 1.00110000, 267.00000000, 252.00000000, '2022-03-17 03:33:26');
+INSERT INTO `dbt_coinhistory` VALUES (452, 'GLD', 'GLD_USDE', 1.00080000, 276.00000000, 1.00080000, 1.00080000, 0.00000000, 264.00000000, 1.00290000, 1.00080000, -0.00210000, 264.00000000, 1.00290000, 1.00080000, 276.00000000, 264.00000000, '2022-03-17 03:33:26');
+INSERT INTO `dbt_coinhistory` VALUES (453, 'GLD', 'GLD_USDE', 1.00280000, 384.00000000, 1.00280000, 1.00280000, 0.00000000, 324.00000000, 1.00290000, 1.00080000, -0.00210000, 324.00000000, 1.00290000, 1.00280000, 384.00000000, 324.00000000, '2022-03-17 03:33:26');
+INSERT INTO `dbt_coinhistory` VALUES (454, 'GLD', 'GLD_USDE', 1.00300000, 344.00000000, 1.00300000, 1.00300000, 0.00000000, 334.00000000, 1.00300000, 1.00080000, 0.00220000, 334.00000000, 1.00300000, 1.00300000, 344.00000000, 334.00000000, '2022-03-17 03:35:51');
+INSERT INTO `dbt_coinhistory` VALUES (455, 'GLD', 'GLD_USDE', 1.00310000, 364.00000000, 1.00310000, 1.00310000, 0.00000000, 349.00000000, 1.00310000, 1.00080000, 0.00230000, 349.00000000, 1.00310000, 1.00310000, 364.00000000, 349.00000000, '2022-03-17 03:36:05');
+INSERT INTO `dbt_coinhistory` VALUES (456, 'GLD', 'GLD_USDE', 1.00310000, 357.00000000, 1.00310000, 1.00310000, 0.00000000, 353.00000000, 1.00310000, 1.00080000, 0.00000000, 353.00000000, 1.00310000, 1.00310000, 357.00000000, 353.00000000, '2022-03-17 04:07:35');
+
+-- ----------------------------
+-- Table structure for dbt_coinhistory_detail
+-- ----------------------------
+DROP TABLE IF EXISTS `dbt_coinhistory_detail`;
+CREATE TABLE `dbt_coinhistory_detail`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `coin_symbol` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `market_symbol` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `price` double(19, 8) NOT NULL,
+  `total_coin_supply` double(19, 8) NOT NULL,
+  `date` datetime NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 122 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of dbt_coinhistory_detail
+-- ----------------------------
+INSERT INTO `dbt_coinhistory_detail` VALUES (1, 'BTC', 'BTC_USD', 39149.07000000, 16.00000000, '2022-03-13 21:38:33');
+INSERT INTO `dbt_coinhistory_detail` VALUES (10, 'BTC', 'BTC_USD', 39149.07000000, 16.00000000, '2022-03-13 21:38:33');
+INSERT INTO `dbt_coinhistory_detail` VALUES (11, 'TEST', 'TEST_USDT', 0.00011000, 400.00000000, '2022-03-15 07:52:58');
+INSERT INTO `dbt_coinhistory_detail` VALUES (12, 'TEST', 'TEST_USDT', 0.00011000, 800.00000000, '2022-03-15 07:53:20');
+INSERT INTO `dbt_coinhistory_detail` VALUES (13, 'TEST', 'TEST_USDT', 0.00012000, 3500.00000000, '2022-03-15 07:54:11');
+INSERT INTO `dbt_coinhistory_detail` VALUES (14, 'TEST', 'TEST_USDT', 0.00012000, 5600.00000000, '2022-03-15 07:54:11');
+INSERT INTO `dbt_coinhistory_detail` VALUES (15, 'TEST', 'TEST_USDT', 0.00012000, 10200.00000000, '2022-03-15 07:54:34');
+INSERT INTO `dbt_coinhistory_detail` VALUES (16, 'TEST', 'TEST_USDT', 0.00013000, 7600.00000000, '2022-03-15 07:56:14');
+INSERT INTO `dbt_coinhistory_detail` VALUES (17, 'TEST', 'TEST_USDT', 0.00013000, 8700.00000000, '2022-03-15 08:00:03');
+INSERT INTO `dbt_coinhistory_detail` VALUES (18, 'TEST', 'TEST_USDT', 0.00013000, 16600.00000000, '2022-03-15 08:00:03');
+INSERT INTO `dbt_coinhistory_detail` VALUES (19, 'TEST', 'TEST_USDT', 0.00013000, 17700.00000000, '2022-03-15 08:00:24');
+INSERT INTO `dbt_coinhistory_detail` VALUES (20, 'TEST', 'TEST_USDT', 0.00014000, 16000.00000000, '2022-03-15 08:01:00');
+INSERT INTO `dbt_coinhistory_detail` VALUES (21, 'TEST', 'TEST_USDT', 0.00014000, 17900.00000000, '2022-03-15 08:04:18');
+INSERT INTO `dbt_coinhistory_detail` VALUES (22, 'TEST', 'TEST_USDT', 0.00014000, 18300.00000000, '2022-03-15 08:05:02');
+INSERT INTO `dbt_coinhistory_detail` VALUES (23, 'TEST', 'TEST_USDT', 0.00017000, 21500.00000000, '2022-03-15 08:06:04');
+INSERT INTO `dbt_coinhistory_detail` VALUES (24, 'TEST', 'TEST_USDT', 0.00017000, 22100.00000000, '2022-03-15 08:06:38');
+INSERT INTO `dbt_coinhistory_detail` VALUES (25, 'TEST', 'TEST_USDT', 0.00018500, 21800.00000000, '2022-03-15 08:07:09');
+INSERT INTO `dbt_coinhistory_detail` VALUES (26, 'TEST', 'TEST_USDT', 0.00018500, 21700.00000000, '2022-03-15 08:07:55');
+INSERT INTO `dbt_coinhistory_detail` VALUES (27, 'TEST', 'TEST_USDT', 0.00019800, 25100.00000000, '2022-03-15 11:12:16');
+INSERT INTO `dbt_coinhistory_detail` VALUES (28, 'TEST', 'TEST_USDT', 0.00020450, 27700.00000000, '2022-03-15 11:12:24');
+INSERT INTO `dbt_coinhistory_detail` VALUES (29, 'TEST', 'TEST_USDT', 0.00023700, 33900.00000000, '2022-03-15 11:12:52');
+INSERT INTO `dbt_coinhistory_detail` VALUES (30, 'TEST', 'TEST_USDT', 0.00024800, 31900.00000000, '2022-03-15 11:14:00');
+INSERT INTO `dbt_coinhistory_detail` VALUES (31, 'TEST', 'TEST_USDT', 0.00025000, 34800.00000000, '2022-03-15 11:14:10');
+INSERT INTO `dbt_coinhistory_detail` VALUES (32, 'TEST', 'TEST_USDT', 0.00025000, 42800.00000000, '2022-03-15 11:14:10');
+INSERT INTO `dbt_coinhistory_detail` VALUES (33, 'TEST', 'TEST_USDT', 0.00011000, 38800.00000000, '2022-03-15 11:17:50');
+INSERT INTO `dbt_coinhistory_detail` VALUES (34, 'TEST', 'TEST_USDT', 0.00011000, 41900.00000000, '2022-03-15 11:17:50');
+INSERT INTO `dbt_coinhistory_detail` VALUES (35, 'TEST', 'TEST_USDT', 0.00011000, 41100.00000000, '2022-03-15 11:17:50');
+INSERT INTO `dbt_coinhistory_detail` VALUES (36, 'TEST', 'TEST_USDT', 0.00011000, 42600.00000000, '2022-03-15 11:17:50');
+INSERT INTO `dbt_coinhistory_detail` VALUES (37, 'TEST', 'TEST_USDT', 0.00011000, 42000.00000000, '2022-03-15 11:17:50');
+INSERT INTO `dbt_coinhistory_detail` VALUES (38, 'TEST', 'TEST_USDT', 0.00010900, 44800.00000000, '2022-03-15 11:34:22');
+INSERT INTO `dbt_coinhistory_detail` VALUES (39, 'TEST', 'TEST_USDT', 0.00011000, 45300.00000000, '2022-03-15 11:34:31');
+INSERT INTO `dbt_coinhistory_detail` VALUES (40, 'TEST', 'TEST_USDT', 0.00010900, 45300.00000000, '2022-03-15 11:34:54');
+INSERT INTO `dbt_coinhistory_detail` VALUES (41, 'TEST', 'TEST_USDT', 0.00010900, 45600.00000000, '2022-03-15 11:34:54');
+INSERT INTO `dbt_coinhistory_detail` VALUES (42, 'TEST', 'TEST_USDT', 0.00010945, 50400.00000000, '2022-03-15 11:35:42');
+INSERT INTO `dbt_coinhistory_detail` VALUES (43, 'TEST', 'TEST_USDT', 0.00010945, 48600.00000000, '2022-03-15 11:35:42');
+INSERT INTO `dbt_coinhistory_detail` VALUES (44, 'TEST', 'TEST_USDT', 0.00011000, 49000.00000000, '2022-03-15 11:36:03');
+INSERT INTO `dbt_coinhistory_detail` VALUES (45, 'TEST', 'TEST_USDT', 0.00011000, 54600.00000000, '2022-03-15 11:36:03');
+INSERT INTO `dbt_coinhistory_detail` VALUES (46, 'TEST', 'TEST_USDT', 0.00011000, 52600.00000000, '2022-03-15 11:36:03');
+INSERT INTO `dbt_coinhistory_detail` VALUES (47, 'TEST', 'TEST_USDT', 0.00011000, 52300.00000000, '2022-03-15 11:36:03');
+INSERT INTO `dbt_coinhistory_detail` VALUES (48, 'TEST', 'TEST_USDT', 0.00011800, 68000.00000000, '2022-03-15 11:36:17');
+INSERT INTO `dbt_coinhistory_detail` VALUES (49, 'TEST', 'TEST_USDT', 0.00011800, 60300.00000000, '2022-03-15 11:36:17');
+INSERT INTO `dbt_coinhistory_detail` VALUES (50, 'TEST', 'TEST_USDT', 0.00013000, 60600.00000000, '2022-03-15 11:36:24');
+INSERT INTO `dbt_coinhistory_detail` VALUES (51, 'TEST', 'TEST_USDT', 0.00013000, 61000.00000000, '2022-03-15 11:36:24');
+INSERT INTO `dbt_coinhistory_detail` VALUES (52, 'TEST', 'TEST_USDT', 0.00014000, 61500.00000000, '2022-03-15 11:36:30');
+INSERT INTO `dbt_coinhistory_detail` VALUES (53, 'TEST', 'TEST_USDT', 0.00014000, 61500.00000000, '2022-03-15 11:36:30');
+INSERT INTO `dbt_coinhistory_detail` VALUES (54, 'TEST', 'TEST_USDT', 0.00018500, 61900.00000000, '2022-03-15 11:36:36');
+INSERT INTO `dbt_coinhistory_detail` VALUES (55, 'TEST', 'TEST_USDT', 0.00018500, 62000.00000000, '2022-03-15 11:36:36');
+INSERT INTO `dbt_coinhistory_detail` VALUES (56, 'TEST', 'TEST_USDT', 0.00019800, 63800.00000000, '2022-03-15 11:37:58');
+INSERT INTO `dbt_coinhistory_detail` VALUES (57, 'TEST', 'TEST_USDT', 0.00019800, 64800.00000000, '2022-03-15 11:37:58');
+INSERT INTO `dbt_coinhistory_detail` VALUES (58, 'TEST', 'TEST_USDT', 0.00020450, 65400.00000000, '2022-03-15 11:38:04');
+INSERT INTO `dbt_coinhistory_detail` VALUES (59, 'TEST', 'TEST_USDT', 0.00020450, 65000.00000000, '2022-03-15 11:38:04');
+INSERT INTO `dbt_coinhistory_detail` VALUES (60, 'TEST', 'TEST_USDT', 0.00023700, 66000.00000000, '2022-03-15 11:38:13');
+INSERT INTO `dbt_coinhistory_detail` VALUES (61, 'TEST', 'TEST_USDT', 0.00023700, 66200.00000000, '2022-03-15 11:38:13');
+INSERT INTO `dbt_coinhistory_detail` VALUES (62, 'TEST', 'TEST_USDT', 0.00024800, 66800.00000000, '2022-03-15 11:38:52');
+INSERT INTO `dbt_coinhistory_detail` VALUES (63, 'TEST', 'TEST_USDT', 0.00024800, 66700.00000000, '2022-03-15 11:38:52');
+INSERT INTO `dbt_coinhistory_detail` VALUES (64, 'TEST', 'TEST_USDT', 0.00025000, 68100.00000000, '2022-03-15 11:39:41');
+INSERT INTO `dbt_coinhistory_detail` VALUES (65, 'TEST', 'TEST_USDT', 0.00010300, 68900.00000000, '2022-03-15 11:39:50');
+INSERT INTO `dbt_coinhistory_detail` VALUES (66, 'TEST', 'TEST_USDT', 0.00010300, 76100.00000000, '2022-03-15 11:39:50');
+INSERT INTO `dbt_coinhistory_detail` VALUES (67, 'TEST', 'TEST_USDT', 0.00010000, 73100.00000000, '2022-03-15 11:39:58');
+INSERT INTO `dbt_coinhistory_detail` VALUES (68, 'TEST', 'TEST_USDT', 0.00010000, 78600.00000000, '2022-03-15 11:39:58');
+INSERT INTO `dbt_coinhistory_detail` VALUES (69, 'TEST', 'TEST_USDT', 0.00009000, 78600.00000000, '2022-03-15 11:48:42');
+INSERT INTO `dbt_coinhistory_detail` VALUES (70, 'TEST', 'TEST_USDT', 0.00008550, 79500.00000000, '2022-03-15 11:49:01');
+INSERT INTO `dbt_coinhistory_detail` VALUES (71, 'TEST', 'TEST_USDT', 0.00008000, 78900.00000000, '2022-03-15 11:49:21');
+INSERT INTO `dbt_coinhistory_detail` VALUES (72, 'TEST', 'TEST_USDT', 0.00007885, 87400.00000000, '2022-03-15 11:49:46');
+INSERT INTO `dbt_coinhistory_detail` VALUES (73, 'TEST', 'TEST_USDT', 0.00007700, 84400.00000000, '2022-03-15 11:50:07');
+INSERT INTO `dbt_coinhistory_detail` VALUES (74, 'TEST', 'TEST_USDT', 0.00006554, 85500.00000000, '2022-03-15 12:03:34');
+INSERT INTO `dbt_coinhistory_detail` VALUES (75, 'TEST', 'TEST_USDT', 0.00006554, 84800.00000000, '2022-03-15 12:04:31');
+INSERT INTO `dbt_coinhistory_detail` VALUES (76, 'TEST', 'TEST_USDT', 0.00007700, 86700.00000000, '2022-03-15 12:04:50');
+INSERT INTO `dbt_coinhistory_detail` VALUES (77, 'TEST', 'TEST_USDT', 0.00007700, 86300.00000000, '2022-03-15 12:45:45');
+INSERT INTO `dbt_coinhistory_detail` VALUES (78, 'TEST', 'TEST_USDT', 0.00008000, 86400.00000000, '2022-03-15 12:45:59');
+INSERT INTO `dbt_coinhistory_detail` VALUES (79, 'TEST', 'TEST_USDT', 0.00007885, 87400.00000000, '2022-03-15 12:45:59');
+INSERT INTO `dbt_coinhistory_detail` VALUES (80, 'TEST', 'TEST_USDT', 0.00009000, 87800.00000000, '2022-03-15 12:56:04');
+INSERT INTO `dbt_coinhistory_detail` VALUES (81, 'TEST', 'TEST_USDT', 0.00008550, 88100.00000000, '2022-03-15 12:56:18');
+INSERT INTO `dbt_coinhistory_detail` VALUES (82, 'TEST', 'TEST_USDT', 0.00008550, 88500.00000000, '2022-03-15 12:56:53');
+INSERT INTO `dbt_coinhistory_detail` VALUES (83, 'TEST', 'TEST_USDT', 0.00009000, 88700.00000000, '2022-03-15 12:57:19');
+INSERT INTO `dbt_coinhistory_detail` VALUES (84, 'TEST', 'TEST_USDT', 0.00009000, 88800.00000000, '2022-03-15 12:57:27');
+INSERT INTO `dbt_coinhistory_detail` VALUES (85, 'TEST', 'TEST_USDT', 0.00010000, 89600.00000000, '2022-03-15 12:57:42');
+INSERT INTO `dbt_coinhistory_detail` VALUES (86, 'TEST', 'TEST_USDT', 0.00010300, 89500.00000000, '2022-03-15 12:58:05');
+INSERT INTO `dbt_coinhistory_detail` VALUES (87, 'TEST', 'TEST_USDT', 0.00011000, 93300.00000000, '2022-03-15 12:58:28');
+INSERT INTO `dbt_coinhistory_detail` VALUES (88, 'TEST', 'TEST_USDT', 0.00025000, 91700.00000000, '2022-03-15 12:59:43');
+INSERT INTO `dbt_coinhistory_detail` VALUES (89, 'TEST', 'TEST_USDT', 0.00009000, 92500.00000000, '2022-03-15 01:08:49');
+INSERT INTO `dbt_coinhistory_detail` VALUES (90, 'TEST', 'TEST_USDT', 0.00009000, 92600.00000000, '2022-03-15 01:08:49');
+INSERT INTO `dbt_coinhistory_detail` VALUES (91, 'TEST', 'TEST_USDT', 0.00010300, 93100.00000000, '2022-03-15 01:09:29');
+INSERT INTO `dbt_coinhistory_detail` VALUES (92, 'TEST', 'TEST_USDT', 0.00010300, 92900.00000000, '2022-03-15 01:09:29');
+INSERT INTO `dbt_coinhistory_detail` VALUES (93, 'TEST', 'TEST_USDT', 0.00028000, 98800.00000000, '2022-03-15 01:10:06');
+INSERT INTO `dbt_coinhistory_detail` VALUES (94, 'TEST', 'TEST_USDT', 0.00028000, 97800.00000000, '2022-03-15 01:11:43');
+INSERT INTO `dbt_coinhistory_detail` VALUES (95, 'TEST', 'TEST_USDT', 0.00029000, 98800.00000000, '2022-03-15 01:12:00');
+INSERT INTO `dbt_coinhistory_detail` VALUES (96, 'TEST', 'TEST_USDT', 0.00029000, 101800.00000000, '2022-03-15 01:12:14');
+INSERT INTO `dbt_coinhistory_detail` VALUES (97, 'GLD', 'GLD_USDE', 1.00200000, 71.00000000, '2022-03-17 03:19:45');
+INSERT INTO `dbt_coinhistory_detail` VALUES (98, 'GLD', 'GLD_USDE', 1.00200000, 78.00000000, '2022-03-17 03:19:45');
+INSERT INTO `dbt_coinhistory_detail` VALUES (99, 'GLD', 'GLD_USDE', 1.00220000, 84.00000000, '2022-03-17 03:20:18');
+INSERT INTO `dbt_coinhistory_detail` VALUES (100, 'GLD', 'GLD_USDE', 1.00270000, 99.00000000, '2022-03-17 03:22:12');
+INSERT INTO `dbt_coinhistory_detail` VALUES (101, 'GLD', 'GLD_USDE', 1.00140000, 109.00000000, '2022-03-17 03:29:21');
+INSERT INTO `dbt_coinhistory_detail` VALUES (102, 'GLD', 'GLD_USDE', 1.00140000, 119.00000000, '2022-03-17 03:29:21');
+INSERT INTO `dbt_coinhistory_detail` VALUES (103, 'GLD', 'GLD_USDE', 1.00140000, 129.00000000, '2022-03-17 03:29:48');
+INSERT INTO `dbt_coinhistory_detail` VALUES (104, 'GLD', 'GLD_USDE', 1.00140000, 139.00000000, '2022-03-17 03:30:16');
+INSERT INTO `dbt_coinhistory_detail` VALUES (105, 'GLD', 'GLD_USDE', 1.00140000, 161.00000000, '2022-03-17 03:30:16');
+INSERT INTO `dbt_coinhistory_detail` VALUES (106, 'GLD', 'GLD_USDE', 1.00140000, 175.00000000, '2022-03-17 03:30:16');
+INSERT INTO `dbt_coinhistory_detail` VALUES (107, 'GLD', 'GLD_USDE', 1.00140000, 162.00000000, '2022-03-17 03:30:16');
+INSERT INTO `dbt_coinhistory_detail` VALUES (108, 'GLD', 'GLD_USDE', 1.00140000, 171.00000000, '2022-03-17 03:30:16');
+INSERT INTO `dbt_coinhistory_detail` VALUES (109, 'GLD', 'GLD_USDE', 1.00110000, 216.00000000, '2022-03-17 03:30:35');
+INSERT INTO `dbt_coinhistory_detail` VALUES (110, 'GLD', 'GLD_USDE', 1.00110000, 211.00000000, '2022-03-17 03:30:35');
+INSERT INTO `dbt_coinhistory_detail` VALUES (111, 'GLD', 'GLD_USDE', 1.00080000, 231.00000000, '2022-03-17 03:30:52');
+INSERT INTO `dbt_coinhistory_detail` VALUES (112, 'GLD', 'GLD_USDE', 1.00080000, 222.00000000, '2022-03-17 03:30:52');
+INSERT INTO `dbt_coinhistory_detail` VALUES (113, 'GLD', 'GLD_USDE', 1.00290000, 239.00000000, '2022-03-17 03:33:26');
+INSERT INTO `dbt_coinhistory_detail` VALUES (114, 'GLD', 'GLD_USDE', 1.00280000, 239.00000000, '2022-03-17 03:33:26');
+INSERT INTO `dbt_coinhistory_detail` VALUES (115, 'GLD', 'GLD_USDE', 1.00140000, 240.00000000, '2022-03-17 03:33:26');
+INSERT INTO `dbt_coinhistory_detail` VALUES (116, 'GLD', 'GLD_USDE', 1.00110000, 267.00000000, '2022-03-17 03:33:26');
+INSERT INTO `dbt_coinhistory_detail` VALUES (117, 'GLD', 'GLD_USDE', 1.00080000, 276.00000000, '2022-03-17 03:33:26');
+INSERT INTO `dbt_coinhistory_detail` VALUES (118, 'GLD', 'GLD_USDE', 1.00280000, 384.00000000, '2022-03-17 03:33:26');
+INSERT INTO `dbt_coinhistory_detail` VALUES (119, 'GLD', 'GLD_USDE', 1.00300000, 344.00000000, '2022-03-17 03:35:51');
+INSERT INTO `dbt_coinhistory_detail` VALUES (120, 'GLD', 'GLD_USDE', 1.00310000, 364.00000000, '2022-03-17 03:36:05');
+INSERT INTO `dbt_coinhistory_detail` VALUES (121, 'GLD', 'GLD_USDE', 1.00310000, 357.00000000, '2022-03-17 04:07:35');
+
+-- ----------------------------
+-- Table structure for dbt_coinpair
+-- ----------------------------
+DROP TABLE IF EXISTS `dbt_coinpair`;
+CREATE TABLE `dbt_coinpair`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `market_id` int(11) NULL DEFAULT NULL,
+  `market_symbol` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `coin_id` int(11) NULL DEFAULT NULL,
+  `currency_symbol` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `name` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `full_name` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `symbol` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `initial_price` double(19, 8) NULL DEFAULT NULL,
+  `status` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `symbol`(`symbol`) USING BTREE,
+  UNIQUE INDEX `symbol_2`(`symbol`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 49 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of dbt_coinpair
+-- ----------------------------
+INSERT INTO `dbt_coinpair` VALUES (1, NULL, 'BTC', NULL, 'LTC', 'BTC/ LTC', 'Litecoin Exchange', 'LTC_BTC', NULL, 0);
+INSERT INTO `dbt_coinpair` VALUES (2, NULL, 'BTC', NULL, 'DASH', 'BTC/ DASH', 'DASH Exchange', 'DASH_BTC', NULL, 0);
+INSERT INTO `dbt_coinpair` VALUES (3, NULL, 'BTC', NULL, 'DOGE', 'BTC/ DOGE', 'Dogecoin (DOGE) Exchange', 'DOGE_BTC', NULL, 0);
+INSERT INTO `dbt_coinpair` VALUES (4, NULL, 'USDT', NULL, 'AAX', 'USDT/ BTC', 'Bitcoin (BTC) Exchange', 'AAX_USDT', NULL, 0);
+INSERT INTO `dbt_coinpair` VALUES (5, NULL, 'USDT', NULL, 'ELE', 'USDT/ LTC', 'Litecoin (LTC) Exchange', 'ELE_USDT', NULL, 0);
+INSERT INTO `dbt_coinpair` VALUES (6, NULL, 'USDE', NULL, 'LTC', 'USDT/ DASH', 'DigitalCash (DASH) Exchange', 'LTC_USDE', NULL, 0);
+INSERT INTO `dbt_coinpair` VALUES (7, NULL, 'USDT', NULL, 'LTC', 'USDT/ DOGE', 'USDT / DOGE pair', 'LTC_USDT', NULL, 0);
+INSERT INTO `dbt_coinpair` VALUES (8, NULL, 'LTC', NULL, 'BTC', 'LTC/ BTC', 'Bitcoin (BTC) Exchange', 'BTC_LTC', NULL, 0);
+INSERT INTO `dbt_coinpair` VALUES (9, NULL, 'USDE', NULL, 'ETH', 'ETH/BTC', 'Bitcoin (BTC) Exchange	', 'ETH_USDE', NULL, 0);
+INSERT INTO `dbt_coinpair` VALUES (10, NULL, 'BTC', NULL, 'XMR', 'XMR/BTC', 'Bitcoin (BTC) Exchange	', 'XMR_BTC', NULL, 0);
+INSERT INTO `dbt_coinpair` VALUES (11, NULL, 'BTC', NULL, 'ZEC', 'ZEC/BTC', 'Bitcoin (BTC) Exchange	', 'ZEC_BTC', NULL, 0);
+INSERT INTO `dbt_coinpair` VALUES (12, NULL, 'BTC', NULL, 'RDD', 'RDD/BTC', 'Bitcoin (BTC) Exchange	', 'RDD_BTC', NULL, 0);
+INSERT INTO `dbt_coinpair` VALUES (13, NULL, 'BTC', NULL, 'VTC', 'VTC/BTC', 'Bitcoin (BTC) Exchange	', 'VTC_BTC', NULL, 0);
+INSERT INTO `dbt_coinpair` VALUES (14, NULL, 'BTC', NULL, 'BCH', 'BCC/BTC', 'Bitcoin (BTC) Exchange	', 'BCH_BTC', NULL, 0);
+INSERT INTO `dbt_coinpair` VALUES (15, NULL, 'USDE', NULL, 'BTC', 'USD/BTC', 'Bitcoin (BTC) Exchange	', 'BTC_USDE', NULL, 0);
+INSERT INTO `dbt_coinpair` VALUES (16, NULL, 'USDT', NULL, 'ETH', 'ETH/USDT', 'Ethereum/USD', 'ETH_USDT', 4180.00000000, 0);
+INSERT INTO `dbt_coinpair` VALUES (17, NULL, 'BTC', NULL, 'PPC', 'XRP/BTC', 'Bitcoin (BTC) Exchange	', 'PPC_BTC', NULL, 0);
+INSERT INTO `dbt_coinpair` VALUES (18, NULL, 'BTC', NULL, 'XVG', 'XVG/BTC', 'Bitcoin (BTC) Exchange	', 'XVG_BTC', NULL, 0);
+INSERT INTO `dbt_coinpair` VALUES (19, NULL, 'USDT', NULL, 'BTC', 'ETC/BTC', 'Bitcoin (BTC) Exchange', 'BTC_USDT', NULL, 0);
+INSERT INTO `dbt_coinpair` VALUES (20, NULL, 'BTC', NULL, 'XLM', 'XLM/BTC', 'Bitcoin (BTC) Exchange	', 'XLM_BTC', NULL, 0);
+INSERT INTO `dbt_coinpair` VALUES (21, NULL, 'BTC', NULL, 'XEM', 'XEM/BTC', 'Bitcoin (BTC) Exchange	', 'XEM_BTC', NULL, 0);
+INSERT INTO `dbt_coinpair` VALUES (22, NULL, 'BTC', NULL, 'EOS', 'SC/BTC', 'Bitcoin (BTC) Exchange	', 'EOS_BTC', NULL, 0);
+INSERT INTO `dbt_coinpair` VALUES (23, NULL, 'BTC', NULL, 'AAX', 'WAVES/BTC', 'Bitcoin (BTC) Exchange	', 'AAX_BTC', NULL, 0);
+INSERT INTO `dbt_coinpair` VALUES (24, NULL, 'BTC', NULL, 'FTC', 'NEO/BTC', 'Bitcoin (BTC) Exchange	', 'FTC_BTC', NULL, 0);
+INSERT INTO `dbt_coinpair` VALUES (25, NULL, 'BTC', NULL, 'SPD', 'GNT/BTC', 'Bitcoin (BTC) Exchange	', 'SPD_BTC', NULL, 0);
+INSERT INTO `dbt_coinpair` VALUES (26, NULL, 'BTC', NULL, 'UNIT', 'BAT/BTC', 'Bitcoin (BTC) Exchange	', 'UNIT_BTC', NULL, 0);
+INSERT INTO `dbt_coinpair` VALUES (27, NULL, 'BTC', NULL, 'OMG', 'OMG/BTC', 'Bitcoin (BTC) Exchange	', 'OMG_BTC', NULL, 0);
+INSERT INTO `dbt_coinpair` VALUES (28, NULL, 'BTC', NULL, 'IOT', 'IOTA/BTC', 'Bitcoin (BTC) Exchange	', 'IOT_BTC', NULL, 0);
+INSERT INTO `dbt_coinpair` VALUES (29, NULL, 'BTC', NULL, 'ONT', 'ONT/BTC', 'Bitcoin (BTC) Exchange	', 'ONT_BTC', NULL, 0);
+INSERT INTO `dbt_coinpair` VALUES (30, NULL, 'DOGE', NULL, 'ETH', 'ETN/BTC', 'Bitcoin (BTC) Exchange	', 'ETH_DOGE', NULL, 0);
+INSERT INTO `dbt_coinpair` VALUES (31, NULL, 'LTC', NULL, 'MUE', 'ADA/BTC', 'Bitcoin (BTC)Exchange', 'MUE_LTC', NULL, 0);
+INSERT INTO `dbt_coinpair` VALUES (32, NULL, 'DOGE', NULL, 'LTC', 'LTC/DOGE', 'DOGE Exchange', 'LTC_DOGE', NULL, 0);
+INSERT INTO `dbt_coinpair` VALUES (33, NULL, 'USDE', NULL, 'AAX', 'AAX/USDE', 'AAX Token/USD Equivalent', 'AAX_USDE', 0.00000022, 0);
+INSERT INTO `dbt_coinpair` VALUES (34, NULL, 'USDT', NULL, 'TRX', 'TRX / USDT', 'Tron (TRX) / Tether USDT', 'TRX_USDT', 0.06500000, 0);
+INSERT INTO `dbt_coinpair` VALUES (35, NULL, 'USDE', NULL, 'TRX', 'TRX / USDE', 'Tron (TRX) / USD Equivalent (USDE)', 'TRX_USDE', 0.06500000, 0);
+INSERT INTO `dbt_coinpair` VALUES (36, NULL, 'USDE', NULL, 'ETL', 'ETL/USDE', 'eTolar (ETL)/USD Equivalent (USDE)', 'ETL_USDE', 0.00000500, 1);
+INSERT INTO `dbt_coinpair` VALUES (37, NULL, 'USDT', NULL, 'USDE', 'USDE / USDT', 'USD Equivalent (USDE) / Tether (USDT)', 'USDE_USDT', 1.00000000, 1);
+INSERT INTO `dbt_coinpair` VALUES (38, NULL, 'USDE', NULL, 'TLR', 'TLR / USDE', 'Tolar (TLR) / USD Equivalent (USDE)', 'TLR_USDE', 0.10000000, 1);
+INSERT INTO `dbt_coinpair` VALUES (39, NULL, 'USDE', NULL, 'IDEA', 'IDEA / USDE', 'IDEA (IDEA) / USD Equivalent (USDE)', 'IDEA_USDE', 0.00003000, 1);
+INSERT INTO `dbt_coinpair` VALUES (40, NULL, 'USDE', NULL, 'STR', '3: STR / USDE', 'Stratos Energy (STR) / USD Equivalent (USDE)', 'STR_USDE', 0.85000000, 1);
+INSERT INTO `dbt_coinpair` VALUES (41, NULL, 'USDE', NULL, 'AMORE', 'AMORE / USDE', 'Amore (AMORE) [Token ID: ] / USD Equivalent (USDE)', 'AMORE_USDE', 0.10000000, 0);
+INSERT INTO `dbt_coinpair` VALUES (42, NULL, 'USDE', NULL, 'ZFE', 'ZFE / USDE', 'ZeroFees Exchange (ZFE) / USD Equivalent (USDE)', 'ZFE_USDE', 1.05000000, 1);
+INSERT INTO `dbt_coinpair` VALUES (43, NULL, 'USDE', NULL, 'RENTA', '2 RENTA / USDE', '2 Renta (RENTA) / USD Equivalent (USDE)', 'RENTA_USDE', 0.00081800, 1);
+INSERT INTO `dbt_coinpair` VALUES (44, NULL, 'USDE', NULL, 'GLD', '1 GLD / USDE', '1 Global Dollar (GLD) / USD Equivalent (USDE)', 'GLD_USDE', 1.00000000, 1);
+INSERT INTO `dbt_coinpair` VALUES (45, NULL, 'USDE', NULL, 'ELE', 'ELE / USDE', 'Electron Energy (ELE) / USD Equivalent (USDE)', 'ELE_USDE', 0.88000000, 0);
+INSERT INTO `dbt_coinpair` VALUES (46, NULL, 'USDE', NULL, 'TSW', 'TSW / USDE', 'TokenStore World (TSW) / USD Equivalent (USDE)', 'TSW_USDE', 1.00000000, 1);
+INSERT INTO `dbt_coinpair` VALUES (47, NULL, 'USDC', NULL, 'USDE', 'USDE / USDC', 'USD Equivalent (USDE) / USD Coin (USDC)', 'USDE_USDC', 1.00000000, 1);
+INSERT INTO `dbt_coinpair` VALUES (48, NULL, 'USDT', NULL, 'TEST', 'TEST/USDT', 'Test Token (TEST)/USD Tether', 'TEST_USDT', 0.00011000, 1);
+
+-- ----------------------------
+-- Table structure for dbt_country
+-- ----------------------------
+DROP TABLE IF EXISTS `dbt_country`;
+CREATE TABLE `dbt_country`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `iso` char(2) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `name` varchar(80) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `nicename` varchar(80) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `iso3` char(3) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `numcode` smallint(6) NULL DEFAULT NULL,
+  `phonecode` int(5) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 254 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of dbt_country
+-- ----------------------------
+INSERT INTO `dbt_country` VALUES (1, 'AF', 'AFGHANISTAN', 'Afghanistan', 'AFG', 4, 93);
+INSERT INTO `dbt_country` VALUES (2, 'AL', 'ALBANIA', 'Albania', 'ALB', 8, 355);
+INSERT INTO `dbt_country` VALUES (3, 'DZ', 'ALGERIA', 'Algeria', 'DZA', 12, 213);
+INSERT INTO `dbt_country` VALUES (4, 'AS', 'AMERICAN SAMOA', 'American Samoa', 'ASM', 16, 1684);
+INSERT INTO `dbt_country` VALUES (5, 'AD', 'ANDORRA', 'Andorra', 'AND', 20, 376);
+INSERT INTO `dbt_country` VALUES (6, 'AO', 'ANGOLA', 'Angola', 'AGO', 24, 244);
+INSERT INTO `dbt_country` VALUES (7, 'AI', 'ANGUILLA', 'Anguilla', 'AIA', 660, 1264);
+INSERT INTO `dbt_country` VALUES (8, 'AQ', 'ANTARCTICA', 'Antarctica', 'ATA', NULL, 0);
+INSERT INTO `dbt_country` VALUES (9, 'AG', 'ANTIGUA AND BARBUDA', 'Antigua and Barbuda', 'ATG', 28, 1268);
+INSERT INTO `dbt_country` VALUES (10, 'AR', 'ARGENTINA', 'Argentina', 'ARG', 32, 54);
+INSERT INTO `dbt_country` VALUES (11, 'AM', 'ARMENIA', 'Armenia', 'ARM', 51, 374);
+INSERT INTO `dbt_country` VALUES (12, 'AW', 'ARUBA', 'Aruba', 'ABW', 533, 297);
+INSERT INTO `dbt_country` VALUES (13, 'AU', 'AUSTRALIA', 'Australia', 'AUS', 36, 61);
+INSERT INTO `dbt_country` VALUES (14, 'AT', 'AUSTRIA', 'Austria', 'AUT', 40, 43);
+INSERT INTO `dbt_country` VALUES (15, 'AZ', 'AZERBAIJAN', 'Azerbaijan', 'AZE', 31, 994);
+INSERT INTO `dbt_country` VALUES (16, 'BS', 'BAHAMAS', 'Bahamas', 'BHS', 44, 1242);
+INSERT INTO `dbt_country` VALUES (17, 'BH', 'BAHRAIN', 'Bahrain', 'BHR', 48, 973);
+INSERT INTO `dbt_country` VALUES (18, 'BD', 'BANGLADESH', 'Bangladesh', 'BGD', 50, 880);
+INSERT INTO `dbt_country` VALUES (19, 'BB', 'BARBADOS', 'Barbados', 'BRB', 52, 1246);
+INSERT INTO `dbt_country` VALUES (20, 'BY', 'BELARUS', 'Belarus', 'BLR', 112, 375);
+INSERT INTO `dbt_country` VALUES (21, 'BE', 'BELGIUM', 'Belgium', 'BEL', 56, 32);
+INSERT INTO `dbt_country` VALUES (22, 'BZ', 'BELIZE', 'Belize', 'BLZ', 84, 501);
+INSERT INTO `dbt_country` VALUES (23, 'BJ', 'BENIN', 'Benin', 'BEN', 204, 229);
+INSERT INTO `dbt_country` VALUES (24, 'BM', 'BERMUDA', 'Bermuda', 'BMU', 60, 1441);
+INSERT INTO `dbt_country` VALUES (25, 'BT', 'BHUTAN', 'Bhutan', 'BTN', 64, 975);
+INSERT INTO `dbt_country` VALUES (26, 'BO', 'BOLIVIA', 'Bolivia', 'BOL', 68, 591);
+INSERT INTO `dbt_country` VALUES (27, 'BA', 'BOSNIA AND HERZEGOVINA', 'Bosnia and Herzegovina', 'BIH', 70, 387);
+INSERT INTO `dbt_country` VALUES (28, 'BW', 'BOTSWANA', 'Botswana', 'BWA', 72, 267);
+INSERT INTO `dbt_country` VALUES (29, 'BV', 'BOUVET ISLAND', 'Bouvet Island', NULL, NULL, 0);
+INSERT INTO `dbt_country` VALUES (30, 'BR', 'BRAZIL', 'Brazil', 'BRA', 76, 55);
+INSERT INTO `dbt_country` VALUES (31, 'IO', 'BRITISH INDIAN OCEAN TERRITORY', 'British Indian Ocean Territory', 'IOT', NULL, 246);
+INSERT INTO `dbt_country` VALUES (32, 'BN', 'BRUNEI DARUSSALAM', 'Brunei Darussalam', 'BRN', 96, 673);
+INSERT INTO `dbt_country` VALUES (33, 'BG', 'BULGARIA', 'Bulgaria', 'BGR', 100, 359);
+INSERT INTO `dbt_country` VALUES (34, 'BF', 'BURKINA FASO', 'Burkina Faso', 'BFA', 854, 226);
+INSERT INTO `dbt_country` VALUES (35, 'BI', 'BURUNDI', 'Burundi', 'BDI', 108, 257);
+INSERT INTO `dbt_country` VALUES (36, 'KH', 'CAMBODIA', 'Cambodia', 'KHM', 116, 855);
+INSERT INTO `dbt_country` VALUES (37, 'CM', 'CAMEROON', 'Cameroon', 'CMR', 120, 237);
+INSERT INTO `dbt_country` VALUES (38, 'CA', 'CANADA', 'Canada', 'CAN', 124, 1);
+INSERT INTO `dbt_country` VALUES (39, 'CV', 'CAPE VERDE', 'Cape Verde', 'CPV', 132, 238);
+INSERT INTO `dbt_country` VALUES (40, 'KY', 'CAYMAN ISLANDS', 'Cayman Islands', 'CYM', 136, 1345);
+INSERT INTO `dbt_country` VALUES (41, 'CF', 'CENTRAL AFRICAN REPUBLIC', 'Central African Republic', 'CAF', 140, 236);
+INSERT INTO `dbt_country` VALUES (42, 'TD', 'CHAD', 'Chad', 'TCD', 148, 235);
+INSERT INTO `dbt_country` VALUES (43, 'CL', 'CHILE', 'Chile', 'CHL', 152, 56);
+INSERT INTO `dbt_country` VALUES (44, 'CN', 'CHINA', 'China', 'CHN', 156, 86);
+INSERT INTO `dbt_country` VALUES (45, 'CX', 'CHRISTMAS ISLAND', 'Christmas Island', 'CXR', NULL, 61);
+INSERT INTO `dbt_country` VALUES (46, 'CC', 'COCOS (KEELING) ISLANDS', 'Cocos (Keeling) Islands', 'CCK', NULL, 672);
+INSERT INTO `dbt_country` VALUES (47, 'CO', 'COLOMBIA', 'Colombia', 'COL', 170, 57);
+INSERT INTO `dbt_country` VALUES (48, 'KM', 'COMOROS', 'Comoros', 'COM', 174, 269);
+INSERT INTO `dbt_country` VALUES (49, 'CG', 'CONGO', 'Congo', 'COG', 178, 242);
+INSERT INTO `dbt_country` VALUES (50, 'CD', 'CONGO, THE DEMOCRATIC REPUBLIC OF THE', 'Congo, the Democratic Republic of the', 'COD', 180, 242);
+INSERT INTO `dbt_country` VALUES (51, 'CK', 'COOK ISLANDS', 'Cook Islands', 'COK', 184, 682);
+INSERT INTO `dbt_country` VALUES (52, 'CR', 'COSTA RICA', 'Costa Rica', 'CRI', 188, 506);
+INSERT INTO `dbt_country` VALUES (53, 'CI', 'COTE D\'IVOIRE', 'Cote D\'Ivoire', 'CIV', 384, 225);
+INSERT INTO `dbt_country` VALUES (54, 'HR', 'CROATIA', 'Croatia', 'HRV', 191, 385);
+INSERT INTO `dbt_country` VALUES (55, 'CU', 'CUBA', 'Cuba', 'CUB', 192, 53);
+INSERT INTO `dbt_country` VALUES (56, 'CY', 'CYPRUS', 'Cyprus', 'CYP', 196, 357);
+INSERT INTO `dbt_country` VALUES (57, 'CZ', 'CZECH REPUBLIC', 'Czech Republic', 'CZE', 203, 420);
+INSERT INTO `dbt_country` VALUES (58, 'DK', 'DENMARK', 'Denmark', 'DNK', 208, 45);
+INSERT INTO `dbt_country` VALUES (59, 'DJ', 'DJIBOUTI', 'Djibouti', 'DJI', 262, 253);
+INSERT INTO `dbt_country` VALUES (60, 'DM', 'DOMINICA', 'Dominica', 'DMA', 212, 1767);
+INSERT INTO `dbt_country` VALUES (61, 'DO', 'DOMINICAN REPUBLIC', 'Dominican Republic', 'DOM', 214, 1809);
+INSERT INTO `dbt_country` VALUES (62, 'EC', 'ECUADOR', 'Ecuador', 'ECU', 218, 593);
+INSERT INTO `dbt_country` VALUES (63, 'EG', 'EGYPT', 'Egypt', 'EGY', 818, 20);
+INSERT INTO `dbt_country` VALUES (64, 'SV', 'EL SALVADOR', 'El Salvador', 'SLV', 222, 503);
+INSERT INTO `dbt_country` VALUES (65, 'GQ', 'EQUATORIAL GUINEA', 'Equatorial Guinea', 'GNQ', 226, 240);
+INSERT INTO `dbt_country` VALUES (66, 'ER', 'ERITREA', 'Eritrea', 'ERI', 232, 291);
+INSERT INTO `dbt_country` VALUES (67, 'EE', 'ESTONIA', 'Estonia', 'EST', 233, 372);
+INSERT INTO `dbt_country` VALUES (68, 'ET', 'ETHIOPIA', 'Ethiopia', 'ETH', 231, 251);
+INSERT INTO `dbt_country` VALUES (69, 'FK', 'FALKLAND ISLANDS (MALVINAS)', 'Falkland Islands (Malvinas)', 'FLK', 238, 500);
+INSERT INTO `dbt_country` VALUES (70, 'FO', 'FAROE ISLANDS', 'Faroe Islands', 'FRO', 234, 298);
+INSERT INTO `dbt_country` VALUES (71, 'FJ', 'FIJI', 'Fiji', 'FJI', 242, 679);
+INSERT INTO `dbt_country` VALUES (72, 'FI', 'FINLAND', 'Finland', 'FIN', 246, 358);
+INSERT INTO `dbt_country` VALUES (73, 'FR', 'FRANCE', 'France', 'FRA', 250, 33);
+INSERT INTO `dbt_country` VALUES (74, 'GF', 'FRENCH GUIANA', 'French Guiana', 'GUF', 254, 594);
+INSERT INTO `dbt_country` VALUES (75, 'PF', 'FRENCH POLYNESIA', 'French Polynesia', 'PYF', 258, 689);
+INSERT INTO `dbt_country` VALUES (76, 'TF', 'FRENCH SOUTHERN TERRITORIES', 'French Southern Territories', NULL, NULL, 0);
+INSERT INTO `dbt_country` VALUES (77, 'GA', 'GABON', 'Gabon', 'GAB', 266, 241);
+INSERT INTO `dbt_country` VALUES (78, 'GM', 'GAMBIA', 'Gambia', 'GMB', 270, 220);
+INSERT INTO `dbt_country` VALUES (79, 'GE', 'GEORGIA', 'Georgia', 'GEO', 268, 995);
+INSERT INTO `dbt_country` VALUES (80, 'DE', 'GERMANY', 'Germany', 'DEU', 276, 49);
+INSERT INTO `dbt_country` VALUES (81, 'GH', 'GHANA', 'Ghana', 'GHA', 288, 233);
+INSERT INTO `dbt_country` VALUES (82, 'GI', 'GIBRALTAR', 'Gibraltar', 'GIB', 292, 350);
+INSERT INTO `dbt_country` VALUES (83, 'GR', 'GREECE', 'Greece', 'GRC', 300, 30);
+INSERT INTO `dbt_country` VALUES (84, 'GL', 'GREENLAND', 'Greenland', 'GRL', 304, 299);
+INSERT INTO `dbt_country` VALUES (85, 'GD', 'GRENADA', 'Grenada', 'GRD', 308, 1473);
+INSERT INTO `dbt_country` VALUES (86, 'GP', 'GUADELOUPE', 'Guadeloupe', 'GLP', 312, 590);
+INSERT INTO `dbt_country` VALUES (87, 'GU', 'GUAM', 'Guam', 'GUM', 316, 1671);
+INSERT INTO `dbt_country` VALUES (88, 'GT', 'GUATEMALA', 'Guatemala', 'GTM', 320, 502);
+INSERT INTO `dbt_country` VALUES (89, 'GN', 'GUINEA', 'Guinea', 'GIN', 324, 224);
+INSERT INTO `dbt_country` VALUES (90, 'GW', 'GUINEA-BISSAU', 'Guinea-Bissau', 'GNB', 624, 245);
+INSERT INTO `dbt_country` VALUES (91, 'GY', 'GUYANA', 'Guyana', 'GUY', 328, 592);
+INSERT INTO `dbt_country` VALUES (92, 'HT', 'HAITI', 'Haiti', 'HTI', 332, 509);
+INSERT INTO `dbt_country` VALUES (93, 'HM', 'HEARD ISLAND AND MCDONALD ISLANDS', 'Heard Island and Mcdonald Islands', NULL, NULL, 0);
+INSERT INTO `dbt_country` VALUES (94, 'VA', 'HOLY SEE (VATICAN CITY STATE)', 'Holy See (Vatican City State)', 'VAT', 336, 39);
+INSERT INTO `dbt_country` VALUES (95, 'HN', 'HONDURAS', 'Honduras', 'HND', 340, 504);
+INSERT INTO `dbt_country` VALUES (96, 'HK', 'HONG KONG', 'Hong Kong', 'HKG', 344, 852);
+INSERT INTO `dbt_country` VALUES (97, 'HU', 'HUNGARY', 'Hungary', 'HUN', 348, 36);
+INSERT INTO `dbt_country` VALUES (98, 'IS', 'ICELAND', 'Iceland', 'ISL', 352, 354);
+INSERT INTO `dbt_country` VALUES (99, 'IN', 'INDIA', 'India', 'IND', 356, 91);
+INSERT INTO `dbt_country` VALUES (100, 'ID', 'INDONESIA', 'Indonesia', 'IDN', 360, 62);
+INSERT INTO `dbt_country` VALUES (101, 'IR', 'IRAN, ISLAMIC REPUBLIC OF', 'Iran, Islamic Republic of', 'IRN', 364, 98);
+INSERT INTO `dbt_country` VALUES (102, 'IQ', 'IRAQ', 'Iraq', 'IRQ', 368, 964);
+INSERT INTO `dbt_country` VALUES (103, 'IE', 'IRELAND', 'Ireland', 'IRL', 372, 353);
+INSERT INTO `dbt_country` VALUES (104, 'IL', 'ISRAEL', 'Israel', 'ISR', 376, 972);
+INSERT INTO `dbt_country` VALUES (105, 'IT', 'ITALY', 'Italy', 'ITA', 380, 39);
+INSERT INTO `dbt_country` VALUES (106, 'JM', 'JAMAICA', 'Jamaica', 'JAM', 388, 1876);
+INSERT INTO `dbt_country` VALUES (107, 'JP', 'JAPAN', 'Japan', 'JPN', 392, 81);
+INSERT INTO `dbt_country` VALUES (108, 'JO', 'JORDAN', 'Jordan', 'JOR', 400, 962);
+INSERT INTO `dbt_country` VALUES (109, 'KZ', 'KAZAKHSTAN', 'Kazakhstan', 'KAZ', 398, 7);
+INSERT INTO `dbt_country` VALUES (110, 'KE', 'KENYA', 'Kenya', 'KEN', 404, 254);
+INSERT INTO `dbt_country` VALUES (111, 'KI', 'KIRIBATI', 'Kiribati', 'KIR', 296, 686);
+INSERT INTO `dbt_country` VALUES (112, 'KP', 'KOREA, DEMOCRATIC PEOPLE\'S REPUBLIC OF', 'Korea, Democratic People\'s Republic of', 'PRK', 408, 850);
+INSERT INTO `dbt_country` VALUES (113, 'KR', 'KOREA, REPUBLIC OF', 'Korea, Republic of', 'KOR', 410, 82);
+INSERT INTO `dbt_country` VALUES (114, 'KW', 'KUWAIT', 'Kuwait', 'KWT', 414, 965);
+INSERT INTO `dbt_country` VALUES (115, 'KG', 'KYRGYZSTAN', 'Kyrgyzstan', 'KGZ', 417, 996);
+INSERT INTO `dbt_country` VALUES (116, 'LA', 'LAO PEOPLE\'S DEMOCRATIC REPUBLIC', 'Lao People\'s Democratic Republic', 'LAO', 418, 856);
+INSERT INTO `dbt_country` VALUES (117, 'LV', 'LATVIA', 'Latvia', 'LVA', 428, 371);
+INSERT INTO `dbt_country` VALUES (118, 'LB', 'LEBANON', 'Lebanon', 'LBN', 422, 961);
+INSERT INTO `dbt_country` VALUES (119, 'LS', 'LESOTHO', 'Lesotho', 'LSO', 426, 266);
+INSERT INTO `dbt_country` VALUES (120, 'LR', 'LIBERIA', 'Liberia', 'LBR', 430, 231);
+INSERT INTO `dbt_country` VALUES (121, 'LY', 'LIBYAN ARAB JAMAHIRIYA', 'Libyan Arab Jamahiriya', 'LBY', 434, 218);
+INSERT INTO `dbt_country` VALUES (122, 'LI', 'LIECHTENSTEIN', 'Liechtenstein', 'LIE', 438, 423);
+INSERT INTO `dbt_country` VALUES (123, 'LT', 'LITHUANIA', 'Lithuania', 'LTU', 440, 370);
+INSERT INTO `dbt_country` VALUES (124, 'LU', 'LUXEMBOURG', 'Luxembourg', 'LUX', 442, 352);
+INSERT INTO `dbt_country` VALUES (125, 'MO', 'MACAO', 'Macao', 'MAC', 446, 853);
+INSERT INTO `dbt_country` VALUES (126, 'MK', 'MACEDONIA, THE FORMER YUGOSLAV REPUBLIC OF', 'Macedonia, the Former Yugoslav Republic of', 'MKD', 807, 389);
+INSERT INTO `dbt_country` VALUES (127, 'MG', 'MADAGASCAR', 'Madagascar', 'MDG', 450, 261);
+INSERT INTO `dbt_country` VALUES (128, 'MW', 'MALAWI', 'Malawi', 'MWI', 454, 265);
+INSERT INTO `dbt_country` VALUES (129, 'MY', 'MALAYSIA', 'Malaysia', 'MYS', 458, 60);
+INSERT INTO `dbt_country` VALUES (130, 'MV', 'MALDIVES', 'Maldives', 'MDV', 462, 960);
+INSERT INTO `dbt_country` VALUES (131, 'ML', 'MALI', 'Mali', 'MLI', 466, 223);
+INSERT INTO `dbt_country` VALUES (132, 'MT', 'MALTA', 'Malta', 'MLT', 470, 356);
+INSERT INTO `dbt_country` VALUES (133, 'MH', 'MARSHALL ISLANDS', 'Marshall Islands', 'MHL', 584, 692);
+INSERT INTO `dbt_country` VALUES (134, 'MQ', 'MARTINIQUE', 'Martinique', 'MTQ', 474, 596);
+INSERT INTO `dbt_country` VALUES (135, 'MR', 'MAURITANIA', 'Mauritania', 'MRT', 478, 222);
+INSERT INTO `dbt_country` VALUES (136, 'MU', 'MAURITIUS', 'Mauritius', 'MUS', 480, 230);
+INSERT INTO `dbt_country` VALUES (137, 'YT', 'MAYOTTE', 'Mayotte', NULL, NULL, 269);
+INSERT INTO `dbt_country` VALUES (138, 'MX', 'MEXICO', 'Mexico', 'MEX', 484, 52);
+INSERT INTO `dbt_country` VALUES (139, 'FM', 'MICRONESIA, FEDERATED STATES OF', 'Micronesia, Federated States of', 'FSM', 583, 691);
+INSERT INTO `dbt_country` VALUES (140, 'MD', 'MOLDOVA, REPUBLIC OF', 'Moldova, Republic of', 'MDA', 498, 373);
+INSERT INTO `dbt_country` VALUES (141, 'MC', 'MONACO', 'Monaco', 'MCO', 492, 377);
+INSERT INTO `dbt_country` VALUES (142, 'MN', 'MONGOLIA', 'Mongolia', 'MNG', 496, 976);
+INSERT INTO `dbt_country` VALUES (143, 'MS', 'MONTSERRAT', 'Montserrat', 'MSR', 500, 1664);
+INSERT INTO `dbt_country` VALUES (144, 'MA', 'MOROCCO', 'Morocco', 'MAR', 504, 212);
+INSERT INTO `dbt_country` VALUES (145, 'MZ', 'MOZAMBIQUE', 'Mozambique', 'MOZ', 508, 258);
+INSERT INTO `dbt_country` VALUES (146, 'MM', 'MYANMAR', 'Myanmar', 'MMR', 104, 95);
+INSERT INTO `dbt_country` VALUES (147, 'NA', 'NAMIBIA', 'Namibia', 'NAM', 516, 264);
+INSERT INTO `dbt_country` VALUES (148, 'NR', 'NAURU', 'Nauru', 'NRU', 520, 674);
+INSERT INTO `dbt_country` VALUES (149, 'NP', 'NEPAL', 'Nepal', 'NPL', 524, 977);
+INSERT INTO `dbt_country` VALUES (150, 'NL', 'NETHERLANDS', 'Netherlands', 'NLD', 528, 31);
+INSERT INTO `dbt_country` VALUES (151, 'AN', 'NETHERLANDS ANTILLES', 'Netherlands Antilles', 'ANT', 530, 599);
+INSERT INTO `dbt_country` VALUES (152, 'NC', 'NEW CALEDONIA', 'New Caledonia', 'NCL', 540, 687);
+INSERT INTO `dbt_country` VALUES (153, 'NZ', 'NEW ZEALAND', 'New Zealand', 'NZL', 554, 64);
+INSERT INTO `dbt_country` VALUES (154, 'NI', 'NICARAGUA', 'Nicaragua', 'NIC', 558, 505);
+INSERT INTO `dbt_country` VALUES (155, 'NE', 'NIGER', 'Niger', 'NER', 562, 227);
+INSERT INTO `dbt_country` VALUES (156, 'NG', 'NIGERIA', 'Nigeria', 'NGA', 566, 234);
+INSERT INTO `dbt_country` VALUES (157, 'NU', 'NIUE', 'Niue', 'NIU', 570, 683);
+INSERT INTO `dbt_country` VALUES (158, 'NF', 'NORFOLK ISLAND', 'Norfolk Island', 'NFK', 574, 672);
+INSERT INTO `dbt_country` VALUES (159, 'MP', 'NORTHERN MARIANA ISLANDS', 'Northern Mariana Islands', 'MNP', 580, 1670);
+INSERT INTO `dbt_country` VALUES (160, 'NO', 'NORWAY', 'Norway', 'NOR', 578, 47);
+INSERT INTO `dbt_country` VALUES (161, 'OM', 'OMAN', 'Oman', 'OMN', 512, 968);
+INSERT INTO `dbt_country` VALUES (162, 'PK', 'PAKISTAN', 'Pakistan', 'PAK', 586, 92);
+INSERT INTO `dbt_country` VALUES (163, 'PW', 'PALAU', 'Palau', 'PLW', 585, 680);
+INSERT INTO `dbt_country` VALUES (164, 'PS', 'PALESTINIAN TERRITORY, OCCUPIED', 'Palestinian Territory, Occupied', NULL, NULL, 970);
+INSERT INTO `dbt_country` VALUES (165, 'PA', 'PANAMA', 'Panama', 'PAN', 591, 507);
+INSERT INTO `dbt_country` VALUES (166, 'PG', 'PAPUA NEW GUINEA', 'Papua New Guinea', 'PNG', 598, 675);
+INSERT INTO `dbt_country` VALUES (167, 'PY', 'PARAGUAY', 'Paraguay', 'PRY', 600, 595);
+INSERT INTO `dbt_country` VALUES (168, 'PE', 'PERU', 'Peru', 'PER', 604, 51);
+INSERT INTO `dbt_country` VALUES (169, 'PH', 'PHILIPPINES', 'Philippines', 'PHL', 608, 63);
+INSERT INTO `dbt_country` VALUES (170, 'PN', 'PITCAIRN', 'Pitcairn', 'PCN', 612, 0);
+INSERT INTO `dbt_country` VALUES (171, 'PL', 'POLAND', 'Poland', 'POL', 616, 48);
+INSERT INTO `dbt_country` VALUES (172, 'PT', 'PORTUGAL', 'Portugal', 'PRT', 620, 351);
+INSERT INTO `dbt_country` VALUES (173, 'PR', 'PUERTO RICO', 'Puerto Rico', 'PRI', 630, 1787);
+INSERT INTO `dbt_country` VALUES (174, 'QA', 'QATAR', 'Qatar', 'QAT', 634, 974);
+INSERT INTO `dbt_country` VALUES (175, 'RE', 'REUNION', 'Reunion', 'REU', 638, 262);
+INSERT INTO `dbt_country` VALUES (176, 'RO', 'ROMANIA', 'Romania', 'ROM', 642, 40);
+INSERT INTO `dbt_country` VALUES (177, 'RU', 'RUSSIAN FEDERATION', 'Russian Federation', 'RUS', 643, 70);
+INSERT INTO `dbt_country` VALUES (178, 'RW', 'RWANDA', 'Rwanda', 'RWA', 646, 250);
+INSERT INTO `dbt_country` VALUES (179, 'SH', 'SAINT HELENA', 'Saint Helena', 'SHN', 654, 290);
+INSERT INTO `dbt_country` VALUES (180, 'KN', 'SAINT KITTS AND NEVIS', 'Saint Kitts and Nevis', 'KNA', 659, 1869);
+INSERT INTO `dbt_country` VALUES (181, 'LC', 'SAINT LUCIA', 'Saint Lucia', 'LCA', 662, 1758);
+INSERT INTO `dbt_country` VALUES (182, 'PM', 'SAINT PIERRE AND MIQUELON', 'Saint Pierre and Miquelon', 'SPM', 666, 508);
+INSERT INTO `dbt_country` VALUES (183, 'VC', 'SAINT VINCENT AND THE GRENADINES', 'Saint Vincent and the Grenadines', 'VCT', 670, 1784);
+INSERT INTO `dbt_country` VALUES (184, 'WS', 'SAMOA', 'Samoa', 'WSM', 882, 684);
+INSERT INTO `dbt_country` VALUES (185, 'SM', 'SAN MARINO', 'San Marino', 'SMR', 674, 378);
+INSERT INTO `dbt_country` VALUES (186, 'ST', 'SAO TOME AND PRINCIPE', 'Sao Tome and Principe', 'STP', 678, 239);
+INSERT INTO `dbt_country` VALUES (187, 'SA', 'SAUDI ARABIA', 'Saudi Arabia', 'SAU', 682, 966);
+INSERT INTO `dbt_country` VALUES (188, 'SN', 'SENEGAL', 'Senegal', 'SEN', 686, 221);
+INSERT INTO `dbt_country` VALUES (189, 'CS', 'SERBIA AND MONTENEGRO', 'Serbia and Montenegro', NULL, NULL, 381);
+INSERT INTO `dbt_country` VALUES (190, 'SC', 'SEYCHELLES', 'Seychelles', 'SYC', 690, 248);
+INSERT INTO `dbt_country` VALUES (191, 'SL', 'SIERRA LEONE', 'Sierra Leone', 'SLE', 694, 232);
+INSERT INTO `dbt_country` VALUES (192, 'SG', 'SINGAPORE', 'Singapore', 'SGP', 702, 65);
+INSERT INTO `dbt_country` VALUES (193, 'SK', 'SLOVAKIA', 'Slovakia', 'SVK', 703, 421);
+INSERT INTO `dbt_country` VALUES (194, 'SI', 'SLOVENIA', 'Slovenia', 'SVN', 705, 386);
+INSERT INTO `dbt_country` VALUES (195, 'SB', 'SOLOMON ISLANDS', 'Solomon Islands', 'SLB', 90, 677);
+INSERT INTO `dbt_country` VALUES (196, 'SO', 'SOMALIA', 'Somalia', 'SOM', 706, 252);
+INSERT INTO `dbt_country` VALUES (197, 'ZA', 'SOUTH AFRICA', 'South Africa', 'ZAF', 710, 27);
+INSERT INTO `dbt_country` VALUES (198, 'GS', 'SOUTH GEORGIA AND THE SOUTH SANDWICH ISLANDS', 'South Georgia and the South Sandwich Islands', NULL, NULL, 0);
+INSERT INTO `dbt_country` VALUES (199, 'ES', 'SPAIN', 'Spain', 'ESP', 724, 34);
+INSERT INTO `dbt_country` VALUES (200, 'LK', 'SRI LANKA', 'Sri Lanka', 'LKA', 144, 94);
+INSERT INTO `dbt_country` VALUES (201, 'SD', 'SUDAN', 'Sudan', 'SDN', 736, 249);
+INSERT INTO `dbt_country` VALUES (202, 'SR', 'SURINAME', 'Suriname', 'SUR', 740, 597);
+INSERT INTO `dbt_country` VALUES (203, 'SJ', 'SVALBARD AND JAN MAYEN', 'Svalbard and Jan Mayen', 'SJM', 744, 47);
+INSERT INTO `dbt_country` VALUES (204, 'SZ', 'SWAZILAND', 'Swaziland', 'SWZ', 748, 268);
+INSERT INTO `dbt_country` VALUES (205, 'SE', 'SWEDEN', 'Sweden', 'SWE', 752, 46);
+INSERT INTO `dbt_country` VALUES (206, 'CH', 'SWITZERLAND', 'Switzerland', 'CHE', 756, 41);
+INSERT INTO `dbt_country` VALUES (207, 'SY', 'SYRIAN ARAB REPUBLIC', 'Syrian Arab Republic', 'SYR', 760, 963);
+INSERT INTO `dbt_country` VALUES (208, 'TW', 'TAIWAN, PROVINCE OF CHINA', 'Taiwan, Province of China', 'TWN', 158, 886);
+INSERT INTO `dbt_country` VALUES (209, 'TJ', 'TAJIKISTAN', 'Tajikistan', 'TJK', 762, 992);
+INSERT INTO `dbt_country` VALUES (210, 'TZ', 'TANZANIA, UNITED REPUBLIC OF', 'Tanzania, United Republic of', 'TZA', 834, 255);
+INSERT INTO `dbt_country` VALUES (211, 'TH', 'THAILAND', 'Thailand', 'THA', 764, 66);
+INSERT INTO `dbt_country` VALUES (212, 'TL', 'TIMOR-LESTE', 'Timor-Leste', NULL, NULL, 670);
+INSERT INTO `dbt_country` VALUES (213, 'TG', 'TOGO', 'Togo', 'TGO', 768, 228);
+INSERT INTO `dbt_country` VALUES (214, 'TK', 'TOKELAU', 'Tokelau', 'TKL', 772, 690);
+INSERT INTO `dbt_country` VALUES (215, 'TO', 'TONGA', 'Tonga', 'TON', 776, 676);
+INSERT INTO `dbt_country` VALUES (216, 'TT', 'TRINIDAD AND TOBAGO', 'Trinidad and Tobago', 'TTO', 780, 1868);
+INSERT INTO `dbt_country` VALUES (217, 'TN', 'TUNISIA', 'Tunisia', 'TUN', 788, 216);
+INSERT INTO `dbt_country` VALUES (218, 'TR', 'TURKEY', 'Turkey', 'TUR', 792, 90);
+INSERT INTO `dbt_country` VALUES (219, 'TM', 'TURKMENISTAN', 'Turkmenistan', 'TKM', 795, 7370);
+INSERT INTO `dbt_country` VALUES (220, 'TC', 'TURKS AND CAICOS ISLANDS', 'Turks and Caicos Islands', 'TCA', 796, 1649);
+INSERT INTO `dbt_country` VALUES (221, 'TV', 'TUVALU', 'Tuvalu', 'TUV', 798, 688);
+INSERT INTO `dbt_country` VALUES (222, 'UG', 'UGANDA', 'Uganda', 'UGA', 800, 256);
+INSERT INTO `dbt_country` VALUES (223, 'UA', 'UKRAINE', 'Ukraine', 'UKR', 804, 380);
+INSERT INTO `dbt_country` VALUES (224, 'AE', 'UNITED ARAB EMIRATES', 'United Arab Emirates', 'ARE', 784, 971);
+INSERT INTO `dbt_country` VALUES (225, 'GB', 'UNITED KINGDOM', 'United Kingdom', 'GBR', 826, 44);
+INSERT INTO `dbt_country` VALUES (226, 'US', 'UNITED STATES', 'United States', 'USA', 840, 1);
+INSERT INTO `dbt_country` VALUES (227, 'UM', 'UNITED STATES MINOR OUTLYING ISLANDS', 'United States Minor Outlying Islands', NULL, NULL, 1);
+INSERT INTO `dbt_country` VALUES (228, 'UY', 'URUGUAY', 'Uruguay', 'URY', 858, 598);
+INSERT INTO `dbt_country` VALUES (229, 'UZ', 'UZBEKISTAN', 'Uzbekistan', 'UZB', 860, 998);
+INSERT INTO `dbt_country` VALUES (230, 'VU', 'VANUATU', 'Vanuatu', 'VUT', 548, 678);
+INSERT INTO `dbt_country` VALUES (231, 'VE', 'VENEZUELA', 'Venezuela', 'VEN', 862, 58);
+INSERT INTO `dbt_country` VALUES (232, 'VN', 'VIET NAM', 'Viet Nam', 'VNM', 704, 84);
+INSERT INTO `dbt_country` VALUES (233, 'VG', 'VIRGIN ISLANDS, BRITISH', 'Virgin Islands, British', 'VGB', 92, 1284);
+INSERT INTO `dbt_country` VALUES (234, 'VI', 'VIRGIN ISLANDS, U.S.', 'Virgin Islands, U.s.', 'VIR', 850, 1340);
+INSERT INTO `dbt_country` VALUES (235, 'WF', 'WALLIS AND FUTUNA', 'Wallis and Futuna', 'WLF', 876, 681);
+INSERT INTO `dbt_country` VALUES (236, 'EH', 'WESTERN SAHARA', 'Western Sahara', 'ESH', 732, 212);
+INSERT INTO `dbt_country` VALUES (237, 'YE', 'YEMEN', 'Yemen', 'YEM', 887, 967);
+INSERT INTO `dbt_country` VALUES (238, 'ZM', 'ZAMBIA', 'Zambia', 'ZMB', 894, 260);
+INSERT INTO `dbt_country` VALUES (239, 'ZW', 'ZIMBABWE', 'Zimbabwe', 'ZWE', 716, 263);
+INSERT INTO `dbt_country` VALUES (240, 'RS', 'SERBIA', 'Serbia', 'SRB', 688, 381);
+INSERT INTO `dbt_country` VALUES (241, 'AP', 'ASIA PACIFIC REGION', 'Asia / Pacific Region', '0', 0, 0);
+INSERT INTO `dbt_country` VALUES (242, 'ME', 'MONTENEGRO', 'Montenegro', 'MNE', 499, 382);
+INSERT INTO `dbt_country` VALUES (243, 'AX', 'ALAND ISLANDS', 'Aland Islands', 'ALA', 248, 358);
+INSERT INTO `dbt_country` VALUES (244, 'BQ', 'BONAIRE, SINT EUSTATIUS AND SABA', 'Bonaire, Sint Eustatius and Saba', 'BES', 535, 599);
+INSERT INTO `dbt_country` VALUES (245, 'CW', 'CURACAO', 'Curacao', 'CUW', 531, 599);
+INSERT INTO `dbt_country` VALUES (246, 'GG', 'GUERNSEY', 'Guernsey', 'GGY', 831, 44);
+INSERT INTO `dbt_country` VALUES (247, 'IM', 'ISLE OF MAN', 'Isle of Man', 'IMN', 833, 44);
+INSERT INTO `dbt_country` VALUES (248, 'JE', 'JERSEY', 'Jersey', 'JEY', 832, 44);
+INSERT INTO `dbt_country` VALUES (249, 'XK', 'KOSOVO', 'Kosovo', '---', 0, 381);
+INSERT INTO `dbt_country` VALUES (250, 'BL', 'SAINT BARTHELEMY', 'Saint Barthelemy', 'BLM', 652, 590);
+INSERT INTO `dbt_country` VALUES (251, 'MF', 'SAINT MARTIN', 'Saint Martin', 'MAF', 663, 590);
+INSERT INTO `dbt_country` VALUES (252, 'SX', 'SINT MAARTEN', 'Sint Maarten', 'SXM', 534, 1);
+INSERT INTO `dbt_country` VALUES (253, 'SS', 'SOUTH SUDAN', 'South Sudan', 'SSD', 728, 211);
+
+-- ----------------------------
+-- Table structure for dbt_cryptocoin
+-- ----------------------------
+DROP TABLE IF EXISTS `dbt_cryptocoin`;
+CREATE TABLE `dbt_cryptocoin`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cid` int(11) NOT NULL,
+  `url` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `image` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `symbol` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `coin_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `full_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `algorithm` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `proof_type` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `show_home` int(11) NULL DEFAULT 0,
+  `coin_position` int(11) NULL DEFAULT 0,
+  `premined_value` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `total_coins_freefloat` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `rank` int(11) NULL DEFAULT NULL,
+  `sponsored` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `Id`(`cid`) USING BTREE,
+  UNIQUE INDEX `Symbol`(`symbol`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2353 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of dbt_cryptocoin
+-- ----------------------------
+INSERT INTO `dbt_cryptocoin` VALUES (10, 7605, '/coins/eth/overview', '////upload/coinlist/eth_logo.png', 'ETH', 'ETH', 'Ethereum', 'Ethereum (ETH)', '', 'DPoS', 0, 502, 'N/A', 'N/A', 502, '0', 0);
+INSERT INTO `dbt_cryptocoin` VALUES (11, 5038, '/coins/xmr/overview', '///./upload/coinlist/xmr.png', 'XMR', 'XMR', 'Monero', 'Monero (XMR)', NULL, 'PoW', 0, 505, 'N/A', 'N/A', 505, '0', 0);
+INSERT INTO `dbt_cryptocoin` VALUES (14, 4432, '/coins/doge/overview', '////upload/coinlist/1628084891_867efb30a7ea3a4b4e73.png', 'DOGE', 'DOGE', 'Dogecoin', 'Dogecoin (DOGE)', NULL, 'PoW', 0, 31, 'N/A', 'N/A', 31, '0', 0);
+INSERT INTO `dbt_cryptocoin` VALUES (15, 24854, '/coins/zec/overview', '///./upload/coinlist/zec.png', 'ZEC', 'ZEC', 'ZCash', 'ZCash (ZEC)', NULL, 'PoW', 0, 509, 'N/A', 'N/A', 509, '0', 0);
+INSERT INTO `dbt_cryptocoin` VALUES (19, 2349, '/coins/ppc/overview', '///./upload/coinlist/peercoin-logo.png', 'PPC', 'PPC', 'PeerCoin', 'PeerCoin (PPC)', NULL, 'N/A', 0, 514, 'N/A', 'N/A', 514, '0', 0);
+INSERT INTO `dbt_cryptocoin` VALUES (117, 4524, '/coins/ftc/overview', '////./upload/coinlist/ftc.png', 'FTC', 'FTC', 'FeatherCoin', 'FeatherCoin (FTC)', NULL, 'PoW', 0, 520, 'N/A', 'N/A', 520, '0', 0);
+INSERT INTO `dbt_cryptocoin` VALUES (183, 4592, '/coins/rdd/overview', '///./upload/coinlist/rdd.png', 'RDD', 'RDD', 'ReddCoin', 'ReddCoin (RDD)', NULL, 'PoW/PoS', 0, 588, 'N/A', 'N/A', 588, '0', 0);
+INSERT INTO `dbt_cryptocoin` VALUES (202, 4614, '/coins/xlm/overview', '///./upload/coinlist/str.png', 'XLM', 'XLM', 'Stellar', 'Stellar (XLM)', NULL, 'N/A', 0, 528, 'N/A', 'N/A', 528, '0', 0);
+INSERT INTO `dbt_cryptocoin` VALUES (225, 5018, '/coins/vtc/overview', '///./upload/coinlist/vtc.png', 'VTC', 'VTC', 'VertCoin', 'VertCoin (VTC)', NULL, 'PoW', 0, 532, 'N/A', 'N/A', 532, '0', 0);
+INSERT INTO `dbt_cryptocoin` VALUES (247, 5285, '/coins/xem/overview', '///./upload/coinlist/xem.png', 'XEM', 'XEM', 'NEM', 'NEM (XEM)', NULL, 'PoI', 0, 554, 'N/A', 'N/A', 554, '0', 0);
+INSERT INTO `dbt_cryptocoin` VALUES (548, 20728, '/coins/unit/overview', '///./upload/coinlist/unit.png', 'UNIT', 'UNIT', 'Universal Currency', 'Universal Currency (UNIT)', NULL, 'PoW/PoS', 0, 566, 'N/A', 'N/A', 566, '0', 0);
+INSERT INTO `dbt_cryptocoin` VALUES (634, 22325, '/coins/mue/overview', '///./upload/coinlist/mue.png', 'MUE', 'MUE', 'MonetaryUnit', 'MonetaryUnit (MUE)', NULL, 'PoW', 0, 565, 'N/A', 'N/A', 565, '0', 0);
+INSERT INTO `dbt_cryptocoin` VALUES (1192, 127356, '/coins/iot/overview', '///./upload/coinlist/iota_logo.png', 'IOT', 'IOT', 'IOTA', 'IOTA (IOT)', NULL, 'Tangle', 0, 576, 'N/A', 'N/A', 576, '0', 0);
+INSERT INTO `dbt_cryptocoin` VALUES (1296, 187440, '/coins/omg/overview', '///./upload/coinlist/omisego.png', 'OMG', 'OMG', 'OmiseGo', 'OmiseGo (OMG)', NULL, 'PoS', 0, 587, 'N/A', 'N/A', 587, '0', 0);
+INSERT INTO `dbt_cryptocoin` VALUES (1356, 202330, '/coins/bch/overview', '///./upload/coinlist/bch.jpg', 'BCH', 'BCH', 'Bitcoin Cash / BCC', 'Bitcoin Cash / BCC (BCH)', NULL, 'PoW', 0, 542, 'N/A', 'N/A', 1425, '0', 0);
+INSERT INTO `dbt_cryptocoin` VALUES (2041, 4433, '/coins/xvg/overview', '////./upload/coinlist/xvg.png', 'XVG', 'XVG', 'Verge', 'Verge (XVG)', NULL, 'PoW', 0, 599, 'N/A', 'N/A', 599, '0', 0);
+INSERT INTO `dbt_cryptocoin` VALUES (2084, 3807, '/coins/dash/overview', '///./upload/coinlist/imageedit_27_4355944719.png', 'DASH', 'DASH', 'DigitalCash', 'DigitalCash (DASH)', NULL, 'PoW/PoS', 0, 504, 'N/A', 'N/A', 504, '0', 0);
+INSERT INTO `dbt_cryptocoin` VALUES (2146, 792725, '/coins/spd/overview', '///./upload/coinlist/spd.png', 'SPD', 'SPD', 'Stipend', 'Stipend (SPD)', NULL, 'PoW/PoS', 0, 596, 'N/A', 'N/A', 2403, '0', 0);
+INSERT INTO `dbt_cryptocoin` VALUES (2211, 1182, '/coins/btc/overview', '////./upload/coinlist/btc.png', 'BTC', 'BTC', 'Bitcoin', 'Bitcoin (BTC)', '', 'DPoS', 0, 500, 'N/A', 'N/A', 500, '0', 0);
+INSERT INTO `dbt_cryptocoin` VALUES (2216, 808414, '/coins/ont/overview', '///./upload/coinlist/ont.jpg', 'ONT', 'ONT', 'Ontology', 'Ontology (ONT)', NULL, 'N/A', 0, 579, 'N/A', 'N/A', 2446, '0', 0);
+INSERT INTO `dbt_cryptocoin` VALUES (2243, 3808, '/coins/ltc/overview', '///./upload/coinlist/litecoin-logo.png', 'LTC', 'LTC', 'Litecoin', 'Litecoin (LTC)', NULL, 'PoW', 0, 503, 'N/A', 'N/A', 503, '0', 0);
+INSERT INTO `dbt_cryptocoin` VALUES (2301, 166503, '/coins/eos/overview', '/////./upload/coinlist/eos_1.png', 'EOS', 'EOS', 'EOS', 'EOS (EOS)', NULL, 'DPoS', 0, 32, 'N/A', 'N/A', 32, '0', 0);
+INSERT INTO `dbt_cryptocoin` VALUES (2336, 1, '/coins/chf/overview', '/////upload/coinlist/1615179892_5da6602c1a189c9cc897.jpg', 'USD', 'USD', 'Dollar', 'USD Dollar', '', 'DPoS', 0, 501, 'N/A', 'N/A', 501, '0', 0);
+INSERT INTO `dbt_cryptocoin` VALUES (2337, 808415, NULL, 'upload/coinlist/1647331186_837926ac096ee156f18e.jpg', NULL, 'GLD', 'Global Dollar', 'Global Dollar (GLD) [Token ID: 1002783]', 'https://globaldollar.world', 'DPoS', 1, 2, NULL, NULL, 2, 'https://tronscan.org/#/token/1002783', 1);
+INSERT INTO `dbt_cryptocoin` VALUES (2338, 808416, NULL, 'upload/coinlist/1647331374_6d4ea3d60d14d0ce32cb.jpg', NULL, 'RENTA', 'Renta', 'Renta (RENTA) [Token ID: 1000348]', 'https://renta.world', 'DPoS', 1, 3, NULL, NULL, 3, 'https://tronscan.org/#/token/1000348', 1);
+INSERT INTO `dbt_cryptocoin` VALUES (2339, 808417, NULL, 'upload/coinlist/1647331546_948d19f3562e3bd1b1ec.jpg', NULL, 'ZFE', 'ZeroFees Exchange', 'ZeroFees Exchange (ZFE) [Token ID: 1004567]', 'https://zerofees.exchange', 'DPoS', 1, 4, NULL, NULL, 4, '', 1);
+INSERT INTO `dbt_cryptocoin` VALUES (2340, 808418, NULL, 'upload/coinlist/1647332373_91d5cf5a3362f0481b7c.png', NULL, 'STR', 'Stratos Energy', 'Stratos Energy (STR) [Token ID: 1002644]', 'https://stratos.energy', 'DPoS', 1, 15, NULL, NULL, 15, 'https://tronscan.org/#/token/1002644', 1);
+INSERT INTO `dbt_cryptocoin` VALUES (2341, 808419, NULL, 'upload/coinlist/1647331983_eef66b8e83ecaba1b1aa.png', NULL, 'AMORE', 'Amore', 'Amore (AMORE) [Token ID: ]', 'https://amore.bar', 'DPoS', 1, 5, NULL, NULL, 5, '', 1);
+INSERT INTO `dbt_cryptocoin` VALUES (2342, 808420, NULL, 'upload/coinlist/1647333513_1a379a674b0cfcdfc451.png', NULL, 'IDEA', 'IDEA', 'IDEA (IDEA) [Token ID: 1000179]', '', 'DPoS', 1, 6, NULL, NULL, 6, '', 1);
+INSERT INTO `dbt_cryptocoin` VALUES (2343, 808421, NULL, '/upload/coinlist/1628095381_e5fcca8df1bbcf048f39.jpg', NULL, 'TLR', 'Tolar', 'Tolar (TLR) [Token ID: 1003211]', NULL, NULL, 1, 7, NULL, NULL, 7, NULL, 1);
+INSERT INTO `dbt_cryptocoin` VALUES (2344, 808422, NULL, 'upload/coinlist/1647332765_3fb1113715f6cf96a451.png', NULL, 'ETL', 'eTolar', 'eTolar (ETL) [Token ID: 1000025]', 'https://etolar.org', 'DPoS', 1, 11, NULL, NULL, 11, 'https://tronscan.org/#/token/1000025', 1);
+INSERT INTO `dbt_cryptocoin` VALUES (2345, 808423, NULL, 'upload/coinlist/1647333624_c36e579b124866eb4ad7.png', NULL, 'USDE', 'USD Equivalent', 'USD Equivalent (USDE) [Token ID: 1003150]', '', 'DPoS', 1, 10, NULL, NULL, 10, '', 1);
+INSERT INTO `dbt_cryptocoin` VALUES (2346, 808424, NULL, 'upload/coinlist/1647333757_b942e9433d15c819bc35.png', NULL, 'USDT', 'Tether USD', 'Tether USD (USDT) [TRC20]', '', 'DPoS', 1, 12, NULL, NULL, 12, '', 1);
+INSERT INTO `dbt_cryptocoin` VALUES (2347, 808425, NULL, '/upload/coinlist/1628098924_d5b6be6e6c81695578cd.png', NULL, 'AAX', 'Aaaxer', 'Aaaxer (AAX) [Token ID: 1004192]', '', 'DPoS', 1, 61, NULL, NULL, 61, '', 0);
+INSERT INTO `dbt_cryptocoin` VALUES (2348, 808426, NULL, '///upload/coinlist/1628157434_ebbbd5a49533a1f686b6.jpg', NULL, 'TRX', 'Tron', 'Tron (TRX) [TRC20]', '', 'DPoS', 1, 16, NULL, NULL, 16, '', 0);
+INSERT INTO `dbt_cryptocoin` VALUES (2349, 808427, NULL, '', NULL, 'ELE', 'Electron Energy', 'Electron Energy (ELE)', '', 'DPoS', 0, 14, NULL, NULL, 14, '', 0);
+INSERT INTO `dbt_cryptocoin` VALUES (2350, 808428, NULL, '//upload/coinlist/1632291092_056f09148e6d7523f5e2.jpg', NULL, 'TSW', 'TokenStore World', 'TokenStore World (TSW) [Token ID: 1002590]', NULL, NULL, 1, 9, NULL, NULL, 9, NULL, 1);
+INSERT INTO `dbt_cryptocoin` VALUES (2351, 808429, NULL, 'upload/coinlist/1634972524_c7b53f55aea092fd0ef6.png', NULL, 'USDC', 'USD Coin', 'USD Coin (USDC)', 'https://tronscan.org/#/token20/TEkxiTehnzSmSe2XqrBj4w32RUN966rdz8', 'DPoS', 1, 15, NULL, NULL, 15, 'https://tronscan.org/#/token20/TEkxiTehnzSmSe2XqrBj4w32RUN966rdz8', 1);
+INSERT INTO `dbt_cryptocoin` VALUES (2352, 808430, NULL, 'upload/coinlist/1647333064_a5434030091b7cd2f1c6.png', NULL, 'TEST', 'Test Token', 'Test Token (TEST)', '', 'DPoS', 1, 55, NULL, NULL, 55, '', 1);
+
+-- ----------------------------
+-- Table structure for dbt_deposit
+-- ----------------------------
+DROP TABLE IF EXISTS `dbt_deposit`;
+CREATE TABLE `dbt_deposit`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `currency_id` int(11) NULL DEFAULT NULL,
+  `currency_symbol` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `amount` double(19, 8) NOT NULL,
+  `method_id` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `fees_amount` double(19, 8) NOT NULL,
+  `comment` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
+  `deposit_date` datetime NULL DEFAULT NULL,
+  `approved_date` datetime NULL DEFAULT NULL,
+  `status` tinyint(1) NOT NULL COMMENT '0=Pending, 1= confirm, 2=Cancel',
+  `ip` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `approved_cancel_by` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 37 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of dbt_deposit
+-- ----------------------------
+INSERT INTO `dbt_deposit` VALUES (1, '4Y0HIQ', NULL, 'AAX', 10000000.00000000, 'admin', 0.00000000, 'admin1 cerdit 2021-08-06: +10 000 000 AAX', '2021-08-06 06:02:06', '2021-08-06 06:02:06', 1, '89.176.136.238', 'admin');
+INSERT INTO `dbt_deposit` VALUES (2, 'XP8M1G', NULL, 'USDE', 100.00000000, 'admin', 0.00000000, 'Admin1 2021-08-06: credit +100 USDE', '2021-08-06 06:09:04', '2021-08-06 06:09:04', 1, '89.176.136.238', 'admin');
+INSERT INTO `dbt_deposit` VALUES (3, 'TBFDJT', NULL, 'USDE', 50.00000000, 'admin', 0.00000000, 'Admin 1 credit 2021-08-06: +50 USDE  test', '2021-08-06 06:11:26', '2021-08-06 06:11:26', 1, '89.176.136.238', 'admin');
+INSERT INTO `dbt_deposit` VALUES (4, '4Y0HIQ', NULL, 'AAX', 70000000.00000000, 'admin', 0.00000000, 'CREDIT by Admin1, 2021-08-08\r\n+70.000.000 AAX', '2021-08-08 06:42:03', '2021-08-08 06:42:03', 1, '89.176.136.238', 'admin');
+INSERT INTO `dbt_deposit` VALUES (5, 'XP8M1G', NULL, 'USDE', -33.00000000, 'admin', 0.00000000, 'SUB by ADMIN1, 2021-08-15, MINUS 33 USDE', '2021-08-15 04:00:18', '2021-08-15 04:00:18', 1, '89.176.136.238', 'admin');
+INSERT INTO `dbt_deposit` VALUES (6, 'XP8M1G', NULL, 'RENTA', 5000.00000000, 'token', 0.00000000, 'TDaPP2w6uDHVgx7eb1CBep59dppWywhGXJ', '2021-08-15 05:28:41', NULL, 0, '89.176.136.238', NULL);
+INSERT INTO `dbt_deposit` VALUES (7, '4Y0HIQ', NULL, 'RENTA', 500000.00000000, 'token', 0.00000000, '6uDHVgx7eb1CBep59dppWywhGXJ', '2021-09-13 10:43:37', NULL, 1, '89.176.136.238', NULL);
+INSERT INTO `dbt_deposit` VALUES (8, '4Y0HIQ', NULL, 'AMORE', 330000.00000000, 'token', 0.00000000, 'dfgbrebrgbhhhjžjh', '2021-09-13 11:11:58', NULL, 1, '89.176.136.238', NULL);
+INSERT INTO `dbt_deposit` VALUES (9, '4Y0HIQ', NULL, 'ETL', 10000.00000000, 'token', 0.00000000, 'gfdfgiuzfdxcgfh', '2021-09-15 03:35:39', NULL, 1, '89.176.136.238', NULL);
+INSERT INTO `dbt_deposit` VALUES (10, '4Y0HIQ', NULL, 'IDEA', 15000.00000000, 'token', 0.00000000, 'dtzuáíé=fghvjkervf', '2021-09-21 01:42:01', NULL, 1, '89.176.136.238', NULL);
+INSERT INTO `dbt_deposit` VALUES (11, '4Y0HIQ', NULL, 'ETL', 500.00000000, 'token', 0.00000000, 'etrhw?ztšztrtjhrtjh', '2021-09-22 09:34:34', NULL, 0, '89.176.136.238', NULL);
+INSERT INTO `dbt_deposit` VALUES (12, '4Y0HIQ', NULL, 'USDE', 100.00000000, 'admin', 0.00000000, 'CREDIT by ADMIN, +100 USDE, 2021-09-23', '2021-09-23 05:47:43', '2021-09-23 05:47:43', 1, '89.176.136.238', 'admin');
+INSERT INTO `dbt_deposit` VALUES (13, '4Y0HIQ', NULL, 'USDT', 100.00000000, 'admin', 0.00000000, 'CREDIT by ADMIN 1, 100 USDT\r\n2021-09-23', '2021-09-23 05:49:23', '2021-09-23 05:49:23', 1, '89.176.136.238', 'admin');
+INSERT INTO `dbt_deposit` VALUES (14, '4Y0HIQ', NULL, 'USDE', 300.00000000, 'admin', 0.00000000, 'CREDIT by Admin1, +300 USDE, 2021-10-13', '2021-10-13 09:11:17', '2021-10-13 09:11:17', 1, '78.102.29.104', 'admin');
+INSERT INTO `dbt_deposit` VALUES (15, '4Y0HIQ', NULL, 'ETL', 500000.00000000, 'admin', 0.00000000, 'CREDIT by Admin1, +500.000 ETL, 2021-10-13', '2021-10-13 09:12:28', '2021-10-13 09:12:28', 1, '78.102.29.104', 'admin');
+INSERT INTO `dbt_deposit` VALUES (16, '4Y0HIQ', NULL, 'IDEA', 300000.00000000, 'admin', 0.00000000, 'CREDIT by Admin1, +300.000 IDEA, 2021-10-13', '2021-10-13 09:13:13', '2021-10-13 09:13:13', 1, '78.102.29.104', 'admin');
+INSERT INTO `dbt_deposit` VALUES (17, '4Y0HIQ', NULL, 'RENTA', 100000.00000000, 'admin', 0.00000000, 'CREDIT by Admin1, +100.000 RENTA, 2021-10-13', '2021-10-13 09:14:34', '2021-10-13 09:14:34', 1, '78.102.29.104', 'admin');
+INSERT INTO `dbt_deposit` VALUES (18, '4Y0HIQ', NULL, 'GLD', 10000.00000000, 'admin', 0.00000000, 'CREDIT by Admin1, +10.000 GLD, 2021-10-13', '2021-10-13 09:15:29', '2021-10-13 09:15:29', 1, '78.102.29.104', 'admin');
+INSERT INTO `dbt_deposit` VALUES (19, 'XP8M1G', NULL, 'USDE', 500.00000000, 'admin', 0.00000000, 'CREDIT by Admin1, +500 USDE, 2021-10-13', '2021-10-13 09:16:59', '2021-10-13 09:16:59', 1, '78.102.29.104', 'admin');
+INSERT INTO `dbt_deposit` VALUES (20, 'XP8M1G', NULL, 'ETL', 300000.00000000, 'admin', 0.00000000, 'CREDIT by Admin1, +300.000 ETL, 2021-10-13', '2021-10-13 09:18:11', '2021-10-13 09:18:11', 1, '78.102.29.104', 'admin');
+INSERT INTO `dbt_deposit` VALUES (21, 'XP8M1G', NULL, 'IDEA', 150000.00000000, 'admin', 0.00000000, 'CREDIT by Admin1, +150.000 IDEA, 2021-10-13', '2021-10-13 09:22:31', '2021-10-13 09:22:31', 1, '78.102.29.104', 'admin');
+INSERT INTO `dbt_deposit` VALUES (22, 'XP8M1G', NULL, 'RENTA', 100000.00000000, 'admin', 0.00000000, '+100.000 RENTA, CREDIT by Admin1, 2021-10-13', '2021-10-13 09:25:44', '2021-10-13 09:25:44', 1, '78.102.29.104', 'admin');
+INSERT INTO `dbt_deposit` VALUES (23, 'XP8M1G', NULL, 'GLD', 500.00000000, 'admin', 0.00000000, '+500 GLD, CREDIT by Admin1, 2021-10-13', '2021-10-13 09:30:07', '2021-10-13 09:30:07', 1, '78.102.29.104', 'admin');
+INSERT INTO `dbt_deposit` VALUES (24, 'XP8M1G', NULL, 'USDE', 10000.00000000, 'admin', 0.00000000, '+10.000 USDE, by Admin1, 2021-10-25', '2021-10-25 08:05:45', '2021-10-25 08:05:45', 1, '78.102.29.226', 'admin');
+INSERT INTO `dbt_deposit` VALUES (25, 'CXGSAN', NULL, 'TEST', 100000.00000000, 'admin', 0.00000000, 'credit byy admin1, 2022-03-15', '2022-03-15 03:46:50', '2022-03-15 03:46:50', 1, '94.113.205.199', 'admin');
+INSERT INTO `dbt_deposit` VALUES (26, 'CXGSAN', NULL, 'USDT', 100.00000000, 'admin', 0.00000000, '+100 USDT, CREDIT by Admin1, 2022-03-15', '2022-03-15 03:48:37', '2022-03-15 03:48:37', 1, '94.113.205.199', 'admin');
+INSERT INTO `dbt_deposit` VALUES (27, '91UHYC', NULL, 'TEST', 50000.00000000, 'admin', 0.00000000, '+50.000 TEST, CREDIT by Admin1, 2022-03-15', '2022-03-15 04:02:45', '2022-03-15 04:02:45', 1, '94.113.205.199', 'admin');
+INSERT INTO `dbt_deposit` VALUES (28, '91UHYC', NULL, 'USDT', 200.00000000, 'admin', 0.00000000, '+200 USDT, CREDIT by Admin1, 2022-03-15', '2022-03-15 04:03:59', '2022-03-15 04:03:59', 1, '94.113.205.199', 'admin');
+INSERT INTO `dbt_deposit` VALUES (29, 'WYQMUB', NULL, 'TEST', 100000.00000000, 'admin', 0.00000000, '+100.000 TEST by Admin1, 2022-03-16', '2022-03-16 02:39:40', '2022-03-16 02:39:40', 1, '94.113.205.199', 'admin');
+INSERT INTO `dbt_deposit` VALUES (30, 'WYQMUB', NULL, 'USDT', 100.00000000, 'admin', 0.00000000, '+100 USDT by Admin1, 2022-03-16', '2022-03-16 02:41:13', '2022-03-16 02:41:13', 1, '94.113.205.199', 'admin');
+INSERT INTO `dbt_deposit` VALUES (31, 'WYQMUB', NULL, 'GLD', 1000.00000000, 'admin', 0.00000000, '+1000 GLD by Admin1, 2022-03-16', '2022-03-16 02:42:28', '2022-03-16 02:42:28', 1, '94.113.205.199', 'admin');
+INSERT INTO `dbt_deposit` VALUES (32, 'WYQMUB', NULL, 'USDE', 1000.00000000, 'admin', 0.00000000, '+1000 USDE by Admin1, 2022-03-16\r\nTEST', '2022-03-16 02:43:45', '2022-03-16 02:43:45', 1, '94.113.205.199', 'admin');
+INSERT INTO `dbt_deposit` VALUES (33, '3VHN6H', NULL, 'TEST', 100000.00000000, 'admin', 0.00000000, '+100.000 TEST CREDIT by Admin1, 2022-03-16', '2022-03-16 08:11:30', '2022-03-16 08:11:30', 1, '94.113.205.199', 'admin');
+INSERT INTO `dbt_deposit` VALUES (34, '3VHN6H', NULL, 'USDT', 100.00000000, 'admin', 0.00000000, '+100 USDT Credit by Admin1, 2022-03-16', '2022-03-16 08:15:31', '2022-03-16 08:15:31', 1, '94.113.205.199', 'admin');
+INSERT INTO `dbt_deposit` VALUES (35, '3VHN6H', NULL, 'GLD', 500.00000000, 'admin', 0.00000000, '+500 GLD, Credit by Admin1, 2022-03-16', '2022-03-16 08:17:40', '2022-03-16 08:17:40', 1, '94.113.205.199', 'admin');
+INSERT INTO `dbt_deposit` VALUES (36, '3VHN6H', NULL, 'USDE', 500.00000000, 'admin', 0.00000000, '+500 USDE, Credit by Admin1, 2022-03-16', '2022-03-16 08:19:17', '2022-03-16 08:19:17', 1, '94.113.205.199', 'admin');
+
+-- ----------------------------
+-- Table structure for dbt_fees
+-- ----------------------------
+DROP TABLE IF EXISTS `dbt_fees`;
+CREATE TABLE `dbt_fees`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `level` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `fees` double NOT NULL,
+  `currency_id` int(11) NOT NULL,
+  `currency_symbol` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of dbt_fees
+-- ----------------------------
+INSERT INTO `dbt_fees` VALUES (2, 'BUY', 0.0001, 0, 'USDT', 1);
+INSERT INTO `dbt_fees` VALUES (3, 'SELL', 0.0002, 0, 'USDT', 1);
+
+-- ----------------------------
+-- Table structure for dbt_market
+-- ----------------------------
+DROP TABLE IF EXISTS `dbt_market`;
+CREATE TABLE `dbt_market`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `full_name` varchar(300) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `symbol` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of dbt_market
+-- ----------------------------
+INSERT INTO `dbt_market` VALUES (1, 'BTC', 'BTC Market', 'BTC', 0);
+INSERT INTO `dbt_market` VALUES (2, 'USD', 'USDT Market', 'ETH', 0);
+INSERT INTO `dbt_market` VALUES (3, 'LTC', 'LTC Market', 'LTC', 0);
+INSERT INTO `dbt_market` VALUES (4, 'Doge', 'Dogecoin Market', 'DOGE', 0);
+INSERT INTO `dbt_market` VALUES (5, 'USDE', 'USDE Market', 'USDE', 1);
+INSERT INTO `dbt_market` VALUES (6, 'USDT', 'USDT Market', 'USDT', 1);
+INSERT INTO `dbt_market` VALUES (7, 'USD Coin', 'USD Coin (USDC)', 'USDC', 1);
+
+-- ----------------------------
+-- Table structure for dbt_payout_method
+-- ----------------------------
+DROP TABLE IF EXISTS `dbt_payout_method`;
+CREATE TABLE `dbt_payout_method`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `currency_symbol` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `method` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `wallet_id` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of dbt_payout_method
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for dbt_security
+-- ----------------------------
+DROP TABLE IF EXISTS `dbt_security`;
+CREATE TABLE `dbt_security`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `keyword` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `data` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `status` int(11) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of dbt_security
+-- ----------------------------
+INSERT INTO `dbt_security` VALUES (1, 'url', '{\"url\":\"http:\\/\\/localhost\\/tradebox_ci4_final_test\\/\"}', 0);
+INSERT INTO `dbt_security` VALUES (2, 'login', '{\"duration\":\"30\",\"wrong_try\":\"3\",\"ip_block\":\"3\"}', 0);
+INSERT INTO `dbt_security` VALUES (3, 'https', '{\"cookie_secure\":0,\"cookie_http\":0}', 0);
+INSERT INTO `dbt_security` VALUES (4, 'xss_filter', '', 0);
+INSERT INTO `dbt_security` VALUES (5, 'csrf_token', '', 1);
+INSERT INTO `dbt_security` VALUES (6, 'capture', '{\"site_key\":\"6Lddh0AUAAAAAJm25vFsAOOG0Hixa1ZVg17jQ9ca\",\"secret_key\":\"6Lddh0AUAAAAAHNQXul04PdL7ponU4N9QiKywGt-\"}', 0);
+INSERT INTO `dbt_security` VALUES (7, 'sms', '', 0);
+INSERT INTO `dbt_security` VALUES (8, 'encryption', '', 0);
+INSERT INTO `dbt_security` VALUES (9, 'password', '', 0);
+INSERT INTO `dbt_security` VALUES (10, 'email', '', 0);
+
+-- ----------------------------
+-- Table structure for dbt_sms_email_template
+-- ----------------------------
+DROP TABLE IF EXISTS `dbt_sms_email_template`;
+CREATE TABLE `dbt_sms_email_template`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sms_or_email` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `template_name` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `subject_en` varchar(300) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `subject_fr` varchar(300) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `template_en` varchar(300) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `template_fr` varchar(300) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of dbt_sms_email_template
+-- ----------------------------
+INSERT INTO `dbt_sms_email_template` VALUES (1, 'sms', 'transfer_verification', 'Transfer Verification Code', 'Transfer Verification Code', 'You are about to transfar %amount% to the account %receiver_id% Your code is %code%\r\n', 'Vous êtes sur le point de transférer %amount% sur le compte %receiver_id% Votre code est  %code%\r\n');
+INSERT INTO `dbt_sms_email_template` VALUES (2, 'email', 'transfer_verification', 'Transfer Verification', 'Transfer Verification', 'You are about to transfar %amount% to the account %receiver_id%  Your code is %varify_code%', 'Vous êtes sur le point de transférer %amount% sur le compte %receiver_id% Votre code est %varify_code% ');
+INSERT INTO `dbt_sms_email_template` VALUES (3, 'sms', 'transfer_success', 'Transfer Confirm', 'Transfer Confirm', 'You successfully transfer The amount $%amount% to the account %receiver_id%. Your new balance is %new_balance%', 'You successfully transfer The amount $%amount% to the account %receiver_id%. Your new balance is %new_balance%');
+INSERT INTO `dbt_sms_email_template` VALUES (4, 'email', 'transfer_success', 'Tranfer Confirm', 'Tranfer Confirm', 'You successfully transfer The amount $%amount% to the account %receiver_id%. Your new balance is %new_balance%', 'You successfully transfer The amount $%amount% to the account %receiver_id%. Your new balance is %new_balance%');
+INSERT INTO `dbt_sms_email_template` VALUES (5, 'sms', 'withdraw_verification', '', '', 'You Withdraw The Amount Is %amount% The Verification Code is <h1>%varify_code%</h1>', 'You Withdraw The Amount Is %amount% The Verification Code is <h1>%varify_code%</h1>');
+INSERT INTO `dbt_sms_email_template` VALUES (6, 'email', 'withdraw_verification', '', '', 'You Withdraw The Amount Is %amount% The Verification Code is <h1>%varify_code%</h1>', 'You Withdraw The Amount Is %amount% The Verification Code is <h1>%varify_code%</h1>');
+INSERT INTO `dbt_sms_email_template` VALUES (7, 'sms', 'withdraw_success', 'Withdraw Success', 'Withdraw Success', 'Hi, %name% You successfully withdraw the amount is $%amount% from your account. Your new balance is $%new_balance%', 'Hi, %name% You successfully withdraw the amount is $%amount% from your account. Your new balance is $%new_balance%');
+INSERT INTO `dbt_sms_email_template` VALUES (8, 'email', 'withdraw_success', 'Withdraw', 'Withdraw', 'You successfully withdraw the amount is $%amount% from your account. Your new balance is $%new_balance%', 'You successfully withdraw the amount is $%amount% from your account. Your new balance is $%new_balance%');
+INSERT INTO `dbt_sms_email_template` VALUES (9, 'email', 'forgot_password', '', '', 'The Verification Code is <h1>%varify_code%</h1>', 'The Verification Code is <h1>%varify_code%</h1>');
+INSERT INTO `dbt_sms_email_template` VALUES (10, 'sms', 'deposit_success', 'Deposit', 'Deposit', 'Hi, %name% You Successfully  Deposit The Amount Is %amount%  date %date%', 'Hi, %name% You Successfully  Deposit The Amount Is %amount%  date %date%');
+INSERT INTO `dbt_sms_email_template` VALUES (11, 'email', 'deposit_success', 'Deposit', 'Deposit', 'You successfully deposit the amount is %amount%. ', 'You successfully deposit the amount is %amount%. ');
+INSERT INTO `dbt_sms_email_template` VALUES (12, 'email', 'registered', 'Account Activation', 'Account Activation', 'Your account was created successfully Please click on the link below to activate your account. %url%\r\n', 'Votre compte a &eacute;t&eacute; cr&eacute;&eacute; avec succ&egrave;s, veuillez cliquer sur le lien ci-dessous pour activer votre compte.&nbsp;%url%\r\n');
+
+-- ----------------------------
+-- Table structure for dbt_theme
+-- ----------------------------
+DROP TABLE IF EXISTS `dbt_theme`;
+CREATE TABLE `dbt_theme`  (
+  `id` int(11) NOT NULL,
+  `settings` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1
+) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of dbt_theme
+-- ----------------------------
+INSERT INTO `dbt_theme` VALUES (1, '{\"body_background_color\":\"#060d13\",\"body_font_color\":\"#cdcfd0\",\"menu_bg_color\":\"#121d27\",\"menu_font_color\":\"#cdcfd0\",\"footer_bg_color\":\"#121d27\",\"footer_font_color\":\"#cdcfd0\",\"btn_bg_color\":\"#137000\",\"btn_font_color\":\"#cdcfd0\",\"top_footer_horizontal_border_color\":\"#262d34\",\"footer_menu_border_color\":\"#262d34\",\"bottom_footer_background_color\":\"#1b2c3a\",\"bottom_footer_font_color\":\"#cdcfd0\",\"theme_color\":\"#02c2f2\",\"newslatter_bg\":\"#4f4c54\",\"newslatter_font\":\"#cdcfd0\",\"form_background_color\":\"#0d0d0d\",\"form_border_color\":\"#262d34\",\"form_label_color\":\"#cdcfd0\",\"form_input_field_background_color\":\"#121d27\",\"input_field_border_color\":\"#262d34\",\"input_field_color\":\"#cdcfd0\",\"newslatter_img\":\"/upload\\/themes\\/1616220036_e03437cfd67b78919818.jpg\"}', 1);
+
+-- ----------------------------
+-- Table structure for dbt_transaction_setup
+-- ----------------------------
+DROP TABLE IF EXISTS `dbt_transaction_setup`;
+CREATE TABLE `dbt_transaction_setup`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `trntype` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `acctype` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `currency_symbol` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `lower` double(19, 8) NOT NULL,
+  `upper` double(19, 8) NOT NULL,
+  `duration` int(11) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of dbt_transaction_setup
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for dbt_transfer
+-- ----------------------------
+DROP TABLE IF EXISTS `dbt_transfer`;
+CREATE TABLE `dbt_transfer`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sender_user_id` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `receiver_user_id` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `amount` double(19, 8) NULL DEFAULT NULL,
+  `currency_symbol` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `fees` double(19, 8) NOT NULL,
+  `request_ip` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `date` date NULL DEFAULT NULL,
+  `comments` mediumtext CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
+  `status` int(11) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci COMMENT = 'client to client transfer success, request data recorded.' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of dbt_transfer
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for dbt_user
+-- ----------------------------
+DROP TABLE IF EXISTS `dbt_user`;
+CREATE TABLE `dbt_user`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `first_name` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `last_name` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `username` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `email` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `password` varchar(300) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `phone` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `password_reset_token` varchar(300) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `googleauth` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `referral_id` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `referral_status` tinyint(1) NOT NULL DEFAULT 0,
+  `language` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `country` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `city` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `address` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
+  `bio` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
+  `image` varchar(300) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `status` tinyint(1) NOT NULL COMMENT '\"0=Deactivated account, 1=Activated account, 2=Pending account, 3=Suspend account\"',
+  `verified` int(11) NOT NULL DEFAULT 0 COMMENT '0= did not submit info, 1= verified, 2=Cancel, 3=processing',
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_date` datetime NULL DEFAULT NULL,
+  `ip` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `user_id`(`user_id`) USING BTREE,
+  UNIQUE INDEX `email`(`email`) USING BTREE,
+  UNIQUE INDEX `phone`(`phone`) USING BTREE,
+  UNIQUE INDEX `username`(`username`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of dbt_user
+-- ----------------------------
+INSERT INTO `dbt_user` VALUES (1, 'JR4TI2', 'AB Develiars', 'Islam', NULL, 'ab@gmail.com', '1ffa4e1792b7727be29881c6042649e9', '+8801616347466', 'aba4b6df24bad7052a4659afd77fcd24', NULL, NULL, 0, 'english', NULL, NULL, 'Dhaka, Bangladesh.', 'about yours', '/upload/user/1627550777_10d6be01a1106d63d7af.png', 0, 0, '2021-08-08 16:46:22', '2021-07-29 04:11:44', '89.176.136.238');
+INSERT INTO `dbt_user` VALUES (2, '4Y0HIQ', 'Tester1', 'Test1 TDaPP2w6uDHVgx7eb1CBep59dppWywhGXJ', NULL, 'ico@atlas.cz', '43992779c37ce9f6cbe83d784f19b6ef', '+420721521735', '8c334108f93884651fc815fb90340291', NULL, NULL, 0, 'english', NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-01-04 15:42:06', '2021-07-29 04:33:01', '89.176.136.238');
+INSERT INTO `dbt_user` VALUES (3, 'XP8M1G', 'Tester2', 'Test2 ', NULL, 'import@atlas.cz', '1ffa4e1792b7727be29881c6042649e9', '728571681', NULL, NULL, '10000001', 0, 'english', NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-08-07 20:33:12', '2021-08-05 14:56:05', '89.176.136.238');
+INSERT INTO `dbt_user` VALUES (4, 'TBFDJT', 'Tester3', 'Test3', NULL, 'miroslav.novotny@atlas.cz', '1ffa4e1792b7727be29881c6042649e9', '+420608644222', NULL, NULL, '10000002', 0, 'english', NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-08-07 20:33:17', '2021-08-05 15:02:10', '89.176.136.238');
+INSERT INTO `dbt_user` VALUES (5, 'SNUER3', 'Avye Snow', NULL, NULL, 'mohytab@mailinator.com', 'ba00a31d74bca7ba203daa4b9c3e824e', NULL, '0b29f0ff5cc88be2b69a9f30042b0b08', NULL, NULL, 0, 'english', NULL, NULL, NULL, NULL, NULL, 0, 0, '2021-08-07 07:37:38', '2021-08-07 07:37:38', '182.160.105.186');
+INSERT INTO `dbt_user` VALUES (6, 'LM7I0I', 'Tester4', 'Test4', NULL, 'personalni@atlas.cz', '1ffa4e1792b7727be29881c6042649e9', '00420721521732', NULL, NULL, '', 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '2021-08-08 17:15:23', '2021-08-08 03:34:20', '89.176.136.238');
+INSERT INTO `dbt_user` VALUES (7, 'JVV30Q', 'Tester5 Test5', '', NULL, 'tablet@atlas.cz', '2af4aad4fb3f3c3227d22bfe76cdfea5', '00420721521731', '8a6b64748da23b631d46e7fbdf9d89e4', NULL, NULL, 0, 'english', NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-08-08 17:46:30', '2021-08-08 04:06:25', '89.176.136.238');
+INSERT INTO `dbt_user` VALUES (8, 'XJ5L76', 'Tester6', 'Test6', NULL, 'kariera@atlas.cz', '2af4aad4fb3f3c3227d22bfe76cdfea5', '00420721521736', NULL, NULL, '888000005', 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '2021-08-08 17:37:48', '2021-08-08 04:28:09', '89.176.136.238');
+INSERT INTO `dbt_user` VALUES (10, 'SHIOMU', 'Kaye Houston', NULL, NULL, 'bdtask.mehedi@gmail.com', 'ba00a31d74bca7ba203daa4b9c3e824e', NULL, 'e7ac5c650124c440bbde44d658134254', NULL, NULL, 0, 'english', NULL, NULL, NULL, NULL, NULL, 0, 0, '2021-09-20 23:53:17', '2021-09-20 23:53:17', '182.160.105.186');
+INSERT INTO `dbt_user` VALUES (11, 'UYE1H6', 'Tester 8 Test 8', NULL, NULL, 'idea@atlas.cz', '43d088133c229570a8f8729b824b2c3b', NULL, 'ebdf30d1f1e6479b5dd8879ae7f52b87', NULL, NULL, 0, 'english', NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-09-22 15:47:13', '2021-09-22 02:46:11', '89.176.136.238');
+INSERT INTO `dbt_user` VALUES (12, 'CJFF6V', 'Kristina Baltic', NULL, NULL, 'baltickriscoder@gmail.com', 'b4febb658e0dab861087c931a6df0584', NULL, 'c2ae4d04a9dcb0f16d706624b56b83e9', NULL, NULL, 0, 'english', NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-11-18 19:50:17', '2021-11-18 05:44:43', '188.43.136.33');
+INSERT INTO `dbt_user` VALUES (13, 'GUGLSH', 'usman', NULL, NULL, 'engruh@hotmail.com', '28d1631b50c0ed8139a640586dbd816c', NULL, '6d118761766ebb53336c39e34e2c14e0', NULL, NULL, 0, 'english', NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-01-04 19:31:40', '2022-01-04 05:29:14', '180.92.133.92');
+INSERT INTO `dbt_user` VALUES (14, '2YJQCB', 'Farah', NULL, NULL, 'farahsagheer@gmail.com', '47ce92c04262d68a43d68ce7ec8e98e5', NULL, '6d769fde783d663cc6fe4abe3c023445', NULL, NULL, 0, 'english', NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-01-19 17:24:07', '2022-01-19 03:19:31', '110.39.94.5');
+INSERT INTO `dbt_user` VALUES (15, 'JVLKKU', 'Andrey Dyadkov', NULL, NULL, 'dyadkovdevelop@gmail.com', '4d5e8a9330f97319ba5c12a7a966d94e', NULL, 'b70db031b5f72fbda752b1c46cb060b9', NULL, NULL, 0, 'english', NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-01-20 09:50:17', '2022-01-19 19:34:55', '188.43.136.33');
+INSERT INTO `dbt_user` VALUES (16, '1ZKLNX', 'kutikovakr', NULL, NULL, 'andrekutikov@gmail.com', 'f1fb7c6988cd7d9ce9874a9c8ffa3a86', NULL, '2964b821375d27433033b2d363ee1508', NULL, NULL, 0, 'english', NULL, NULL, NULL, NULL, NULL, 0, 0, '2022-01-28 08:47:13', '2022-01-28 08:47:13', '188.163.73.203');
+INSERT INTO `dbt_user` VALUES (17, 'XE4YNJ', 'Theophilus', NULL, NULL, 'theophilustheo225@gmail.com', '92cad77c19adcb10f8b1fc3dd513a283', NULL, '86dd6f4069712d363d0afedb6bfe4754', NULL, NULL, 0, 'english', NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-02-10 04:05:28', '2022-02-09 14:05:06', '197.210.47.3');
+INSERT INTO `dbt_user` VALUES (18, 'YQGAJM', 'Eugene', NULL, NULL, 'levyeugene0813@gmail.com', '1a38f5b4b18daf3a01cf4227ee8a9de5', NULL, '51e7b7ab78e4516f8245e7f7eec564da', NULL, NULL, 0, 'english', NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-03-03 18:47:17', '2022-03-03 04:41:36', '188.43.136.34');
+INSERT INTO `dbt_user` VALUES (19, '10WAIU', 'sven', NULL, NULL, 'svendev520@gmail.com', 'c4ed3bac3689d0eed5578552b50de6e7', NULL, '4da0a0c1cf2bdf71645c6661aeab5ff0', NULL, NULL, 0, 'english', NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-03-15 04:15:43', '2022-03-14 15:06:50', '188.43.136.34');
+INSERT INTO `dbt_user` VALUES (20, 'CXGSAN', 'Test User12', NULL, NULL, 'hr@kariera.guru', '540e955e57cf680402aac166bc3bdddb', NULL, '715f95235ec0237849d95af70b22236b', NULL, NULL, 0, 'english', NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-03-15 04:35:40', '2022-03-14 15:33:47', '94.113.205.199');
+INSERT INTO `dbt_user` VALUES (21, '91UHYC', 'Test', 'User13', NULL, 'admin@tokenstore.world', '9ad66ae2c7d1a63f562c7ca8c0185254', '602488111', NULL, NULL, '', 0, 'english', NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-03-15 16:53:07', '2022-03-15 03:53:07', '94.113.205.199');
+INSERT INTO `dbt_user` VALUES (22, 'WYQMUB', 'Test User14', NULL, NULL, 'admin@amore.bar', '540e955e57cf680402aac166bc3bdddb', NULL, 'daf38dc5f1a2408ad4aa16ae5405889d', NULL, NULL, 0, 'english', NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-03-16 14:08:00', '2022-03-16 01:02:47', '94.113.205.199');
+INSERT INTO `dbt_user` VALUES (23, '3VHN6H', 'Test User15', NULL, NULL, 'admin@globaldollar.world', '540e955e57cf680402aac166bc3bdddb', NULL, '2522e71a85f4d8f55b5779d376b403c5', NULL, NULL, 0, 'english', NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-03-16 16:16:46', '2022-03-16 03:14:25', '94.113.205.199');
+
+-- ----------------------------
+-- Table structure for dbt_user_log
+-- ----------------------------
+DROP TABLE IF EXISTS `dbt_user_log`;
+CREATE TABLE `dbt_user_log`  (
+  `log_id` int(11) NOT NULL AUTO_INCREMENT,
+  `log_type` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL COMMENT '\"acc_update = User Account Update, login=User Login info, deposit=User Deposit info, transfer=User Transfer info, withdraw=User Withdraw info, open_order=\"',
+  `access_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `user_agent` varchar(300) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `user_id` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `ip` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  PRIMARY KEY (`log_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 93 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of dbt_user_log
+-- ----------------------------
+INSERT INTO `dbt_user_log` VALUES (1, 'login', '2021-07-29 04:12:44', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-92.0.4515.107\",\"platform\":\"Windows 10\"}', 'JR4TI2', '103.113.154.250');
+INSERT INTO `dbt_user_log` VALUES (2, 'login', '2021-07-29 05:09:18', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-92.0.4515.107\",\"platform\":\"Windows 10\"}', 'JR4TI2', '103.113.154.250');
+INSERT INTO `dbt_user_log` VALUES (3, 'login', '2021-07-29 05:13:50', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-92.0.4515.107\",\"platform\":\"Windows 10\"}', 'JR4TI2', '103.113.154.250');
+INSERT INTO `dbt_user_log` VALUES (4, 'login', '2021-08-06 09:35:22', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-91.0.4472.114\",\"platform\":\"Linux\"}', '4Y0HIQ', '89.176.136.238');
+INSERT INTO `dbt_user_log` VALUES (5, 'login', '2021-08-07 02:47:30', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-91.0.4472.114\",\"platform\":\"Linux\"}', 'XP8M1G', '89.176.136.238');
+INSERT INTO `dbt_user_log` VALUES (6, 'login', '2021-08-07 05:12:02', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-92.0.4515.131\",\"platform\":\"Windows 10\"}', 'XP8M1G', '84.42.240.202');
+INSERT INTO `dbt_user_log` VALUES (7, 'login', '2021-08-07 05:39:56', '{\"device\":\"Firefox\",\"browser\":\"Firefox V-90.0\",\"platform\":\"Windows 10\"}', 'XP8M1G', '84.42.240.202');
+INSERT INTO `dbt_user_log` VALUES (8, 'login', '2021-08-07 07:15:13', '{\"device\":\"Firefox\",\"browser\":\"Firefox V-72.0\",\"platform\":\"Windows 10\"}', 'XP8M1G', '84.42.240.202');
+INSERT INTO `dbt_user_log` VALUES (9, 'login', '2021-08-07 07:23:05', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-92.0.4515.131\",\"platform\":\"Windows 10\"}', 'XP8M1G', '182.160.105.186');
+INSERT INTO `dbt_user_log` VALUES (10, 'login', '2021-08-07 07:25:00', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-92.0.4515.131\",\"platform\":\"Windows 10\"}', 'XP8M1G', '182.160.105.186');
+INSERT INTO `dbt_user_log` VALUES (11, 'login', '2021-08-07 13:42:29', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-91.0.4472.114\",\"platform\":\"Linux\"}', 'XP8M1G', '89.176.136.238');
+INSERT INTO `dbt_user_log` VALUES (12, 'login', '2021-08-08 04:50:47', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-91.0.4472.114\",\"platform\":\"Linux\"}', 'JVV30Q', '89.176.136.238');
+INSERT INTO `dbt_user_log` VALUES (13, 'login', '2021-08-08 06:03:38', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-91.0.4472.114\",\"platform\":\"Linux\"}', 'TBFDJT', '89.176.136.238');
+INSERT INTO `dbt_user_log` VALUES (14, 'login', '2021-08-08 06:16:03', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-91.0.4472.114\",\"platform\":\"Linux\"}', '4Y0HIQ', '89.176.136.238');
+INSERT INTO `dbt_user_log` VALUES (15, 'login', '2021-08-08 06:46:11', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-91.0.4472.114\",\"platform\":\"Linux\"}', '4Y0HIQ', '89.176.136.238');
+INSERT INTO `dbt_user_log` VALUES (16, 'login', '2021-08-15 04:22:25', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-91.0.4472.114\",\"platform\":\"Linux\"}', 'XP8M1G', '89.176.136.238');
+INSERT INTO `dbt_user_log` VALUES (17, 'login', '2021-08-15 05:27:20', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-91.0.4472.114\",\"platform\":\"Linux\"}', 'XP8M1G', '89.176.136.238');
+INSERT INTO `dbt_user_log` VALUES (18, 'login', '2021-08-19 05:53:55', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-92.0.4515.159\",\"platform\":\"Linux\"}', '4Y0HIQ', '89.176.136.238');
+INSERT INTO `dbt_user_log` VALUES (19, 'login', '2021-08-24 00:49:43', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-92.0.4515.159\",\"platform\":\"Linux\"}', '4Y0HIQ', '89.176.136.238');
+INSERT INTO `dbt_user_log` VALUES (20, 'login', '2021-08-24 01:18:22', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-92.0.4515.159\",\"platform\":\"Linux\"}', '4Y0HIQ', '89.176.136.238');
+INSERT INTO `dbt_user_log` VALUES (21, 'login', '2021-08-30 01:14:04', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-92.0.4515.159\",\"platform\":\"Linux\"}', '4Y0HIQ', '89.176.136.238');
+INSERT INTO `dbt_user_log` VALUES (22, 'login', '2021-08-30 02:39:34', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-92.0.4515.159\",\"platform\":\"Linux\"}', 'XP8M1G', '89.176.136.238');
+INSERT INTO `dbt_user_log` VALUES (23, 'login', '2021-09-13 10:42:32', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-92.0.4515.159\",\"platform\":\"Linux\"}', '4Y0HIQ', '89.176.136.238');
+INSERT INTO `dbt_user_log` VALUES (24, 'login', '2021-09-15 00:51:35', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-92.0.4515.159\",\"platform\":\"Linux\"}', '4Y0HIQ', '89.176.136.238');
+INSERT INTO `dbt_user_log` VALUES (25, 'login', '2021-09-15 01:02:05', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-92.0.4515.159\",\"platform\":\"Linux\"}', '4Y0HIQ', '89.176.136.238');
+INSERT INTO `dbt_user_log` VALUES (26, 'login', '2021-09-15 01:08:59', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-92.0.4515.159\",\"platform\":\"Linux\"}', '4Y0HIQ', '89.176.136.238');
+INSERT INTO `dbt_user_log` VALUES (27, 'login', '2021-09-15 01:14:12', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-92.0.4515.159\",\"platform\":\"Linux\"}', '4Y0HIQ', '89.176.136.238');
+INSERT INTO `dbt_user_log` VALUES (28, 'login', '2021-09-15 01:40:51', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-92.0.4515.159\",\"platform\":\"Linux\"}', '4Y0HIQ', '89.176.136.238');
+INSERT INTO `dbt_user_log` VALUES (29, 'login', '2021-09-15 02:10:29', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-92.0.4515.159\",\"platform\":\"Linux\"}', '4Y0HIQ', '89.176.136.238');
+INSERT INTO `dbt_user_log` VALUES (30, 'login', '2021-09-15 03:34:56', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-92.0.4515.159\",\"platform\":\"Linux\"}', '4Y0HIQ', '89.176.136.238');
+INSERT INTO `dbt_user_log` VALUES (31, 'login', '2021-09-17 03:26:52', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-92.0.4515.159\",\"platform\":\"Linux\"}', '4Y0HIQ', '89.176.136.238');
+INSERT INTO `dbt_user_log` VALUES (32, 'login', '2021-09-21 01:41:05', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-93.0.4577.82\",\"platform\":\"Linux\"}', '4Y0HIQ', '89.176.136.238');
+INSERT INTO `dbt_user_log` VALUES (33, 'login', '2021-09-22 02:47:35', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-93.0.4577.82\",\"platform\":\"Linux\"}', 'UYE1H6', '89.176.136.238');
+INSERT INTO `dbt_user_log` VALUES (34, 'login', '2021-09-22 09:34:10', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-93.0.4577.82\",\"platform\":\"Linux\"}', '4Y0HIQ', '89.176.136.238');
+INSERT INTO `dbt_user_log` VALUES (35, 'login', '2021-09-25 02:10:59', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-93.0.4577.82\",\"platform\":\"Linux\"}', '4Y0HIQ', '89.176.136.238');
+INSERT INTO `dbt_user_log` VALUES (36, 'login', '2021-09-29 05:37:54', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-93.0.4577.82\",\"platform\":\"Linux\"}', '4Y0HIQ', '78.102.98.204');
+INSERT INTO `dbt_user_log` VALUES (37, 'login', '2021-10-07 00:51:13', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-93.0.4577.82\",\"platform\":\"Linux\"}', '4Y0HIQ', '89.176.133.78');
+INSERT INTO `dbt_user_log` VALUES (38, 'login', '2021-10-07 02:57:44', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-94.0.4606.61\",\"platform\":\"Windows 10\"}', '4Y0HIQ', '84.42.240.202');
+INSERT INTO `dbt_user_log` VALUES (39, 'login', '2021-10-08 01:56:01', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-93.0.4577.82\",\"platform\":\"Linux\"}', '4Y0HIQ', '89.176.133.78');
+INSERT INTO `dbt_user_log` VALUES (40, 'login', '2021-10-08 02:06:04', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-93.0.4577.82\",\"platform\":\"Linux\"}', 'XP8M1G', '89.176.133.78');
+INSERT INTO `dbt_user_log` VALUES (41, 'login', '2021-10-08 02:38:01', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-93.0.4577.82\",\"platform\":\"Linux\"}', '4Y0HIQ', '89.176.133.78');
+INSERT INTO `dbt_user_log` VALUES (42, 'login', '2021-10-12 07:16:22', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-94.0.4606.71\",\"platform\":\"Windows 10\"}', '4Y0HIQ', '84.42.240.202');
+INSERT INTO `dbt_user_log` VALUES (43, 'login', '2021-10-12 07:46:07', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-93.0.4577.82\",\"platform\":\"Linux\"}', 'XP8M1G', '78.102.29.104');
+INSERT INTO `dbt_user_log` VALUES (44, 'login', '2021-10-12 08:01:41', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-93.0.4577.82\",\"platform\":\"Linux\"}', '4Y0HIQ', '78.102.29.104');
+INSERT INTO `dbt_user_log` VALUES (45, 'login', '2021-10-12 08:29:37', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-93.0.4577.82\",\"platform\":\"Linux\"}', 'XP8M1G', '78.102.29.104');
+INSERT INTO `dbt_user_log` VALUES (46, 'login', '2021-10-12 08:52:07', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-93.0.4577.82\",\"platform\":\"Linux\"}', 'XP8M1G', '78.102.29.104');
+INSERT INTO `dbt_user_log` VALUES (47, 'login', '2021-10-12 15:51:45', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-93.0.4577.82\",\"platform\":\"Linux\"}', '4Y0HIQ', '78.102.29.104');
+INSERT INTO `dbt_user_log` VALUES (48, 'login', '2021-10-13 02:25:48', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-93.0.4577.82\",\"platform\":\"Linux\"}', '4Y0HIQ', '78.102.29.104');
+INSERT INTO `dbt_user_log` VALUES (49, 'login', '2021-10-13 04:39:16', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-93.0.4577.82\",\"platform\":\"Linux\"}', '4Y0HIQ', '78.102.29.104');
+INSERT INTO `dbt_user_log` VALUES (50, 'login', '2021-10-13 04:47:13', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-94.0.4606.61\",\"platform\":\"Linux\"}', '4Y0HIQ', '78.102.29.104');
+INSERT INTO `dbt_user_log` VALUES (51, 'login', '2021-10-13 08:35:43', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-93.0.4577.82\",\"platform\":\"Linux\"}', '4Y0HIQ', '78.102.29.104');
+INSERT INTO `dbt_user_log` VALUES (52, 'login', '2021-10-13 10:15:35', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-93.0.4577.82\",\"platform\":\"Linux\"}', '4Y0HIQ', '78.102.29.104');
+INSERT INTO `dbt_user_log` VALUES (53, 'login', '2021-10-13 10:23:21', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-93.0.4577.82\",\"platform\":\"Linux\"}', 'XP8M1G', '78.102.29.104');
+INSERT INTO `dbt_user_log` VALUES (54, 'login', '2021-10-14 01:31:18', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-93.0.4577.82\",\"platform\":\"Linux\"}', 'XP8M1G', '78.102.29.104');
+INSERT INTO `dbt_user_log` VALUES (55, 'login', '2021-10-14 02:19:19', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-94.0.4606.61\",\"platform\":\"Linux\"}', '4Y0HIQ', '78.102.29.104');
+INSERT INTO `dbt_user_log` VALUES (56, 'login', '2021-10-14 02:56:10', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-93.0.4577.82\",\"platform\":\"Linux\"}', '4Y0HIQ', '78.102.29.104');
+INSERT INTO `dbt_user_log` VALUES (57, 'login', '2021-10-14 03:03:14', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-93.0.4577.82\",\"platform\":\"Linux\"}', 'XP8M1G', '78.102.29.104');
+INSERT INTO `dbt_user_log` VALUES (58, 'login', '2021-10-14 03:08:20', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-93.0.4577.82\",\"platform\":\"Linux\"}', '4Y0HIQ', '78.102.29.104');
+INSERT INTO `dbt_user_log` VALUES (59, 'login', '2021-10-15 02:31:53', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-93.0.4577.82\",\"platform\":\"Linux\"}', '4Y0HIQ', '78.102.29.104');
+INSERT INTO `dbt_user_log` VALUES (60, 'login', '2021-10-22 05:56:28', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-95.0.4638.54\",\"platform\":\"Linux\"}', '4Y0HIQ', '78.102.254.85');
+INSERT INTO `dbt_user_log` VALUES (61, 'login', '2021-10-22 06:14:12', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-95.0.4638.54\",\"platform\":\"Linux\"}', '4Y0HIQ', '78.102.254.85');
+INSERT INTO `dbt_user_log` VALUES (62, 'login', '2021-10-22 06:26:50', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-95.0.4638.54\",\"platform\":\"Linux\"}', 'XP8M1G', '78.102.254.85');
+INSERT INTO `dbt_user_log` VALUES (63, 'login', '2021-11-18 05:50:44', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-95.0.4638.54\",\"platform\":\"Windows 10\"}', 'CJFF6V', '188.43.136.33');
+INSERT INTO `dbt_user_log` VALUES (64, 'login', '2021-12-25 08:14:15', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-96.0.4664.110\",\"platform\":\"Windows 10\"}', '4Y0HIQ', '86.49.142.252');
+INSERT INTO `dbt_user_log` VALUES (65, 'login', '2021-12-25 08:15:12', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-96.0.4664.110\",\"platform\":\"Windows 10\"}', '4Y0HIQ', '86.49.142.252');
+INSERT INTO `dbt_user_log` VALUES (66, 'login', '2021-12-25 08:16:39', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-96.0.4664.110\",\"platform\":\"Windows 10\"}', '4Y0HIQ', '37.120.154.98');
+INSERT INTO `dbt_user_log` VALUES (67, 'login', '2021-12-25 08:42:21', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-96.0.4664.110\",\"platform\":\"Windows 10\"}', '4Y0HIQ', '37.120.154.98');
+INSERT INTO `dbt_user_log` VALUES (68, 'login', '2022-01-04 01:38:52', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-96.0.4664.45\",\"platform\":\"Linux\"}', '4Y0HIQ', '89.176.136.4');
+INSERT INTO `dbt_user_log` VALUES (69, 'login', '2022-01-04 05:32:09', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-96.0.4664.110\",\"platform\":\"Windows 7\"}', 'GUGLSH', '180.92.133.92');
+INSERT INTO `dbt_user_log` VALUES (70, 'login', '2022-01-19 03:25:13', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-97.0.4692.71\",\"platform\":\"Windows 10\"}', '2YJQCB', '110.39.94.5');
+INSERT INTO `dbt_user_log` VALUES (71, 'login', '2022-01-19 19:50:29', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-97.0.4692.71\",\"platform\":\"Windows 10\"}', 'JVLKKU', '188.43.136.33');
+INSERT INTO `dbt_user_log` VALUES (72, 'login', '2022-02-01 00:50:06', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-96.0.4664.110\",\"platform\":\"Linux\"}', 'XP8M1G', '78.102.29.41');
+INSERT INTO `dbt_user_log` VALUES (73, 'login', '2022-02-09 14:05:34', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-79.0.3945.116\",\"platform\":\"Android\"}', 'XE4YNJ', '197.210.47.3');
+INSERT INTO `dbt_user_log` VALUES (74, 'login', '2022-03-03 04:48:09', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-99.0.4844.51\",\"platform\":\"Windows 10\"}', 'YQGAJM', '188.43.136.34');
+INSERT INTO `dbt_user_log` VALUES (75, 'login', '2022-03-11 06:53:33', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-99.0.4844.51\",\"platform\":\"Windows 10\"}', 'YQGAJM', '188.43.136.34');
+INSERT INTO `dbt_user_log` VALUES (76, 'login', '2022-03-11 07:29:56', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-99.0.4844.51\",\"platform\":\"Windows 10\"}', 'YQGAJM', '188.43.136.34');
+INSERT INTO `dbt_user_log` VALUES (77, 'login', '2022-03-13 13:07:55', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-99.0.4844.51\",\"platform\":\"Windows 10\"}', 'YQGAJM', '188.43.136.34');
+INSERT INTO `dbt_user_log` VALUES (78, 'login', '2022-03-13 13:11:06', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-99.0.4844.51\",\"platform\":\"Windows 10\"}', 'YQGAJM', '188.43.136.34');
+INSERT INTO `dbt_user_log` VALUES (79, 'login', '2022-03-14 14:49:23', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-99.0.4844.51\",\"platform\":\"Windows 10\"}', 'YQGAJM', '188.43.136.34');
+INSERT INTO `dbt_user_log` VALUES (80, 'login', '2022-03-14 15:16:03', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-99.0.4844.51\",\"platform\":\"Windows 10\"}', '10WAIU', '188.43.136.34');
+INSERT INTO `dbt_user_log` VALUES (81, 'login', '2022-03-14 15:37:15', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-99.0.4844.51\",\"platform\":\"Linux\"}', 'CXGSAN', '94.113.205.199');
+INSERT INTO `dbt_user_log` VALUES (82, 'login', '2022-03-15 04:08:38', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-99.0.4844.51\",\"platform\":\"Linux\"}', 'CXGSAN', '94.113.205.199');
+INSERT INTO `dbt_user_log` VALUES (83, 'login', '2022-03-15 05:59:17', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-99.0.4844.51\",\"platform\":\"Linux\"}', 'CXGSAN', '94.113.205.199');
+INSERT INTO `dbt_user_log` VALUES (84, 'login', '2022-03-15 06:26:49', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-99.0.4844.51\",\"platform\":\"Linux\"}', 'CXGSAN', '94.113.205.199');
+INSERT INTO `dbt_user_log` VALUES (85, 'login', '2022-03-15 06:44:08', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-99.0.4844.51\",\"platform\":\"Linux\"}', '91UHYC', '94.113.205.199');
+INSERT INTO `dbt_user_log` VALUES (86, 'login', '2022-03-15 10:16:30', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-99.0.4844.51\",\"platform\":\"Windows 10\"}', 'YQGAJM', '188.43.136.34');
+INSERT INTO `dbt_user_log` VALUES (87, 'login', '2022-03-15 11:50:50', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-99.0.4844.51\",\"platform\":\"Linux\"}', 'CXGSAN', '94.113.205.199');
+INSERT INTO `dbt_user_log` VALUES (88, 'login', '2022-03-16 01:36:59', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-99.0.4844.51\",\"platform\":\"Linux\"}', 'WYQMUB', '94.113.205.199');
+INSERT INTO `dbt_user_log` VALUES (89, 'login', '2022-03-16 08:05:07', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-99.0.4844.51\",\"platform\":\"Linux\"}', '3VHN6H', '94.113.205.199');
+INSERT INTO `dbt_user_log` VALUES (90, 'login', '2022-03-16 08:43:35', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-99.0.4844.51\",\"platform\":\"Linux\"}', 'WYQMUB', '94.113.205.199');
+INSERT INTO `dbt_user_log` VALUES (91, 'login', '2022-03-16 09:09:09', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-99.0.4844.51\",\"platform\":\"Linux\"}', '3VHN6H', '94.113.205.199');
+INSERT INTO `dbt_user_log` VALUES (92, 'login', '2022-03-17 02:15:08', '{\"device\":\"Chrome\",\"browser\":\"Chrome V-99.0.4844.51\",\"platform\":\"Linux\"}', '3VHN6H', '94.113.205.199');
+
+-- ----------------------------
+-- Table structure for dbt_user_verify_doc
+-- ----------------------------
+DROP TABLE IF EXISTS `dbt_user_verify_doc`;
+CREATE TABLE `dbt_user_verify_doc`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `verify_type` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `first_name` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `last_name` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `gender` tinyint(1) NOT NULL,
+  `id_number` varchar(300) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `document1` varchar(300) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `document2` varchar(300) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of dbt_user_verify_doc
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for dbt_verify
+-- ----------------------------
+DROP TABLE IF EXISTS `dbt_verify`;
+CREATE TABLE `dbt_verify`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ip_address` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `session_id` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `verify_code` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `user_id` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `data` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  `status` int(11) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of dbt_verify
+-- ----------------------------
+INSERT INTO `dbt_verify` VALUES (1, '89.176.136.238', '1', 'MN5Y8Y', '4Y0HIQ', '{\"user_id\":\"4Y0HIQ\",\"wallet_id\":\"TDaPP2w6uDHVgx7eb1CBep59dppWywhGXJ\",\"currency_symbol\":\"AAX\",\"amount\":\"10000\",\"method\":\"token\",\"fees_amount\":0,\"comment\":\"\",\"request_date\":\"2021-08-24 01:50:43\",\"status\":2,\"ip\":\"89.176.136.238\"}', 1);
+INSERT INTO `dbt_verify` VALUES (2, '89.176.136.238', '1', 'UW3SO6', '4Y0HIQ', '{\"user_id\":\"4Y0HIQ\",\"wallet_id\":\"TDaPP2w6uDHVgx7eb1CBep59dppWywhGXJ\",\"currency_symbol\":\"AAX\",\"amount\":\"22000\",\"method\":\"token\",\"fees_amount\":1100,\"comment\":\"\",\"request_date\":\"2021-09-21 01:46:00\",\"status\":2,\"ip\":\"89.176.136.238\"}', 0);
+
+-- ----------------------------
+-- Table structure for dbt_withdraw
+-- ----------------------------
+DROP TABLE IF EXISTS `dbt_withdraw`;
+CREATE TABLE `dbt_withdraw`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `wallet_id` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `currency_id` int(11) NULL DEFAULT NULL,
+  `currency_symbol` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `amount` double NOT NULL,
+  `method` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `fees_amount` double NOT NULL,
+  `comment` varchar(300) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `request_date` datetime NULL DEFAULT NULL,
+  `success_date` datetime NULL DEFAULT NULL,
+  `cancel_date` timestamp NULL DEFAULT NULL,
+  `status` tinyint(1) NOT NULL COMMENT '0=Cancel request, 1=Approved request, 2=Pending request',
+  `ip` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `approved_cancel_by` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of dbt_withdraw
+-- ----------------------------
+INSERT INTO `dbt_withdraw` VALUES (1, '4Y0HIQ', 'TDaPP2w6uDHVgx7eb1CBep59dppWywhGXJ', NULL, 'AAX', 22000, 'token', 1100, '', '2021-09-21 01:46:00', '2021-09-21 02:44:52', NULL, 1, '89.176.136.238', NULL);
+
+-- ----------------------------
+-- Table structure for earnings
+-- ----------------------------
+DROP TABLE IF EXISTS `earnings`;
+CREATE TABLE `earnings`  (
+  `earning_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(250) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `Purchaser_id` varchar(250) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `earning_type` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `package_id` varchar(250) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `order_id` int(11) NULL DEFAULT NULL,
+  `date` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `amount` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `comments` mediumtext CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
+  PRIMARY KEY (`earning_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci COMMENT = 'Weekly ROI, Monthly ROI, team bonous, direct referal bonous' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of earnings
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for email_sms_gateway
+-- ----------------------------
+DROP TABLE IF EXISTS `email_sms_gateway`;
+CREATE TABLE `email_sms_gateway`  (
+  `es_id` int(11) NOT NULL AUTO_INCREMENT,
+  `gatewayname` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `title` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `protocol` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `host` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `port` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `user` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `userid` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `password` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `mailtype` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `charset` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `api` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`es_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of email_sms_gateway
+-- ----------------------------
+INSERT INTO `email_sms_gateway` VALUES (1, 'nexmo', 'Bdtask', NULL, NULL, NULL, NULL, NULL, 'TCtz6dx6s3G4nVQ1', NULL, NULL, '633b7084');
+INSERT INTO `email_sms_gateway` VALUES (2, 'smtp', 'Bbtask mail', 'mail', 'mail.tradebox.bdtask.com', '587', 'bdtask@tradebox.bdtask.com', '', 'wqqsaa1111', 'html', 'utf-8', NULL);
+
+-- ----------------------------
+-- Table structure for external_api_setup
+-- ----------------------------
+DROP TABLE IF EXISTS `external_api_setup`;
+CREATE TABLE `external_api_setup`  (
+  `id` int(2) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `data` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of external_api_setup
+-- ----------------------------
+INSERT INTO `external_api_setup` VALUES (1, 'coinmarketcap', '{\"api_key\":\"5cffd167-16c3-4c34-b345-6eef830ce5a3\"}', 1);
+INSERT INTO `external_api_setup` VALUES (2, 'maps', '{\"api_key\":\"AIzaSyAUmj7I0GuGJWRcol-pMUmM4rrnHS90DE8\"}', 1);
+INSERT INTO `external_api_setup` VALUES (3, 'Cryptocompare', '{\"api_key\":\"61278343e480f5e40fffe307177e37e4339c4b2016ebd0c72d0b15386737ab0etorun\"}', 1);
+
+-- ----------------------------
+-- Table structure for language
+-- ----------------------------
+DROP TABLE IF EXISTS `language`;
+CREATE TABLE `language`  (
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `phrase` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `english` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  `french` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 969 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of language
+-- ----------------------------
+INSERT INTO `language` VALUES (1, 'email', 'Email', 'E-mail');
+INSERT INTO `language` VALUES (2, 'password', 'Password', 'Mot De Passe');
+INSERT INTO `language` VALUES (3, 'login', 'Login', 'S\'identifier');
+INSERT INTO `language` VALUES (4, 'incorrect_email_password', 'Incorrect Email/Password!', 'Mot de passe ou email incorrect');
+INSERT INTO `language` VALUES (5, 'user_role', 'User Role', 'RÃ´le Utilisateur');
+INSERT INTO `language` VALUES (6, 'please_login', 'Please Login', 'Veuillez Vous Connecter');
+INSERT INTO `language` VALUES (7, 'setting', 'Setting', 'Réglage');
+INSERT INTO `language` VALUES (8, 'profile', 'Profile', 'Profil');
+INSERT INTO `language` VALUES (9, 'logout', 'Log Out', 'DÃ©connexion');
+INSERT INTO `language` VALUES (10, 'please_try_again', 'Please Try Again', 'Essayez encore !');
+INSERT INTO `language` VALUES (11, 'admin', 'Admin', 'Admin');
+INSERT INTO `language` VALUES (12, 'dashboard', 'Dashboard', 'Tableau de Bord');
+INSERT INTO `language` VALUES (13, 'language_setting', 'Language Setting', 'Reglage Langue');
+INSERT INTO `language` VALUES (14, 'status', 'Status', 'Status');
+INSERT INTO `language` VALUES (15, 'active', 'Active', 'Actif');
+INSERT INTO `language` VALUES (16, 'inactive', 'Inactive', 'Inactif');
+INSERT INTO `language` VALUES (17, 'cancel', 'Cancel', 'Cancel');
+INSERT INTO `language` VALUES (18, 'save', 'Save', 'Sauver');
+INSERT INTO `language` VALUES (19, 'serial', 'Serial', 'En Série');
+INSERT INTO `language` VALUES (20, 'action', 'Action', 'Action');
+INSERT INTO `language` VALUES (21, 'edit', 'Edit ', 'Editer');
+INSERT INTO `language` VALUES (22, 'delete', 'Delete', 'Effacer');
+INSERT INTO `language` VALUES (23, 'save_successfully', 'Save Successfully!', 'Sauvegarde reussi');
+INSERT INTO `language` VALUES (24, 'update_successfully', 'Updated Successfully', 'Mise Ã  jour reussi');
+INSERT INTO `language` VALUES (25, 'delete_successfully', 'Delete Successfully', 'Supprimer Avec Succès');
+INSERT INTO `language` VALUES (26, 'are_you_sure', 'Are You Sure', 'êtes-vous Sûr');
+INSERT INTO `language` VALUES (27, 'ip_address', 'IP Address', 'Adresse IP');
+INSERT INTO `language` VALUES (28, 'application_title', 'Application title', 'Titre appli');
+INSERT INTO `language` VALUES (29, 'favicon', 'Favicon', 'favicon');
+INSERT INTO `language` VALUES (30, 'logo', 'Logo', 'Logo');
+INSERT INTO `language` VALUES (31, 'footer_text', 'Footer text', 'Footer text');
+INSERT INTO `language` VALUES (32, 'language', 'Language', 'Langue');
+INSERT INTO `language` VALUES (33, 'website_title', 'Website Title', 'Titre site web');
+INSERT INTO `language` VALUES (34, 'invalid_logo', 'Invalid Logo', 'Logo invalide');
+INSERT INTO `language` VALUES (35, 'submit_successfully', 'Submit Successfully!', 'Envoi reussi');
+INSERT INTO `language` VALUES (36, 'application_setting', 'Application Setting', 'Reglages appli');
+INSERT INTO `language` VALUES (37, 'invalid_favicon', 'Invalid Favicon', 'Favicon Invalide');
+INSERT INTO `language` VALUES (38, 'submit', 'Submit', 'Envoyez');
+INSERT INTO `language` VALUES (39, 'site_align', 'Website Align', 'Alignement site');
+INSERT INTO `language` VALUES (40, 'right_to_left', 'Right to Left', 'Doite vers la gauche');
+INSERT INTO `language` VALUES (41, 'left_to_right', 'Left to Right', 'Gauche Vers la droite');
+INSERT INTO `language` VALUES (42, 'subject', 'Subject', 'Sujet');
+INSERT INTO `language` VALUES (43, 'receiver_name', 'Send To', 'Nom BÃ©nÃ©ficiaire');
+INSERT INTO `language` VALUES (44, 'select_user', 'Select User', 'Selectionner Utilisateur');
+INSERT INTO `language` VALUES (45, 'message_sent', 'Messages Sent', 'Message EnvoyÃ©');
+INSERT INTO `language` VALUES (46, 'mail', 'Mail', 'Mail');
+INSERT INTO `language` VALUES (47, 'send_mail', 'Send Mail', 'Envoyer Mail');
+INSERT INTO `language` VALUES (48, 'mail_setting', 'Mail Setting', 'Reglage mail');
+INSERT INTO `language` VALUES (49, 'protocol', 'Protocol', 'Protocole');
+INSERT INTO `language` VALUES (50, 'mailpath', 'Mail Path', 'Repertoire Mail');
+INSERT INTO `language` VALUES (51, 'mailtype', 'Mail Type', 'Type mail');
+INSERT INTO `language` VALUES (52, 'validate_email', 'Validate Email Address', 'Validez votre Email');
+INSERT INTO `language` VALUES (53, 'true', 'True', 'Vraie');
+INSERT INTO `language` VALUES (54, 'false', 'False', 'faux');
+INSERT INTO `language` VALUES (55, 'attach_file', 'Attach File', 'Joindre un document');
+INSERT INTO `language` VALUES (56, 'wordwrap', 'Enable Word Wrap', 'Wordwrap');
+INSERT INTO `language` VALUES (57, 'send', 'Send', 'Envoyer');
+INSERT INTO `language` VALUES (58, 'app_setting', 'App Setting', 'Reglages appli');
+INSERT INTO `language` VALUES (59, 'sms', 'SMS', 'SMS');
+INSERT INTO `language` VALUES (60, 'gateway_setting', 'Gateway Setting', 'Reglage portail');
+INSERT INTO `language` VALUES (61, 'time_zone', 'Time zone', 'Time Zone');
+INSERT INTO `language` VALUES (62, 'provider', 'Provider', 'Fournisseur');
+INSERT INTO `language` VALUES (63, 'sms_template', 'SMS Template', 'Template SMS');
+INSERT INTO `language` VALUES (64, 'template_name', 'Template Name', 'Nom du template');
+INSERT INTO `language` VALUES (65, 'sms_schedule', 'SMS Schedule', 'Emploi du temps SMS');
+INSERT INTO `language` VALUES (66, 'schedule_name', 'Schedule Name', 'Nom d\'horaire');
+INSERT INTO `language` VALUES (67, 'time', 'Time', 'Temps');
+INSERT INTO `language` VALUES (68, 'already_exists', 'Already Exists', 'Existe dÃ©jÃ ');
+INSERT INTO `language` VALUES (69, 'send_custom_sms', 'Send Custom SMS', 'Envoyer SMS personalisÃ©');
+INSERT INTO `language` VALUES (70, 'sms_sent', 'SMS Sent!', 'SMS envoyÃ©');
+INSERT INTO `language` VALUES (71, 'custom_sms_list', 'Custom SMS List', 'List SMS personalisÃ©');
+INSERT INTO `language` VALUES (72, 'reciver', 'Reciver', 'BÃ©nÃ©ficiaire');
+INSERT INTO `language` VALUES (73, 'auto_sms_report', 'Auto SMS Report', 'Rapport SMS Auto');
+INSERT INTO `language` VALUES (74, 'user_sms_list', 'User SMS List', 'Liste SMS utilisateurs');
+INSERT INTO `language` VALUES (75, 'send_sms', 'Send SMS', 'Envoyer SMS');
+INSERT INTO `language` VALUES (76, 'new_sms', 'New SMS', 'Nouveau Message');
+INSERT INTO `language` VALUES (77, 'update', 'Update', 'Mettre à Jour');
+INSERT INTO `language` VALUES (78, 'reset', 'Reset', 'Réinitialiser');
+INSERT INTO `language` VALUES (79, 'messages', 'Messages', 'Messages');
+INSERT INTO `language` VALUES (80, 'inbox', 'Inbox', 'Boite de rÃ©ception');
+INSERT INTO `language` VALUES (81, 'sent', 'Sent', 'EnvoyÃ©');
+INSERT INTO `language` VALUES (82, 'captcha', 'Captcha', 'Captcha');
+INSERT INTO `language` VALUES (83, 'welcome_back', 'Welcome back ', 'Bienvenue Ã  nouveau !');
+INSERT INTO `language` VALUES (84, 'inbox_message', 'Inbox Message', 'SMS Boite de rÃ©ception');
+INSERT INTO `language` VALUES (85, 'image_upload_successfully', 'Image Upload Successfully.', 'Upload d\'image reussi');
+INSERT INTO `language` VALUES (86, 'users', 'Users', 'Utilisateurs');
+INSERT INTO `language` VALUES (87, 'add_user', 'Add User', 'Ajouter utilisateur');
+INSERT INTO `language` VALUES (88, 'user_list', 'User List', 'Liste Utilisateurs');
+INSERT INTO `language` VALUES (89, 'firstname', 'First Name', 'Nom');
+INSERT INTO `language` VALUES (90, 'lastname', 'Last Name', 'PrÃ©noms');
+INSERT INTO `language` VALUES (91, 'about', 'About', 'A propos de nous');
+INSERT INTO `language` VALUES (92, 'preview', 'Preview', 'Visualliser');
+INSERT INTO `language` VALUES (93, 'last_login', 'Last Login', 'Dernière Connexion');
+INSERT INTO `language` VALUES (94, 'last_logout', 'Last Logout', 'Dernière Déconnexion');
+INSERT INTO `language` VALUES (95, 'image', 'Image', 'Image');
+INSERT INTO `language` VALUES (96, 'fullname', 'Full Name', 'Nom Complet');
+INSERT INTO `language` VALUES (97, 'new_message', 'New Message', 'Nouveau Message');
+INSERT INTO `language` VALUES (98, 'message', 'Message', 'Un Message');
+INSERT INTO `language` VALUES (99, 'sender_name', 'Sender Name', 'Nom de l\'expÃ©diteur');
+INSERT INTO `language` VALUES (100, 'sl_no', 'SL No.', 'NumÃ©ro SL');
+INSERT INTO `language` VALUES (101, 'message_details', 'Message Details', 'DÃ©tails message');
+INSERT INTO `language` VALUES (102, 'date', 'Date', 'Date');
+INSERT INTO `language` VALUES (103, 'select_option', 'Select Option', 'f');
+INSERT INTO `language` VALUES (104, 'edit_profile', 'Edit Profile', 'Editer Profile');
+INSERT INTO `language` VALUES (105, 'edit_user', 'Edit User', 'Editer utilisateur');
+INSERT INTO `language` VALUES (106, 'sent_message', 'Sent Message', 'Message EnvoyÃ©');
+INSERT INTO `language` VALUES (107, 'sub_admin', 'Sub Admin', 'Sub Administrateur');
+INSERT INTO `language` VALUES (108, 'admin_list', 'Admin List', 'List Administrateurs');
+INSERT INTO `language` VALUES (109, 'add_admin', 'Add Admin', 'Ajouter Administrateur');
+INSERT INTO `language` VALUES (110, 'edit_admin', 'Edit Admin', 'Modifier L\'administrateur');
+INSERT INTO `language` VALUES (111, 'username', 'Username', 'Nom utilisateur');
+INSERT INTO `language` VALUES (112, 'sponsor_id', 'Sponsor ID', 'ID sponsor');
+INSERT INTO `language` VALUES (113, 'mobile', 'Mobile', 'Mobile');
+INSERT INTO `language` VALUES (114, 'register', 'Register', 'Enregistrer');
+INSERT INTO `language` VALUES (115, 'conf_password', 'Confirm Password', 'Reglage mot de passe');
+INSERT INTO `language` VALUES (116, 'user_id', 'User ID', 'ID utilisateur');
+INSERT INTO `language` VALUES (117, 'package', 'Package', 'Pack');
+INSERT INTO `language` VALUES (118, 'create', 'Create', 'CrÃ©er');
+INSERT INTO `language` VALUES (119, 'package_name', 'Package Name', 'Nom du pack');
+INSERT INTO `language` VALUES (120, 'package_deatils', 'Package Deatils', 'Detail pack');
+INSERT INTO `language` VALUES (121, 'package_amount', 'Package Amount', 'Montant pack');
+INSERT INTO `language` VALUES (122, 'daily_roi', 'Daily ROI', 'ROI journalier');
+INSERT INTO `language` VALUES (123, 'weekly_roi', 'Weekly ROI', 'ROI Hebdomadaire');
+INSERT INTO `language` VALUES (124, 'monthly_roi', 'Monthly ROI', 'ROI Mensuel');
+INSERT INTO `language` VALUES (125, 'yearly_roi', 'Yearly ROI', 'ROI annuel');
+INSERT INTO `language` VALUES (126, 'total_percent', 'Total Percent', 'Poucentage Total');
+INSERT INTO `language` VALUES (127, 'add_package', 'Add Package', 'Ajouter un Pack');
+INSERT INTO `language` VALUES (128, 'transfer_add_msg', 'Transfer Successfully', 'Ajouter SMS transfert');
+INSERT INTO `language` VALUES (129, 'transfer', 'Transfer', 'Transfert');
+INSERT INTO `language` VALUES (130, 'deposit', 'Deposit', 'Dépôt');
+INSERT INTO `language` VALUES (131, 'edit_package', 'Edit Package', 'Editer Pack');
+INSERT INTO `language` VALUES (132, 'package_list', 'Package List', 'Liste Packs');
+INSERT INTO `language` VALUES (133, 'withdraw', 'Withdraw', 'Se Désister');
+INSERT INTO `language` VALUES (134, 'request', 'Request', 'RequÃªte');
+INSERT INTO `language` VALUES (135, 'success', 'Success', 'SuccÃ¨s ! ');
+INSERT INTO `language` VALUES (136, 'request_date', 'Request Date', 'Date RequÃªte');
+INSERT INTO `language` VALUES (137, 'payment_method', 'Payment Method', 'Methode de paiement');
+INSERT INTO `language` VALUES (138, 'amount', 'Amount', 'f');
+INSERT INTO `language` VALUES (139, 'charge', 'Charge', 'Frais');
+INSERT INTO `language` VALUES (140, 'total', 'Total', 'Total');
+INSERT INTO `language` VALUES (141, 'comments', 'Comments', 'Commentaires');
+INSERT INTO `language` VALUES (142, 'pending', 'Pending', 'En cours');
+INSERT INTO `language` VALUES (143, 'cancel_date', 'Cancel Date', 'Annuler date');
+INSERT INTO `language` VALUES (144, 'block_list', 'Block List', 'Liste Noire');
+INSERT INTO `language` VALUES (145, 'commission', 'Commission', 'Commission');
+INSERT INTO `language` VALUES (146, 'setup', 'Setup', 'Regler');
+INSERT INTO `language` VALUES (147, 'setup_list', 'Setup List', 'Liste de reglage');
+INSERT INTO `language` VALUES (148, 'commission_list', 'Commission List', 'Liste Commission');
+INSERT INTO `language` VALUES (149, 'level_name', 'Level Name', 'Nom du stage');
+INSERT INTO `language` VALUES (150, 'personal_invest', 'Personal Invest', 'Mon investissement');
+INSERT INTO `language` VALUES (151, 'total_invest', 'Total Invest', 'Total Investissement');
+INSERT INTO `language` VALUES (152, 'team_bonous', 'Team Bonous', 'Bonus d\'Equipe');
+INSERT INTO `language` VALUES (153, 'referral_bonous', 'Referral Bonous', 'Bonus parrainage');
+INSERT INTO `language` VALUES (154, 'form_submit_msg', 'Insert Successfully', 'Envoyer formulaire');
+INSERT INTO `language` VALUES (155, 'transection_category', 'Transaction Category', 'CatÃ©gorie Transaction');
+INSERT INTO `language` VALUES (156, 'add_deposit', 'Add Deposit', 'Effectuer un Depot');
+INSERT INTO `language` VALUES (157, 'deposit_list', 'Deposit List', 'Liste depot');
+INSERT INTO `language` VALUES (158, 'team', 'Team', 'Equipe');
+INSERT INTO `language` VALUES (159, 'investment', 'Investment', 'Investissement personnel');
+INSERT INTO `language` VALUES (160, 'notification', 'Notification', 'Notification');
+INSERT INTO `language` VALUES (161, 'receiver_id', 'Receiver Id', 'ID BÃ©nÃ©ficiaire');
+INSERT INTO `language` VALUES (162, 'comment', 'Comments', 'Commentaire');
+INSERT INTO `language` VALUES (163, 'otp_send_to', 'OTP Send To', 'OTP envoyer Ã ');
+INSERT INTO `language` VALUES (164, 'transection', 'Transaction', 'Transactions');
+INSERT INTO `language` VALUES (165, 'buy', 'Buy', 'Acheter');
+INSERT INTO `language` VALUES (166, 'deposit_amount', 'Deposit Amount', 'Montant Depot');
+INSERT INTO `language` VALUES (167, 'deposit_method', 'Deposit Method', 'Methode depot');
+INSERT INTO `language` VALUES (168, 'deposit_wallet_id', 'Deposit Wallet Id', 'Wallet ID');
+INSERT INTO `language` VALUES (169, 'confirm_transfer', 'Confirm Transfer', 'Confirmer transfert');
+INSERT INTO `language` VALUES (170, 'transfer_amount', 'Transfer Amount', 'Montant Transfert');
+INSERT INTO `language` VALUES (171, 'enter_verify_code', 'Enter Verify Code', 'Entrer code de vÃ©rification');
+INSERT INTO `language` VALUES (172, 'confirm', 'Confirm', 'Confirmer');
+INSERT INTO `language` VALUES (173, 'deopsit_add_msg', 'Deposit Add Successfully.', 'Depot effectuÃ© avec succÃ¨s');
+INSERT INTO `language` VALUES (174, 'transfar_recite', 'Transfer Recite', 'ReÃ§u de transfert');
+INSERT INTO `language` VALUES (175, 'earn', 'Earn', 'Gagner');
+INSERT INTO `language` VALUES (176, 'balance_is_unavailable', 'Balance Unavailable', 'Solde insuffisant');
+INSERT INTO `language` VALUES (177, 'package_buy_successfully', 'Package Buy Successfully!', 'Achat du package reussi ! ');
+INSERT INTO `language` VALUES (178, 'withdraw_recite', 'Withdraw Recite', 'ReÃ§u de retrait');
+INSERT INTO `language` VALUES (179, 'withdraw_confirm', 'withdraw Confirm', 'Confirmation Retrait');
+INSERT INTO `language` VALUES (180, 'change_verify', 'Confirm Verify', 'Changer Verification');
+INSERT INTO `language` VALUES (181, 'change_password', 'Password Change', 'Changer mot de passe');
+INSERT INTO `language` VALUES (182, 'enter_confirm_password', 'Enter Confirm Password', 'Confirmer mot de passe');
+INSERT INTO `language` VALUES (183, 'enter_new_password', 'Enter New Password', 'Entrer nouveau mot de passe');
+INSERT INTO `language` VALUES (184, 'enter_old_password', 'Enter Old Password', 'Entrer ancien mot de passe');
+INSERT INTO `language` VALUES (185, 'change', 'Change', 'Changement');
+INSERT INTO `language` VALUES (186, 'password_change_successfull', 'Password Change Successfully', 'Mot de passe changÃ© avec succÃ¨s');
+INSERT INTO `language` VALUES (187, 'old_password_is_wrong', 'Old Password Is Wrong', 'Entrer ancien mot de passe incorrect');
+INSERT INTO `language` VALUES (188, 'fees_setting', 'Fees Setting', 'Reglages frais');
+INSERT INTO `language` VALUES (189, 'level', 'Level', 'Stage');
+INSERT INTO `language` VALUES (190, 'select_level', 'Select Level', 'Selectionner stage');
+INSERT INTO `language` VALUES (191, 'fees_setting_successfully', 'Fees Setting Successfully', 'Reglages Frais reussi');
+INSERT INTO `language` VALUES (192, 'bitcoin', 'Bitcoin', 'Bitcoin');
+INSERT INTO `language` VALUES (193, 'payeer', 'Payeer', 'Payeer');
+INSERT INTO `language` VALUES (194, 'name', 'Name', 'Nom');
+INSERT INTO `language` VALUES (195, 'order_id', 'Order Id', 'ID de commande');
+INSERT INTO `language` VALUES (196, 'fees', 'Fees', 'Frais');
+INSERT INTO `language` VALUES (197, 'period', 'Period', 'PÃ©riode');
+INSERT INTO `language` VALUES (198, 'commission_ret', 'Commission Ret', 'Commission ret');
+INSERT INTO `language` VALUES (199, 'title', 'Title', 'Titre');
+INSERT INTO `language` VALUES (200, 'details', 'Details', 'Details');
+INSERT INTO `language` VALUES (201, 'personal_info', 'Personal Information', 'Informations personnels');
+INSERT INTO `language` VALUES (202, 'sponsor_info', 'Sponsor Information', 'Info Sponsor');
+INSERT INTO `language` VALUES (203, 'affiliate_url', 'Affiliat Url', 'Lien parrainage');
+INSERT INTO `language` VALUES (204, 'copy', 'Copy', 'Copier');
+INSERT INTO `language` VALUES (205, 'my_payout', 'My Payout', 'Mes Paiements');
+INSERT INTO `language` VALUES (206, 'personal_sales', 'Personal Sales', 'Ventes Personnelles');
+INSERT INTO `language` VALUES (207, 'bank_details', 'Bank Details', 'Details de banque');
+INSERT INTO `language` VALUES (208, 'beneficiary_name', 'Beneficiary Name', 'Nom Beneficiaire');
+INSERT INTO `language` VALUES (209, 'bank_name', 'Bank Name', 'Nom de banque');
+INSERT INTO `language` VALUES (210, 'branch', 'Branch', 'Branche');
+INSERT INTO `language` VALUES (211, 'account_number', 'Account Number', 'NumÃ©ro de compte');
+INSERT INTO `language` VALUES (212, 'ifsc_code', 'IFC Code', 'Code IFSC');
+INSERT INTO `language` VALUES (213, 'account', 'Account', 'Compte');
+INSERT INTO `language` VALUES (214, 'my_commission', 'My Commission', 'Mes commissions');
+INSERT INTO `language` VALUES (215, 'finance', 'Finance', 'La Finance');
+INSERT INTO `language` VALUES (216, 'exchange', 'Exchange', 'Echange');
+INSERT INTO `language` VALUES (217, 'bitcoin_setting', 'Bitcoin Setting', 'Reglages bitcoin');
+INSERT INTO `language` VALUES (218, 'payeer_setting', 'Payeer Setting', 'Reglages Payeer');
+INSERT INTO `language` VALUES (219, 'bank_information', 'Bank Information', 'Infos de banque');
+INSERT INTO `language` VALUES (220, 'bitcoin_wallet_id', 'Bitcoin Wallet ID', 'Wallet Bitcoin');
+INSERT INTO `language` VALUES (221, 'payment_method_setting', 'Payment Method Setting', 'Reglage methode de paiement');
+INSERT INTO `language` VALUES (222, 'payeer_wallet_id', 'Payeer Wallet Id', 'ID Payeer');
+INSERT INTO `language` VALUES (223, 'my_package', 'My Package', 'Mes packs');
+INSERT INTO `language` VALUES (224, 'my_team', 'My Team', 'Mon Equipe');
+INSERT INTO `language` VALUES (225, 'receipt', 'Receipt', 'RÃ©Ã§u');
+INSERT INTO `language` VALUES (226, 'withdraw_successfull', 'Withdraw Successfully', 'Retrait reussi !');
+INSERT INTO `language` VALUES (227, 'team_bonus', 'Team Bonus', 'Bonus d\'Equipe');
+INSERT INTO `language` VALUES (228, 'withdraw_list', 'Withdraw List', 'Liste retraits');
+INSERT INTO `language` VALUES (229, 'pending_withdraw', 'Pending Withdraw', NULL);
+INSERT INTO `language` VALUES (230, 'reciver_account', 'Receiver Account', 'Compte BÃ©nÃ©ficiaire');
+INSERT INTO `language` VALUES (231, 'french', 'French', 'FranÃ§ais');
+INSERT INTO `language` VALUES (232, 'commission_setup', 'Commission Setup', 'Reglage commission');
+INSERT INTO `language` VALUES (233, 'personal_investment', 'Personal Investment', 'Investissement personnel');
+INSERT INTO `language` VALUES (234, 'total_investment', 'Total investment', 'Total Investissement');
+INSERT INTO `language` VALUES (235, 'transfer_list', 'Transfer List', 'Liste transfert');
+INSERT INTO `language` VALUES (236, 'form_to', 'From To', '');
+INSERT INTO `language` VALUES (237, 'receive', 'Receive', '');
+INSERT INTO `language` VALUES (238, 'wallet_id', 'Wallet Id', 'ID Wallet');
+INSERT INTO `language` VALUES (239, 'withdraw_details', 'Withdraw Details', 'Details retraits');
+INSERT INTO `language` VALUES (240, 'generation_one', 'Generation One', 'GÃ©nÃ©ration 1');
+INSERT INTO `language` VALUES (241, 'generation_two', 'Generation Two', 'GÃ©nÃ©ration 2');
+INSERT INTO `language` VALUES (242, 'generation_three', 'Generation Three', 'GÃ©nÃ©ration 3');
+INSERT INTO `language` VALUES (243, 'generation_four', 'Generation Four', 'GÃ©nÃ©ration 4');
+INSERT INTO `language` VALUES (244, 'generation_five', 'Generation Five', 'GÃ©nÃ©ration 5');
+INSERT INTO `language` VALUES (245, 'generation_empty_message', 'You Have No Generation', '');
+INSERT INTO `language` VALUES (246, 'view', 'View', 'AperÃ§u');
+INSERT INTO `language` VALUES (247, 'cancle', 'Cancel', 'Annuler');
+INSERT INTO `language` VALUES (248, 'type', 'Type', 'Taper');
+INSERT INTO `language` VALUES (249, 'your_total_balance_is', 'Your Total Balance Is', 'Votre montant total est de');
+INSERT INTO `language` VALUES (250, 'bonus', 'Bonus', 'Bonus');
+INSERT INTO `language` VALUES (251, 'personal_turnover', 'Sponser Turnover', 'Mon Chiffre d\'affaire perso');
+INSERT INTO `language` VALUES (252, 'team_turnover', 'Team Turnover', 'Chiffre d\'affaire Equipe');
+INSERT INTO `language` VALUES (253, 'post_article', 'Post Article', '');
+INSERT INTO `language` VALUES (254, 'article_list', 'Article List', 'LIste article');
+INSERT INTO `language` VALUES (255, 'add_article', 'Add Article', 'Ajouter article');
+INSERT INTO `language` VALUES (256, 'headline_en', 'Headline English', 'Titre EN');
+INSERT INTO `language` VALUES (257, 'headline_fr', 'Headline French', 'Titre  FR');
+INSERT INTO `language` VALUES (258, 'article_en', 'Article EN', 'Article EN');
+INSERT INTO `language` VALUES (259, 'article_fr', 'Article FR', 'Article FR');
+INSERT INTO `language` VALUES (260, 'edit_article', 'Edit Article', 'Editer article');
+INSERT INTO `language` VALUES (261, 'cat_list', 'Category List', 'Liste panier');
+INSERT INTO `language` VALUES (262, 'add_cat', 'Add Category', 'Ajouter au panier');
+INSERT INTO `language` VALUES (263, 'parent_cat', 'Parent Category', '');
+INSERT INTO `language` VALUES (264, 'cat_name_en', 'Category Name English', 'Nom panier EN');
+INSERT INTO `language` VALUES (265, 'cat_name_fr', 'Category Name French', 'Nom panier FR');
+INSERT INTO `language` VALUES (266, 'cat_title_en', 'Category Title English', 'Titre Panier EN');
+INSERT INTO `language` VALUES (267, 'cat_title_fr', 'Category Title French', 'Titre panier FR');
+INSERT INTO `language` VALUES (268, 'select_cat', 'Select Category', 'Selectionner Cat');
+INSERT INTO `language` VALUES (269, 'edit_cat', 'Edit Category', 'Editer Panier');
+INSERT INTO `language` VALUES (270, 'position_serial', 'Position Serial', '');
+INSERT INTO `language` VALUES (271, 'currency_list', 'Currency List', 'Liste de devise');
+INSERT INTO `language` VALUES (272, 'currency', 'Currency', 'Devise');
+INSERT INTO `language` VALUES (273, 'cryptocurrency_name', 'CryptoCurrency  Name', 'Nom Crypto monnaie');
+INSERT INTO `language` VALUES (274, 'select_cryptocurrency', 'Select Cryptocurrency', 'Selectionner Crypto');
+INSERT INTO `language` VALUES (275, 'edit_currency', 'Edit Currency', 'Editer Devise');
+INSERT INTO `language` VALUES (276, 'exchange_list', 'Exchange List', 'Liste Ã©changes');
+INSERT INTO `language` VALUES (277, 'add_exchange', 'Add Exchange', 'Ajouter Echange');
+INSERT INTO `language` VALUES (278, 'edit_exchange', 'Edit Exchange', 'Editer Echange');
+INSERT INTO `language` VALUES (279, 'wallet_data', 'Wallet ID', 'DonnÃ©es Wallet');
+INSERT INTO `language` VALUES (280, 'sell_adjustment', 'Sell Adjustment', 'Ajustement Vente');
+INSERT INTO `language` VALUES (281, 'buy_adjustment', 'Buy Adjustment', '');
+INSERT INTO `language` VALUES (282, 'exchange_wallet', 'Exchange Wallet', 'Wallet Echange');
+INSERT INTO `language` VALUES (283, 'exchange_wallet_list', 'Exchange Wallet List', 'Liste Wallet echange');
+INSERT INTO `language` VALUES (284, 'add_exchange_wallet', 'Add Exchange Wallet', 'Ajouter Wallet');
+INSERT INTO `language` VALUES (285, 'edit_exchange_wallet', 'Edit Exchange Wallet', 'Modifier Wallet echange');
+INSERT INTO `language` VALUES (286, 'local_currency_list', 'Local Currency List', 'LIste  Monnaies locales');
+INSERT INTO `language` VALUES (287, 'local_currency', 'Local Currency', 'Devise Locale');
+INSERT INTO `language` VALUES (288, 'add_local_currency', 'Add Local Currency', 'Ajouter Monnaie');
+INSERT INTO `language` VALUES (289, 'edit_local_currency', 'Edit Local Currency', 'Editer Devise locale');
+INSERT INTO `language` VALUES (290, 'currency_name', 'Currency Name', 'Nom devise');
+INSERT INTO `language` VALUES (291, 'currency_iso_code', 'Currency ISO Code', 'Code ISO devise ');
+INSERT INTO `language` VALUES (292, 'usd_exchange_rate', 'USD Exchange Rate', 'Taux d\'echange USD');
+INSERT INTO `language` VALUES (293, 'currency_symbol', 'Currency Symbol', 'Symboles Devise');
+INSERT INTO `language` VALUES (294, 'symbol_position', 'Symbol Position', 'Position symbole');
+INSERT INTO `language` VALUES (295, 'currency_position', 'Currency Position', 'Position devise');
+INSERT INTO `language` VALUES (296, 'payment_gateway', 'Payment Gateway', 'Portail de paiement');
+INSERT INTO `language` VALUES (297, 'gateway_name', 'Gateway Name', 'Nom passerelle');
+INSERT INTO `language` VALUES (298, 'gateway_setting', 'Gateway Setting', 'Reglage portail');
+INSERT INTO `language` VALUES (299, 'add_payment_gateway', 'Add Payment Gateway', 'Ajouter Methode paiment');
+INSERT INTO `language` VALUES (300, 'public_key', 'Public Key', 'ClÃ© publique');
+INSERT INTO `language` VALUES (301, 'private_key', 'Private Key', '');
+INSERT INTO `language` VALUES (302, 'shop_id', 'Shop ID', 'ID shop');
+INSERT INTO `language` VALUES (303, 'secret_key', 'Secret Key', 'ClÃ© secrete');
+INSERT INTO `language` VALUES (304, 'edit_payment_gateway', 'Edit Payment Gateway', 'Editer Methode de paiement');
+INSERT INTO `language` VALUES (305, 'slider_list', 'Slider List', '');
+INSERT INTO `language` VALUES (306, 'add_slider', 'Add Slider', 'Ajouter Slider');
+INSERT INTO `language` VALUES (307, 'headline', 'Headline', 'Titre');
+INSERT INTO `language` VALUES (308, 'edit_slider', 'Edit Slider', '');
+INSERT INTO `language` VALUES (309, 'social_app', 'Social App', '');
+INSERT INTO `language` VALUES (310, 'edit_social_app', 'Edit Social App', 'Editer RS appli');
+INSERT INTO `language` VALUES (311, 'social_link', 'Social Link', '');
+INSERT INTO `language` VALUES (312, 'add_link', 'Add Link', 'Ajouter Lien');
+INSERT INTO `language` VALUES (313, 'link', 'Link', 'Lien');
+INSERT INTO `language` VALUES (314, 'icon', 'Icon', 'IcÃ´ne');
+INSERT INTO `language` VALUES (315, 'edit_social_link', 'Edit Social Link', 'Edit les liens RS');
+INSERT INTO `language` VALUES (316, 'transection_info', 'Transection Info', 'Info transaction');
+INSERT INTO `language` VALUES (317, 'sell', 'Sell', 'Vendre');
+INSERT INTO `language` VALUES (318, 'article', 'Article', 'Article');
+INSERT INTO `language` VALUES (319, 'coin_amount', 'Coin Amount', 'Montat Crypto');
+INSERT INTO `language` VALUES (320, 'coin_name', 'Coin Name', NULL);
+INSERT INTO `language` VALUES (321, 'buy_amount', 'Buy Amount', 'Montant achat');
+INSERT INTO `language` VALUES (322, 'sell_amount', 'Sell Amount', 'Montant Ã  vendre');
+INSERT INTO `language` VALUES (323, 'wallet_data', 'Wallet ID', 'DonnÃ©es Wallet');
+INSERT INTO `language` VALUES (324, 'usd_amount', 'USD Amount', 'Montant USD');
+INSERT INTO `language` VALUES (325, 'rate_coin', 'Coin Rate', 'Taux coin');
+INSERT INTO `language` VALUES (326, 'local_amount', 'Local Amount', 'Montant Local');
+INSERT INTO `language` VALUES (327, 'om_name', 'OM Name', 'Nom OM');
+INSERT INTO `language` VALUES (328, 'om_mobile_no', 'OM Phone No', 'NÂ° OM');
+INSERT INTO `language` VALUES (329, 'transaction_no', 'Transaction No', 'NÂ° de transaction');
+INSERT INTO `language` VALUES (330, 'idcard_no', 'ID Card No', 'NÂ° CNI');
+INSERT INTO `language` VALUES (331, 'buy_list', 'Buy List', 'Buy list');
+INSERT INTO `language` VALUES (332, 'add_buy', 'Add Buy', 'Ajouter Achat');
+INSERT INTO `language` VALUES (333, 'transection_type', 'Transection Type', 'Type de transaction');
+INSERT INTO `language` VALUES (334, 'payment_successfully', 'Payment Successfully', 'Paiement effectuÃ©');
+INSERT INTO `language` VALUES (335, 'payment_cancel', 'Payment Cancel', 'Paiement annulÃ©');
+INSERT INTO `language` VALUES (336, 'payment_successfully', 'Payment Successfully', 'Paiement effectuÃ©');
+INSERT INTO `language` VALUES (337, 'sell_list', 'Sell List', 'LIste de vente ');
+INSERT INTO `language` VALUES (338, 'add_sell', 'Add Sell', 'Ajouter Vente');
+INSERT INTO `language` VALUES (339, 'edit_sell', 'Edit Sell', '');
+INSERT INTO `language` VALUES (340, 'account_active_mail', 'Please check Email to activate your account', 'Activer votre mail');
+INSERT INTO `language` VALUES (341, 'accept_terms_privacy', 'Crypto Privacy policy and Terms of Use', 'Accepter conditions et termes');
+INSERT INTO `language` VALUES (342, 'username_used', 'Username Already Used', 'Nom d\'utilisateur dÃ©jÃ  utilisÃ©');
+INSERT INTO `language` VALUES (343, 'account_create_success_social', 'Account Created Successfully and Your Account activated', 'Compte crÃ©e avec succÃ¨s');
+INSERT INTO `language` VALUES (344, 'email_used', 'Email Already Used', 'Adresse mail dÃ©jÃ  utilisÃ©');
+INSERT INTO `language` VALUES (345, 'account_create_active_link', 'Account Created Successfully. Activation link send your Email address', 'Lien d\'activation');
+INSERT INTO `language` VALUES (346, 'active_account', 'Active Account', 'Compte actif');
+INSERT INTO `language` VALUES (347, 'wrong_try_activation', 'Wrong Try', 'Mauvaise activation');
+INSERT INTO `language` VALUES (348, 'pay_now', 'Pay Now', 'Payer maintenant');
+INSERT INTO `language` VALUES (349, 'payment_successfully', 'Payment Successfully', 'Paiement effectuÃ©');
+INSERT INTO `language` VALUES (350, 'sell_successfully', 'Sell Successfully', 'Vente effectuÃ©e avec succÃ¨s');
+INSERT INTO `language` VALUES (351, 'already_clicked', 'Already Clicked There', 'DÃ©ja ValidÃ©');
+INSERT INTO `language` VALUES (352, 'user_info', 'User Info', 'info utilisateur');
+INSERT INTO `language` VALUES (353, 'user_id', 'User ID', 'ID utilisateur');
+INSERT INTO `language` VALUES (354, 'registered_ip', 'Registered IP', '');
+INSERT INTO `language` VALUES (355, 'requested_ip', 'Requested IP', '');
+INSERT INTO `language` VALUES (356, 'transaction_status', 'Transaction Status', 'Status de la transaction');
+INSERT INTO `language` VALUES (357, 'receive_status', 'receive_status', '');
+INSERT INTO `language` VALUES (358, 'receive_complete', 'Receive Complete', '');
+INSERT INTO `language` VALUES (359, 'payment_status', 'Payment Status', 'Status de paiement');
+INSERT INTO `language` VALUES (360, 'payment_complete', 'Payment Complete', NULL);
+INSERT INTO `language` VALUES (361, 'url', 'Url', 'URL');
+INSERT INTO `language` VALUES (362, 'app_id', 'App Id', 'ID appli');
+INSERT INTO `language` VALUES (363, 'app_secret', 'App Secret', 'Secret Appli');
+INSERT INTO `language` VALUES (364, 'api_key', 'API Key', 'Clé API');
+INSERT INTO `language` VALUES (365, 'app_name', 'App Name', 'Nom Appli');
+INSERT INTO `language` VALUES (366, 'social_list', 'Social List', '');
+INSERT INTO `language` VALUES (367, 'select_payment_method', 'Select Payment Method', 'Selectionner mode de paiement');
+INSERT INTO `language` VALUES (368, 'payable', 'Payable', '');
+INSERT INTO `language` VALUES (369, 'rate', 'Rate', NULL);
+INSERT INTO `language` VALUES (370, 'how_do_you_receive_money', 'How do you receive money', 'Comment ReÃ§evoir votre argent');
+INSERT INTO `language` VALUES (371, 'withdraw_method', 'Withdraw Method', 'Methode de retrait');
+INSERT INTO `language` VALUES (372, 'select_withdraw_method', 'Select Withdraw Method', 'Selectionner mÃ©thode de retrait');
+INSERT INTO `language` VALUES (373, 'account_info', 'Account Info', 'Info compte');
+INSERT INTO `language` VALUES (374, 'upload_docunemts', 'Upload Docunemts', 'Ajouter fichier');
+INSERT INTO `language` VALUES (375, 'my_generation', 'My Generation', 'Mon Equipe');
+INSERT INTO `language` VALUES (376, 'category', 'Category', 'CatÃ©gorie');
+INSERT INTO `language` VALUES (377, 'slider_h1_en', 'Slider H1 English', '');
+INSERT INTO `language` VALUES (378, 'slider_h1_fr', 'Slider H1 French', '');
+INSERT INTO `language` VALUES (379, 'slider_h2_en', 'Slider H2 English', '');
+INSERT INTO `language` VALUES (380, 'slider_h2_fr', 'Slider H2 French', '');
+INSERT INTO `language` VALUES (381, 'slider_h3_en', 'Slider H3 English', '');
+INSERT INTO `language` VALUES (382, 'slider_h3_fr', 'Slider H3 French', '');
+INSERT INTO `language` VALUES (383, 'complete', 'Complete', NULL);
+INSERT INTO `language` VALUES (384, 'refresh_currency', 'Refresh Currency', '');
+INSERT INTO `language` VALUES (385, 'cryptocurrency', 'Crypto Currency', 'Crypto Monnaie');
+INSERT INTO `language` VALUES (386, 'symbol', 'Symbol', NULL);
+INSERT INTO `language` VALUES (387, 'please_select_cryptocurrency_first', 'Please Select CryptoCurrency First', 'Veuillez choisir une crypto monnaie');
+INSERT INTO `language` VALUES (388, 'please_select_diffrent_payment_method', 'Please select Diffrent Payment Method', 'Selectionner une autre mÃ©thode de paiement');
+INSERT INTO `language` VALUES (389, 'add_credit', 'Add Credit', 'Crediter Compte');
+INSERT INTO `language` VALUES (390, 'credit', 'Credit', 'CrÃ©dit');
+INSERT INTO `language` VALUES (391, 'credit_list', 'Credit List', 'Liste De Crédit');
+INSERT INTO `language` VALUES (392, 'notes', 'Note', 'Notes');
+INSERT INTO `language` VALUES (393, 'my_level_info', 'My Level Info', 'Info Niveau');
+INSERT INTO `language` VALUES (394, 'slider', 'Slider', 'Slider');
+INSERT INTO `language` VALUES (395, 'exchange_setting', 'Exchange Setting', 'Reglage Echange');
+INSERT INTO `language` VALUES (396, 'exchange_all_request', 'Exchange all Request', 'Toutes requÃªtes echanges');
+INSERT INTO `language` VALUES (397, 'total_user', 'Total User', 'Nombre d\'utilisateurs');
+INSERT INTO `language` VALUES (398, 'total_roi', 'Total ROI', 'Total ROI');
+INSERT INTO `language` VALUES (399, 'total_commission', 'Total Commission', 'Total commission');
+INSERT INTO `language` VALUES (400, 'download_pdf', 'Download PDF', 'TÃ©lÃ©charger ');
+INSERT INTO `language` VALUES (401, 'view_all_news', 'View all news', 'AperÃ§u News');
+INSERT INTO `language` VALUES (402, 'download_company_brochure', 'Download Company Brochure', 'TÃ©lÃ©chargez notre brochure');
+INSERT INTO `language` VALUES (403, 'get_in_touch', 'Get in touch', 'Contactez-nous');
+INSERT INTO `language` VALUES (404, 'read_more', 'Read More', 'Lire plus');
+INSERT INTO `language` VALUES (405, 'know_more', 'Know more', 'Savoir plus');
+INSERT INTO `language` VALUES (406, 'choose_plan', 'Choose plan', 'acheter');
+INSERT INTO `language` VALUES (407, 'latest_jobs', 'Latest Jobs', 'Latest Jobs');
+INSERT INTO `language` VALUES (408, 'website', 'Website', 'website');
+INSERT INTO `language` VALUES (409, 'chose_one_of_the_following_methods', 'Chose One of the Following Methods.', 'chose_one_of_the_following_methods.');
+INSERT INTO `language` VALUES (410, 'sign_in_using_your_email_address', 'Sign in Using Your Email Address', 'Connectez-vous avec votre username ou email');
+INSERT INTO `language` VALUES (411, 'forgot_password', 'Forgot Password', 'Mot De Passe Oublié');
+INSERT INTO `language` VALUES (412, 'remember_me', 'Remember Me', 'Souviens-toi De Moi');
+INSERT INTO `language` VALUES (413, 'username_or_email', 'Username or email', 'Username or email');
+INSERT INTO `language` VALUES (414, 'dont_have_an_account', 'Don\'t have an account', 'Don\'t have an account');
+INSERT INTO `language` VALUES (415, 'sign_up_now', 'Sign up Now', 'CrÃ©er un compte maintenant');
+INSERT INTO `language` VALUES (416, 'send_code', 'Send Code', 'Send Code');
+INSERT INTO `language` VALUES (417, 'sign_up', 'Sign Up', 'S\'inscrire');
+INSERT INTO `language` VALUES (418, 'already_user', 'Already User', 'Already User');
+INSERT INTO `language` VALUES (419, 'sign_in_now', 'Sign In Now', 'Connectez-vous maintenant');
+INSERT INTO `language` VALUES (420, 'sign_up_for_free', 'Sign Up For Free', 'CrÃ©er un compte gratuitement');
+INSERT INTO `language` VALUES (421, 'join_thousands_of_companies_that_Use_globalcrypt_every_day', 'Join Thousands of Companies that Use Global Crypto Every Day', 'Join Thousands of Companies that Use Global Crypto Every Day');
+INSERT INTO `language` VALUES (422, 'your_password_at_global_crypto_are_encrypted_and_secured', 'Your Password At Global Crypto Are Encrypted And Secured', 'Votre Mot De Passe Chez Global Crypto Est Crypté Et Sécurisé');
+INSERT INTO `language` VALUES (423, 'email_username_used', 'Email/Username Already Used', 'Email/Username Already Used');
+INSERT INTO `language` VALUES (424, 'address', 'Address', 'Adresse');
+INSERT INTO `language` VALUES (425, 'phone', 'Phone', 'Phone');
+INSERT INTO `language` VALUES (426, 'admin_align', 'Admin alignment', 'Admin alignment');
+INSERT INTO `language` VALUES (427, 'office_time', 'Office time', 'Office time');
+INSERT INTO `language` VALUES (428, 'logo_web', 'Website logo', 'Website logo');
+INSERT INTO `language` VALUES (429, 'dashboard_logo', 'Dashboard logo', 'Dashboard logo');
+INSERT INTO `language` VALUES (430, 'advertisement', 'Advertisement', 'Advertisement');
+INSERT INTO `language` VALUES (431, 'script', 'Script', 'Script');
+INSERT INTO `language` VALUES (432, 'add_advertisement', 'Add Advertisement', 'Add Advertisement');
+INSERT INTO `language` VALUES (433, 'page', 'Page', NULL);
+INSERT INTO `language` VALUES (434, 'embed_code', 'Embed code', 'Embed code');
+INSERT INTO `language` VALUES (435, 'add_type', 'Add Type', 'Add Type');
+INSERT INTO `language` VALUES (436, 'edit_advertisement', 'Edit Advertisement', 'Edit Advertisement');
+INSERT INTO `language` VALUES (437, 'host', 'Host', 'Host');
+INSERT INTO `language` VALUES (438, 'port', 'Port', 'Port');
+INSERT INTO `language` VALUES (439, 'apikey', 'API Key', 'API Key');
+INSERT INTO `language` VALUES (440, 'mail_type', 'Mail Type', 'Mail Type');
+INSERT INTO `language` VALUES (441, 'charset', 'Charset', 'Charset');
+INSERT INTO `language` VALUES (442, 'news', 'News', 'Nouvelles');
+INSERT INTO `language` VALUES (443, 'news_list', 'News List', 'News List');
+INSERT INTO `language` VALUES (444, 'edit_news', 'Edit News', 'Edit News');
+INSERT INTO `language` VALUES (445, 'post_news', 'Post News', 'Post News');
+INSERT INTO `language` VALUES (446, 'close', 'Close', 'Close');
+INSERT INTO `language` VALUES (447, 'contact_us', 'Contact Us', 'Contact Us');
+INSERT INTO `language` VALUES (448, 'watch_video', 'WATCH VIDEO', 'WATCH VIDEO');
+INSERT INTO `language` VALUES (449, 'about_bitcoin', 'About Bitcoin', 'About Bitcoin');
+INSERT INTO `language` VALUES (450, 'get_start', 'Get Start', 'Get Start');
+INSERT INTO `language` VALUES (451, 'cryptocoins', 'Crypto Coins', 'Crypto Coins');
+INSERT INTO `language` VALUES (452, 'subscribe_to_our_newsletter', 'Subscribe to our newsletter!', 'Subscribe to our newsletter!');
+INSERT INTO `language` VALUES (453, 'email_newslatter', 'Email Newsletter', 'Email Newsletter');
+INSERT INTO `language` VALUES (454, 'services', 'Services', 'Services');
+INSERT INTO `language` VALUES (455, 'our_company', 'Our Company', 'Our Company');
+INSERT INTO `language` VALUES (456, 'sign_in', 'Sign In', 'Connectez-vous');
+INSERT INTO `language` VALUES (457, 'join_the_new_yera_of_cryptocurrency_exchange', 'Join the new Yera of cryptocurrency exchange', 'Join the new Yera of cryptocurrency exchange');
+INSERT INTO `language` VALUES (458, 'access_the_cryptocurrency_experience_you_deserve', 'Access the cryptocurrency experience you deserve', 'Access the cryptocurrency experience you deserve');
+INSERT INTO `language` VALUES (459, 'home', 'Home', 'Accueil');
+INSERT INTO `language` VALUES (460, 'scroll_to_top', 'Scroll to Top', 'Scroll to Top');
+INSERT INTO `language` VALUES (461, 'ticker', 'Ticker', 'Ticker');
+INSERT INTO `language` VALUES (462, 'price', 'Price', 'Prix');
+INSERT INTO `language` VALUES (463, 'capitalization', 'Capitalization', 'Capitalization');
+INSERT INTO `language` VALUES (464, '1d_change', '1D change', '1D change');
+INSERT INTO `language` VALUES (465, 'graph_24h', 'Graph 24H', 'Graph 24H');
+INSERT INTO `language` VALUES (466, 'recent_post', 'Recent Post', 'Recent Post');
+INSERT INTO `language` VALUES (467, 'my_social_link', 'My Social link', 'My Social link');
+INSERT INTO `language` VALUES (468, 'tell_us_about_your_project', 'Tell Us About Your Project', 'Tell Us About Your Project');
+INSERT INTO `language` VALUES (469, 'company', 'Company', 'Company');
+INSERT INTO `language` VALUES (470, 'reset_your_password', 'Reset Your Password', 'Réinitialisez Votre Mot De Passe');
+INSERT INTO `language` VALUES (471, '24h_change', '24H change', '24H change');
+INSERT INTO `language` VALUES (472, '24h_volume', '24H Volume', '24H Volume');
+INSERT INTO `language` VALUES (473, 'latitudelongitude', 'Latitude, Longitude', 'Latitude, Longitude');
+INSERT INTO `language` VALUES (474, 'send_money', 'Send Money', 'Send Money');
+INSERT INTO `language` VALUES (475, 'article', 'Article', 'article');
+INSERT INTO `language` VALUES (476, 'contact', 'Contact', 'Contact');
+INSERT INTO `language` VALUES (477, 'team', 'Team', 'team');
+INSERT INTO `language` VALUES (478, 'client', 'Client', 'client');
+INSERT INTO `language` VALUES (479, 'service', 'Service', 'service');
+INSERT INTO `language` VALUES (480, 'testimonial', 'Testimonial', 'testimonial');
+INSERT INTO `language` VALUES (481, 'faq', 'F.A.Q', 'faq');
+INSERT INTO `language` VALUES (482, 'short_description_en', 'Short description english', 'Short Description');
+INSERT INTO `language` VALUES (483, 'long_description_en', 'Long description English', 'Long Description');
+INSERT INTO `language` VALUES (484, 'short_description_fr', 'Short description english', 'Short Description');
+INSERT INTO `language` VALUES (485, 'long_description_fr', 'Long description English', 'Long Description');
+INSERT INTO `language` VALUES (486, 'info', 'Information', 'Information');
+INSERT INTO `language` VALUES (487, 'quote', 'Quote', 'Quote');
+INSERT INTO `language` VALUES (488, 'question_fr', 'Question French', 'Question French');
+INSERT INTO `language` VALUES (489, 'question_en', 'Question English', 'Question English');
+INSERT INTO `language` VALUES (490, 'answer_en', 'Answer English', 'Answer English');
+INSERT INTO `language` VALUES (491, 'answer_fr', 'Answer French', 'Answer French');
+INSERT INTO `language` VALUES (492, 'content', 'Page Content', 'Page Content');
+INSERT INTO `language` VALUES (493, 'add_content', 'Add Content', 'Add Content');
+INSERT INTO `language` VALUES (494, 'edit_content', 'Edit Content', 'Edit Content');
+INSERT INTO `language` VALUES (495, 'video', 'video (If Youtube Link)', 'video');
+INSERT INTO `language` VALUES (496, 'add_faq', 'Add F.A.Q', 'Add faq');
+INSERT INTO `language` VALUES (497, 'add_testimonial', 'Add Testimonial', 'Add testimonial');
+INSERT INTO `language` VALUES (498, 'add_service', 'Add Service', 'Add service');
+INSERT INTO `language` VALUES (499, 'add_client', 'Add Client', 'Add client');
+INSERT INTO `language` VALUES (500, 'add_team', 'Add Team', 'Add team');
+INSERT INTO `language` VALUES (501, 'add_contact', 'Add Contact', 'Add contact');
+INSERT INTO `language` VALUES (502, 'add_article', 'Add Article', 'Add article');
+INSERT INTO `language` VALUES (503, 'edit_article', 'edit Article', 'edit article');
+INSERT INTO `language` VALUES (504, 'edit_contact', 'edit Contact', 'edit contact');
+INSERT INTO `language` VALUES (505, 'edit_team', 'edit Team', 'edit team');
+INSERT INTO `language` VALUES (506, 'edit_client', 'edit Client', 'edit client');
+INSERT INTO `language` VALUES (507, 'edit_service', 'edit Service', 'edit service');
+INSERT INTO `language` VALUES (508, 'edit_testimonial', 'edit Testimonial', 'edit testimonial');
+INSERT INTO `language` VALUES (509, 'edit_faq', 'edit F.A.Q', 'edit faq');
+INSERT INTO `language` VALUES (510, 'article_list', 'Article List', 'article');
+INSERT INTO `language` VALUES (511, 'contact_list', 'Contact List', 'contact');
+INSERT INTO `language` VALUES (512, 'team_list', 'Team List', 'team');
+INSERT INTO `language` VALUES (513, 'client_list', 'Client List', 'client');
+INSERT INTO `language` VALUES (514, 'service_list', 'Service List', 'service');
+INSERT INTO `language` VALUES (515, 'testimonial_list', 'Testimonial List', 'testimonial');
+INSERT INTO `language` VALUES (516, 'faq_list', 'F.A.Q List', 'faq');
+INSERT INTO `language` VALUES (517, 'content_list', 'Page Content', 'Page Content');
+INSERT INTO `language` VALUES (518, 'add_teammember', 'Add Teammember', 'Add Teammember');
+INSERT INTO `language` VALUES (519, 'tooltip_package_name', 'Example: Silver Package', 'Example: Silver Package');
+INSERT INTO `language` VALUES (520, 'tooltip_package_details', 'This is for Package Short Details', 'This is for Package Short Details.');
+INSERT INTO `language` VALUES (521, 'tooltip_package_amount', 'Package Amount in Dollar. Example: 200', 'Package Amount in Dollar. Example: 200');
+INSERT INTO `language` VALUES (522, 'tooltip_package_daily_roi', 'Please Set this field with Zero. Example: 0', 'Please Set this field with Zero. Example: 0');
+INSERT INTO `language` VALUES (523, 'tooltip_package_weekly_roi', 'Who buy this package they will get weekly ROI in Dollar. Example: 5. They will get every week 5 till them package period', 'Who buy this package they will get weekly ROI in Dollar. Example: 5. They will get every week 5 till them package period');
+INSERT INTO `language` VALUES (524, 'tooltip_package_monthly_roi', 'Sum of weekly ROI in a month', 'Sum of weekly ROI in a month');
+INSERT INTO `language` VALUES (525, 'tooltip_package_yearly_roi', 'Sum of weekly ROI in a Year', 'Sum of weekly ROI in a Year');
+INSERT INTO `language` VALUES (526, 'tooltip_package_total_percent_roi', 'Total Persent Of ROI', 'Total Persent Of ROI');
+INSERT INTO `language` VALUES (527, 'tooltip_package_period', 'Package Period', 'Package Period');
+INSERT INTO `language` VALUES (528, 'trading', 'Trading', 'Trade');
+INSERT INTO `language` VALUES (529, 'trade_history', 'Trade History', 'Histoire Du Commerce');
+INSERT INTO `language` VALUES (530, 'market', 'Market', 'Marché');
+INSERT INTO `language` VALUES (531, 'coin_pair', 'Coin Pair', 'Coin Pair');
+INSERT INTO `language` VALUES (532, 'pending_deposit', 'Pending Deposit', 'Demande de retrat en cours');
+INSERT INTO `language` VALUES (533, 'email_and_sms_setting', 'Email And SMS Setting', 'Paramètres D\'e-mail Et De SMS');
+INSERT INTO `language` VALUES (534, 'email_and_sms_gateway', 'Email And Sms Gateway', 'Email And Sms Gateway');
+INSERT INTO `language` VALUES (535, 'trade', 'Trade', 'Commerce');
+INSERT INTO `language` VALUES (536, 'referral_id', 'Referral ID', '');
+INSERT INTO `language` VALUES (537, 'please_enter_valid_email', 'Please Enter Valid Email !!!', 'Please Enter Valid Email !!!');
+INSERT INTO `language` VALUES (538, 'already_subscribe', 'This Email Address already subscribed', 'This Email Address already subscribed');
+INSERT INTO `language` VALUES (539, 'message_send_successfuly', 'TMessage send successfuly', 'Message send successfuly');
+INSERT INTO `language` VALUES (540, 'message_send_fail', 'Message send Fail', 'Message send Fail');
+INSERT INTO `language` VALUES (541, 'setup_payment_gateway', 'setup payment gateway', 'setup payment gateway');
+INSERT INTO `language` VALUES (542, 'user_profile', 'User Profile', 'User Profile');
+INSERT INTO `language` VALUES (543, 'client_id', 'Client Id', 'Client Id');
+INSERT INTO `language` VALUES (544, 'client_secret', 'Client Secret', 'Client Secret');
+INSERT INTO `language` VALUES (545, 'notice', 'Notice', 'Remarquer');
+INSERT INTO `language` VALUES (546, 'edit_notice', 'Edit Notice', 'Edit Notice');
+INSERT INTO `language` VALUES (547, 'language_list', 'Language List', 'Language List');
+INSERT INTO `language` VALUES (548, 'phrase_list', 'Phrase List', 'Phrase List');
+INSERT INTO `language` VALUES (549, 'edit_phrase', 'Edit Phrase', 'Edit Phrase');
+INSERT INTO `language` VALUES (550, 'label_added_successfully', 'Label added successfully!', 'Label added successfully!');
+INSERT INTO `language` VALUES (551, 'this_level_already_exist', 'This Level Already Exist!', 'This Level Already Exist!');
+INSERT INTO `language` VALUES (552, 'you_successfully_deposit_the_amount', 'You successfully deposit the amount', 'You successfully deposit the amount');
+INSERT INTO `language` VALUES (553, 'your_new_balance_is', 'Your new balance is', 'Your new balance is');
+INSERT INTO `language` VALUES (554, 'account_name', 'Account Name', 'Account Name');
+INSERT INTO `language` VALUES (555, 'account_no', 'Account No', 'Account No');
+INSERT INTO `language` VALUES (556, 'branch_name', 'Branch Name', 'Branch Name');
+INSERT INTO `language` VALUES (557, 'swift_code', 'SWIFT Code', 'SWIFT Code');
+INSERT INTO `language` VALUES (558, 'abn_no', 'ABN No', 'ABN No');
+INSERT INTO `language` VALUES (559, 'country', 'Country', 'Country');
+INSERT INTO `language` VALUES (560, 'bank_name', 'Bank Name', 'Bank Name');
+INSERT INTO `language` VALUES (561, 'there_is_no_phone_number', 'There is no Phone number!!!', 'There is no Phone number!!!');
+INSERT INTO `language` VALUES (562, 'coinpair', 'Coinpair', 'Coinpair');
+INSERT INTO `language` VALUES (563, 'edit_coinpair', 'Edit Coinpair', 'Edit Coinpair');
+INSERT INTO `language` VALUES (564, 'edit_coin', 'Edit coin', 'Edit coin');
+INSERT INTO `language` VALUES (565, 'coin_market', 'Coin Market', 'Marché Aux Pièces');
+INSERT INTO `language` VALUES (566, 'edit_market', 'Edit Market', 'Modifier Le Marché');
+INSERT INTO `language` VALUES (567, 'leave_us_a_message', 'Leave us a message', 'Leave us a message');
+INSERT INTO `language` VALUES (568, 'verify_type', 'verify type', 'verify type');
+INSERT INTO `language` VALUES (569, 'gender', 'Gender', 'Gender');
+INSERT INTO `language` VALUES (570, 'id_number', 'Id  Number', 'Id Number');
+INSERT INTO `language` VALUES (571, 'verification_is_being_processed', 'Verification Is being Processed', 'Verification Is being Processed');
+INSERT INTO `language` VALUES (572, 'cryptocoin', 'Cryptocoin', 'Cryptocoin french');
+INSERT INTO `language` VALUES (573, 'please_setup_your_bank_account', 'Please setup bank account', 'Please setup bank account');
+INSERT INTO `language` VALUES (574, 'this_gateway_deactivated', 'This Gateway Deactivated', 'This Gateway Deactivated');
+INSERT INTO `language` VALUES (575, 'otp_send_to', 'OTP Send To', 'OTP Send To');
+INSERT INTO `language` VALUES (576, 'your_weekly_limit_exceeded', 'Your weekly Limit exceeded', 'Your weekly exceeded ');
+INSERT INTO `language` VALUES (577, 'there_is_no_order_for_cancel', 'There is no order for cancel', 'There is no order for cancel');
+INSERT INTO `language` VALUES (578, 'request_canceled', 'Request Canceled', 'Demande Annulée');
+INSERT INTO `language` VALUES (579, 'referral_id_is_invalid', 'Referral ID is invalid', 'Referral ID is invalid');
+INSERT INTO `language` VALUES (580, 'invalid_ip_address', 'Invalid IP address', 'Invalid IP address');
+INSERT INTO `language` VALUES (581, 'please_activate_your_account', 'Please activate your account', 'Please activate your account');
+INSERT INTO `language` VALUES (582, 'already_regsister', 'Already regsister!!!', 'Already regsister!!!');
+INSERT INTO `language` VALUES (583, 'this_account_is_now_pending', 'This account is now pending', 'This account is now pending');
+INSERT INTO `language` VALUES (584, 'this_account_is_suspend', 'This account is suspend', 'This account is suspend');
+INSERT INTO `language` VALUES (585, 'something_wrong', 'Something wrong !!!', 'Something wrong !!!');
+INSERT INTO `language` VALUES (586, 'password_missmatch', 'Password Missmatch', 'password missmatch');
+INSERT INTO `language` VALUES (587, 'invalid_authentication_code', 'Invalid Authentication Code', 'Invalid Authentication Code');
+INSERT INTO `language` VALUES (588, 'password_reset_code_send_check_your_email', 'Password reset code send.Check your email.', 'Password reset code send.Check your email.');
+INSERT INTO `language` VALUES (589, 'email_required', 'email required', 'email required');
+INSERT INTO `language` VALUES (590, 'password_changed', 'Password has been changed', 'Password has been changed');
+INSERT INTO `language` VALUES (591, 'google_authenticator_disabled', 'Google Authenticator Disabled', 'Google Authenticator Disabled');
+INSERT INTO `language` VALUES (592, 'google_authenticator_enabled', 'Google Authenticator Enabled', 'Google Authenticator Enabled');
+INSERT INTO `language` VALUES (593, 'this_account_already_activated', 'This account already activated', 'This account already activated');
+INSERT INTO `language` VALUES (594, 'total_balance', 'Total Balance', 'Total Balance');
+INSERT INTO `language` VALUES (595, 'available_balance', 'Available Balance', 'Available balance');
+INSERT INTO `language` VALUES (596, 'open', 'Open', NULL);
+INSERT INTO `language` VALUES (597, 'qty', 'QTY', 'QTY');
+INSERT INTO `language` VALUES (598, 'finished_trade', 'Finished Trade', 'Finished Trade');
+INSERT INTO `language` VALUES (599, 'deposit_crypto_dollar', 'Deposit(Crypto/Dollar)', 'Deposit(Crypto/Dollar)');
+INSERT INTO `language` VALUES (600, 'us_dollar', 'US Dollar', 'US Dollar');
+INSERT INTO `language` VALUES (601, 'available', 'Available', 'Disponible');
+INSERT INTO `language` VALUES (602, 'buy_orders', 'Buy Orders', 'Buy Orders');
+INSERT INTO `language` VALUES (603, 'last_price', 'last price', 'last price');
+INSERT INTO `language` VALUES (604, 'sell_orders', 'Sell Orders', 'Sell Orders');
+INSERT INTO `language` VALUES (605, '1hr_change', '1hr Change', '1hr Change');
+INSERT INTO `language` VALUES (606, '1hr_high', '1hr High', '1hr High');
+INSERT INTO `language` VALUES (607, '1hr_low', '1hr Low', '1hr Low');
+INSERT INTO `language` VALUES (608, '1hr_volume', '1hr Volume', '1hr Volume');
+INSERT INTO `language` VALUES (609, 'estimated_open_price', 'Estimated open price', 'Estimated open price');
+INSERT INTO `language` VALUES (610, 'open_fees', 'Open fees', 'Open fees');
+INSERT INTO `language` VALUES (611, 'market_depth', 'Market Depth', 'Market Depth');
+INSERT INTO `language` VALUES (612, 'coin', 'Coin', 'Pièce De Monnaie');
+INSERT INTO `language` VALUES (613, 'market_price', 'Market Price', 'Market Price');
+INSERT INTO `language` VALUES (614, 'volume', 'volume', 'volume');
+INSERT INTO `language` VALUES (615, 'live_chat', 'Live Chat', 'Live Chat');
+INSERT INTO `language` VALUES (616, 'market_trade_history', 'Market Trade History', 'Market Trade History');
+INSERT INTO `language` VALUES (617, 'Notices', 'notices', 'notices');
+INSERT INTO `language` VALUES (618, 'posted_by', 'Posted by', 'Posted by');
+INSERT INTO `language` VALUES (619, 'latest_form_our_blog', 'Latest form our blog', 'Latest form our blog');
+INSERT INTO `language` VALUES (620, 'auth_code', 'Auth Code', 'AuthCode');
+INSERT INTO `language` VALUES (621, 'scan_this_barcode_using', 'Scan this BarCode using', 'Scan this BarCode using');
+INSERT INTO `language` VALUES (622, 'google_authentication', 'Google Authentication', 'Google Authentication');
+INSERT INTO `language` VALUES (623, 'install_google_authentication', 'Install Google Authentication', 'Install Google Authentication');
+INSERT INTO `language` VALUES (624, 'if_you_are_unable_to_scan_the_qr_code_please_enter_this_code_manually_into_the_app.', 'If you are unable to scan the QR code, please enter this code manually into the app.', 'If you are unable to scan the QR code, please enter this code manually into the app.');
+INSERT INTO `language` VALUES (625, 'open_order', 'Open Order', 'Open Order');
+INSERT INTO `language` VALUES (626, 'complete_order', 'Complete Order', 'Complete Order');
+INSERT INTO `language` VALUES (627, 'bank_setting', 'Bank Setup', 'Bank Setup');
+INSERT INTO `language` VALUES (628, 'payout_setup', 'Payout Setup', 'Payout Setup');
+INSERT INTO `language` VALUES (629, 'account_login', 'Account Login', 'Account Login');
+INSERT INTO `language` VALUES (630, 'we_never_share_your_email_with_anyone_else', 'We\'ll never share your email with anyone else', 'We\'ll never share your email with anyone else');
+INSERT INTO `language` VALUES (631, 'news_details', 'News Details', 'News Details');
+INSERT INTO `language` VALUES (632, 'open_order_history', 'Open Order History', 'Open Order History');
+INSERT INTO `language` VALUES (633, 'required_qty', 'Required QTY', '');
+INSERT INTO `language` VALUES (634, 'available_qty', 'Available Quantity ', '');
+INSERT INTO `language` VALUES (635, 'required_amount', 'Required Amount', '');
+INSERT INTO `language` VALUES (636, 'available_amount', 'Available Amount', '');
+INSERT INTO `language` VALUES (637, 'complete_qty', 'Complete QTY', '');
+INSERT INTO `language` VALUES (638, 'complete_amount', 'complete amount', '');
+INSERT INTO `language` VALUES (639, 'trade_time', 'Trade Time', 'Trade Time');
+INSERT INTO `language` VALUES (640, 'running', 'Running', NULL);
+INSERT INTO `language` VALUES (641, '24hr_change', '24hr Change', '24hr Change');
+INSERT INTO `language` VALUES (642, '24hr_high', '24hr High', '24hr High');
+INSERT INTO `language` VALUES (643, '24hr_low', '24hr Low', '1hr Low');
+INSERT INTO `language` VALUES (644, '24hr_volume', '24hr Volume', '24hr Volume');
+INSERT INTO `language` VALUES (645, 'post_comment', 'Post Comment', 'Post Comment');
+INSERT INTO `language` VALUES (646, 'account_created', 'Account Created', 'Account Created');
+INSERT INTO `language` VALUES (647, 'access_time', 'Access Time', 'Access Time');
+INSERT INTO `language` VALUES (648, 'user_agent', 'User Agent', 'User Agent');
+INSERT INTO `language` VALUES (649, 'passport', 'Passport', 'Passport');
+INSERT INTO `language` VALUES (650, 'drivers_license', 'Driver license', 'Driver license');
+INSERT INTO `language` VALUES (651, 'government_issued_id_card', 'Government-issued ID Card', 'Government-issued ID Card');
+INSERT INTO `language` VALUES (652, 'given_name', 'Given Name', 'Given Name');
+INSERT INTO `language` VALUES (653, 'surname', 'Surname', 'Surname');
+INSERT INTO `language` VALUES (654, 'passport_nid_license_number', 'Passport/NID/License Number', 'Passport/NID/License Number');
+INSERT INTO `language` VALUES (655, 'account_register', 'Account Register', 'Account Register');
+INSERT INTO `language` VALUES (656, 'confirm_password', 'Confirm Password', 'Confirm Password');
+INSERT INTO `language` VALUES (657, 'canceled', 'Canceled', NULL);
+INSERT INTO `language` VALUES (658, 'completed', 'Completed', NULL);
+INSERT INTO `language` VALUES (659, 'crypto_dollar_currency', 'Crypto/Dollar Currency', 'Crypto/Dollar Currency');
+INSERT INTO `language` VALUES (660, 'withdraw_no', 'Withdraw No', 'Withdraw No');
+INSERT INTO `language` VALUES (661, 'male', 'Male', 'Male');
+INSERT INTO `language` VALUES (662, 'female', 'Female', 'Female');
+INSERT INTO `language` VALUES (663, 'verify', 'Verify', 'Verify');
+INSERT INTO `language` VALUES (664, 'server_problem', 'Server Problem', 'Server Problem');
+INSERT INTO `language` VALUES (665, 'verified', 'Verified', 'Vérifié');
+INSERT INTO `language` VALUES (666, 'footer_menu1', 'Footer menu 1', 'Footer menu 1');
+INSERT INTO `language` VALUES (667, 'footer_menu2', 'Footer menu 2', 'Footer menu 2');
+INSERT INTO `language` VALUES (668, 'footer_menu3', 'Social Service', 'Social Service');
+INSERT INTO `language` VALUES (669, 'terms_of_use', 'Terms Of Use', 'Terms Of Use');
+INSERT INTO `language` VALUES (670, 'receiver_not_valid', 'Receiver not valid!!!', 'Receiver not valid!!!');
+INSERT INTO `language` VALUES (671, 'first_name_required', 'Please enter your name!', 'Please enter your name!');
+INSERT INTO `language` VALUES (672, 'a_lowercase_letter', 'Please Enter a Lowercase letter !', 'Please enter a loswercase letter!');
+INSERT INTO `language` VALUES (673, 'password_required', 'Please enter your password!', 'Please enter yYour password!');
+INSERT INTO `language` VALUES (674, 'a_capital_uppercase_letter', 'Please Enter a Uppercase letter ! ', 'Please enter a upercase letter!');
+INSERT INTO `language` VALUES (675, 'a_number', 'Please Enter a Number!', 'Please enter a number!');
+INSERT INTO `language` VALUES (676, 'a_special', 'Please Enter a Special Character !', 'Please enter a  special character!');
+INSERT INTO `language` VALUES (677, 'please_enter_at_least_8_characters_input', 'Please enter at least eight characters!', 'Please enter at least eight characters!');
+INSERT INTO `language` VALUES (678, 'confirm_password_must_be_filled_out', 'Please enter Confirm password!', 'Please enter Confirm password!');
+INSERT INTO `language` VALUES (679, 'must_confirm_privacy_policy_and_terms_and_conditions', 'Must confirm privacy policy and terms and conditions', 'Must confirm privacy policy and terms and conditions');
+INSERT INTO `language` VALUES (680, 'phone_required', 'Enter your phone number!', 'Enter your phone number!');
+INSERT INTO `language` VALUES (681, 'email_required', 'Enter your email address!', 'Enter your email address!');
+INSERT INTO `language` VALUES (682, 'comments_required', 'Enter your comments!', 'Enter your comments!');
+INSERT INTO `language` VALUES (683, 'first_name', 'Please enter your first name!', 'Please enter your first name!');
+INSERT INTO `language` VALUES (684, 'c', NULL, NULL);
+INSERT INTO `language` VALUES (685, 'f_name', 'First Name', 'First Name');
+INSERT INTO `language` VALUES (686, 'l_name', 'Last Name', 'Last Name');
+INSERT INTO `language` VALUES (687, 'coin_full_name', 'Coin Full Name', 'Nom complet de la piÃ¨ce');
+INSERT INTO `language` VALUES (688, 'coin_id', 'Coin Id', 'ID de piÃ¨ce');
+INSERT INTO `language` VALUES (689, 'rank', 'Rank', NULL);
+INSERT INTO `language` VALUES (690, 'show_home', 'Show Home', 'Afficher la maison');
+INSERT INTO `language` VALUES (691, 'yes', 'Yes', 'Oui');
+INSERT INTO `language` VALUES (692, 'no', 'No', 'Non');
+INSERT INTO `language` VALUES (693, 'coin_image/icon/logo', 'Coin Image/Icon/Logo', 'Image de piÃ¨ce / icÃ´ne / logo');
+INSERT INTO `language` VALUES (694, 'coin_icon', 'Coin Icon', 'IcÃ´ne de piÃ¨ce de monnaie');
+INSERT INTO `language` VALUES (695, 'full_name', 'Full Name', 'Nom complet');
+INSERT INTO `language` VALUES (696, 'home_page/serial', 'Home Page/Serial', 'Page d\'accueil / SÃ©rie');
+INSERT INTO `language` VALUES (697, 'email_notification_settings', 'Email Notification Settings', 'Paramètres De Notification Par E-mail');
+INSERT INTO `language` VALUES (698, 'payout', 'Payout', NULL);
+INSERT INTO `language` VALUES (699, 'commissin', 'Commissin', 'Commission');
+INSERT INTO `language` VALUES (700, 'team_bonnus', 'Team Bonnus', NULL);
+INSERT INTO `language` VALUES (701, 'sms_sending', 'SMS Sending', 'Envoi De SMS');
+INSERT INTO `language` VALUES (702, 'exchange_market', 'Exchange Market', 'Marché Des Changes');
+INSERT INTO `language` VALUES (703, 'total_trade', 'Total Trade', 'Commerce Total');
+INSERT INTO `language` VALUES (704, 'total_crypto_fees', 'Total Crypto Fees', 'Total Des Frais De Crypto');
+INSERT INTO `language` VALUES (705, 'total_usd_fees', 'Total USD Fees', 'Frais Totaux En USD');
+INSERT INTO `language` VALUES (706, 'referral_bonus_usd', 'Referral Bonus USD', 'Bonus De Parrainage USD');
+INSERT INTO `language` VALUES (707, 'market_deposit', 'Market Deposit', 'DÃ©pÃ´t de marchÃ©');
+INSERT INTO `language` VALUES (708, 'fees_collect', 'Fees Collect', 'Frais collectÃ©s');
+INSERT INTO `language` VALUES (709, 'quantity', 'Quantity', 'QuantitÃ©');
+INSERT INTO `language` VALUES (710, 'required', 'Required', NULL);
+INSERT INTO `language` VALUES (711, 'history', 'history', 'histoire');
+INSERT INTO `language` VALUES (712, 'back', 'Back', 'Retour');
+INSERT INTO `language` VALUES (713, 'important', 'Important', 'Important');
+INSERT INTO `language` VALUES (714, 'send_only', 'Send Only', 'Envoyer seulement');
+INSERT INTO `language` VALUES (715, 'deposit_address', 'deposit address', 'adresse de dÃ©pÃ´t');
+INSERT INTO `language` VALUES (716, 'sending_any_other_coin_or_token_to_this_address_may_result_in_the_loss_of_your_deposit', 'Sending any other coin or token to this address may result in the loss of your deposit', 'L\'envoi de toute autre piÃ¨ce ou jeton Ã  cette adresse peut entraÃ®ner la perte de votre dÃ©pÃ´t');
+INSERT INTO `language` VALUES (717, 'copy_address', 'Copy Address', 'Copier l\'adresse');
+INSERT INTO `language` VALUES (718, 'payment_process', 'Payment Process', NULL);
+INSERT INTO `language` VALUES (719, 'balance', 'Balance', 'Ã©quilibre');
+INSERT INTO `language` VALUES (720, 'flag', 'Flag', NULL);
+INSERT INTO `language` VALUES (721, 'menu_background_color', 'Menu Background Color', 'Couleur d\'arrière-plan du menu');
+INSERT INTO `language` VALUES (722, 'menu_font_color', 'Menu Font Color', 'Couleur de la police du menu');
+INSERT INTO `language` VALUES (723, 'footer_background_color', 'Footer Background Color', 'Couleur de fond du bas de page');
+INSERT INTO `language` VALUES (724, 'footer_font_color', 'Footer Font Color', 'Couleur de la police du pied de page');
+INSERT INTO `language` VALUES (725, 'button_background_color', 'Button Background Color', 'Couleur d\'arrière-plan du bouton');
+INSERT INTO `language` VALUES (726, 'button_font_color', 'Button Font Color', 'Couleur de la police du bouton');
+INSERT INTO `language` VALUES (727, 'theme_color', 'Theme Color', 'Couleur du thème');
+INSERT INTO `language` VALUES (728, 'newsletter_background_color', 'Newsletter Background Color', 'Couleur d\'arrière-plan de la newsletter');
+INSERT INTO `language` VALUES (729, 'newsletter_font_color', 'Newsletter Font Color', 'Couleur de police de la newsletter');
+INSERT INTO `language` VALUES (730, 'newsletter_images', 'Newsletter Images', 'Images de la newsletter');
+INSERT INTO `language` VALUES (731, 'pending-withdraw', 'Pending withdraw', 'En attente de retrait');
+INSERT INTO `language` VALUES (732, 'withdraw-list', 'Withdraw List', 'Retirer la liste');
+INSERT INTO `language` VALUES (733, 'pending-deposit', 'Pending Deposit', 'Dépôt en attente');
+INSERT INTO `language` VALUES (734, 'deposit-list', 'Deposit List', 'Liste de dépôt');
+INSERT INTO `language` VALUES (735, 'add-credit', 'Add Credit', 'Ajouter un crédit');
+INSERT INTO `language` VALUES (736, 'open-order', 'Open Order', 'Commande Ouverte');
+INSERT INTO `language` VALUES (737, 'trade-history', 'Trade History', 'Histoire Du Commerce');
+INSERT INTO `language` VALUES (738, 'exchanger', 'Exchanger', 'Échangeur');
+INSERT INTO `language` VALUES (739, 'coin-pair', 'Coin Pair', 'Paire De Pièces');
+INSERT INTO `language` VALUES (740, 'user', 'User', 'Utilisateur');
+INSERT INTO `language` VALUES (741, 'add-user', 'Add User', 'Ajouter un utilisateur');
+INSERT INTO `language` VALUES (742, 'user-list', 'user list', 'liste d\'utilisateur');
+INSERT INTO `language` VALUES (743, 'verify-user', 'Verify User', 'Vérifier L\'utilisateur');
+INSERT INTO `language` VALUES (744, 'subscriber-list', 'Subscriber List', 'Liste D\'abonnés');
+INSERT INTO `language` VALUES (745, 'app-setting', 'App Setting', 'Réglage De L\'application');
+INSERT INTO `language` VALUES (746, 'block-list', 'Block List', 'Liste De Blocage');
+INSERT INTO `language` VALUES (747, 'fees-setting', 'Fees Setting', 'établissement Des Frais');
+INSERT INTO `language` VALUES (748, 'transaction-setup', 'Transaction Setup', 'Configuration De La Transaction');
+INSERT INTO `language` VALUES (749, 'email-sms-gateway', 'Email Sms Gateway', 'Passerelle Sms Email');
+INSERT INTO `language` VALUES (750, 'payment-gateway', 'Payment Gateway', 'Passerelle De Paiement');
+INSERT INTO `language` VALUES (751, 'affiliation', 'Affiliation', 'Affiliation');
+INSERT INTO `language` VALUES (752, 'external-api-list', 'External Api List', 'Liste Des API Externes');
+INSERT INTO `language` VALUES (753, 'update-external-api', 'Update External Api', 'Mettre à Jour L\'API Externe');
+INSERT INTO `language` VALUES (754, 'phrase', 'Phrase', 'Phrase');
+INSERT INTO `language` VALUES (755, 'edit-phrase', 'Edit Phrase', 'Modifier La Phrase');
+INSERT INTO `language` VALUES (756, 'update-gateway', 'Update Gateway', 'Mettre à Jour La Passerelle');
+INSERT INTO `language` VALUES (757, 'edit-user', 'Edit User', 'Modifier L\'utilisateur');
+INSERT INTO `language` VALUES (758, 'add-admin', 'Add Admin', 'Ajouter Un Administrateur');
+INSERT INTO `language` VALUES (759, 'admin-list', 'Admin List', 'Liste D\'administrateurs');
+INSERT INTO `language` VALUES (760, 'cms', 'CMS', 'CMS');
+INSERT INTO `language` VALUES (761, 'themes-setting', 'Themes Setting', 'Réglage Des Thèmes');
+INSERT INTO `language` VALUES (762, 'page-content-list', 'Page Content List', 'Liste De Contenu De Page');
+INSERT INTO `language` VALUES (763, 'faq-list', 'Faq List', 'Liste De Faq');
+INSERT INTO `language` VALUES (764, 'notice-list', 'Notice List', 'Liste D\'avis');
+INSERT INTO `language` VALUES (765, 'edit-page-content', 'Edit Page Content', 'Modifier Le Contenu De La Page');
+INSERT INTO `language` VALUES (766, 'edit-faq', 'Edit Faq', 'Modifier La FAQ');
+INSERT INTO `language` VALUES (767, 'edit-notice', 'Edit Notice', 'Modifier L\'avis');
+INSERT INTO `language` VALUES (768, 'add-page-content', 'Add Page Content', 'Ajouter Du Contenu De Page');
+INSERT INTO `language` VALUES (769, 'add-faq', 'Add Faq', 'Ajouter Une FAQ');
+INSERT INTO `language` VALUES (770, 'news-list', 'News List', 'Liste De Nouvelles');
+INSERT INTO `language` VALUES (771, 'add-news', 'Add News', 'Ajouter Des Nouvelles');
+INSERT INTO `language` VALUES (772, 'edit-news', 'Edit News', 'Modifier Les Actualités');
+INSERT INTO `language` VALUES (773, 'category-list', 'Category List', 'Liste Des Catégories');
+INSERT INTO `language` VALUES (774, 'add-category', 'Add Category', 'Ajouter Une Catégorie');
+INSERT INTO `language` VALUES (775, 'edit-category', 'Edit Category', 'Modifier La Catégorie');
+INSERT INTO `language` VALUES (776, 'slider-list', 'Slider List', 'Liste De Curseurs');
+INSERT INTO `language` VALUES (777, 'add-slider', 'Add Slider', 'Ajouter Un Curseur');
+INSERT INTO `language` VALUES (778, 'edit-slider', 'Edit Slider', 'Modifier Le Curseur');
+INSERT INTO `language` VALUES (779, 'social-link-list', 'Social Link List', 'Liste De Liens Sociaux');
+INSERT INTO `language` VALUES (780, 'edit-social-link', 'Edit Social Link', 'Modifier Le Lien Social');
+INSERT INTO `language` VALUES (781, 'advertisement-list', 'Advertisement List', 'Liste De Publicités');
+INSERT INTO `language` VALUES (782, 'add-advertisement', 'Add Advertisement', 'Ajouter Une Publicité');
+INSERT INTO `language` VALUES (783, 'edit-advertisement', 'Edit Advertisement', 'Modifier La Publicité');
+INSERT INTO `language` VALUES (784, 'web-language-list', 'Web Language List', 'Liste Des Langues Web');
+INSERT INTO `language` VALUES (785, 'autoupdate', 'Autoupdate', 'Mise à Jour Automatique');
+INSERT INTO `language` VALUES (786, 'latest-version', 'Latest Version', 'Dernière Version');
+INSERT INTO `language` VALUES (787, 'current-version', 'Current Version', 'Version Actuelle');
+INSERT INTO `language` VALUES (788, 'subscriber', 'Subscriber', 'Abonné');
+INSERT INTO `language` VALUES (789, 'affiliation-setup', 'Affiliation Setup', 'Configuration De L\'affiliation');
+INSERT INTO `language` VALUES (790, 'external-api', 'External API', 'API Externe');
+INSERT INTO `language` VALUES (791, 'support', 'Support', 'Soutien');
+INSERT INTO `language` VALUES (792, 'no-update-available', 'No Update Available', 'Pas De Mise A Jour Disponible');
+INSERT INTO `language` VALUES (793, 'full-name', 'Full Name', 'Nom Complet');
+INSERT INTO `language` VALUES (794, 'initial-price', 'Initial Price', 'Prix ???initial');
+INSERT INTO `language` VALUES (795, 'test_bdtask', 'Bdtask Limited', NULL);
+INSERT INTO `language` VALUES (796, 'email_sms_template', 'E-mail And SMS Template', 'E-mail And SMS Template');
+INSERT INTO `language` VALUES (797, 'template-english', 'Template English', 'Modèle Anglais');
+INSERT INTO `language` VALUES (798, 'template-french', 'Template French', 'Modèle Français');
+INSERT INTO `language` VALUES (799, 'template-name', 'Template Name', 'Nom Du Modèle');
+INSERT INTO `language` VALUES (800, 'template-type', 'Template Type', 'Type De Modèle');
+INSERT INTO `language` VALUES (801, 'template-update', 'Template-update', 'Template-update');
+INSERT INTO `language` VALUES (802, 'email-sms-template', 'Email Sms Template', 'Modèle De Courrier électronique SMS');
+INSERT INTO `language` VALUES (803, 'transfer_verification', 'Transfer Verification', 'Vérification Du Transfert');
+INSERT INTO `language` VALUES (804, 'transfer_success', 'Transfer Success', 'Succès Du Transfert');
+INSERT INTO `language` VALUES (805, 'withdraw_verification', 'Withdraw Verification', 'Retirer La Vérification');
+INSERT INTO `language` VALUES (806, 'withdraw_success', 'Withdraw Success', 'Retirer Le Succès');
+INSERT INTO `language` VALUES (807, 'profile_update', 'Profile Update', 'Mise à Jour Du Profil');
+INSERT INTO `language` VALUES (808, 'deposit_success', 'Deposit Success', 'Réussite Du Dépôt');
+INSERT INTO `language` VALUES (809, 'registered', 'Registered', 'Inscrit');
+INSERT INTO `language` VALUES (810, 'email_address', 'Email Address', 'Adresse E-mail');
+INSERT INTO `language` VALUES (811, 'template_type', 'Template Type', 'Type De Modèle');
+INSERT INTO `language` VALUES (812, 'subject_english', 'Subject English', 'Sujet Anglais');
+INSERT INTO `language` VALUES (813, 'subject_french', 'Subject French', 'Sujet Français');
+INSERT INTO `language` VALUES (814, 'purchase_key', 'Purchase Key', 'Clé D\'achat');
+INSERT INTO `language` VALUES (815, 'module', 'Module', 'Module');
+INSERT INTO `language` VALUES (816, 'add_module', 'Add Module', 'Ajouter Un Module');
+INSERT INTO `language` VALUES (817, 'overwrite', 'Overwrite', 'écraser');
+INSERT INTO `language` VALUES (818, 'theme_uploaded_successfully', 'Theme Uploaded Successfully', 'Thème Téléchargé Avec Succès');
+INSERT INTO `language` VALUES (819, 'there_was_a_problem_with_the_upload', 'There Was A Problem With The Upload', 'Il Y A Eu Un Problème Avec Le Téléchargement');
+INSERT INTO `language` VALUES (820, 'invalid_purchase_key', 'Invalid Purchase Key', 'Clé D\'achat Invalide');
+INSERT INTO `language` VALUES (821, 'buy_now', 'Buy Now', 'Acheter Maintenant');
+INSERT INTO `language` VALUES (822, 'install', 'Install', 'Installer');
+INSERT INTO `language` VALUES (823, 'invalid_module', 'Invalid Module', 'Module Invalide');
+INSERT INTO `language` VALUES (824, 'module_added_successfully', 'Module Added Successfully', 'Module Ajouté Avec Succès');
+INSERT INTO `language` VALUES (825, 'no_tables_are_registered_in_config', 'No Tables Are Registered_in Config', 'Aucune Table N\'est Enregistrée Dans La Configuration');
+INSERT INTO `language` VALUES (826, 'themes', 'Themes', 'Thèmes');
+INSERT INTO `language` VALUES (827, 'module_list', 'Module List', 'Liste Des Modules');
+INSERT INTO `language` VALUES (828, 'theme_active_successfully', 'Theme Active Successfully', 'Thème Actif Avec Succès');
+INSERT INTO `language` VALUES (829, 'theme_name', 'Theme Name', 'Nom Du Thème');
+INSERT INTO `language` VALUES (830, 'upload', 'Upload', 'Télécharger');
+INSERT INTO `language` VALUES (831, 'downloaded_successfully', 'Downloaded Successfully', 'Téléchargé Avec Succès');
+INSERT INTO `language` VALUES (832, 'failed_try_again', 'Failed Try Again', 'échec Réessayer');
+INSERT INTO `language` VALUES (833, 'no_theme_available', 'No Theme Available', 'Aucun Thème Disponible');
+INSERT INTO `language` VALUES (834, 'download', 'Download', 'Télécharger');
+INSERT INTO `language` VALUES (835, 'theme_list', 'Theme List', 'Liste De Thèmes');
+INSERT INTO `language` VALUES (836, 'addon', 'Addon', 'Ajouter');
+INSERT INTO `language` VALUES (837, 'add_theme', 'Add Theme', 'Ajouter Un Thème');
+INSERT INTO `language` VALUES (838, 'download_theme', 'Download Theme', 'Télécharger Le Thème');
+INSERT INTO `language` VALUES (839, 'uninstall', 'Uninstall', 'Désinstaller');
+INSERT INTO `language` VALUES (840, 'please_wait', 'Please Wait', 'S\'il Vous Plaît, Attendez');
+INSERT INTO `language` VALUES (841, 'current', 'Current', 'Actuel');
+INSERT INTO `language` VALUES (842, 'back_to_home', 'Back To Home', 'De Retour à La Maison');
+INSERT INTO `language` VALUES (843, 'trading_history', 'Trading History', 'Historique Du Trading');
+INSERT INTO `language` VALUES (844, 'latest_news', 'Latest News', 'Dernières Nouvelles');
+INSERT INTO `language` VALUES (845, 'create_an_account', 'Create An Account', 'Créer Un Compte');
+INSERT INTO `language` VALUES (846, 'to__trade', 'To  Trade', 'échanger');
+INSERT INTO `language` VALUES (847, 'log_in', 'Log In', 'S\'identifier');
+INSERT INTO `language` VALUES (848, 'white', 'WHITE', 'BLANC');
+INSERT INTO `language` VALUES (849, 'dark', 'DARK', 'FONCÉ');
+INSERT INTO `language` VALUES (850, 'enter_your_email_address_to_retrieve_your_password', 'Enter Your Email Address To Retrieve Your Password', 'Entrez Votre Adresse E-mail Pour Récupérer Votre Mot De Passe');
+INSERT INTO `language` VALUES (851, 'retrieve_password', 'Retrieve Password', 'Récupérer Mot De Passe');
+INSERT INTO `language` VALUES (852, 'not_a_member_yet', 'Not A Member Yet', 'Pas Encore Membre');
+INSERT INTO `language` VALUES (853, 'total_users', 'Total Users', 'Nombre Total D\'utilisateurs');
+INSERT INTO `language` VALUES (854, 'all_users', 'All Users', 'Tous Les Utilisateurs');
+INSERT INTO `language` VALUES (855, 'all_markets', 'All Markets', 'Tous Les Marchés');
+INSERT INTO `language` VALUES (856, 'method', 'Method', 'Méthode');
+INSERT INTO `language` VALUES (857, 'slider_title_engnilsh', 'Slider Title Engnilsh', 'Titre Du Curseur Engnilsh');
+INSERT INTO `language` VALUES (858, 'slider_h1', 'Slider H1', 'Curseur H1');
+INSERT INTO `language` VALUES (859, 'sub_title_english', 'Sub Title English', 'Sous-titre Anglais');
+INSERT INTO `language` VALUES (860, 'slider_h2', 'Slider H2', 'Curseur H2');
+INSERT INTO `language` VALUES (861, 'button_text', 'Button Text', 'Texte Du Bouton');
+INSERT INTO `language` VALUES (862, 'slider_h3', 'Slider H3', 'Curseur H3');
+INSERT INTO `language` VALUES (863, 'code', 'Code', 'Code');
+INSERT INTO `language` VALUES (864, 'language_name', 'Language Name', 'Nom De La Langue');
+INSERT INTO `language` VALUES (865, 'add_coin_pair', 'Add Coin Pair', 'Ajouter Une Paire De Pièces');
+INSERT INTO `language` VALUES (866, 'cryptocoin_add', 'Cryptocoin Add', 'Ajout De Crypto-monnaie');
+INSERT INTO `language` VALUES (867, 'add-coin-pair', 'Add-coin-pair', 'Ajouter Une Paire De Pièces');
+INSERT INTO `language` VALUES (868, 'security', 'Security', 'Sécurité');
+INSERT INTO `language` VALUES (869, 'edita_dmin', 'Edita Dmin', 'Edita Dmin');
+INSERT INTO `language` VALUES (870, 'edit-admin', 'Edit-admin', 'Edit-admin');
+INSERT INTO `language` VALUES (871, 'article1_en', 'Article1 En', 'Article1 Fr');
+INSERT INTO `language` VALUES (872, 'question_english', 'Question English', 'Question Anglais');
+INSERT INTO `language` VALUES (873, 'add-notice', 'Add-notice', 'Add-notice');
+INSERT INTO `language` VALUES (874, 'edit-profile', 'Edit-profile', 'Editer Le Profil');
+INSERT INTO `language` VALUES (875, '_phrase_name', ' Phrase Name', 'Nom De La Phrase');
+INSERT INTO `language` VALUES (876, 'cryptocoin-edit', 'Cryptocoin-edit', 'Crypto-monnaie-modifier');
+INSERT INTO `language` VALUES (877, 'edit-market', 'Edit-market', 'Edit-market');
+INSERT INTO `language` VALUES (878, 'edit-coin-pair', 'Edit-coin-pair', 'Modifier La Paire De Pièces');
+INSERT INTO `language` VALUES (879, 'transaction_type', 'Transaction Type', 'Type De Transaction');
+INSERT INTO `language` VALUES (880, 'account_type', 'Account Type', 'Type De Compte');
+INSERT INTO `language` VALUES (881, 'unverified', 'Unverified', 'Non Vérifié');
+INSERT INTO `language` VALUES (882, 'limit_amount', 'Limit Amount', 'Montant Limite');
+INSERT INTO `language` VALUES (883, 'percent', 'Percent', 'Pour Cent');
+INSERT INTO `language` VALUES (884, 'fixed', 'Fixed', 'Fixé');
+INSERT INTO `language` VALUES (885, 'api_name', 'API Name', 'Nom De L\'API');
+INSERT INTO `language` VALUES (886, 'merchant_id', 'Merchant Id', 'Identifiant Du Marchand');
+INSERT INTO `language` VALUES (887, 'email_gateway', 'Email Gateway', 'Passerelle De Messagerie');
+INSERT INTO `language` VALUES (888, 'sms_gateway', 'Sms Gateway', 'Passerelle Sms');
+INSERT INTO `language` VALUES (889, 'credit-list', 'Credit-list', 'Liste De Crédit');
+INSERT INTO `language` VALUES (890, 'cryptocoin-add', 'Cryptocoin-add', 'Ajout De Crypto-monnaie');
+INSERT INTO `language` VALUES (891, 'see_all_users', 'See All Users', 'Voir Tous Les Utilisateurs');
+INSERT INTO `language` VALUES (892, 'see_all_markets', 'See All Markets', 'Voir Tous Les Marchés');
+INSERT INTO `language` VALUES (893, 'see_trade_history', 'See Trade History', 'Voir L\'historique Du Commerce');
+INSERT INTO `language` VALUES (894, 'buy_&_sell', 'Buy & Sell', 'Acheter Vendre');
+INSERT INTO `language` VALUES (895, 'deposit,_withdraw,_transfer', 'Deposit, Withdraw, Transfer', 'Dépôt, Retrait, Transfert');
+INSERT INTO `language` VALUES (896, 'see_all_pending_withdraw', 'See All Pending Withdraw', 'Voir Tous Les Retraits En Attente');
+INSERT INTO `language` VALUES (897, 'see_all_trade_history', 'See All Trade History', 'Voir Toute L\'histoire Du Commerce');
+INSERT INTO `language` VALUES (898, 'user_growth_rate', 'USER GROWTH RATE', 'TAUX DE CROISSANCE DES UTILISATEURS');
+INSERT INTO `language` VALUES (899, 'email_sms_settings', 'Email Sms Settings', 'Paramètres De Messagerie électronique');
+INSERT INTO `language` VALUES (900, 'email-sms-settings', 'Email-sms-settings', 'Email-sms-settings');
+INSERT INTO `language` VALUES (901, 'fees_collection', 'Fees Collection', 'Perception Des Frais');
+INSERT INTO `language` VALUES (902, 'create_user', 'Create User', 'Créer Un Utilisateur');
+INSERT INTO `language` VALUES (903, 'create_admin', 'Create Admin', 'Créer Un Administrateur');
+INSERT INTO `language` VALUES (904, 'add-ons', 'Add-ons', 'Add-ons');
+INSERT INTO `language` VALUES (905, 'max_sell_currency_amount', 'Max Sell Currency Amount', 'Montant Maximal De La Devise De Vente');
+INSERT INTO `language` VALUES (906, 'max_buy_currency_amount', 'Max Buy Currency Amount', 'Montant Maximal De La Devise D\'achat');
+INSERT INTO `language` VALUES (907, 'account', 'Account', 'Compte');
+INSERT INTO `language` VALUES (908, 'google_captcha', 'Google Captcha', 'Google Capture');
+INSERT INTO `language` VALUES (909, 'add_captcha_at_your_domain', 'Add captcha at your domain', 'Domaine De Configuration');
+INSERT INTO `language` VALUES (910, 'pages', 'PAGES', 'PAGES');
+INSERT INTO `language` VALUES (911, 'useful_links', 'USEFUL LINKS', 'LIENS UTILES');
+INSERT INTO `language` VALUES (912, 'check_your_email_server', 'Check Your Email Server', 'Vérifiez Votre Serveur De Messagerie');
+INSERT INTO `language` VALUES (913, 'check_your_sms_gateway_', 'Check Your Sms Gateway ', 'Vérifiez Votre Passerelle SMS');
+INSERT INTO `language` VALUES (914, 'mobile_no', 'Mobile No', 'Mobile Non');
+INSERT INTO `language` VALUES (915, 'email_gateway_setup', 'Email Gateway Setup', 'Configuration De La Passerelle De Messagerie');
+INSERT INTO `language` VALUES (916, 'sms_gateway_setup', 'SMS Gateway Setup', 'Configuration De La Passerelle SMS');
+INSERT INTO `language` VALUES (917, 'check_your_sms_gateway', 'Check Your Sms Gateway', 'Vérifiez Votre Passerelle SMS');
+INSERT INTO `language` VALUES (918, 'logo_type', 'Logo Type', 'Type De Logo');
+INSERT INTO `language` VALUES (919, 'log_type', 'Log Type', 'Type De Journal');
+INSERT INTO `language` VALUES (920, 'body_background_color', 'Body Background Color', 'Couleur D\'arrière-plan Du Corps');
+INSERT INTO `language` VALUES (921, 'body_font_color', 'Body Font Color', 'Couleur De La Police Du Corps');
+INSERT INTO `language` VALUES (922, 'top_footer_horizontal_border_color', 'Top Footer Horizontal Border Color', 'Couleur De La Bordure Horizontale Du Pied De Page Supérieur');
+INSERT INTO `language` VALUES (923, 'footer__menu_border_color', 'Footer  Menu Border Color', 'Couleur De La Bordure Du Menu Du Pied De Page');
+INSERT INTO `language` VALUES (924, 'footer_menu_border_color', 'Footer Menu Border Color', 'Couleur De La Bordure Du Menu Du Pied De Page');
+INSERT INTO `language` VALUES (925, 'bottom_footer_background_color', 'Bottom Footer Background Color', 'Couleur D\'arrière-plan Du Pied De Page Inférieur');
+INSERT INTO `language` VALUES (926, 'bottom_footer_font_color', 'Bottom Footer Font Color', 'Couleur De Police Du Pied De Page Inférieur');
+INSERT INTO `language` VALUES (927, 'form_background_color', 'Form Background Color', 'Couleur D\'arrière-plan Du Formulaire');
+INSERT INTO `language` VALUES (928, 'form_border_color', 'Form Border Color', 'Couleur De La Bordure Du Formulaire');
+INSERT INTO `language` VALUES (929, 'form_label_color', 'Form Label Color', 'Couleur De L\'étiquette Du Formulaire');
+INSERT INTO `language` VALUES (930, 'form_input_field_background_color', 'Form Input Field Background Color', '');
+INSERT INTO `language` VALUES (931, 'input_field_border_color', 'Input Field Border Color', 'Couleur De La Bordure Du Champ De Saisie');
+INSERT INTO `language` VALUES (932, 'input_field_color', 'Input Field Color', 'Couleur Du Champ De Saisie');
+INSERT INTO `language` VALUES (933, 'verify_profile', 'Verify Profile', 'Vérifier Le Profil');
+INSERT INTO `language` VALUES (934, 'contact_with_us', 'Contact With Us', 'En Contact Avec Nous');
+INSERT INTO `language` VALUES (935, 'working_hours', 'Working Hours', 'Heures D\'ouverture');
+INSERT INTO `language` VALUES (936, 'phone_number', 'Phone Number', 'Numéro De Téléphone');
+INSERT INTO `language` VALUES (937, 'bank_payment', 'Bank Payment', 'Paiement Bancaire');
+INSERT INTO `language` VALUES (938, 'themes_setting', 'Themes Setting', 'Réglage Des Thèmes');
+INSERT INTO `language` VALUES (939, 'page_content_list', 'Page Content List', 'Liste Du Contenu De La Page');
+INSERT INTO `language` VALUES (940, 'notice_list', 'Notice List', 'Liste Des Avis');
+INSERT INTO `language` VALUES (941, 'category_list', 'Category List', 'Liste Des Catégories');
+INSERT INTO `language` VALUES (942, 'social_link_list', 'Social Link List', 'Liste De Liens Sociaux');
+INSERT INTO `language` VALUES (943, 'advertisement_list', 'Advertisement List', 'Liste Des Publicités');
+INSERT INTO `language` VALUES (944, 'web_language_list', 'Web Language List', 'Liste Des Langues Web');
+INSERT INTO `language` VALUES (945, 'coinpayment', 'Coinpayment', 'Paiement Par Pièces');
+INSERT INTO `language` VALUES (946, 'gourl', 'Gourl', 'Gourle');
+INSERT INTO `language` VALUES (947, 'paypal', 'Paypal', 'Pay Pal');
+INSERT INTO `language` VALUES (948, 'paystack', 'Paystack', 'Paie');
+INSERT INTO `language` VALUES (949, 'transaction_setup', 'Transaction Setup', 'Configuration Des Transactions');
+INSERT INTO `language` VALUES (950, 'external_api_list', 'External Api List', 'Liste D\'API Externes');
+INSERT INTO `language` VALUES (951, 'bank_payment', 'Bank', 'Bank');
+INSERT INTO `language` VALUES (952, 'coinpayment', 'Coinpayment', 'Coinpayment');
+INSERT INTO `language` VALUES (953, 'gourl', 'Gourl', 'Gourl');
+INSERT INTO `language` VALUES (954, 'paypal', 'Paypal', 'Paypal');
+INSERT INTO `language` VALUES (955, 'paystack', 'Paystack', 'Paystack');
+INSERT INTO `language` VALUES (956, 'stripe', 'Stripe', 'Stripe');
+INSERT INTO `language` VALUES (957, 'token_payment', 'Token', 'Token');
+INSERT INTO `language` VALUES (958, 'page_content_list', 'Page Content List', 'Page Content List');
+INSERT INTO `language` VALUES (959, 'themes_setting', 'Themes Setting', 'Themes Setting');
+INSERT INTO `language` VALUES (960, 'notice_list', 'Notice List', 'Notice List');
+INSERT INTO `language` VALUES (961, 'category_list', 'Category List', 'Category List');
+INSERT INTO `language` VALUES (962, 'social_link_list', 'Social Link', 'Social Link');
+INSERT INTO `language` VALUES (963, 'advertisement_list', 'Advertisement List', 'Advertisement List');
+INSERT INTO `language` VALUES (964, 'web_language_list', 'Web Language List', 'Web Language List');
+INSERT INTO `language` VALUES (965, 'transaction_setup', 'Transaction Setup', 'Transaction Setup');
+INSERT INTO `language` VALUES (966, 'external_api_list', 'External Api List', 'External Api List');
+INSERT INTO `language` VALUES (967, 'verify_users', 'Verify Users', 'Verify Users');
+INSERT INTO `language` VALUES (968, 'subscriber_list', 'Subscriber List', 'Subscriber List');
+
+-- ----------------------------
+-- Table structure for message
+-- ----------------------------
+DROP TABLE IF EXISTS `message`;
+CREATE TABLE `message`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sender_id` int(11) NOT NULL,
+  `receiver_id` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `subject` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `message` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `datetime` datetime NOT NULL,
+  `sender_status` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0=unseen, 1=seen, 2=delete',
+  `receiver_status` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0=unseen, 1=seen, 2=delete',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of message
+-- ----------------------------
+INSERT INTO `message` VALUES (1, 1, '4Y0HIQ', 'Deposit', 'Hi, Tester1 Test1 TDaPP2w6uDHVgx7eb1CBep59dppWywhGXJ You Successfully  Deposit The Amount Is 15000.00000000  date 21 September 2021', '2021-09-21 02:39:32', 0, 0);
+INSERT INTO `message` VALUES (2, 1, '4Y0HIQ', 'Deposit', 'Hi, Tester1 Test1 TDaPP2w6uDHVgx7eb1CBep59dppWywhGXJ You Successfully  Deposit The Amount Is 10000.00000000  date 21 September 2021', '2021-09-21 02:40:34', 0, 0);
+INSERT INTO `message` VALUES (3, 1, '4Y0HIQ', 'Deposit', 'Hi, Tester1 Test1 TDaPP2w6uDHVgx7eb1CBep59dppWywhGXJ You Successfully  Deposit The Amount Is 330000.00000000  date 21 September 2021', '2021-09-21 02:40:42', 0, 0);
+INSERT INTO `message` VALUES (4, 1, '4Y0HIQ', 'Deposit', 'Hi, Tester1 Test1 TDaPP2w6uDHVgx7eb1CBep59dppWywhGXJ You Successfully  Deposit The Amount Is 500000.00000000  date 21 September 2021', '2021-09-21 02:40:49', 0, 0);
+INSERT INTO `message` VALUES (5, 1, '4Y0HIQ', 'Withdraw', 'Hi, Tester1 Test1 TDaPP2w6uDHVgx7eb1CBep59dppWywhGXJ You successfully withdraw the amount is $22000 from your account. Your new balance is $69556899', '2021-09-21 02:44:53', 0, 0);
+
+-- ----------------------------
+-- Table structure for module
+-- ----------------------------
+DROP TABLE IF EXISTS `module`;
+CREATE TABLE `module`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `description` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  `image` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `directory` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of module
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for notifications
+-- ----------------------------
+DROP TABLE IF EXISTS `notifications`;
+CREATE TABLE `notifications`  (
+  `notification_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `date` timestamp NULL DEFAULT NULL,
+  `notification_type` varchar(45) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `subject` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `details` mediumtext CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
+  `status` varchar(4) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`notification_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci COMMENT = 'SMS and Email notified data will be stored in this table.' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of notifications
+-- ----------------------------
+INSERT INTO `notifications` VALUES (1, '4Y0HIQ', '2021-09-21 02:39:32', 'deposit', 'Deposit', 'You successfully deposit the amount is 15000.00000000. ', '0');
+INSERT INTO `notifications` VALUES (2, '4Y0HIQ', '2021-09-21 02:40:34', 'deposit', 'Deposit', 'You successfully deposit the amount is 10000.00000000. ', '0');
+INSERT INTO `notifications` VALUES (3, '4Y0HIQ', '2021-09-21 02:40:42', 'deposit', 'Deposit', 'You successfully deposit the amount is 330000.00000000. ', '0');
+INSERT INTO `notifications` VALUES (4, '4Y0HIQ', '2021-09-21 02:40:49', 'deposit', 'Deposit', 'You successfully deposit the amount is 500000.00000000. ', '0');
+INSERT INTO `notifications` VALUES (5, '4Y0HIQ', '2021-09-21 02:44:52', 'withdraw', 'Withdraw', 'You successfully withdraw the amount is $22000 from your account. Your new balance is $69556899', '0');
+
+-- ----------------------------
+-- Table structure for payeer_payments
+-- ----------------------------
+DROP TABLE IF EXISTS `payeer_payments`;
+CREATE TABLE `payeer_payments`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `m_operation_id` int(11) NOT NULL,
+  `m_operation_ps` int(11) NOT NULL,
+  `m_operation_date` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `m_operation_pay_date` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `m_shop` int(11) NOT NULL,
+  `m_orderid` varchar(300) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `m_amount` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `m_curr` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `m_desc` varchar(300) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `m_status` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `m_sign` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `lang` varchar(10) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of payeer_payments
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for payment_gateway
+-- ----------------------------
+DROP TABLE IF EXISTS `payment_gateway`;
+CREATE TABLE `payment_gateway`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `identity` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `agent` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `public_key` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `private_key` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `shop_id` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `secret_key` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `data` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `status` int(2) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of payment_gateway
+-- ----------------------------
+INSERT INTO `payment_gateway` VALUES (1, 'bitcoin', 'GoUrl Payment', 'a:13:{s:7:\"bitcoin\";s:50:\"43137AACNNeySpeedcoin77SPDPUBaJBxvUGvX7KgmBcx9CGvb\";s:11:\"bitcoincash\";s:0:\"\";s:8:\"litecoin\";s:0:\"\";s:4:\"dash\";s:0:\"\";s:8:\"dogecoin\";s:0:\"\";s:9:\"speedcoin\";s:50:\"43137AACNNeySpeedcoin77SPDPUBaJBxvUGvX7KgmBcx9CGvb\";s:8:\"reddcoin\";s:0:\"\";s:7:\"potcoin\";s:0:\"\";s:11:\"feathercoin\";s:0:\"\";s:8:\"vertcoin\";s:0:\"\";s:8:\"peercoin\";s:0:\"\";s:12:\"monetaryunit\";s:0:\"\";s:17:\"universalcurrency\";s:0:\"\";}', 'a:13:{s:7:\"bitcoin\";s:50:\"43137AACNNeySpeedcoin77SPDPRVyzic8CEewfdazdv9HwdH2\";s:11:\"bitcoincash\";s:0:\"\";s:8:\"litecoin\";s:0:\"\";s:4:\"dash\";s:0:\"\";s:8:\"dogecoin\";s:0:\"\";s:9:\"speedcoin\";s:50:\"43137AACNNeySpeedcoin77SPDPRVyzic8CEewfdazdv9HwdH2\";s:8:\"reddcoin\";s:0:\"\";s:7:\"potcoin\";s:0:\"\";s:11:\"feathercoin\";s:0:\"\";s:8:\"vertcoin\";s:0:\"\";s:8:\"peercoin\";s:0:\"\";s:12:\"monetaryunit\";s:0:\"\";s:17:\"universalcurrency\";s:0:\"\";}', '', '', '', 0);
+INSERT INTO `payment_gateway` VALUES (2, 'payeer', 'Payeer', '485146745', 'VsdHofTsuI6XOdjL', '', '', '', 0);
+INSERT INTO `payment_gateway` VALUES (4, 'phone', 'Mobile Money', '+880 1746 40 68 01', 'mobile', '', '', '', 0);
+INSERT INTO `payment_gateway` VALUES (5, 'paypal', 'Paypal', 'AfmTkhn-GYb_HAsPayWeLDVTG39jNjGsJ3siJSNDs6QGr52KDLnAT28fIv4TVni5P3Dax8w1y-Libl_j', 'EHGJveSf9GJcbyQwgYmouRi9baBPKLPqeSYjYesiG4UJTSnQ45q3gwQdkB6TvFQAjkYm42D1P_Hqn340', '', 'sandbox', '', 0);
+INSERT INTO `payment_gateway` VALUES (6, 'stripe', 'Stripe', 'pk_test_BPLwYal0sn4KkKaDTzuj5oRq', 'sk_test_6J6dcwXf8ruEZGCvlC09C9NK', '', '', '', 0);
+INSERT INTO `payment_gateway` VALUES (7, 'bank', 'Bank', '{\"id\":\"7\",\"identity\":\"bank\",\"agent\":\"Bank\",\"acc_name\":\"kanan tariq khan\",\"acc_no\":\"545456464\",\"branch_name\":\"kaqbhsjkqbdq\",\"swift_code\":\"464kadh\",\"abn_no\":\"kfhw456454\",\"country\":\"VG\",\"bank_name\":\"GLOBAL BANK\",\"status\":\"0\"}', '', '', '', '', 0);
+INSERT INTO `payment_gateway` VALUES (8, 'coinpayment', 'CoinPayments', '51fec43efdeb1323d1a0854ffa807b64abf822ca6dd79ba619cdb6de6783b892', 'D432e1907d50C5e399A7E6a34d50DE1B4dfe809980f3a4a295dc7Ac7889Bc3e8', '', '', '{\"marcent_id\":\"7bc213faca51052a85eccd6ce1c56eef\",\"ipn_secret\":\"TaR#@)1331\",\"debug_email\":\"tareq7500@gmail.com\",\"debuging_active\":1,\"withdraw\":\"0\"}', 0);
+INSERT INTO `payment_gateway` VALUES (9, 'token', 'Token', 'TNFz4t82LaKvRJGFqtc8VpFoMhMfFgHzby', 'US dollar deposit and withdrawal is not possible! Only TRC10 and TRC20 tokens can be sent and withdrawn. Provide the deposit transaction with your e-mail address in the TronLink wallet Note field. Deposit Fee is 0. Withdrawal Percentage Fee is 0. IMPORTANT NOTE: WITHDRAWAL Absolute Value Fee is 5 USDT or 5 USDE. Security WARNING: E-mail communication is never secure, You must have SIGNAL Messaging app for secure communication.  ', '', '', '', 1);
+
+-- ----------------------------
+-- Table structure for setting
+-- ----------------------------
+DROP TABLE IF EXISTS `setting`;
+CREATE TABLE `setting`  (
+  `setting_id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `description` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `phone` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `logo` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `logo_web` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `favicon` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `language` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `site_align` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `footer_text` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `time_zone` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `latitude` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `office_time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `update_notification` tinyint(1) NULL DEFAULT NULL,
+  PRIMARY KEY (`setting_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of setting
+-- ----------------------------
+INSERT INTO `setting` VALUES (1, 'ZeroFees Exchange - Digital Assets Exchange', 'https://ZeroFees.Exchange', 'info@zerofees.exchange', '', '//upload/settings/1628444046_7647e3faf577b4128d6a.jpg', '//////upload/settings/1628441615_351bd69bf32291b5e9cd.jpg', '/////upload/settings/1628442546_10c3ccabca49ee62a26b.jpg', 'english', 'LTR', '2021 © Copyright ZeroFees.Exchange', 'America/Nassau', '40.6700, -73.9400', 'Tokens deposit & withdrawals:\r\nMonday - Friday: 08:00 - 13:00 GMT\r\nSaturday, Sunday: Closed', 1);
+
+-- ----------------------------
+-- Table structure for sms_email_send_setup
+-- ----------------------------
+DROP TABLE IF EXISTS `sms_email_send_setup`;
+CREATE TABLE `sms_email_send_setup`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `method` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `deposit` int(11) NULL DEFAULT NULL,
+  `transfer` int(11) NULL DEFAULT NULL,
+  `withdraw` int(11) NULL DEFAULT NULL,
+  `payout` int(11) NULL DEFAULT NULL,
+  `commission` int(11) NULL DEFAULT NULL,
+  `team_bonnus` int(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of sms_email_send_setup
+-- ----------------------------
+INSERT INTO `sms_email_send_setup` VALUES (1, 'email', 0, 0, 0, NULL, NULL, NULL);
+INSERT INTO `sms_email_send_setup` VALUES (2, 'sms', NULL, NULL, NULL, NULL, NULL, NULL);
+
+-- ----------------------------
+-- Table structure for themes
+-- ----------------------------
+DROP TABLE IF EXISTS `themes`;
+CREATE TABLE `themes`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `status` tinyint(4) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of themes
+-- ----------------------------
+INSERT INTO `themes` VALUES (1, 'tradebox_Default_Theme', 1, '2021-01-18 12:54:13', '2021-03-27 10:57:46');
+
+-- ----------------------------
+-- Table structure for web_article
+-- ----------------------------
+DROP TABLE IF EXISTS `web_article`;
+CREATE TABLE `web_article`  (
+  `article_id` int(11) NOT NULL AUTO_INCREMENT,
+  `slug` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `headline_en` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `headline_fr` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `article_image` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `custom_url` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `article1_en` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `article1_fr` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `article2_en` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `article2_fr` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `video` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `cat_id` int(11) NULL DEFAULT NULL,
+  `page_content` int(11) NULL DEFAULT 0 COMMENT 'if this is a Page content set 1 else 0',
+  `position_serial` int(11) NOT NULL,
+  `publish_date` datetime NOT NULL,
+  `publish_by` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `edit_history` int(11) NOT NULL,
+  PRIMARY KEY (`article_id`) USING BTREE,
+  UNIQUE INDEX `slug`(`slug`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of web_article
+-- ----------------------------
+INSERT INTO `web_article` VALUES (1, NULL, 'Contact', 'Contact Français Français Français Français Turkey', NULL, '', '1355 Market Street, Suite 900 San Francisco, CA 94103', '<div>\r\n                                            <p>Phone <font color=\"#72afd2\"><span xss=removed>+1 (514) 352-1010</span></font><br>Fax <span xss=removed>+1 (514) 352-7511</span></p></div>', '<ul class=\"opening_hours\">\r\n                                        <li>\r\n                                            <p>Monday-Wednesday</p>\r\n                                            <p>10 am - 6 pm</p></li>\r\n                                    </ul>', '', NULL, 12, 0, 0, '2020-09-15 12:02:49', 'admin@demo.com', 0);
+INSERT INTO `web_article` VALUES (2, NULL, 'Marketing Consultancy', 'Lorem ipsum ', NULL, '', 'write your answer\r\n', 'write your answer\r\n', '', '', NULL, 30, 0, 0, '2021-03-10 03:09:55', 'admin@demo.com', 0);
+INSERT INTO `web_article` VALUES (3, NULL, NULL, NULL, NULL, '', 'Notice Headline SET 1\r\n- AAA\r\n- BBB\r\n- CCC\r\n- LINK\r\n', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam finibus vestibulum lacus non sodales. Aenean pretium augue tellus.\r\n', '', '', NULL, 29, 0, 0, '2021-09-29 05:59:47', 'info@zerofees.exchan', 0);
+INSERT INTO `web_article` VALUES (4, NULL, NULL, NULL, NULL, '', 'Notice Headline SET 2\r\n\r\n\r\n	AAAA\r\n	BBBB\r\n	CCCC\r\n\r\n', 'Lorem ipsum dolor sit amet, quo omittam moderatius in, te cum mutat malorum.\r\n', '', '', NULL, 29, 0, 0, '2021-09-29 06:00:36', 'info@zerofees.exchan', 0);
+INSERT INTO `web_article` VALUES (5, NULL, NULL, NULL, NULL, '', 'Te cum mutat malorum. Lorem ipsum dolor sit amet, quo omittam moderatius in, te cum mutat malorum. ', 'Te cum mutat malorum. Lorem ipsum dolor sit amet, quo omittam moderatius in, te cum mutat malorum. ', '', '', NULL, 29, 0, 0, '2018-10-10 10:56:55', 'admin@demo.com', 0);
+INSERT INTO `web_article` VALUES (6, NULL, NULL, NULL, NULL, '', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Iam id ipsum absurdum, maximum malum neglegi. Satisne ergo pudori consulat, si quis sine teste libidini pareat?', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Iam id ipsum absurdum, maximum malum neglegi. Satisne ergo pudori consulat, si quis sine teste libidini pareat?', '', '', NULL, 29, 0, 0, '2018-10-10 10:58:48', 'admin@demo.com', 0);
+INSERT INTO `web_article` VALUES (7, 'Make Each <span>Price Spike</span> And Dip Count', 'Make Each <span>Price Spike</span> And Dip Count', 'Make Each <span>Price Spike</span> And Dip Count', '', '', '<p><span style=\"color: rgb(165, 165, 165); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 15px; text-align: center;\">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum.</span><br></p>', '<p><span style=\"color: rgb(165, 165, 165); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 15px; text-align: center;\">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum.</span><br></p>', '', '', '', 34, 1, 1, '2018-11-03 06:15:00', 'admin@demo.com', 0);
+
+-- ----------------------------
+-- Table structure for web_category
+-- ----------------------------
+DROP TABLE IF EXISTS `web_category`;
+CREATE TABLE `web_category`  (
+  `cat_id` int(11) NOT NULL AUTO_INCREMENT,
+  `slug` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `cat_name_en` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `cat_name_fr` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `parent_id` int(11) NOT NULL,
+  `cat_image` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `cat_title1_en` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `cat_title1_fr` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `cat_title2_en` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `cat_title2_fr` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `menu` int(11) NULL DEFAULT NULL COMMENT 'Header menu=1',
+  `position_serial` int(11) NULL DEFAULT NULL,
+  `status` int(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`cat_id`) USING BTREE,
+  UNIQUE INDEX `slug`(`slug`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 31 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of web_category
+-- ----------------------------
+INSERT INTO `web_category` VALUES (1, 'home', 'Home', 'Maison', 0, 'upload/1613365281_db9ef32ca3cf3baef08f.jpg', '', '', '', '', 1, 1, 1);
+INSERT INTO `web_category` VALUES (4, 'exchange', 'Exchange', 'Échange', 0, 'upload/1613365281_db9ef32ca3cf3baef08f.jpg', 'Exchange', '', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that', '', 1, 4, 1);
+INSERT INTO `web_category` VALUES (8, 'about', 'About', 'Sur', 0, 'upload/1613365281_db9ef32ca3cf3baef08f.jpg', 'About Us', '', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that', '', 0, NULL, 1);
+INSERT INTO `web_category` VALUES (9, 'news', 'News', 'Nouvelles', 0, 'upload/1613365281_db9ef32ca3cf3baef08f.jpg', 'Latest form our blog', '', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that', '', NULL, NULL, 1);
+INSERT INTO `web_category` VALUES (16, 'register', 'Register', 'Register', 0, 'upload/1613365281_db9ef32ca3cf3baef08f.jpg', '', '', '', '', 0, 0, 1);
+INSERT INTO `web_category` VALUES (17, 'forgot-password', 'Forgot Password', 'Mot de Passe oublié', 0, 'upload/1613365281_db9ef32ca3cf3baef08f.jpg', '', '', '', '', 0, NULL, 1);
+INSERT INTO `web_category` VALUES (19, 'gld', 'GLD', '', 9, '/upload/1613365281_db9ef32ca3cf3baef08f.jpg', '', '', '', '', 0, NULL, 1);
+INSERT INTO `web_category` VALUES (20, 'renta', 'RENTA', '', 9, '/upload/1613365281_db9ef32ca3cf3baef08f.jpg', '', '', '', '', 0, NULL, 1);
+INSERT INTO `web_category` VALUES (21, 'idea', 'IDEA', '', 9, '/upload/1613365281_db9ef32ca3cf3baef08f.jpg', '', '', '', '', 0, NULL, 1);
+INSERT INTO `web_category` VALUES (22, 'zerofees-exchange', 'ZeroFees Exchange', '', 9, '/upload/1613365281_db9ef32ca3cf3baef08f.jpg', '', '', '', '', 0, NULL, 1);
+INSERT INTO `web_category` VALUES (24, 'blockchain', 'Blockchain', 'Blockchain', 9, 'upload/1613365281_db9ef32ca3cf3baef08f.jpg', '', '', '', '', 0, 0, 1);
+INSERT INTO `web_category` VALUES (25, 'trading', 'Trading', 'Trading', 9, 'upload/1613365281_db9ef32ca3cf3baef08f.jpg', '', '', '', '', 0, 0, 1);
+INSERT INTO `web_category` VALUES (26, 'news-details', 'News Details', 'News Details', 0, 'upload/1613365281_db9ef32ca3cf3baef08f.jpg', '', '', '', '', 0, 0, 1);
+INSERT INTO `web_category` VALUES (27, 'mining', 'Mining', '', 9, 'upload/1613365281_db9ef32ca3cf3baef08f.jpg', '', '', '', '', 0, NULL, 1);
+INSERT INTO `web_category` VALUES (28, 'terms', 'Terms', 'terms', 1, 'upload/1613365281_db9ef32ca3cf3baef08f.jpg', 'term title english', 'turki title', 'category title english', 'dsf', 2, NULL, 1);
+INSERT INTO `web_category` VALUES (29, 'notice', 'Notice', 'Noticeo', 0, 'upload/1613365281_db9ef32ca3cf3baef08f.jpg', '', '', '', '', 0, NULL, 1);
+INSERT INTO `web_category` VALUES (30, 'faq', 'FAQ', 'FAQ', 30, 'upload/1613365281_db9ef32ca3cf3baef08f.jpg', ' Frequently asked questions', ' Frequently asked questions', ' frequently asked questions', ' Frequently asked questions', 2, NULL, 1);
+
+-- ----------------------------
+-- Table structure for web_language
+-- ----------------------------
+DROP TABLE IF EXISTS `web_language`;
+CREATE TABLE `web_language`  (
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` varchar(256) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `flag` varchar(256) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of web_language
+-- ----------------------------
+INSERT INTO `web_language` VALUES (1, 'French', 'fr');
+
+-- ----------------------------
+-- Table structure for web_news
+-- ----------------------------
+DROP TABLE IF EXISTS `web_news`;
+CREATE TABLE `web_news`  (
+  `article_id` int(11) NOT NULL AUTO_INCREMENT,
+  `slug` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `headline_en` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `headline_fr` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `article_image` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `custom_url` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `article1_en` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `article1_fr` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `article2_en` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `article2_fr` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `cat_id` int(11) NULL DEFAULT NULL,
+  `parent_id` int(11) NULL DEFAULT NULL,
+  `position_serial` int(11) NOT NULL,
+  `publish_date` datetime NOT NULL,
+  `publish_by` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `edit_history` int(11) NOT NULL,
+  PRIMARY KEY (`article_id`) USING BTREE,
+  UNIQUE INDEX `slug`(`slug`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of web_news
+-- ----------------------------
+INSERT INTO `web_news` VALUES (4, 'news-idea-2-south-africa-puts-onus-on-taxpayers-to-declare-all-cryptocurrency-income', 'NEWS IDEA 2 - South Africa Puts Onus on Taxpayers to Declare All Cryptocurrency Income', '', '/upload/news/166e293c430bdf835f0c6d6a127e4e13.jpg', '', 'Lorem ipsum dolor sit amet, quo omittam moderatius in, te cum mutat malorum. Autem ullum cu sed. Id per enim deserunt, vel an choro dolores voluptatum. His viderer civibus te, quis vero timeam te mel. Meis nulla nec id. Te eros ubique ius.\r\n\r\n&nbsp;\r\n\r\nPri nisl velit at. Ei lobortis forensibus dissentiunt sit, ius idque veritus in, in aeterno invenire usu. Esse inani inermis eam ea. Justo perfecto dignissim an pri, ea sit dico neglegentur, id mundi maiestatis vel. Eos eu stet dicit. Porro suscipiantur id usu, antiopam moderatius sit ne. Ei nulla torquatos ullamcorper sed, no stet graece instructior vel, eirmod vulputate an duo.\r\n\r\n&nbsp;\r\n\r\nSplendide laboramus eam cu, veritus singulis vel et, essent assentior an vim. Prima paulo ut mei, no tota erat eam. Constituam consequuntur his ad. Ad ius libris labore, ex sumo regione eos. No ius vero apeirian.\r\n\r\n&nbsp;\r\n\r\nMollis integre persius ad nam. At agam constituam sit, an mea dolores iracundia conceptam, vis no atqui verear detracto. Et fugit ridens intellegam duo, eu facilisi erroribus duo. Et vix homero verear liberavisse, natum nonumes splendide usu at. Ea vis meliore offendit intellegebat. Ne mazim philosophia usu.\r\n\r\n&nbsp;\r\n\r\nAt mazim tacimates per. Ne reque tractatos mel, at eos case commodo. Cu animal constituam pri, ea nam ceteros copiosae philosophia. Ei modo fuisset pertinax vim, id vis tacimates interpretaris mediocritatem. Vel no esse scripserit, nostrum tacimates his te.\r\n\r\n&nbsp;\r\n\r\nCorpora postulant voluptatum nam eu. Cum te agam delectus ullamcorper, nostrum perfecto an nam. Ne quo accusata adversarium, illud efficiantur te nam. At veri simul virtute mei, deleniti persecuti te mei. Ludus animal eam cu, an nulla prompta imperdiet vis. Est cu dicam soluta everti.\r\n\r\n&nbsp;\r\n\r\nAliquam feugait perfecto per ne, an adolescens sententiae vis, his no noster animal. At vim vidit apeirian appellantur, no graecis invidunt sea. Illud oblique ad ius, eum no partem consectetuer, equidem incorrupte cum cu. At usu docendi tibique evertitur. Duis deserunt pri at. Aeque tempor usu et, ex illum facer efficiendi nam.\r\n\r\n&nbsp;\r\n\r\nVel quodsi iracundia ne, eu audiam tibique mnesarchum est. Diam oporteat suavitate pri id. Eos latine euripidis ad, ad mei partem accommodare, nam at elitr vitae voluptaria. Id sea ceteros suscipiantur. Ne per viderer tacimates repudiare, sed id quaestio cotidieque. Ei hinc dolor putent usu, falli lucilius nam at.\r\n\r\n&nbsp;\r\n\r\nAperiam detracto qualisque cu sea, sea te deleniti scripserit. Option feugiat sit ei. Labore volumus instructior eos ne, id graecis antiopam assueverit vel, no appetere argumentum eloquentiam quo. Error option dolorum nam cu. Vim tantas populo et, te mea quem quando decore.\r\n\r\n&nbsp;\r\n\r\nDuo ad elit aperiam. Et error aliquip mea. Cum ut facete assentior, ei vis dictas erroribus salutatus. Mea eu iusto volumus argumentum, sed eu quando regione indoctum.\r\n', '', '', '', 21, NULL, 0, '2021-09-29 06:40:45', 'info@zerofees.exchan', 0);
+INSERT INTO `web_news` VALUES (5, 'news-idea-1-neo-eos-litecoin-iota-and-stellar-technical-analysis-april-9-2018', 'NEWS IDEA 1 - NEO, EOS, Litecoin, IOTA and Stellar: Technical Analysis April 9, 2018', '', '/upload/news/b731dbe9143e088de015c0c844d40105.jpg', '', 'Lorem ipsum dolor sit amet, quo omittam moderatius in, te cum mutat malorum. Autem ullum cu sed. Id per enim deserunt, vel an choro dolores voluptatum. His viderer civibus te, quis vero timeam te mel. Meis nulla nec id. Te eros ubique ius.\r\n\r\n&nbsp;\r\n\r\nPri nisl velit at. Ei lobortis forensibus dissentiunt sit, ius idque veritus in, in aeterno invenire usu. Esse inani inermis eam ea. Justo perfecto dignissim an pri, ea sit dico neglegentur, id mundi maiestatis vel. Eos eu stet dicit. Porro suscipiantur id usu, antiopam moderatius sit ne. Ei nulla torquatos ullamcorper sed, no stet graece instructior vel, eirmod vulputate an duo.\r\n\r\n&nbsp;\r\n\r\nSplendide laboramus eam cu, veritus singulis vel et, essent assentior an vim. Prima paulo ut mei, no tota erat eam. Constituam consequuntur his ad. Ad ius libris labore, ex sumo regione eos. No ius vero apeirian.\r\n\r\n&nbsp;\r\n\r\nMollis integre persius ad nam. At agam constituam sit, an mea dolores iracundia conceptam, vis no atqui verear detracto. Et fugit ridens intellegam duo, eu facilisi erroribus duo. Et vix homero verear liberavisse, natum nonumes splendide usu at. Ea vis meliore offendit intellegebat. Ne mazim philosophia usu.\r\n\r\n&nbsp;\r\n\r\nAt mazim tacimates per. Ne reque tractatos mel, at eos case commodo. Cu animal constituam pri, ea nam ceteros copiosae philosophia. Ei modo fuisset pertinax vim, id vis tacimates interpretaris mediocritatem. Vel no esse scripserit, nostrum tacimates his te.\r\n\r\n&nbsp;\r\n\r\nCorpora postulant voluptatum nam eu. Cum te agam delectus ullamcorper, nostrum perfecto an nam. Ne quo accusata adversarium, illud efficiantur te nam. At veri simul virtute mei, deleniti persecuti te mei. Ludus animal eam cu, an nulla prompta imperdiet vis. Est cu dicam soluta everti.\r\n\r\n&nbsp;\r\n\r\nAliquam feugait perfecto per ne, an adolescens sententiae vis, his no noster animal. At vim vidit apeirian appellantur, no graecis invidunt sea. Illud oblique ad ius, eum no partem consectetuer, equidem incorrupte cum cu. At usu docendi tibique evertitur. Duis deserunt pri at. Aeque tempor usu et, ex illum facer efficiendi nam.\r\n\r\n&nbsp;\r\n\r\nVel quodsi iracundia ne, eu audiam tibique mnesarchum est. Diam oporteat suavitate pri id. Eos latine euripidis ad, ad mei partem accommodare, nam at elitr vitae voluptaria. Id sea ceteros suscipiantur. Ne per viderer tacimates repudiare, sed id quaestio cotidieque. Ei hinc dolor putent usu, falli lucilius nam at.\r\n\r\n&nbsp;\r\n\r\nAperiam detracto qualisque cu sea, sea te deleniti scripserit. Option feugiat sit ei. Labore volumus instructior eos ne, id graecis antiopam assueverit vel, no appetere argumentum eloquentiam quo. Error option dolorum nam cu. Vim tantas populo et, te mea quem quando decore.\r\n\r\n&nbsp;\r\n\r\nDuo ad elit aperiam. Et error aliquip mea. Cum ut facete assentior, ei vis dictas erroribus salutatus. Mea eu iusto volumus argumentum, sed eu quando regione indoctum.\r\n', '', '', '', 21, NULL, 0, '2021-09-29 06:39:40', 'info@zerofees.exchan', 0);
+INSERT INTO `web_news` VALUES (6, 'news-1-zfe-why-invest-in-zfe', 'NEWS 1 ZFE - Why Invest in ZFE?', '', '//upload/news/9d5c09ab5b25569514fa852e2d2c1483.jpg', '', 'Lorem ipsum dolor sit amet, quo omittam moderatius in, te cum mutat malorum. Autem ullum cu sed. Id per enim deserunt, vel an choro dolores voluptatum. His viderer civibus te, quis vero timeam te mel. Meis nulla nec id. Te eros ubique ius. &nbsp; Pri nisl velit at. Ei lobortis forensibus dissentiunt sit, ius idque veritus in, in aeterno invenire usu. Esse inani inermis eam ea. Justo perfecto dignissim an pri, ea sit dico neglegentur, id mundi maiestatis vel. Eos eu stet dicit. Porro suscipiantur id usu, antiopam moderatius sit ne. Ei nulla torquatos ullamcorper sed, no stet graece instructior vel, eirmod vulputate an duo. &nbsp; Splendide laboramus eam cu, veritus singulis vel et, essent assentior an vim. Prima paulo ut mei, no tota erat eam. Constituam consequuntur his ad. Ad ius libris labore, ex sumo regione eos. No ius vero apeirian. &nbsp; Mollis integre persius ad nam. At agam constituam sit, an mea dolores iracundia conceptam, vis no atqui verear detracto. Et fugit ridens intellegam duo, eu facilisi erroribus duo. Et vix homero verear liberavisse, natum nonumes splendide usu at. Ea vis meliore offendit intellegebat. Ne mazim philosophia usu. &nbsp; At mazim tacimates per. Ne reque tractatos mel, at eos case commodo. Cu animal constituam pri, ea nam ceteros copiosae philosophia. Ei modo fuisset pertinax vim, id vis tacimates interpretaris mediocritatem. Vel no esse scripserit, nostrum tacimates his te. &nbsp; Corpora postulant voluptatum nam eu. Cum te agam delectus ullamcorper, nostrum perfecto an nam. Ne quo accusata adversarium, illud efficiantur te nam. At veri simul virtute mei, deleniti persecuti te mei. Ludus animal eam cu, an nulla prompta imperdiet vis. Est cu dicam soluta everti. &nbsp; Aliquam feugait perfecto per ne, an adolescens sententiae vis, his no noster animal. At vim vidit apeirian appellantur, no graecis invidunt sea. Illud oblique ad ius, eum no partem consectetuer, equidem incorrupte cum cu. At usu docendi tibique evertitur. Duis deserunt pri at. Aeque tempor usu et, ex illum facer efficiendi nam. &nbsp; Vel quodsi iracundia ne, eu audiam tibique mnesarchum est. Diam oporteat suavitate pri id. Eos latine euripidis ad, ad mei partem accommodare, nam at elitr vitae voluptaria. Id sea ceteros suscipiantur. Ne per viderer tacimates repudiare, sed id quaestio cotidieque. Ei hinc dolor putent usu, falli lucilius nam at. &nbsp; Aperiam detracto qualisque cu sea, sea te deleniti scripserit. Option feugiat sit ei. Labore volumus instructior eos ne, id graecis antiopam assueverit vel, no appetere argumentum eloquentiam quo. Error option dolorum nam cu. Vim tantas populo et, te mea quem quando decore. &nbsp; Duo ad elit aperiam. Et error aliquip mea. Cum ut facete assentior, ei vis dictas erroribus salutatus. Mea eu iusto volumus argumentum, sed eu quando regione indoctum.\r\n', '', '', '', 22, NULL, 0, '2021-09-29 06:39:09', 'info@zerofees.exchan', 0);
+INSERT INTO `web_news` VALUES (7, 'news-gld-1-asic-resistance-increasingly-hot-topic-in-crypto-as-monero-forks', 'NEWS GLD 1 ASIC Resistance Increasingly Hot Topic in Crypto as Monero Forks', '', '/upload/news/32083222f2430503659756a60d3b0b6b.jpg', '', 'Lorem ipsum dolor sit amet, quo omittam moderatius in, te cum mutat malorum. Autem ullum cu sed. Id per enim deserunt, vel an choro dolores voluptatum. His viderer civibus te, quis vero timeam te mel. Meis nulla nec id. Te eros ubique ius.\r\n\r\n&nbsp;\r\n\r\nPri nisl velit at. Ei lobortis forensibus dissentiunt sit, ius idque veritus in, in aeterno invenire usu. Esse inani inermis eam ea. Justo perfecto dignissim an pri, ea sit dico neglegentur, id mundi maiestatis vel. Eos eu stet dicit. Porro suscipiantur id usu, antiopam moderatius sit ne. Ei nulla torquatos ullamcorper sed, no stet graece instructior vel, eirmod vulputate an duo.\r\n\r\n&nbsp;\r\n\r\nSplendide laboramus eam cu, veritus singulis vel et, essent assentior an vim. Prima paulo ut mei, no tota erat eam. Constituam consequuntur his ad. Ad ius libris labore, ex sumo regione eos. No ius vero apeirian.\r\n\r\n&nbsp;\r\n\r\nMollis integre persius ad nam. At agam constituam sit, an mea dolores iracundia conceptam, vis no atqui verear detracto. Et fugit ridens intellegam duo, eu facilisi erroribus duo. Et vix homero verear liberavisse, natum nonumes splendide usu at. Ea vis meliore offendit intellegebat. Ne mazim philosophia usu.\r\n\r\n&nbsp;\r\n\r\nAt mazim tacimates per. Ne reque tractatos mel, at eos case commodo. Cu animal constituam pri, ea nam ceteros copiosae philosophia. Ei modo fuisset pertinax vim, id vis tacimates interpretaris mediocritatem. Vel no esse scripserit, nostrum tacimates his te.\r\n\r\n&nbsp;\r\n\r\nCorpora postulant voluptatum nam eu. Cum te agam delectus ullamcorper, nostrum perfecto an nam. Ne quo accusata adversarium, illud efficiantur te nam. At veri simul virtute mei, deleniti persecuti te mei. Ludus animal eam cu, an nulla prompta imperdiet vis. Est cu dicam soluta everti.\r\n\r\n&nbsp;\r\n\r\nAliquam feugait perfecto per ne, an adolescens sententiae vis, his no noster animal. At vim vidit apeirian appellantur, no graecis invidunt sea. Illud oblique ad ius, eum no partem consectetuer, equidem incorrupte cum cu. At usu docendi tibique evertitur. Duis deserunt pri at. Aeque tempor usu et, ex illum facer efficiendi nam.\r\n\r\n&nbsp;\r\n\r\nVel quodsi iracundia ne, eu audiam tibique mnesarchum est. Diam oporteat suavitate pri id. Eos latine euripidis ad, ad mei partem accommodare, nam at elitr vitae voluptaria. Id sea ceteros suscipiantur. Ne per viderer tacimates repudiare, sed id quaestio cotidieque. Ei hinc dolor putent usu, falli lucilius nam at.\r\n\r\n&nbsp;\r\n\r\nAperiam detracto qualisque cu sea, sea te deleniti scripserit. Option feugiat sit ei. Labore volumus instructior eos ne, id graecis antiopam assueverit vel, no appetere argumentum eloquentiam quo. Error option dolorum nam cu. Vim tantas populo et, te mea quem quando decore.\r\n\r\n&nbsp;\r\n\r\nDuo ad elit aperiam. Et error aliquip mea. Cum ut facete assentior, ei vis dictas erroribus salutatus. Mea eu iusto volumus argumentum, sed eu quando regione indoctum.\r\n', '', '', '', 19, NULL, 0, '2021-09-29 06:37:35', 'info@zerofees.exchan', 0);
+INSERT INTO `web_news` VALUES (8, 'news-mining-1-canadian-mining-giant-hyperblock-acquires-cryptoglobal-for-106-million', 'NEWS MINING 1 CANADIAN MINING GIANT HYPERBLOCK ACQUIRES CRYPTOGLOBAL FOR $106 MILLION', '', '/upload/news/e56c8562afa3795f3c4c3ecccc3bfa83.jpg', '', 'Lorem ipsum dolor sit amet, quo omittam moderatius in, te cum mutat malorum. Autem ullum cu sed. Id per enim deserunt, vel an choro dolores voluptatum. His viderer civibus te, quis vero timeam te mel. Meis nulla nec id. Te eros ubique ius.\r\n\r\n&nbsp;\r\n\r\nPri nisl velit at. Ei lobortis forensibus dissentiunt sit, ius idque veritus in, in aeterno invenire usu. Esse inani inermis eam ea. Justo perfecto dignissim an pri, ea sit dico neglegentur, id mundi maiestatis vel. Eos eu stet dicit. Porro suscipiantur id usu, antiopam moderatius sit ne. Ei nulla torquatos ullamcorper sed, no stet graece instructior vel, eirmod vulputate an duo.\r\n\r\n&nbsp;\r\n\r\nSplendide laboramus eam cu, veritus singulis vel et, essent assentior an vim. Prima paulo ut mei, no tota erat eam. Constituam consequuntur his ad. Ad ius libris labore, ex sumo regione eos. No ius vero apeirian.\r\n\r\n&nbsp;\r\n\r\nMollis integre persius ad nam. At agam constituam sit, an mea dolores iracundia conceptam, vis no atqui verear detracto. Et fugit ridens intellegam duo, eu facilisi erroribus duo. Et vix homero verear liberavisse, natum nonumes splendide usu at. Ea vis meliore offendit intellegebat. Ne mazim philosophia usu.\r\n\r\n&nbsp;\r\n\r\nAt mazim tacimates per. Ne reque tractatos mel, at eos case commodo. Cu animal constituam pri, ea nam ceteros copiosae philosophia. Ei modo fuisset pertinax vim, id vis tacimates interpretaris mediocritatem. Vel no esse scripserit, nostrum tacimates his te.\r\n\r\n&nbsp;\r\n\r\nCorpora postulant voluptatum nam eu. Cum te agam delectus ullamcorper, nostrum perfecto an nam. Ne quo accusata adversarium, illud efficiantur te nam. At veri simul virtute mei, deleniti persecuti te mei. Ludus animal eam cu, an nulla prompta imperdiet vis. Est cu dicam soluta everti.\r\n\r\n&nbsp;\r\n\r\nAliquam feugait perfecto per ne, an adolescens sententiae vis, his no noster animal. At vim vidit apeirian appellantur, no graecis invidunt sea. Illud oblique ad ius, eum no partem consectetuer, equidem incorrupte cum cu. At usu docendi tibique evertitur. Duis deserunt pri at. Aeque tempor usu et, ex illum facer efficiendi nam.\r\n\r\n&nbsp;\r\n\r\nVel quodsi iracundia ne, eu audiam tibique mnesarchum est. Diam oporteat suavitate pri id. Eos latine euripidis ad, ad mei partem accommodare, nam at elitr vitae voluptaria. Id sea ceteros suscipiantur. Ne per viderer tacimates repudiare, sed id quaestio cotidieque. Ei hinc dolor putent usu, falli lucilius nam at.\r\n\r\n&nbsp;\r\n\r\nAperiam detracto qualisque cu sea, sea te deleniti scripserit. Option feugiat sit ei. Labore volumus instructior eos ne, id graecis antiopam assueverit vel, no appetere argumentum eloquentiam quo. Error option dolorum nam cu. Vim tantas populo et, te mea quem quando decore.\r\n\r\n&nbsp;\r\n\r\nDuo ad elit aperiam. Et error aliquip mea. Cum ut facete assentior, ei vis dictas erroribus salutatus. Mea eu iusto volumus argumentum, sed eu quando regione indoctum.\r\n', '', '', '', 27, NULL, 0, '2021-09-29 06:35:37', 'info@zerofees.exchan', 0);
+INSERT INTO `web_news` VALUES (9, 'news-bl-2-how-can-blockchains-remove-the-pay-to-trade-barrier-in-the-market', 'NEWS BL 2 How Can Blockchains Remove the ‘Pay to Trade’ Barrier in the Market?', '', '//upload/news/2ff94094fcfbe19daf303a479b9fad68.jpg', '', 'Lorem ipsum dolor sit amet, quo omittam moderatius in, te cum mutat malorum. Autem ullum cu sed. Id per enim deserunt, vel an choro dolores voluptatum. His viderer civibus te, quis vero timeam te mel. Meis nulla nec id. Te eros ubique ius. &nbsp; Pri nisl velit at. Ei lobortis forensibus dissentiunt sit, ius idque veritus in, in aeterno invenire usu. Esse inani inermis eam ea. Justo perfecto dignissim an pri, ea sit dico neglegentur, id mundi maiestatis vel. Eos eu stet dicit. Porro suscipiantur id usu, antiopam moderatius sit ne. Ei nulla torquatos ullamcorper sed, no stet graece instructior vel, eirmod vulputate an duo. &nbsp; Splendide laboramus eam cu, veritus singulis vel et, essent assentior an vim. Prima paulo ut mei, no tota erat eam. Constituam consequuntur his ad. Ad ius libris labore, ex sumo regione eos. No ius vero apeirian. &nbsp; Mollis integre persius ad nam. At agam constituam sit, an mea dolores iracundia conceptam, vis no atqui verear detracto. Et fugit ridens intellegam duo, eu facilisi erroribus duo. Et vix homero verear liberavisse, natum nonumes splendide usu at. Ea vis meliore offendit intellegebat. Ne mazim philosophia usu. &nbsp; At mazim tacimates per. Ne reque tractatos mel, at eos case commodo. Cu animal constituam pri, ea nam ceteros copiosae philosophia. Ei modo fuisset pertinax vim, id vis tacimates interpretaris mediocritatem. Vel no esse scripserit, nostrum tacimates his te. &nbsp; Corpora postulant voluptatum nam eu. Cum te agam delectus ullamcorper, nostrum perfecto an nam. Ne quo accusata adversarium, illud efficiantur te nam. At veri simul virtute mei, deleniti persecuti te mei. Ludus animal eam cu, an nulla prompta imperdiet vis. Est cu dicam soluta everti. &nbsp; Aliquam feugait perfecto per ne, an adolescens sententiae vis, his no noster animal. At vim vidit apeirian appellantur, no graecis invidunt sea. Illud oblique ad ius, eum no partem consectetuer, equidem incorrupte cum cu. At usu docendi tibique evertitur. Duis deserunt pri at. Aeque tempor usu et, ex illum facer efficiendi nam. &nbsp; Vel quodsi iracundia ne, eu audiam tibique mnesarchum est. Diam oporteat suavitate pri id. Eos latine euripidis ad, ad mei partem accommodare, nam at elitr vitae voluptaria. Id sea ceteros suscipiantur. Ne per viderer tacimates repudiare, sed id quaestio cotidieque. Ei hinc dolor putent usu, falli lucilius nam at. &nbsp; Aperiam detracto qualisque cu sea, sea te deleniti scripserit. Option feugiat sit ei. Labore volumus instructior eos ne, id graecis antiopam assueverit vel, no appetere argumentum eloquentiam quo. Error option dolorum nam cu. Vim tantas populo et, te mea quem quando decore. &nbsp; Duo ad elit aperiam. Et error aliquip mea. Cum ut facete assentior, ei vis dictas erroribus salutatus. Mea eu iusto volumus argumentum, sed eu quando regione indoctum.\r\n', '', '', '', 24, NULL, 0, '2021-09-29 06:34:59', 'info@zerofees.exchan', 0);
+INSERT INTO `web_news` VALUES (10, 'news-bl-1-how-blockchain-is-making-it-easier-to-get', 'NEWS BL 1 How Blockchain Is Making It Easier to Get', '', '/upload/news/44807c1619ecc1f8374b8930477187aa.jpg', '', 'Lorem ipsum dolor sit amet, quo omittam moderatius in, te cum mutat malorum. Autem ullum cu sed. Id per enim deserunt, vel an choro dolores voluptatum. His viderer civibus te, quis vero timeam te mel. Meis nulla nec id. Te eros ubique ius.\r\n\r\n&nbsp;\r\n\r\nPri nisl velit at. Ei lobortis forensibus dissentiunt sit, ius idque veritus in, in aeterno invenire usu. Esse inani inermis eam ea. Justo perfecto dignissim an pri, ea sit dico neglegentur, id mundi maiestatis vel. Eos eu stet dicit. Porro suscipiantur id usu, antiopam moderatius sit ne. Ei nulla torquatos ullamcorper sed, no stet graece instructior vel, eirmod vulputate an duo.\r\n\r\n&nbsp;\r\n\r\nSplendide laboramus eam cu, veritus singulis vel et, essent assentior an vim. Prima paulo ut mei, no tota erat eam. Constituam consequuntur his ad. Ad ius libris labore, ex sumo regione eos. No ius vero apeirian.\r\n\r\n&nbsp;\r\n\r\nMollis integre persius ad nam. At agam constituam sit, an mea dolores iracundia conceptam, vis no atqui verear detracto. Et fugit ridens intellegam duo, eu facilisi erroribus duo. Et vix homero verear liberavisse, natum nonumes splendide usu at. Ea vis meliore offendit intellegebat. Ne mazim philosophia usu.\r\n\r\n&nbsp;\r\n\r\nAt mazim tacimates per. Ne reque tractatos mel, at eos case commodo. Cu animal constituam pri, ea nam ceteros copiosae philosophia. Ei modo fuisset pertinax vim, id vis tacimates interpretaris mediocritatem. Vel no esse scripserit, nostrum tacimates his te.\r\n\r\n&nbsp;\r\n\r\nCorpora postulant voluptatum nam eu. Cum te agam delectus ullamcorper, nostrum perfecto an nam. Ne quo accusata adversarium, illud efficiantur te nam. At veri simul virtute mei, deleniti persecuti te mei. Ludus animal eam cu, an nulla prompta imperdiet vis. Est cu dicam soluta everti.\r\n\r\n&nbsp;\r\n\r\nAliquam feugait perfecto per ne, an adolescens sententiae vis, his no noster animal. At vim vidit apeirian appellantur, no graecis invidunt sea. Illud oblique ad ius, eum no partem consectetuer, equidem incorrupte cum cu. At usu docendi tibique evertitur. Duis deserunt pri at. Aeque tempor usu et, ex illum facer efficiendi nam.\r\n\r\n&nbsp;\r\n\r\nVel quodsi iracundia ne, eu audiam tibique mnesarchum est. Diam oporteat suavitate pri id. Eos latine euripidis ad, ad mei partem accommodare, nam at elitr vitae voluptaria. Id sea ceteros suscipiantur. Ne per viderer tacimates repudiare, sed id quaestio cotidieque. Ei hinc dolor putent usu, falli lucilius nam at.\r\n\r\n&nbsp;\r\n\r\nAperiam detracto qualisque cu sea, sea te deleniti scripserit. Option feugiat sit ei. Labore volumus instructior eos ne, id graecis antiopam assueverit vel, no appetere argumentum eloquentiam quo. Error option dolorum nam cu. Vim tantas populo et, te mea quem quando decore.\r\n\r\n&nbsp;\r\n\r\nDuo ad elit aperiam. Et error aliquip mea. Cum ut facete assentior, ei vis dictas erroribus salutatus. Mea eu iusto volumus argumentum, sed eu quando regione indoctum.\r\n', '', '', '', 24, NULL, 0, '2021-09-29 06:31:45', 'info@zerofees.exchan', 0);
+INSERT INTO `web_news` VALUES (11, 'news-3-ripple-price-technical-analysis-xrpusd', 'NEWS 3 Ripple Price Technical Analysis – XRP/USD', '', '/upload/news/3c9de71155211697f38a3820ba36670d.jpg', '', 'Lorem ipsum dolor sit amet, quo omittam moderatius in, te cum mutat malorum. Autem ullum cu sed. Id per enim deserunt, vel an choro dolores voluptatum. His viderer civibus te, quis vero timeam te mel. Meis nulla nec id. Te eros ubique ius.\r\n\r\n&nbsp;\r\n\r\nPri nisl velit at. Ei lobortis forensibus dissentiunt sit, ius idque veritus in, in aeterno invenire usu. Esse inani inermis eam ea. Justo perfecto dignissim an pri, ea sit dico neglegentur, id mundi maiestatis vel. Eos eu stet dicit. Porro suscipiantur id usu, antiopam moderatius sit ne. Ei nulla torquatos ullamcorper sed, no stet graece instructior vel, eirmod vulputate an duo.\r\n\r\n&nbsp;\r\n\r\nSplendide laboramus eam cu, veritus singulis vel et, essent assentior an vim. Prima paulo ut mei, no tota erat eam. Constituam consequuntur his ad. Ad ius libris labore, ex sumo regione eos. No ius vero apeirian.\r\n\r\n&nbsp;\r\n\r\nMollis integre persius ad nam. At agam constituam sit, an mea dolores iracundia conceptam, vis no atqui verear detracto. Et fugit ridens intellegam duo, eu facilisi erroribus duo. Et vix homero verear liberavisse, natum nonumes splendide usu at. Ea vis meliore offendit intellegebat. Ne mazim philosophia usu.\r\n\r\n&nbsp;\r\n\r\nAt mazim tacimates per. Ne reque tractatos mel, at eos case commodo. Cu animal constituam pri, ea nam ceteros copiosae philosophia. Ei modo fuisset pertinax vim, id vis tacimates interpretaris mediocritatem. Vel no esse scripserit, nostrum tacimates his te.\r\n\r\n&nbsp;\r\n\r\nCorpora postulant voluptatum nam eu. Cum te agam delectus ullamcorper, nostrum perfecto an nam. Ne quo accusata adversarium, illud efficiantur te nam. At veri simul virtute mei, deleniti persecuti te mei. Ludus animal eam cu, an nulla prompta imperdiet vis. Est cu dicam soluta everti.\r\n\r\n&nbsp;\r\n\r\nAliquam feugait perfecto per ne, an adolescens sententiae vis, his no noster animal. At vim vidit apeirian appellantur, no graecis invidunt sea. Illud oblique ad ius, eum no partem consectetuer, equidem incorrupte cum cu. At usu docendi tibique evertitur. Duis deserunt pri at. Aeque tempor usu et, ex illum facer efficiendi nam.\r\n\r\n&nbsp;\r\n\r\nVel quodsi iracundia ne, eu audiam tibique mnesarchum est. Diam oporteat suavitate pri id. Eos latine euripidis ad, ad mei partem accommodare, nam at elitr vitae voluptaria. Id sea ceteros suscipiantur. Ne per viderer tacimates repudiare, sed id quaestio cotidieque. Ei hinc dolor putent usu, falli lucilius nam at.\r\n\r\n&nbsp;\r\n\r\nAperiam detracto qualisque cu sea, sea te deleniti scripserit. Option feugiat sit ei. Labore volumus instructior eos ne, id graecis antiopam assueverit vel, no appetere argumentum eloquentiam quo. Error option dolorum nam cu. Vim tantas populo et, te mea quem quando decore.\r\n\r\n&nbsp;\r\n\r\nDuo ad elit aperiam. Et error aliquip mea. Cum ut facete assentior, ei vis dictas erroribus salutatus. Mea eu iusto volumus argumentum, sed eu quando regione indoctum.\r\n', '', '', '', 25, NULL, 0, '2021-09-29 06:31:07', 'info@zerofees.exchan', 0);
+INSERT INTO `web_news` VALUES (12, 'news-2-bitfinex-introduces-trading-for-12-altcoins', 'NEWS 2 Bitfinex Introduces Trading for 12 Altcoins', '', '//upload/news/bced67e1ee1ed3b2f3d4a10f9f71e78e.jpg', '', 'Lorem ipsum dolor sit amet, quo omittam moderatius in, te cum mutat malorum. Autem ullum cu sed. Id per enim deserunt, vel an choro dolores voluptatum. His viderer civibus te, quis vero timeam te mel. Meis nulla nec id. Te eros ubique ius. &nbsp; Pri nisl velit at. Ei lobortis forensibus dissentiunt sit, ius idque veritus in, in aeterno invenire usu. Esse inani inermis eam ea. Justo perfecto dignissim an pri, ea sit dico neglegentur, id mundi maiestatis vel. Eos eu stet dicit. Porro suscipiantur id usu, antiopam moderatius sit ne. Ei nulla torquatos ullamcorper sed, no stet graece instructior vel, eirmod vulputate an duo. &nbsp; Splendide laboramus eam cu, veritus singulis vel et, essent assentior an vim. Prima paulo ut mei, no tota erat eam. Constituam consequuntur his ad. Ad ius libris labore, ex sumo regione eos. No ius vero apeirian. &nbsp; Mollis integre persius ad nam. At agam constituam sit, an mea dolores iracundia conceptam, vis no atqui verear detracto. Et fugit ridens intellegam duo, eu facilisi erroribus duo. Et vix homero verear liberavisse, natum nonumes splendide usu at. Ea vis meliore offendit intellegebat. Ne mazim philosophia usu. &nbsp; At mazim tacimates per. Ne reque tractatos mel, at eos case commodo. Cu animal constituam pri, ea nam ceteros copiosae philosophia. Ei modo fuisset pertinax vim, id vis tacimates interpretaris mediocritatem. Vel no esse scripserit, nostrum tacimates his te. &nbsp; Corpora postulant voluptatum nam eu. Cum te agam delectus ullamcorper, nostrum perfecto an nam. Ne quo accusata adversarium, illud efficiantur te nam. At veri simul virtute mei, deleniti persecuti te mei. Ludus animal eam cu, an nulla prompta imperdiet vis. Est cu dicam soluta everti. &nbsp; Aliquam feugait perfecto per ne, an adolescens sententiae vis, his no noster animal. At vim vidit apeirian appellantur, no graecis invidunt sea. Illud oblique ad ius, eum no partem consectetuer, equidem incorrupte cum cu. At usu docendi tibique evertitur. Duis deserunt pri at. Aeque tempor usu et, ex illum facer efficiendi nam. &nbsp; Vel quodsi iracundia ne, eu audiam tibique mnesarchum est. Diam oporteat suavitate pri id. Eos latine euripidis ad, ad mei partem accommodare, nam at elitr vitae voluptaria. Id sea ceteros suscipiantur. Ne per viderer tacimates repudiare, sed id quaestio cotidieque. Ei hinc dolor putent usu, falli lucilius nam at. &nbsp; Aperiam detracto qualisque cu sea, sea te deleniti scripserit. Option feugiat sit ei. Labore volumus instructior eos ne, id graecis antiopam assueverit vel, no appetere argumentum eloquentiam quo. Error option dolorum nam cu. Vim tantas populo et, te mea quem quando decore. &nbsp; Duo ad elit aperiam. Et error aliquip mea. Cum ut facete assentior, ei vis dictas erroribus salutatus. Mea eu iusto volumus argumentum, sed eu quando regione indoctum.\r\n', '', '', '', 25, NULL, 0, '2021-09-29 06:21:36', 'info@zerofees.exchan', 0);
+INSERT INTO `web_news` VALUES (13, 'news-1-bitcoin-cash-price-trend-including-tether', 'NEWS 1 Bitcoin Cash Price Trend Including Tether', '', '/upload/news/0656fe700249acfe0a5535b4ae2c0088.jpg', '', 'Lorem ipsum dolor sit amet, quo omittam moderatius in, te cum mutat malorum. Autem ullum cu sed. Id per enim deserunt, vel an choro dolores voluptatum. His viderer civibus te, quis vero timeam te mel. Meis nulla nec id. Te eros ubique ius.\r\n\r\n&nbsp;\r\n\r\nPri nisl velit at. Ei lobortis forensibus dissentiunt sit, ius idque veritus in, in aeterno invenire usu. Esse inani inermis eam ea. Justo perfecto dignissim an pri, ea sit dico neglegentur, id mundi maiestatis vel. Eos eu stet dicit. Porro suscipiantur id usu, antiopam moderatius sit ne. Ei nulla torquatos ullamcorper sed, no stet graece instructior vel, eirmod vulputate an duo.\r\n\r\n&nbsp;\r\n\r\nSplendide laboramus eam cu, veritus singulis vel et, essent assentior an vim. Prima paulo ut mei, no tota erat eam. Constituam consequuntur his ad. Ad ius libris labore, ex sumo regione eos. No ius vero apeirian.\r\n\r\n&nbsp;\r\n\r\nMollis integre persius ad nam. At agam constituam sit, an mea dolores iracundia conceptam, vis no atqui verear detracto. Et fugit ridens intellegam duo, eu facilisi erroribus duo. Et vix homero verear liberavisse, natum nonumes splendide usu at. Ea vis meliore offendit intellegebat. Ne mazim philosophia usu.\r\n\r\n&nbsp;\r\n\r\nAt mazim tacimates per. Ne reque tractatos mel, at eos case commodo. Cu animal constituam pri, ea nam ceteros copiosae philosophia. Ei modo fuisset pertinax vim, id vis tacimates interpretaris mediocritatem. Vel no esse scripserit, nostrum tacimates his te.\r\n\r\n&nbsp;\r\n\r\nCorpora postulant voluptatum nam eu. Cum te agam delectus ullamcorper, nostrum perfecto an nam. Ne quo accusata adversarium, illud efficiantur te nam. At veri simul virtute mei, deleniti persecuti te mei. Ludus animal eam cu, an nulla prompta imperdiet vis. Est cu dicam soluta everti.\r\n\r\n&nbsp;\r\n\r\nAliquam feugait perfecto per ne, an adolescens sententiae vis, his no noster animal. At vim vidit apeirian appellantur, no graecis invidunt sea. Illud oblique ad ius, eum no partem consectetuer, equidem incorrupte cum cu. At usu docendi tibique evertitur. Duis deserunt pri at. Aeque tempor usu et, ex illum facer efficiendi nam.\r\n\r\n&nbsp;\r\n\r\nVel quodsi iracundia ne, eu audiam tibique mnesarchum est. Diam oporteat suavitate pri id. Eos latine euripidis ad, ad mei partem accommodare, nam at elitr vitae voluptaria. Id sea ceteros suscipiantur. Ne per viderer tacimates repudiare, sed id quaestio cotidieque. Ei hinc dolor putent usu, falli lucilius nam at.\r\n\r\n&nbsp;\r\n\r\nAperiam detracto qualisque cu sea, sea te deleniti scripserit. Option feugiat sit ei. Labore volumus instructior eos ne, id graecis antiopam assueverit vel, no appetere argumentum eloquentiam quo. Error option dolorum nam cu. Vim tantas populo et, te mea quem quando decore.\r\n\r\n&nbsp;\r\n\r\nDuo ad elit aperiam. Et error aliquip mea. Cum ut facete assentior, ei vis dictas erroribus salutatus. Mea eu iusto volumus argumentum, sed eu quando regione indoctum.\r\n', '', '', '', 25, NULL, 0, '2021-09-29 06:18:38', 'info@zerofees.exchan', 0);
+
+-- ----------------------------
+-- Table structure for web_slider
+-- ----------------------------
+DROP TABLE IF EXISTS `web_slider`;
+CREATE TABLE `web_slider`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `slider_h1_en` varchar(900) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `slider_h1_fr` varchar(900) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `slider_h2_en` varchar(900) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `slider_h2_fr` varchar(900) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `slider_h3_en` varchar(900) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `slider_h3_fr` varchar(900) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `slider_img` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `custom_url` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `status` int(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of web_slider
+-- ----------------------------
+INSERT INTO `web_slider` VALUES (1, 'The Feature of <span class=\"outrageous-orange\">Financing</span> <br>Technology is Here', '', 'It is a long established fact that a reader will be distracted by the readable content of a page when.<br> looking at its layout The point of using Lorem Ipsum is that', '', 'Get in touch', '', '/upload/slider/fe613a9078976e374e8ca75f866674d8.jpg', 'https://www.bdtask.com/', 1);
+INSERT INTO `web_slider` VALUES (3, 'Take the world&#39;s first Zero Fees  Exchange.', '', 'ZeroFees Exchange has ZERO FEES for trading pairs in USDE market. Trading pairs in USDT market have fees a THOUSAND times lower than other exchanges. So you can trade a million volume with ZERO FEES or with a negligible fees.', '', 'Start Now', '', '/////////upload/slider/08b0d2fbc37ac78a04f04195fd471e3b.jpg', 'https://zerofees.exchange/register', 1);
+
+-- ----------------------------
+-- Table structure for web_social_link
+-- ----------------------------
+DROP TABLE IF EXISTS `web_social_link`;
+CREATE TABLE `web_social_link`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `link` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `icon` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `status` int(11) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of web_social_link
+-- ----------------------------
+INSERT INTO `web_social_link` VALUES (1, 'Facebook', 'https://facebook.com', 'facebook', 1, '2020-12-07 05:52:22');
+INSERT INTO `web_social_link` VALUES (2, 'twitter', 'https://twitter.com', 'tumblr', 1, '2018-07-09 06:12:09');
+INSERT INTO `web_social_link` VALUES (3, 'linkedin', 'https:/linkdin.com', 'linkedin', 1, '2020-10-04 11:40:11');
+INSERT INTO `web_social_link` VALUES (4, 'youtube', 'https://www.youtube.com', 'dribbble', 0, '2021-03-08 18:47:57');
+INSERT INTO `web_social_link` VALUES (5, 'instagram', 'https://instagram.com', 'instagram', 0, '2021-03-08 18:47:37');
+
+-- ----------------------------
+-- Table structure for web_subscriber
+-- ----------------------------
+DROP TABLE IF EXISTS `web_subscriber`;
+CREATE TABLE `web_subscriber`  (
+  `sub_id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `status` int(11) NOT NULL,
+  PRIMARY KEY (`sub_id`) USING BTREE,
+  UNIQUE INDEX `email`(`email`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of web_subscriber
+-- ----------------------------
+
+SET FOREIGN_KEY_CHECKS = 1;

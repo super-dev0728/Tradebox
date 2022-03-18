@@ -2606,9 +2606,9 @@ class HomeController extends BaseController
         $interval       = $this->request->getGet('interval', FILTER_SANITIZE_STRING) * 60;
         $limit          = 500;
 
-        $coinhistory    = $this->db->table('dbt_coinhistory_detail')->selectMin('price', 'low')->selectMax('price', "high")->selectMin('date', 'open_date')->selectMax('date', 'close_date')->select('substring_index(group_concat(cast(price as DOUBLE) order by date), trim(","), 1 ) as "open"')->select('substring_index(group_concat(cast(price as DOUBLE) order by date desc), trim(","), 1 ) as "close"')->select('FLOOR(UNIX_TIMESTAMP(date)/' . $interval . ') as "timekey"')->where('market_symbol', $market_symbol)->groupBy('timekey')->orderBy('id', 'asc')->limit($limit, 0)->get()->getResult();
+        $chartdata    = $this->db->table('dbt_coinhistory_detail')->selectMin('price', 'low')->selectMax('price', "high")->selectMin('date', 'open_date')->selectMax('date', 'close_date')->select('substring_index(group_concat(cast(price as DOUBLE) order by date), trim(","), 1 ) as "open"')->select('substring_index(group_concat(cast(price as DOUBLE) order by date desc), trim(","), 1 ) as "close"')->select('FLOOR(UNIX_TIMESTAMP(date)/' . $interval . ') as "timekey"')->where('market_symbol', $market_symbol)->groupBy('timekey')->orderBy('id', 'asc')->limit($limit, 0)->get()->getResult();
 
-        foreach ($coinhistory as $key => $value) {
+        foreach ($chartdata as $key => $value) {
             $timestamp = strtotime($value->open_date);
             
             $string['x'] = $timestamp * 1000;

@@ -18,32 +18,32 @@ var market = getUrlParameter('market');
 var interval = 5; // real
 // var interval = '5m'; // test
 
-// var candlestickStream = new CandlestickStream(market, interval, true);
-// candlestickStream.start();
+var candlestickStream = new CandlestickStream(market, interval, true);
+candlestickStream.start();
 
-// $('.control .range').on('click', function () {
-//     $('.range').removeClass('active');
-//     $(this).addClass('active');
-//     $('.control .sub-range').removeClass('active');
+$('.control .range').on('click', function () {
+    $('.range').removeClass('active');
+    $(this).addClass('active');
+    $('.control .sub-range').removeClass('active');
 
-//     interval = $(this).data('range') * 1; // real
-//     // interval = $(this).text().toLowerCase(); // test
+    interval = $(this).data('range') * 1; // real
+    // interval = $(this).text().toLowerCase(); // test
 
-//     var candlestickStream = new CandlestickStream(market, interval, true);
-//     candlestickStream.start();
-// });
+    var candlestickStream = new CandlestickStream(market, interval, true);
+    candlestickStream.start();
+});
 
-// $('.control .sub-range').on('click', function () {
-//     $('.control .sub-range').removeClass('active');
-//     $('.range').removeClass('active');
-//     $(this).addClass('active');
-//     $('.dropdown').addClass('active');
+$('.control .sub-range').on('click', function () {
+    $('.control .sub-range').removeClass('active');
+    $('.range').removeClass('active');
+    $(this).addClass('active');
+    $('.dropdown').addClass('active');
 
-//     $('.control .dropdown').html($(this).text() + ' <i class="fa fa-sort-down"></i>');
+    $('.control .dropdown').html($(this).text() + ' <i class="fa fa-sort-down"></i>');
 
-//     interval = $(this).data('range') * 1; // real
-//     // interval = $(this).text().toLowerCase(); // test
+    interval = $(this).data('range') * 1; // real
+    // interval = $(this).text().toLowerCase(); // test
 
-//     var candlestickStream = new CandlestickStream(market, interval, true);
-//     candlestickStream.start();
-// });
+    var candlestickStream = new CandlestickStream(market, interval, true);
+    candlestickStream.start();
+});

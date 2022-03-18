@@ -1,0 +1,28 @@
+CRITICAL - 2022-03-18 06:46:32 --> A non-numeric value encountered
+#0 D:\work projects\Local git\Tradebox\app\Modules\Website\Controllers\HomeController.php(2657): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'D:\\work project...', 2657, Array)
+#1 D:\work projects\Local git\Tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->tradecharthistory()
+#2 D:\work projects\Local git\Tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#3 D:\work projects\Local git\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\work projects\Local git\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-03-18 06:46:36 --> A non-numeric value encountered
+#0 D:\work projects\Local git\Tradebox\app\Modules\Website\Controllers\HomeController.php(2657): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'D:\\work project...', 2657, Array)
+#1 D:\work projects\Local git\Tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->tradecharthistory()
+#2 D:\work projects\Local git\Tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#3 D:\work projects\Local git\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\work projects\Local git\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-03-18 06:46:53 --> A non-numeric value encountered
+#0 D:\work projects\Local git\Tradebox\app\Modules\Website\Controllers\HomeController.php(2657): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'D:\\work project...', 2657, Array)
+#1 D:\work projects\Local git\Tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->tradecharthistory()
+#2 D:\work projects\Local git\Tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#3 D:\work projects\Local git\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\work projects\Local git\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-03-18 06:48:36 --> A non-numeric value encountered
+#0 D:\work projects\Local git\Tradebox\app\Modules\Website\Controllers\HomeController.php(2657): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'D:\\work project...', 2657, Array)
+#1 D:\work projects\Local git\Tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->tradecharthistory()
+#2 D:\work projects\Local git\Tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#3 D:\work projects\Local git\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\work projects\Local git\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}

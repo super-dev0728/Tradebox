@@ -1,0 +1,9 @@
+__ci_last_regenerate|i:1647591794;_ci_previous_url|s:47:"http://localhost/backend/exchange/add-coin-pair";isLogIn|b:1;isAdmin|b:1;id|s:1:"2";fullname|s:15:"Admin Developer";user_level|s:5:"Admin";email|s:24:"levyeugene0813@gmail.com";image|s:54:"///upload/dashboard1628234653_bfa8fb4620ea1a2a9adb.jpg";last_login|N;last_logout|N;ip_address|N;exception|s:261:"<!-- DEBUG-VIEW START 1 SYSTEMPATH//Validation/Views/list.php -->
+	<div class="errors" role="alert">
+		<ul>
+					<li>The symbol field must contain a unique value.</li>
+				</ul>
+	</div>
+
+<!-- DEBUG-VIEW ENDED 1 SYSTEMPATH//Validation/Views/list.php -->
+";__ci_vars|a:1:{s:9:"exception";s:3:"old";}
