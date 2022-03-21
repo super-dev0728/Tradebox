@@ -4,12 +4,12 @@ theme = JSON.parse(BDTASK.theme());
 $(function () {
     // Time interval control dropdown display and hide
     $('.chart-content .control .dropdown').on('mouseover', function () {
-        $(this).css('color', '#00b746');
+        // $(this).css('color', '#00b746');
         $('.chart-content .control .range-dropdown').show();
     });
 
     $('.chart-content .control .range-dropdown').on('mouseleave', function () {
-        $('.chart-content .control .dropdown').css('color', '#8e8e8e');
+        // $('.chart-content .control .dropdown').css('color', '#8e8e8e');
         $('.chart-content .control .range-dropdown').hide();
     });
 
@@ -428,12 +428,12 @@ $(function ($) {
     var cryptolistfrom = market_details.currency_symbol;
     var cryptolistto = market_details.market_symbol;
 
+    console.log(market_details.initial_price);
     $.getJSON("https://min-api.cryptocompare.com/data/price?fsym=" + cryptolistfrom + "&tsyms=" + cryptolistto + "&api_key=" + BDTASK.crypto_api(), function (result) {
 
 
         var rate = 1;
         if (result[Object.keys(result)[0]] == 'Error') {
-
             var rate = market_details.initial_price;
 
         } else {

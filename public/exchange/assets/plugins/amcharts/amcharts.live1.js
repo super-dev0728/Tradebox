@@ -23,43 +23,103 @@ var getUrlParameter = function getUrlParameter(sParam) {
 // initial declaration
 var market = getUrlParameter('market');
 
-var unit = "minute";
-var count = 5;
-var interval = 5;
+var unit = "day";
+var count = 1;
+var interval = 1440;
 
-function loadData(market, interval, count, unit) {
-    $.getJSON(BDTASK.getSiteAction('tradecharthistory?market=' + market + '&interval=' + interval), function (data) {
+function loadData(market, interval, count, unit, min, max, side) {
+    // round min so that selected unit would be included
+    min = am5.time.round(new Date(min), unit, 1).getTime();
+
+    $.getJSON(BDTASK.getSiteAction('tradecharthistory?market=' + market + '&interval=' + interval + '&start=' + min + '&end=' + max), function (data) {
         // Handle loaded data
-        // var start = xAxis.get("start");
-        // var end = xAxis.get("end");
+        var start = xAxis.get("start");
+        var end = xAxis.get("end");
 
         // will hold first/last dates of each series
-        // var seriesFirst = {};
-        // var seriesLast = {};
-        // var currentDate = new Date();
-        // var min = currentDate.getTime() - am5.time.getDuration("day", 50);
-        // var max = currentDate.getTime();
+        var seriesFirst = {};
+        var seriesLast = {};
 
         // Set data
-        if (data.length > 0) {
-            // change base interval if it's different
-            if (xAxis.get("baseInterval").timeUnit != unit) {
-                xAxis.set("baseInterval", {
-                    timeUnit: unit,
-                    count: count
-                });
+        if (side == "none") {
+            if (data.length > 0) {
+                // change base interval if it's different
+                if (xAxis.get("baseInterval").timeUnit != unit) {
+                    xAxis.set("baseInterval", {
+                        timeUnit: unit,
+                        count: count
+                    });
+                }
+
+                xAxis.set("min", min);
+                xAxis.set("max", max);
+                xAxis.setPrivate("min", min); // needed in order not to animate
+                xAxis.setPrivate("max", max); // needed in order not to animate     
+
+                series.data.setAll(data);
+
+                xAxis.zoom(0, 1, 0);
+            }
+        } else if (side == "left") {
+            // save dates of first items so that duplicates would not be added
+            seriesFirst[series.uid] = series.data.getIndex(0).date;
+
+            for (var i = data.length - 1; i >= 0; i--) {
+                var date = data[i].date;
+                // only add if first items date is bigger then newly added items date
+                if (seriesFirst[series.uid] > date) {
+                    series.data.unshift(data[i]);
+                }
             }
 
-            // xAxis.set("min", min);
-            // xAxis.set("max", max);
-            // xAxis.setPrivate("min", min); // needed in order not to animate
-            // xAxis.setPrivate("max", max); // needed in order not to animate     
+            // update axis min
+            min = Math.max(min, absoluteMin);
+            xAxis.set("min", min);
+            xAxis.setPrivate("min", min); // needed in order not to animate
+            // recalculate start and end so that the selection would remain
+            xAxis.set("start", 0);
+            xAxis.set("end", (end - start) / (1 - start));
+        } else if (side == "right") {
+            // save dates of last items so that duplicates would not be added
+            seriesLast[series.uid] = series.data.getIndex(series.data.length - 1).date;
 
-            series.data.setAll(data);
+            for (var i = 0; i < data.length; i++) {
+                var date = data[i].date;
+                // only add if last items date is smaller then newly added items date
+                if (seriesLast[series.uid] < date) {
+                    series.data.push(data[i]);
+                }
+            }
+            // update axis max
+            max = Math.min(max, absoluteMax);
+            xAxis.set("max", max);
+            xAxis.setPrivate("max", max); // needed in order not to animate
 
-            xAxis.zoom(0, 1, 0);
+            // recalculate start and end so that the selection would remain
+            xAxis.set("start", start / end);
+            xAxis.set("end", 1);
         }
     });
+}
+
+function loadSomeData(market) {
+    var start = xAxis.get("start");
+    var end = xAxis.get("end");
+
+    var selectionMin = Math.max(xAxis.getPrivate("selectionMin"), absoluteMin);
+    var selectionMax = Math.min(xAxis.getPrivate("selectionMax"), absoluteMax);
+
+    var min = xAxis.getPrivate("min");
+    var max = xAxis.getPrivate("max");
+
+    // if start is less than 0, means we are panning to the right, need to load data to the left (earlier days)
+    if (start < 0) {
+        loadData(market, interval, count, unit, selectionMin, min, "left");
+    }
+    // if end is bigger than 1, means we are panning to the left, need to load data to the right (later days)
+    if (end > 1) {
+        loadData(market, interval, count, unit, max, selectionMax, "right");
+    }
 }
 
 // Create chart
@@ -162,72 +222,37 @@ cursor.lineY.set("visible", false);
 // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Stacked_axes
 chart.leftAxesContainer.set("layout", root.verticalLayout);
 
-// Add scrollbar
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
-// var scrollbar = am5xy.XYChartScrollbar.new(root, {
-//     orientation: "horizontal",
-//     height: 50
-// });
-// chart.set("scrollbarX", scrollbar);
+var currentDate = new Date();
 
-// var sbxAxis = scrollbar.chart.xAxes.push(
-//     am5xy.DateAxis.new(root, {
-//         groupData: true,
-//         groupIntervals: [{
-//             timeUnit: "week",
-//             count: 1
-//         }],
-//         baseInterval: {
-//             timeUnit: "day",
-//             count: 1
-//         },
-//         renderer: am5xy.AxisRendererX.new(root, {
-//             opposite: false,
-//             strokeOpacity: 0
-//         })
-//     })
-// );
+// initially load 50 days
+var min = currentDate.getTime() - am5.time.getDuration("day", 10);
+var max = currentDate.getTime();
 
-// var sbyAxis = scrollbar.chart.yAxes.push(
-//     am5xy.ValueAxis.new(root, {
-//         renderer: am5xy.AxisRendererY.new(root, {})
-//     })
-// );
+// limit to the data's extremes
+var absoluteMax = max;
+var absoluteMin = new Date(2000, 0, 1, 0, 0, 0, 0);
 
-// var sbseries = scrollbar.chart.series.push(
-//     am5xy.LineSeries.new(root, {
-//         xAxis: sbxAxis,
-//         yAxis: sbyAxis,
-//         valueYField: "value",
-//         valueXField: "date"
-//     })
-// );
-
-// // Add legend
-// // https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
-// var legend = yAxis.axisHeader.children.push(am5.Legend.new(root, {}));
-
-// legend.data.push(series);
-
-// legend.markers.template.setAll({
-//     width: 10
-// });
-
-// legend.markerRectangles.template.setAll({
-//     cornerRadiusTR: 0,
-//     cornerRadiusBR: 0,
-//     cornerRadiusTL: 0,
-//     cornerRadiusBL: 0
-// });
-
-// set data
-// series.data.setAll(data);
-// sbseries.data.setAll(data);
+// load data when panning ends
+chart.events.on("panended", function () {
+    loadSomeData(market);
+});
 
 // Make stuff animate on load
 // https://www.amcharts.com/docs/v5/concepts/animations/
+var wheelTimeout;
+chart.events.on("wheelended", function () {
+    // load data with some delay when wheel ends, as this is event is fired a lot
+    // if we already set timeout for loading, dispose it
+    if (wheelTimeout) {
+        wheelTimeout.dispose();
+    }
 
-loadData(market, interval, count, unit);
+    wheelTimeout = chart.setTimeout(function () {
+        loadSomeData(market);
+    }, 50);
+});
+
+loadData(market, interval, count, unit, min, max, "none");
 
 // series.appear(1000);
 chart.appear(1000, 100);
@@ -239,23 +264,23 @@ $('.control .range').on('click', function () {
     $('.control .sub-range').removeClass('active');
 
     interval = $(this).data('range') * 1;
-    var unit = $(this).data('unit');
-    var count = $(this).data('count') * 1;
+    unit = $(this).data('unit');
+    count = $(this).data('count') * 1;
 
-    loadData(market, interval, count, unit);
+    loadData(market, interval, count, unit, xAxis.getPrivate("selectionMin"), xAxis.getPrivate("selectionMax"), "none");
 });
 
 $('.control .sub-range').on('click', function () {
     $('.control .sub-range').removeClass('active');
     $('.range').removeClass('active');
     $(this).addClass('active');
-    $('.dropdown').addClass('active');
+    $('.range.dropdown').addClass('active');
 
     $('.control .dropdown').html($(this).text() + ' <i class="fa fa-sort-down"></i>');
 
     interval = $(this).data('range') * 1;
-    var unit = $(this).data('unit')
-    var count = $(this).data('count') * 1;
+    unit = $(this).data('unit')
+    count = $(this).data('count') * 1;
 
-    loadData(market, interval, count, unit);
+    loadData(market, interval, count, unit, xAxis.getPrivate("selectionMin"), xAxis.getPrivate("selectionMax"), "none");
 });

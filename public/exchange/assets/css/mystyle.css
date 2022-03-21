@@ -91,6 +91,14 @@
     margin-top: 10px;
 }
 
+.dark-theme .chart-content .range-dropdown {
+    background-color: rgb(37, 41, 48);
+    box-shadow:
+       inset 0 -3em 3em rgba(0,0,0,0.1),
+             0 0  0 2px rgb(37,41,48),
+             0.3em 0.3em 1em rgba(0,0,0,0.3);
+}
+
 .chart-content .range-dropdown {
     z-index: 10;
     display: none;
@@ -99,10 +107,14 @@
     top: 163px;
     width: 245px;
     height: 120px;
-    background-color: rgb(37, 41, 48);
+    background-color: #ffffff;
     border-radius: 5px;
     color: #fff;
     padding: 10px;
+    box-shadow:
+       inset 0 -3em 3em rgba(0,0,0,0.1),
+             0 0  0 2px rgb(240,240,240),
+             0.3em 0.3em 1em rgba(0,0,0,0.3);
 }
 
 .chart-content .range-dropdown .sub-range {

@@ -393,15 +393,15 @@
                         <span class="range" data-range="15" id="quarter" data-unit="minute" data-count="15">15m</span>
                         <span class="range" data-range="60" id="hour" data-unit="hour" data-count="1">1H</span>
                         <span class="range" data-range="240" id="4hr" data-unit="hour" data-count="4">4H</span>
-                        <span class="range" data-range="1440" id="day" data-unit="day" data-count="1">1D</span>
+                        <span class="range active" data-range="1440" id="day" data-unit="day" data-count="1">1D</span>
                         <span class="range" data-range="10080" id="week" data-unit="day" data-count="7">1W</span>
-                        <span class="range dropdown active">1m <i class="fa fa-sort-down"></i></span>
+                        <span class="range dropdown">1m <i class="fa fa-sort-down"></i></span>
                         <div class="range-dropdown">
                             <div class="title">Select Intervals</div>
                             <div class="close"><i class="fa fa-times"></i></div>
                             <div class=" sub-range" data-range="1" data-unit="minute" data-count="1">1m</div>
                             <div class="sub-range" data-range="3" data-unit="minute" data-count="3">3m</div>
-                            <div class="sub-range active" data-range="5" data-unit="minute" data-count="5">5m</div>
+                            <div class="sub-range" data-range="5" data-unit="minute" data-count="5">5m</div>
                             <div class="sub-range" data-range="15" data-unit="minute" data-count="15">15m</div>
                             <div class="sub-range" data-range="30" data-unit="minute" data-count="30">30m</div>
                             <div class="sub-range" data-range="60" data-unit="hour" data-count="1">1H</div>
