@@ -1,0 +1,84 @@
+CRITICAL - 2022-04-03 02:58:21 --> A non-numeric value encountered
+#0 D:\work projects\Tradebox\app\Modules\Website\Controllers\HomeController.php(2670): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'D:\\work project...', 2670, Array)
+#1 D:\work projects\Tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->tradecharthistory()
+#2 D:\work projects\Tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#3 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-03 02:58:21 --> A non-numeric value encountered
+#0 D:\work projects\Tradebox\app\Modules\Website\Controllers\HomeController.php(2670): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'D:\\work project...', 2670, Array)
+#1 D:\work projects\Tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->tradecharthistory()
+#2 D:\work projects\Tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#3 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-03 02:58:22 --> A non-numeric value encountered
+#0 D:\work projects\Tradebox\app\Modules\Website\Controllers\HomeController.php(2670): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'D:\\work project...', 2670, Array)
+#1 D:\work projects\Tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->tradecharthistory()
+#2 D:\work projects\Tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#3 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-03 02:58:22 --> A non-numeric value encountered
+#0 D:\work projects\Tradebox\app\Modules\Website\Controllers\HomeController.php(2670): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'D:\\work project...', 2670, Array)
+#1 D:\work projects\Tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->tradecharthistory()
+#2 D:\work projects\Tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#3 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-03 02:58:22 --> A non-numeric value encountered
+#0 D:\work projects\Tradebox\app\Modules\Website\Controllers\HomeController.php(2670): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'D:\\work project...', 2670, Array)
+#1 D:\work projects\Tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->tradecharthistory()
+#2 D:\work projects\Tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#3 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-03 02:58:22 --> A non-numeric value encountered
+#0 D:\work projects\Tradebox\app\Modules\Website\Controllers\HomeController.php(2670): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'D:\\work project...', 2670, Array)
+#1 D:\work projects\Tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->tradecharthistory()
+#2 D:\work projects\Tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#3 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-03 02:58:22 --> A non-numeric value encountered
+#0 D:\work projects\Tradebox\app\Modules\Website\Controllers\HomeController.php(2670): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'D:\\work project...', 2670, Array)
+#1 D:\work projects\Tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->tradecharthistory()
+#2 D:\work projects\Tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#3 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-03 02:58:23 --> A non-numeric value encountered
+#0 D:\work projects\Tradebox\app\Modules\Website\Controllers\HomeController.php(2670): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'D:\\work project...', 2670, Array)
+#1 D:\work projects\Tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->tradecharthistory()
+#2 D:\work projects\Tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#3 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-03 02:58:23 --> A non-numeric value encountered
+#0 D:\work projects\Tradebox\app\Modules\Website\Controllers\HomeController.php(2670): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'D:\\work project...', 2670, Array)
+#1 D:\work projects\Tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->tradecharthistory()
+#2 D:\work projects\Tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#3 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-03 02:58:23 --> A non-numeric value encountered
+#0 D:\work projects\Tradebox\app\Modules\Website\Controllers\HomeController.php(2670): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'D:\\work project...', 2670, Array)
+#1 D:\work projects\Tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->tradecharthistory()
+#2 D:\work projects\Tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#3 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-03 02:58:23 --> A non-numeric value encountered
+#0 D:\work projects\Tradebox\app\Modules\Website\Controllers\HomeController.php(2670): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'D:\\work project...', 2670, Array)
+#1 D:\work projects\Tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->tradecharthistory()
+#2 D:\work projects\Tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#3 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}
+CRITICAL - 2022-04-03 02:58:23 --> A non-numeric value encountered
+#0 D:\work projects\Tradebox\app\Modules\Website\Controllers\HomeController.php(2670): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'D:\\work project...', 2670, Array)
+#1 D:\work projects\Tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->tradecharthistory()
+#2 D:\work projects\Tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#3 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}

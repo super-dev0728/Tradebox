@@ -1,0 +1,11 @@
+CRITICAL - 2022-03-24 14:44:33 --> unlink(D:\work projects\Tradebox\writable\debugbar/debugbar_1648067455.json): No such file or directory
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(D:\\work ...', 'D:\\work project...', 106, Array)
+#1 D:\work projects\Tradebox\system\Debug\Toolbar\Collectors\History.php(106): unlink('D:\\work project...')
+#2 D:\work projects\Tradebox\system\Debug\Toolbar.php(483): CodeIgniter\Debug\Toolbar\Collectors\History->setFiles(1648122271, 20)
+#3 D:\work projects\Tradebox\system\Debug\Toolbar.php(455): CodeIgniter\Debug\Toolbar->format(Array, 'html')
+#4 D:\work projects\Tradebox\app\Config\Events.php(50): CodeIgniter\Debug\Toolbar->respond()
+#5 [internal function]: CodeIgniter\Events\Events::Config\{closure}()
+#6 D:\work projects\Tradebox\system\Events\Events.php(188): call_user_func(Object(Closure))
+#7 D:\work projects\Tradebox\system\CodeIgniter.php(301): CodeIgniter\Events\Events::trigger('pre_system')
+#8 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#9 {main}

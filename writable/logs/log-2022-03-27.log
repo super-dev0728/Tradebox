@@ -1,0 +1,16 @@
+CRITICAL - 2022-03-27 14:12:25 --> file_get_contents(): php_network_getaddresses: getaddrinfo failed: No such host is known. 
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_conten...', 'D:\\work project...', 2745, Array)
+#1 D:\work projects\Tradebox\app\Modules\Website\Controllers\HomeController.php(2745): file_get_contents('https://min-api...', true)
+#2 D:\work projects\Tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->coingraphdata()
+#3 D:\work projects\Tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-03-27 14:13:53 --> file_get_contents(): php_network_getaddresses: getaddrinfo failed: No such host is known. 
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_conten...', 'D:\\work project...', 2745, Array)
+#1 D:\work projects\Tradebox\app\Modules\Website\Controllers\HomeController.php(2745): file_get_contents('https://min-api...', true)
+#2 D:\work projects\Tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->coingraphdata()
+#3 D:\work projects\Tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#6 {main}

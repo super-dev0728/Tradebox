@@ -130,7 +130,8 @@ var chart = root.container.children.push(
         panY: false,
         wheelX: "panX",
         wheelY: "zoomX",
-        layout: root.verticalLayout
+        layout: root.verticalLayout,
+        cursor: am5xy.XYCursor.new(root, {})
     })
 );
 
@@ -151,23 +152,28 @@ var xAxis = chart.xAxes.push(
     })
 );
 
-xAxis.get("renderer").labels.template.setAll({
-    minPosition: 0.01,
-    maxPosition: 0.99
-});
+// xAxis.get("renderer").labels.template.setAll({
+//     minPosition: 0.01,
+//     maxPosition: 0.99
+// });
 
 var yAxis = chart.yAxes.push(
     am5xy.ValueAxis.new(root, {
+        numberFormat: "#,###.00000000",
         renderer: am5xy.AxisRendererY.new(root, {
             inside: true
         }),
-        height: am5.percent(70)
+        inversed: true,
+        x: am5.percent(100),
+        centerX: am5.percent(100),
+        tooltip: am5.Tooltip.new(root, {})
+        // height: am5.percent(70)
     })
 );
 
 yAxis.get("renderer").labels.template.setAll({
     centerY: am5.percent(100),
-    maxPosition: 0.98
+    // maxPosition: 0.98
 });
 
 // yAxis.axisHeader.children.push(am5.Label.new(root, {
@@ -202,21 +208,12 @@ var series = chart.series.push(
         legendRangeValueText: "{valueYClose}",
         tooltip: am5.Tooltip.new(root, {
             pointerOrientation: "horizontal",
-            labelText: "open: {openValueY}\nlow: {lowValueY}\nhigh: {highValueY}\nclose: {valueY}"
+            labelText: "open: {openValueY.formatNumber('#,###.00000000')}\nlow: {lowValueY.formatNumber('#,###.00000000')}\nhigh: {highValueY.formatNumber('#,###.00000000')}\nclose: {valueY.formatNumber('#,###.00000000')}"
         })
     })
 );
 
 var firstColor = chart.get("colors").getIndex(0);
-// Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
-var cursor = chart.set(
-    "cursor",
-    am5xy.XYCursor.new(root, {
-        xAxis: xAxis
-    })
-);
-cursor.lineY.set("visible", false);
 
 // Stack axes vertically
 // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/#Stacked_axes

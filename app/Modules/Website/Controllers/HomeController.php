@@ -690,8 +690,6 @@ class HomeController extends BaseController
         $this->validation->setRule('crypto_coin', display('cryptocoin'), 'required|alpha_numeric|trim'); 
         $this->validation->setRule('varify_media', display('otp_send_to'), 'required|trim');
 
-        
-
         if($this->request->getPost('method') == 'coinpayment' || $this->request->getPost('method') == 'token')
         {
             $this->validation->setRule('wallet_address', 'Your Address', 'required|max_length[100]|trim');
@@ -762,7 +760,6 @@ class HomeController extends BaseController
                 } else {
 
                     if($varify_media == 2){
-
                         /***************************
                         *      Email Verify SMTP
                         ***************************/
@@ -2574,7 +2571,7 @@ class HomeController extends BaseController
         $market_symbol = $this->request->getGet('market', FILTER_SANITIZE_STRING);
         $coin_symbol = explode('_', $market_symbol);
 
-         $sql = "SELECT * FROM `dbt_coinhistory` INNER JOIN (SELECT `market_symbol`, MAX(`id`) AS maxid FROM `dbt_coinhistory` GROUP BY `id`,`market_symbol`) topid ON dbt_coinhistory.`market_symbol` = topid.`market_symbol` AND dbt_coinhistory.`id` = topid.`maxid`";
+        $sql = "SELECT * FROM `dbt_coinhistory` INNER JOIN (SELECT `market_symbol`, MAX(`id`) AS maxid FROM `dbt_coinhistory` GROUP BY `id`,`market_symbol`) topid ON dbt_coinhistory.`market_symbol` = topid.`market_symbol` AND dbt_coinhistory.`id` = topid.`maxid`";
         $tradesummery =$this->db->query($sql, [])->getResult();
 
         echo json_encode(array('marketstreamer' => $tradesummery));

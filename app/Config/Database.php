@@ -22,8 +22,8 @@ class Database extends \CodeIgniter\Database\Config
      *
      * @var string
      */
-    // public $defaultGroup = 'default';
-    public $defaultGroup = 'test';
+    public $defaultGroup = 'default';
+    // public $defaultGroup = 'test';
 
     /**
      * The default database connection.

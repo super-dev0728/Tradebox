@@ -1,0 +1,55 @@
+CRITICAL - 2022-03-28 08:21:42 --> The action you requested is not allowed.
+#0 D:\work projects\Tradebox\system\Security\Security.php(233): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+#1 D:\work projects\Tradebox\system\Filters\CSRF.php(89): CodeIgniter\Security\Security->CSRFVerify(Object(CodeIgniter\HTTP\IncomingRequest))
+#2 D:\work projects\Tradebox\system\Filters\Filters.php(173): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#3 D:\work projects\Tradebox\system\CodeIgniter.php(390): CodeIgniter\Filters\Filters->run('fees-load', 'before')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-03-28 08:21:42 --> The action you requested is not allowed.
+#0 D:\work projects\Tradebox\system\Security\Security.php(233): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+#1 D:\work projects\Tradebox\system\Filters\CSRF.php(89): CodeIgniter\Security\Security->CSRFVerify(Object(CodeIgniter\HTTP\IncomingRequest))
+#2 D:\work projects\Tradebox\system\Filters\Filters.php(173): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#3 D:\work projects\Tradebox\system\CodeIgniter.php(390): CodeIgniter\Filters\Filters->run('fees-load', 'before')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-03-28 08:21:42 --> The action you requested is not allowed.
+#0 D:\work projects\Tradebox\system\Security\Security.php(233): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+#1 D:\work projects\Tradebox\system\Filters\CSRF.php(89): CodeIgniter\Security\Security->CSRFVerify(Object(CodeIgniter\HTTP\IncomingRequest))
+#2 D:\work projects\Tradebox\system\Filters\Filters.php(173): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#3 D:\work projects\Tradebox\system\CodeIgniter.php(390): CodeIgniter\Filters\Filters->run('fees-load', 'before')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-03-28 08:21:44 --> The action you requested is not allowed.
+#0 D:\work projects\Tradebox\system\Security\Security.php(233): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+#1 D:\work projects\Tradebox\system\Filters\CSRF.php(89): CodeIgniter\Security\Security->CSRFVerify(Object(CodeIgniter\HTTP\IncomingRequest))
+#2 D:\work projects\Tradebox\system\Filters\Filters.php(173): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#3 D:\work projects\Tradebox\system\CodeIgniter.php(390): CodeIgniter\Filters\Filters->run('fees-load', 'before')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-03-28 08:21:44 --> The action you requested is not allowed.
+#0 D:\work projects\Tradebox\system\Security\Security.php(233): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+#1 D:\work projects\Tradebox\system\Filters\CSRF.php(89): CodeIgniter\Security\Security->CSRFVerify(Object(CodeIgniter\HTTP\IncomingRequest))
+#2 D:\work projects\Tradebox\system\Filters\Filters.php(173): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), NULL)
+#3 D:\work projects\Tradebox\system\CodeIgniter.php(390): CodeIgniter\Filters\Filters->run('get-wallet-id', 'before')
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-03-28 08:22:13 --> file_get_contents(): php_network_getaddresses: getaddrinfo failed: No such host is known. 
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_conten...', 'D:\\work project...', 2743, Array)
+#1 D:\work projects\Tradebox\app\Modules\Website\Controllers\HomeController.php(2743): file_get_contents('https://min-api...', true)
+#2 D:\work projects\Tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->coingraphdata()
+#3 D:\work projects\Tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#4 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#5 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#6 {main}
+CRITICAL - 2022-03-28 09:34:58 --> A non-numeric value encountered
+#0 D:\work projects\Tradebox\app\Modules\Website\Controllers\HomeController.php(2654): CodeIgniter\Debug\Exceptions->errorHandler(2, 'A non-numeric v...', 'D:\\work project...', 2654, Array)
+#1 D:\work projects\Tradebox\system\CodeIgniter.php(926): App\Modules\Website\Controllers\HomeController->tradecharthistory()
+#2 D:\work projects\Tradebox\system\CodeIgniter.php(412): CodeIgniter\CodeIgniter->runController(Object(App\Modules\Website\Controllers\HomeController))
+#3 D:\work projects\Tradebox\system\CodeIgniter.php(320): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#4 D:\work projects\Tradebox\index.php(64): CodeIgniter\CodeIgniter->run()
+#5 {main}

@@ -12,26 +12,31 @@
                         </div>
                     </div>
                 </div>
-            </div>            
+            </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
                         <?php echo form_open('customer/withdraw/store',array('name'=>'withdraw'));?>
                         <div class="border_preview">
                             <div class="form-group row">
-                                <label for="amount" class="col-sm-4 col-form-label"><?php echo display('amount');?></label>
+                                <label for="amount"
+                                    class="col-sm-4 col-form-label"><?php echo display('amount');?></label>
                                 <div class="col-sm-8">
-                                    <input class="form-control" name="amount" type="number" min="10" max="5000" id="amount">
+                                    <input class="form-control" name="amount" type="number" min="10" max="5000"
+                                        id="amount">
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="withdraw_payment_method" class="col-sm-4 col-form-label"><?php echo display('payment_method');?></label>
+                                <label for="withdraw_payment_method"
+                                    class="col-sm-4 col-form-label"><?php echo display('payment_method');?></label>
                                 <div class="col-sm-8">
-                                    <select class="form-control basic-single" name="method" id="withdraw_payment_method">
+                                    <select class="form-control basic-single" name="method"
+                                        id="withdraw_payment_method">
                                         <option value="">-<?php echo display('payment_method')?>-</option>
                                         <?php foreach ($payment_gateway as $key => $value) {  ?>
-                                        <option value="<?php echo esc($value->identity); ?>"><?php echo esc($value->agent); ?></option>
+                                        <option value="<?php echo esc($value->identity); ?>">
+                                            <?php echo esc($value->agent); ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
@@ -61,8 +66,10 @@
 
                             <div class="row m-b-15" align="center">
                                 <div class="col-sm-12">
-                                    <button type="submit" disabled class="btn btn-success w-md m-b-5"><?php echo display('withdraw');?></button>
-                                    <a href="<?php echo base_url('customer/dashboard');?>" class="btn btn-danger w-md m-b-5"><?php echo display('cancel')?></a>
+                                    <button type="submit" disabled
+                                        class="btn btn-success w-md m-b-5"><?php echo display('withdraw');?></button>
+                                    <a href="<?php echo base_url('customer/dashboard');?>"
+                                        class="btn btn-danger w-md m-b-5"><?php echo display('cancel')?></a>
                                 </div>
                             </div>
                         </div>
@@ -74,4 +81,5 @@
     </div>
 </div>
 <script src="<?php echo base_url("public/assets/js/main_custom.js?v=5.9") ?>" type="text/javascript"></script>
-<script src="<?php echo base_url("app/Modules/Finance/Assets/Customer/js/custom.js?v=1.1") ?>" type="text/javascript"></script>
+<script src="<?php echo base_url("app/Modules/Finance/Assets/Customer/js/custom.js?v=1.1") ?>" type="text/javascript">
+</script>
