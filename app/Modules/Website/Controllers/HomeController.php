@@ -2668,10 +2668,18 @@ class HomeController extends BaseController
         // var_dump($end); die();
 
         $start_date = date('Y-m-d H:i:s', $min/1000);
-        $end_date = date('Y-m-d H:i:s', $max/1000);
+        if(!is_null($max)) {
+            $end_date = date('Y-m-d H:i:s', $max/1000);
+        } else {
+            $end_date = null;
+        }
         // $coinhistory   = $this->db->table('dbt_coinhistory')->select('date')->selectSum('open')->selectSum('price_high_24h')->selectSum(' price_low_24h')->selectSum('close')->where('market_symbol', $market_symbol)->groupBy('DATE(date)')->groupBy('HOUR(date)')->groupBy('MINUTE(date)')->limit(1000,0)->orderBy('date', 'asc')->get()->getResult(); 
 
-        $coinhistory   = $this->db->table('dbt_coinhistory_detail')->selectMin('price', 'low')->selectMax('price', "high")->selectMin('date', 'open_date')->selectMax('date', 'close_date')->select('substring_index(group_concat(cast(price as DOUBLE) order by date), trim(","), 1 ) as "open"')->select('substring_index(group_concat(cast(price as DOUBLE) order by date desc), trim(","), 1 ) as "close"')->select('FLOOR(UNIX_TIMESTAMP(date)/' . $interval . ') as "timekey"')->where('market_symbol', $market_symbol)->where('date <=', $end_date)->where('date >=', $start_date)->groupBy('timekey')->orderBy('timekey', 'asc')->get()->getResult();
+        if(is_null($end_date)) {
+            $coinhistory   = $this->db->table('dbt_coinhistory_detail')->selectMin('price', 'low')->selectMax('price', "high")->selectMin('date', 'open_date')->selectMax('date', 'close_date')->select('substring_index(group_concat(cast(price as DOUBLE) order by date), trim(","), 1 ) as "open"')->select('substring_index(group_concat(cast(price as DOUBLE) order by date desc), trim(","), 1 ) as "close"')->select('FLOOR(UNIX_TIMESTAMP(date)/' . $interval . ') as "timekey"')->where('market_symbol', $market_symbol)->where('date >=', $start_date)->groupBy('timekey')->orderBy('timekey', 'asc')->get()->getResult();    
+        } else {
+            $coinhistory   = $this->db->table('dbt_coinhistory_detail')->selectMin('price', 'low')->selectMax('price', "high")->selectMin('date', 'open_date')->selectMax('date', 'close_date')->select('substring_index(group_concat(cast(price as DOUBLE) order by date), trim(","), 1 ) as "open"')->select('substring_index(group_concat(cast(price as DOUBLE) order by date desc), trim(","), 1 ) as "close"')->select('FLOOR(UNIX_TIMESTAMP(date)/' . $interval . ') as "timekey"')->where('market_symbol', $market_symbol)->where('date <=', $end_date)->where('date >=', $start_date)->groupBy('timekey')->orderBy('timekey', 'asc')->get()->getResult();
+        }
 
         foreach ($coinhistory as $key => $value) {
             $timestamp = strtotime($value->open_date);

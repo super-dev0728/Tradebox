@@ -251,6 +251,82 @@ chart.events.on("wheelended", function () {
 
 loadData(market, interval, count, unit, min, max, "none");
 
+// Update data every second
+// setInterval(function () {
+//     reloadData();
+// }, 1000)
+
+function reloadData() {
+    var xmin = xAxis.get("start");
+    var xmax = xAxis.get("end");
+
+    loadData(market, interval, count, unit, xmin, xmax, "none");
+}
+
+/*
+// Generate random data
+var value = 100;
+var easing = am5.ease.linear;
+
+function addData() {
+    // save selection min and max (these are timestamps)
+    var selectionMin = xAxis.getPrivate("selectionMin");
+    var selectionMax = xAxis.getPrivate("selectionMax");
+    var max = xAxis.getPrivate("max");
+
+    var lastDataItem = series.dataItems[series.dataItems.length - 1];
+
+    var lastValue = lastDataItem.get("valueY");
+    var newValue = value + ((Math.random() < 0.5 ? 1 : -1) * Math.random() * 5);
+    var lastDate = new Date(lastDataItem.get("valueX"));
+    var time = am5.time.add(new Date(lastDate), "second", 1).getTime();
+    series.data.removeIndex(0);
+    series.data.push({
+        date: time,
+        value: newValue
+    })
+
+    var newDataItem = series.dataItems[series.dataItems.length - 1];
+    newDataItem.animate({
+        key: "valueYWorking",
+        to: newValue,
+        from: lastValue,
+        duration: 600,
+        easing: easing
+    });
+
+    // use the bullet of last data item so that a new sprite is not created
+    newDataItem.bullets = [];
+    newDataItem.bullets[0] = lastDataItem.bullets[0];
+    newDataItem.bullets[0].get("sprite").dataItem = newDataItem;
+    // reset bullets
+    lastDataItem.dataContext.bullet = false;
+    lastDataItem.bullets = [];
+
+
+    var animation = newDataItem.animate({
+        key: "locationX",
+        to: 0.5,
+        from: -0.5,
+        duration: 600
+    });
+    if (animation) {
+        var tooltip = xAxis.get("tooltip");
+        if (tooltip && !tooltip.isHidden()) {
+            animation.events.on("stopped", function () {
+                xAxis.updateTooltip();
+            })
+        }
+    }
+
+    // set the same selection min and max
+    series.events.once("datavalidated", function () {
+        if (max - selectionMax > xAxis.baseDuration()) {
+            xAxis.zoomToValues(selectionMin, selectionMax);
+        }
+    })
+}*/
+
 // series.appear(1000);
 chart.appear(1000, 100);
 
@@ -281,3 +357,75 @@ $('.control .sub-range').on('click', function () {
 
     loadData(market, interval, count, unit, xAxis.getPrivate("selectionMin"), xAxis.getPrivate("selectionMax"), "none");
 });
+
+// Update data every second
+// setInterval(function () {
+//     $.getJSON(BDTASK.getSiteAction('tradecharthistory?market=' + market + '&interval=' + interval + '&start=' + min), function (data) {
+//         series.data.setIndex(series.data.length, {
+//             value: data[data.length - 1]
+//         });
+//     });
+// }, 1000);
+// setInterval(function () {
+//     chart.dataProvider = reloadData();
+//     chart.validateData();
+// }, 1000);
+
+// function addData() {
+//     // save selection min and max (these are timestamps)
+//     var selectionMin = xAxis.getPrivate("selectionMin");
+//     var selectionMax = xAxis.getPrivate("selectionMax");
+//     var max = xAxis.getPrivate("max");
+
+//     var lastDataItem = series.dataItems[series.dataItems.length - 1];
+
+//     var lastValue = lastDataItem.get("valueY");
+
+//     var newValue = lastValue + ((Math.random() < 0.5 ? 1 : -1) * Math.random() * 5);
+//     var lastDate = new Date(lastDataItem.get("valueX"));
+//     var time = am5.time.add(new Date(lastDate), "second", 1).getTime();
+//     series.data.removeIndex(0);
+//     series.data.push({
+//         date: time,
+//         value: newValue
+//     })
+
+//     var newDataItem = series.dataItems[series.dataItems.length - 1];
+//     newDataItem.animate({
+//         key: "valueYWorking",
+//         to: newValue,
+//         from: lastValue,
+//         duration: 600
+//     });
+
+//     // use the bullet of last data item so that a new sprite is not created
+//     newDataItem.bullets = [];
+//     newDataItem.bullets[0] = lastDataItem.bullets[0];
+//     newDataItem.bullets[0].get("sprite").dataItem = newDataItem;
+//     // reset bullets
+//     lastDataItem.dataContext.bullet = false;
+//     lastDataItem.bullets = [];
+
+
+//     var animation = newDataItem.animate({
+//         key: "locationX",
+//         to: 0.5,
+//         from: -0.5,
+//         duration: 600
+//     });
+//     if (animation) {
+//         var tooltip = xAxis.get("tooltip");
+//         if (tooltip && !tooltip.isHidden()) {
+//             animation.events.on("stopped", function () {
+//                 xAxis.updateTooltip();
+//             })
+//         }
+//     }
+
+//     // set the same selection min and max
+//     series.events.once("datavalidated", function () {
+//         if (max - selectionMax > xAxis.baseDuration()) {
+//             xAxis.zoomToValues(selectionMin, selectionMax);
+//         }
+//     })
+// }
